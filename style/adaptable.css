@@ -1541,6 +1541,7 @@ div.questionbankwindow.block {
         overflow-y: auto;
         padding-right: 15px;
         max-width: 95%;
+        z-index: 2;
     }
     #showsidebaricon {
         background-color: [[setting:headerbkcolor2]];
@@ -1556,7 +1557,7 @@ div.questionbankwindow.block {
         right: 8px;
         top: 100px;
         transition: left 0.75s;
-        z-index: 1;
+        z-index: 2;
     }
     #showsidebaricon.sidebarshown {
         left: calc(5% - 20px);
