@@ -3176,19 +3176,19 @@ EOT;
     }
 
     /**
-     * Output all the blocks in a particular region.
+     * Get the HTML for blocks in the given region.
      *
-     * @param string $region the name of a region on this page.
-     * @return string the HTML to be output.
+     * @since Moodle 2.5.1 2.6
+     * @param string $region The region to get HTML for.
+     * @return string HTML.
      */
-    public function blocks_for_region($region) {
-        $output = parent::blocks_for_region($region);
+    public function blocks($region, $classes = array(), $tag = 'aside') {
+        $output = parent::blocks($region, $classes, $tag);
 
         if ((!empty($output)) && ($region == 'side-post')) {
             $output = html_writer::tag('div',
                 html_writer::tag('i', '', array('class' => 'fa fa-chevron-left', 'aria-hidden' => 'true')),
-                array('id' => 'showsidebaricon')).$output;
-            $this->page->requires->js_call_amd('theme_adaptable/showsidebar', 'init');
+                array('class' => 'showsidebaricon')).$output;
         }
 
         return $output;

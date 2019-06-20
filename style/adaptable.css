@@ -1521,19 +1521,18 @@ div.questionbankwindow.block {
         flex: 0 0 0;
         height: calc(100% - 45px);
         max-width: 0;
-        overflow-y: hidden;
-        padding-right: 15px;
+        overflow: hidden;
+        padding: 0;
         position: fixed;
         right: 0;
         top: 45px;
         transition: right 0.75s;
     }
-    #block-region-side-post:before {
-        content: "\&f053";
-        position: absolute;
-        left: 0;
+    .showsidebaricon {
+        position: fixed;
+        right: 8px;
         top: 45px;
-        font-family: 'FontAwesome';
+        z-index: 1;
     }
     #block-region-side-post .block-controls {
         display: none;
@@ -1541,6 +1540,7 @@ div.questionbankwindow.block {
     #block-region-side-post.sidebarshown {
         flex: 0 0 95%;
         overflow-y: auto;
+        padding-right: 15px;
         max-width: 95%;
     }
 }
