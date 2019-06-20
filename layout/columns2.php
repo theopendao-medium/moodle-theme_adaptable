@@ -80,7 +80,7 @@ $regions = theme_adaptable_grid($left, $hassidepost);
 
         // Hide sidebar on mobile.
         if (!empty($PAGE->theme->settings->smallscreenhidesidebar)) {
-            $classes = ' d-none d-md-block ';
+            $classes = ' d-none d-md-block d-print-none ';
         }
 
             echo $OUTPUT->blocks('side-post', $regions['blocks'] . $classes);

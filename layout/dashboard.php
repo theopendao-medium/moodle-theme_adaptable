@@ -53,7 +53,7 @@ if ( (!empty($PAGE->theme->settings->dashblocksenabled)) && ($dashblocksposition
 $sidebarclasses = '';
 // Hide sidebar on mobile.
 if (!empty($PAGE->theme->settings->smallscreenhidesidebar)) {
-    $sidebarclasses = ' d-none d-md-block ';
+    $sidebarclasses = ' d-none d-md-block d-print-none ';
 } ?>
 
 <div class="container outercont">

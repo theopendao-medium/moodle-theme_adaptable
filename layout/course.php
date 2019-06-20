@@ -177,7 +177,7 @@ if (empty($PAGE->theme->settings->coursepageblocksenabled)) {
 // Hide sidebar on mobile.
 $classes = '';
 if (!empty($PAGE->theme->settings->smallscreenhidesidebar)) {
-    $classes = ' d-none d-md-block ';
+    $classes = ' d-none d-md-block d-print-none ';
 }
 
 if ($movesidebartofooter == false) {
