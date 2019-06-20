@@ -1514,6 +1514,10 @@ div.questionbankwindow.block {
     transition: all .5s ease-in-out;
 }
 
+#showsidebaricon {
+    display: none;
+}
+
 @media screen and (max-width: 767px) {
     #block-region-side-post {
         background-color: #fff;
@@ -1526,22 +1530,37 @@ div.questionbankwindow.block {
         position: fixed;
         right: 0;
         top: 45px;
-        transition: right 0.75s;
-    }
-    .showsidebaricon {
-        position: fixed;
-        right: 8px;
-        top: 45px;
-        z-index: 1;
+        transition: max-width 0.75s;
     }
     #block-region-side-post .block-controls {
         display: none;
     }
     #block-region-side-post.sidebarshown {
+        border-left: 2px solid [[setting:headerbkcolor2]];
         flex: 0 0 95%;
         overflow-y: auto;
         padding-right: 15px;
         max-width: 95%;
+    }
+    #showsidebaricon {
+        background-color: [[setting:headerbkcolor2]];
+        border-bottom: 4px solid [[setting:headerbkcolor2]];
+        border-left: 4px solid [[setting:headerbkcolor2]];
+        border-top: 4px solid [[setting:headerbkcolor2]];
+        border-radius: 16px 0 0 16px;
+        color: [[setting:headertextcolor]];
+        display: block;
+        font-size: 24px;
+        left: auto;
+        position: fixed;
+        right: 8px;
+        top: 100px;
+        transition: left 0.75s;
+        z-index: 1;
+    }
+    #showsidebaricon.sidebarshown {
+        left: calc(5% - 20px);
+        right: auto;
     }
 }
 
