@@ -1555,7 +1555,7 @@ div.questionbankwindow.block {
         transition: right 0.75s;
         z-index: 2;
     }
-    #showsidebaricon.sidebarshown {
+    .sidebarshown #showsidebaricon {
         right: 90%;
     }
 }
