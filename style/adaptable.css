@@ -1549,6 +1549,7 @@ div.questionbankwindow.block {
         color: [[setting:headertextcolor]];
         display: block;
         font-size: 24px;
+        padding: 8px 8px 8px 0;
         position: fixed;
         right: 0;
         top: 100px;
