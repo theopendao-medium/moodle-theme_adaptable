@@ -1522,25 +1522,22 @@ div.questionbankwindow.block {
     #block-region-side-post {
         background-color: #fff;
         display: block !important;
-        flex: 0 0 0;
         height: calc(100% - 45px);
-        max-width: 0;
         overflow: hidden;
         padding: 0;
         position: fixed;
-        right: 0;
+        min-width: 90%;
+        right: -90%;
         top: 45px;
-        transition: max-width 0.75s;
+        transition: right 0.75s;
     }
     #block-region-side-post .block-controls {
         display: none;
     }
     #block-region-side-post.sidebarshown {
         border-left: 2px solid [[setting:headerbkcolor2]];
-        flex: 0 0 95%;
         overflow-y: auto;
-        padding-right: 15px;
-        max-width: 95%;
+        right: 0;
         z-index: 2;
     }
     #showsidebaricon {
@@ -1552,16 +1549,14 @@ div.questionbankwindow.block {
         color: [[setting:headertextcolor]];
         display: block;
         font-size: 24px;
-        left: auto;
         position: fixed;
-        right: 8px;
+        right: 0;
         top: 100px;
-        transition: left 0.75s;
+        transition: right 0.75s;
         z-index: 2;
     }
     #showsidebaricon.sidebarshown {
-        left: calc(5% - 20px);
-        right: auto;
+        right: 90%;
     }
 }
 

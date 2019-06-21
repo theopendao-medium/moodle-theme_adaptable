@@ -3176,14 +3176,13 @@ EOT;
     }
 
     /**
-     * Get the HTML for blocks in the given region.
+     * Output all the blocks in a particular region.
      *
-     * @since Moodle 2.5.1 2.6
-     * @param string $region The region to get HTML for.
-     * @return string HTML.
+     * @param string $region the name of a region on this page.
+     * @return string the HTML to be output.
      */
-    public function blocks($region, $classes = array(), $tag = 'aside') {
-        $output = parent::blocks($region, $classes, $tag);
+    public function blocks_for_region($region) {
+        $output = parent::blocks_for_region($region);
 
         if ((!empty($output)) && ($region == 'side-post')) {
             $output = html_writer::tag('div',
