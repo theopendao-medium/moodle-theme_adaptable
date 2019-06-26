@@ -1,0 +1,90 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_adaptable/tabs
+
+    Custom tabs.
+
+    Example context (json):
+    {
+        "tabs": [
+         {
+            "name": "tab1",
+            "displayname": "Tab1",
+            "content": "<p>Tab 1 content</p>"
+         },
+         {
+            "name": "tab2",
+            "displayname": "Tab2",
+            "content": "<p>Tab 2 content</p>"
+         }
+        ]
+    }
+}}
+
+<style>
+    #{{containerid}} input.adaptabletab,
+    #{{containerid}} div.adaptable-tab {
+        display: none;
+    }
+    #{{containerid}} div.adaptable-tab {
+        padding: 20px 0 0;
+        border-top: 4px solid #06c;
+    }
+
+    .tabcontentcontainer input.adaptabletab:checked + label {
+        border-color: #06c;
+        background-color: #06c;
+        border-top: 4px solid #06c;
+        color: #fff;
+    }
+
+    .tabcontentcontainer label.adaptabletab {
+        background-color: #eee;
+        position: relative;
+        display: inline-block;
+        padding: 15px 15px 25px;
+        margin: 0 4px 0 0;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 400;
+        transition: background-color .2s ease;
+    }
+
+    {{#tabs}}
+    #{{name}}:checked~#adaptable-tab-{{name}} {
+        display: block;
+    }
+    {{/tabs}}
+</style>
+
+<div id="{{containerid}}" class="tabcontentcontainer">
+    {{#tabs}}
+    <input id="{{name}}" type="radio" name="tabs" class="adaptabletab">
+    <label for="{{name}}" class="adaptabletab"">{{displayname}}</label>
+    {{/tabs}}
+    {{#tabs}}
+    <div id="adaptable-tab-{{name}}" class="adaptable-tab tab-panel">
+        {{{content}}}
+    </div>
+    {{/tabs}}
+</div>
+{{#js}}
+    require(['jquery'], function($) {
+        $("input:radio[name=tabs]:first").attr('checked', true);
+    });
+{{/js}}
