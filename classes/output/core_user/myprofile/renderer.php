@@ -15,19 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details
+ * myprofile renderer.
  *
  * @package    theme_adaptable
  * @copyright  &copy; 2019 - Coventry University
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
  */
 
 namespace theme_adaptable\output\core_user\myprofile;
 
 defined('MOODLE_INTERNAL') || die;
 
+use core_user\output\myprofile\category;
 use core_user\output\myprofile\tree;
 use html_writer;
 
@@ -35,6 +35,17 @@ use html_writer;
  * myprofile renderer.
  */
 class renderer extends \core_user\output\myprofile\renderer {
+    private $userid = 0;
+
+    function __construct(\moodle_page $page, $target) {
+        // We need the user id!
+        // From user/profile.php - technically by the time we are instantiated then the user id will have been validated.
+        global $USER;
+        $userid = optional_param('id', 0, PARAM_INT);
+        $this->userid = $userid ? $userid : $USER->id;
+
+        parent::__construct($page, $target);
+    }
 
     /**
      * Render the whole tree.
@@ -84,4 +95,52 @@ class renderer extends \core_user\output\myprofile\renderer {
         return $output;
     }
 
+    /**
+     * Render a category.
+     *
+     * @param category $category
+     *
+     * @return string
+     */
+    public function render_category(category $category) {
+        $nodes = $category->nodes;
+        if (empty($nodes)) {
+            // No nodes, nothing to render.
+            return '';
+        }
+
+        $classes = $category->classes;
+        if (empty($classes)) {
+            $output = html_writer::start_tag('section', array('class' => 'node_category'));
+        } else {
+            $output = html_writer::start_tag('section', array('class' => 'node_category ' . $classes));
+        }
+        $output .= html_writer::tag('h3', $category->title);
+        $output .= html_writer::start_tag('ul');
+        // TODO: Make efficient!
+        if ($category->name == 'contact') {
+            $output .= $this->userimage();
+        }
+        foreach ($nodes as $node) {
+            $output .= $this->render($node);
+        }
+        $output .= html_writer::end_tag('ul');
+        $output .= html_writer::end_tag('section');
+
+        return $output;
+    }
+
+    protected function userimage() {
+        $output = '';
+
+        if (!empty($this->userid)) {
+            $userpicture = new \user_picture(\core_user::get_user($this->userid));
+            $userpicture->size = 1; // Size f1.
+            $output .= html_writer::start_tag('li');
+            $output .= html_writer::img($userpicture->get_url($this->page)->out(false), 'User image');  // TODO, better 'alt'.
+            $output .= html_writer::end_tag('li');
+        }
+
+        return $output;
+    }
 }
