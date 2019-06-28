@@ -58,10 +58,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         static $categorycolone = array('contact');
         $categories = array();
         foreach ($tree->categories as $category) {
-            $markup = $this->render($category);
-            if (!empty($markup)) {
-                $categories[$category->name] = $markup;
-            }
+            $categories[$category->name] = $category;
         }
 
         $output = html_writer::start_tag('div', array('class' => 'profile_tree row'));
@@ -72,7 +69,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         foreach ($categorycolone as $categoryname) {
             if (!empty($categories[$categoryname])) {
                 $output .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
-                $output .= $categories[$categoryname];
+                $output .= $markup = $this->render($categories[$categoryname]);
                 unset($categories[$categoryname]);
                 $output .= html_writer::end_tag('div');
             }
@@ -82,14 +79,20 @@ class renderer extends \core_user\output\myprofile\renderer {
 
         $output .= html_writer::start_tag('div', array('class' => 'col-md-8')); // Col two.
         $output .= html_writer::start_tag('div', array('class' => 'row'));
-        foreach ($categories as $categoryname => $category) {
+        $output .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
+        $output .= $this->course($tree);
+        $output .= html_writer::end_tag('div');
+        /*foreach ($categories as $categoryname => $category) {
             $output .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
             $output .= $category;
             $output .= html_writer::end_tag('div');
-        }
+        }*/
+        $output .= $this->tabs($categories);
+
         $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div');
 
+        $output .= html_writer::tag('p', $this->developer($tree));
         $output .= html_writer::end_tag('div');
 
         return $output;
@@ -142,5 +145,58 @@ class renderer extends \core_user\output\myprofile\renderer {
         }
 
         return $output;
+    }
+
+    protected function course() {
+        $output = '';
+
+        $output .= html_writer::tag('h1', get_string('module', 'theme_adaptable'));
+        $output .= html_writer::tag('p', 'Work in progress - place holder');
+
+        return $output;
+    }
+
+    private function developer($tree) {
+        $output = html_writer::tag('h1', 'Developer information, please ignore!  Will be removed!');
+
+        $output .= html_writer::start_tag('ul');
+        foreach ($tree->categories as $category) {
+            $output .= html_writer::start_tag('li');
+            $output .= html_writer::tag('p', 'Category - '.$category->name);
+            $nodes = $category->nodes;
+            if (!empty($nodes)) {
+                $output .= html_writer::start_tag('ul');
+                foreach ($nodes as $node) {
+                    $output .= html_writer::start_tag('li');
+                    $output .= html_writer::tag('p', 'Node - '.$node->name);
+                    $output .= html_writer::end_tag('li');
+                }
+                $output .= html_writer::end_tag('ul');
+            }
+            $output .= html_writer::end_tag('li');
+        }
+        $output .= html_writer::end_tag('ul');
+
+        return $output;
+    }
+
+    protected function tabs($categories) {
+        $tabdata = new \stdClass;
+        $tabdata->containerid = 'userprofiletabs';
+        $tabdata->tabs = array();
+
+        foreach ($categories as $category) {
+            $markup = $this->render($category);
+            if (!empty($markup)) {
+                $tab = new \stdClass;
+                $tab->name = $category->name;
+                $tab->displayname = $category->title;
+                $tab->content = $markup;
+
+                $tabdata->tabs[] = $tab;
+            }
+        }
+
+        return $this->render_from_template('theme_adaptable/tabs', $tabdata);
     }
 }
