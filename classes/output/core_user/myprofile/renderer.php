@@ -28,6 +28,7 @@ namespace theme_adaptable\output\core_user\myprofile;
 defined('MOODLE_INTERNAL') || die;
 
 use core_user\output\myprofile\category;
+use core_user\output\myprofile\node;
 use core_user\output\myprofile\tree;
 use html_writer;
 
@@ -156,6 +157,22 @@ class renderer extends \core_user\output\myprofile\renderer {
         return $output;
     }
 
+    protected function create_aboutme() {
+        $aboutme = new category('aboutme', 'About me');
+        $node = new node('aboutme', 'placeholder', 'Placeholder', null, null, '<p>The content</p>');
+        $aboutme->add_node($node);
+
+        return $aboutme;
+    }
+
+    protected function create_editprofile() {
+        $editprofile = new category('editprofile', 'Edit profile');
+        $node = new node('editprofile', 'placeholder', 'Placeholder', null, null, '<p>The content</p>');
+        $editprofile->add_node($node);
+
+        return $editprofile;
+    }
+
     private function developer($tree) {
         $output = html_writer::tag('h1', 'Developer information, please ignore!  Will be removed!');
 
@@ -181,21 +198,56 @@ class renderer extends \core_user\output\myprofile\renderer {
     }
 
     protected function tabs($categories) {
+        static $tabcategories = array('coursedetails');
+
         $tabdata = new \stdClass;
         $tabdata->containerid = 'userprofiletabs';
         $tabdata->tabs = array();
 
-        foreach ($categories as $category) {
-            $markup = $this->render($category);
-            if (!empty($markup)) {
-                $tab = new \stdClass;
-                $tab->name = $category->name;
-                $tab->displayname = $category->title;
-                $tab->content = $markup;
+        // Aboutme tab.
+        $category = $this->create_aboutme();
+        $tab = new \stdClass;
+        $tab->name = $category->name;
+        $tab->displayname = $category->title;
+        $tab->content = $this->render($category);
+        $tabdata->tabs[] = $tab;
 
-                $tabdata->tabs[] = $tab;
+        foreach ($tabcategories as $categoryname) {
+            if (!empty($categories[$categoryname])) {
+                $category = $categories[$categoryname];
+                $markup = $this->render($category);
+                if (!empty($markup)) {
+                    $tab = new \stdClass;
+                    $tab->name = $category->name;
+                    $tab->displayname = $category->title;
+                    $tab->content = $markup;
+                    $tabdata->tabs[] = $tab;
+                }
+                unset($categories[$categoryname]);
             }
         }
+
+        // Edit profile tab.
+        $category = $this->create_editprofile();
+        $tab = new \stdClass;
+        $tab->name = $category->name;
+        $tab->displayname = $category->title;
+        $tab->content = $this->render($category);
+        $tabdata->tabs[] = $tab;
+
+        // Misc tab.
+        $misccontent = html_writer::start_tag('div', array('class' => 'row'));
+        foreach ($categories as $categoryname => $category) {
+            $misccontent .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
+            $misccontent .= $this->render($category);
+            $misccontent .= html_writer::end_tag('div');
+        }
+        $misccontent .= html_writer::end_tag('div');
+        $tab = new \stdClass;
+        $tab->name = 'misc';
+        $tab->displayname = 'Misc';
+        $tab->content = $misccontent;
+        $tabdata->tabs[] = $tab;
 
         return $this->render_from_template('theme_adaptable/tabs', $tabdata);
     }
