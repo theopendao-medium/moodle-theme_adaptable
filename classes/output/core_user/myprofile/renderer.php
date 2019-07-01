@@ -227,14 +227,6 @@ class renderer extends \core_user\output\myprofile\renderer {
             }
         }
 
-        // Edit profile tab.
-        $category = $this->create_editprofile();
-        $tab = new \stdClass;
-        $tab->name = $category->name;
-        $tab->displayname = $category->title;
-        $tab->content = $this->render($category);
-        $tabdata->tabs[] = $tab;
-
         // Misc tab.
         $misccontent = html_writer::start_tag('div', array('class' => 'row'));
         foreach ($categories as $categoryname => $category) {
@@ -247,6 +239,14 @@ class renderer extends \core_user\output\myprofile\renderer {
         $tab->name = 'misc';
         $tab->displayname = 'Misc';
         $tab->content = $misccontent;
+        $tabdata->tabs[] = $tab;
+
+        // Edit profile tab.
+        $category = $this->create_editprofile();
+        $tab = new \stdClass;
+        $tab->name = $category->name;
+        $tab->displayname = $category->title;
+        $tab->content = $this->render($category);
         $tabdata->tabs[] = $tab;
 
         return $this->render_from_template('theme_adaptable/tabs', $tabdata);
