@@ -79,6 +79,7 @@ class renderer extends \core_user\output\myprofile\renderer {
      * @return string
      */
     public function render_tree(tree $tree) {
+//        error_log(print_r($tree, true));
         static $categorycolone = array('contact');
         $categories = array();
         foreach ($tree->categories as $category) {
@@ -111,7 +112,7 @@ class renderer extends \core_user\output\myprofile\renderer {
             $output .= $category;
             $output .= html_writer::end_tag('div');
         }*/
-        $output .= $this->tabs($categories);
+        $output .= $this->tabs($categories, $tree);
 
         $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div');
@@ -186,7 +187,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         return $output;
     }
 
-    protected function create_aboutme() {
+    protected function create_aboutme($tree) {
         global $OUTPUT;
 
         $aboutme = new category('aboutme', 'About me');
@@ -199,9 +200,9 @@ class renderer extends \core_user\output\myprofile\renderer {
         }
 
         // Interests.
-        if (!empty($this->user->userdetails['interests'])) {
+        if (!empty($tree->categories['contact']->nodes['interests'])) {
             $node = new node('aboutme', 'interests', get_string('interests'), null, null,
-                $OUTPUT->tag_list(\core_tag_tag::get_item_tags('core', 'user', $this->user->id), '')); // Odd but just the way things can be!
+                $tree->categories['contact']->nodes['interests']->content);
             $aboutme->add_node($node);
         }
 
@@ -241,7 +242,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         return $output;
     }
 
-    protected function tabs($categories) {
+    protected function tabs($categories, $tree) {
         static $tabcategories = array('coursedetails');
 
         $tabdata = new \stdClass;
@@ -249,7 +250,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         $tabdata->tabs = array();
 
         // Aboutme tab.
-        $category = $this->create_aboutme();
+        $category = $this->create_aboutme($tree);
         $tab = new \stdClass;
         $tab->name = $category->name;
         $tab->displayname = $category->title;
