@@ -36,14 +36,37 @@ use html_writer;
  * myprofile renderer.
  */
 class renderer extends \core_user\output\myprofile\renderer {
-    private $userid = 0;
+    private $user = 0;
 
     function __construct(\moodle_page $page, $target) {
         // We need the user id!
         // From user/profile.php - technically by the time we are instantiated then the user id will have been validated.
-        global $USER;
+        global $CFG, $DB, $USER;
         $userid = optional_param('id', 0, PARAM_INT);
-        $this->userid = $userid ? $userid : $USER->id;
+        $userid = $userid ? $userid : $USER->id;
+        $this->user = \core_user::get_user($userid);
+
+        //require_once($CFG->dirroot.'/user/profile/lib.php');
+        //profile_load_data($this->user);
+        //$this->user->interests = \core_tag_tag::get_item_tags('core', 'user', $this->user->id);
+
+        $courseid = optional_param('course', SITEID, PARAM_INT); // Course id (defaults to Site).
+        $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
+
+        require_once($CFG->dirroot.'/user/lib.php');
+        /* Using this as the function copes with hidden fields and capabilities.  For example:
+         * If the you're allowed to see the description.
+         *
+         * This way because the DB user record from get_user can contain the description that
+         * the function user_get_user_details can exclude! */
+        $this->user->userdetails = user_get_user_details($this->user, $course);
+//error_log(print_r($userdetails, true));
+        /*foreach($userdetails as $detailname => $detail) {
+            if (empty($this->user->$detailname)) {
+                $this->user->$detailname = $detail;
+            }
+        }*/
+//error_log(print_r($this->user, true));
 
         parent::__construct($page, $target);
     }
@@ -137,8 +160,8 @@ class renderer extends \core_user\output\myprofile\renderer {
     protected function userimage() {
         $output = '';
 
-        if (!empty($this->userid)) {
-            $userpicture = new \user_picture(\core_user::get_user($this->userid));
+        if (!empty($this->user)) {
+            $userpicture = new \user_picture($this->user);
             $userpicture->size = 1; // Size f1.
             $output .= html_writer::start_tag('li');
             $output .= html_writer::img($userpicture->get_url($this->page)->out(false), 'User image');  // TODO, better 'alt'.
@@ -149,20 +172,14 @@ class renderer extends \core_user\output\myprofile\renderer {
     }
 
     protected function course() {
-        global $CFG, $USER;
-        require_once($CFG->dirroot.'/user/profile/lib.php');
-        profile_load_data($USER);
-
         $output = '';
 
         $output .= html_writer::tag('h1', get_string('module', 'theme_adaptable'));
-        $output .= html_writer::tag('p', 'Work in progress - using hardcoded user profile field names \'coursetitle\' and \'coursesubtitle\' for now, when accepted turn into theme settings.');
+        $output .= html_writer::tag('p', 'Work in progress - for now, when accepted turn into theme settings.');
 
-        static $fields = array('coursetitle', 'coursesubtitle');
-        foreach ($fields as $field) {
-            $pffield = "profile_field_$field";
-            if (!empty($USER->$pffield)) {
-                $output .= html_writer::tag('p', '\''.$field.'\' is '.$USER->$pffield);
+        if (!empty($this->user->userdetails['customfields'])) {
+        foreach($this->user->userdetails['customfields'] as $cfield) {
+                $output .= html_writer::tag('p', '\''.$cfield['shortname'].'\' / \''.$cfield['name'].'\' is "'.$cfield['value'].'".');
             }
         }
 
@@ -170,9 +187,24 @@ class renderer extends \core_user\output\myprofile\renderer {
     }
 
     protected function create_aboutme() {
+        global $OUTPUT;
+
         $aboutme = new category('aboutme', 'About me');
-        $node = new node('aboutme', 'placeholder', 'Placeholder', null, null, '<p>The content</p>');
-        $aboutme->add_node($node);
+
+        // Description.
+        if (!empty($this->user->userdetails['description'])) {
+            $node = new node('aboutme', 'description', get_string('description'), null, null,
+                $this->user->userdetails['description']);
+            $aboutme->add_node($node);
+        }
+
+        // Interests.
+        if (!empty($this->user->userdetails['interests'])) {
+            $node = new node('aboutme', 'interests', get_string('interests'), null, null,
+                $OUTPUT->tag_list(\core_tag_tag::get_item_tags('core', 'user', $this->user->id), '')); // Odd but just the way things can be!
+            $aboutme->add_node($node);
+        }
+
 
         return $aboutme;
     }
