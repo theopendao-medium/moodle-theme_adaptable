@@ -149,10 +149,22 @@ class renderer extends \core_user\output\myprofile\renderer {
     }
 
     protected function course() {
+        global $CFG, $USER;
+        require_once($CFG->dirroot.'/user/profile/lib.php');
+        profile_load_data($USER);
+
         $output = '';
 
         $output .= html_writer::tag('h1', get_string('module', 'theme_adaptable'));
-        $output .= html_writer::tag('p', 'Work in progress - place holder');
+        $output .= html_writer::tag('p', 'Work in progress - using hardcoded user profile field names \'coursetitle\' and \'coursesubtitle\' for now, when accepted turn into theme settings.');
+
+        static $fields = array('coursetitle', 'coursesubtitle');
+        foreach ($fields as $field) {
+            $pffield = "profile_field_$field";
+            if (!empty($USER->$pffield)) {
+                $output .= html_writer::tag('p', '\''.$field.'\' is '.$USER->$pffield);
+            }
+        }
 
         return $output;
     }
