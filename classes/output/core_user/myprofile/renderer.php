@@ -36,7 +36,8 @@ use html_writer;
  * myprofile renderer.
  */
 class renderer extends \core_user\output\myprofile\renderer {
-    private $user = 0;
+    private $user = null;
+    private $course = null;
 
     function __construct(\moodle_page $page, $target) {
         // We need the user id!
@@ -51,7 +52,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         //$this->user->interests = \core_tag_tag::get_item_tags('core', 'user', $this->user->id);
 
         $courseid = optional_param('course', SITEID, PARAM_INT); // Course id (defaults to Site).
-        $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
+        $this->course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 
         require_once($CFG->dirroot.'/user/lib.php');
         /* Using this as the function copes with hidden fields and capabilities.  For example:
@@ -59,7 +60,7 @@ class renderer extends \core_user\output\myprofile\renderer {
          *
          * This way because the DB user record from get_user can contain the description that
          * the function user_get_user_details can exclude! */
-        $this->user->userdetails = user_get_user_details($this->user, $course);
+        $this->user->userdetails = user_get_user_details($this->user, $this->course);
 //error_log(print_r($userdetails, true));
         /*foreach($userdetails as $detailname => $detail) {
             if (empty($this->user->$detailname)) {
@@ -214,7 +215,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         $editprofile = new category('editprofile', 'Edit profile');
 
         global $CFG, $DB, $PAGE, $SITE, $USER;
-        $returnto = optional_param('returnto', null, PARAM_ALPHA); // Code determining where to return to after save.
+        //$returnto = optional_param('returnto', null, PARAM_ALPHA); // Code determining where to return to after save.
         if ($this->user->id !== -1) {
             $usercontext = \context_user::instance($this->user->id);
             $editoroptions = array(
@@ -224,7 +225,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                 'forcehttps' => false,
                 'context'    => $usercontext
             );
-            $user = file_prepare_standard_editor($this->user, 'description', $editoroptions, $usercontext, 'user', 'profile', 0);
+            $this->user = file_prepare_standard_editor($this->user, 'description', $editoroptions, $usercontext, 'user', 'profile', 0);
         } else {
             $usercontext = null;
             // This is a new user, we don't want to add files here.
@@ -246,21 +247,23 @@ class renderer extends \core_user\output\myprofile\renderer {
             'accepted_types' => 'web_image');
         \file_prepare_draft_area($draftitemid, $filemanagercontext->id, 'user', 'newicon', 0, $filemanageroptions);
         $this->user->imagefile = $draftitemid;
-        $editprofileform = new editprofile_form(new \moodle_url($PAGE->url, array('returnto' => $returnto)), array(
+
+        // Deciding where to send the user back in most cases.
+        //if ($returnto === 'profile') {
+            if ($this->course->id != SITEID) {
+                $returnurl = new \moodle_url('/user/view.php', array('id' => $this->user->id, 'course' => $course->id));
+            } else {
+                $returnurl = new \moodle_url('/user/profile.php', array('id' => $this->user->id));
+            }
+        /*} else {
+            $returnurl = new \moodle_url('/user/preferences.php', array('userid' => $user->id));
+        }*/
+
+        $editprofileform = new editprofile_form(new \moodle_url($PAGE->url), array(
             'editoroptions' => $editoroptions,
             'filemanageroptions' => $filemanageroptions,
             'user' => $this->user));
 
-        // Deciding where to send the user back in most cases.
-        if ($returnto === 'profile') {
-            if ($course->id != SITEID) {
-                $returnurl = new \moodle_url('/user/view.php', array('id' => $user->id, 'course' => $course->id));
-            } else {
-                $returnurl = new \moodle_url('/user/profile.php', array('id' => $user->id));
-            }
-        } else {
-            $returnurl = new \moodle_url('/user/preferences.php', array('userid' => $user->id));
-        }
 
         if ($editprofileform->is_cancelled()) {
             redirect($returnurl);
@@ -306,9 +309,9 @@ class renderer extends \core_user\output\myprofile\renderer {
             } else {
                 $usernew = file_postupdate_standard_editor($usernew, 'description', $editoroptions, $usercontext, 'user', 'profile', 0);
                 // Pass a true old $user here.
-                if (!$authplugin->user_update($user, $usernew)) {
+                if (!$authplugin->user_update($this->user, $usernew)) {
                     // Auth update failed.
-                    print_error('cannotupdateuseronexauth', '', '', $user->auth);
+                    print_error('cannotupdateuseronexauth', '', '', $this->user->auth);
                 }
                 user_update_user($usernew, false, false);
 
@@ -332,8 +335,8 @@ class renderer extends \core_user\output\myprofile\renderer {
                 }
 
                 // Force logout if user just suspended.
-                if (isset($usernew->suspended) and $usernew->suspended and !$user->suspended) {
-                    \core\session\manager::kill_user_sessions($user->id);
+                if (isset($usernew->suspended) and $usernew->suspended and !$this->user->suspended) {
+                    \core\session\manager::kill_user_sessions($this->user->id);
                 }
             }
 
@@ -353,10 +356,10 @@ class renderer extends \core_user\output\myprofile\renderer {
             }
 
             // Update mail bounces.
-            useredit_update_bounces($user, $usernew);
+            useredit_update_bounces($this->user, $usernew);
 
             // Update forum track preference.
-            useredit_update_trackforums($user, $usernew);
+            useredit_update_trackforums($this->user, $usernew);
 
             // Save custom profile fields data.
             profile_save_data($usernew);
@@ -377,7 +380,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                 \core\event\user_updated::create_from_userid($usernew->id)->trigger();
             }
 
-            if ($user->id == $USER->id) {
+            if ($this->user->id == $USER->id) {
                 // Override old $USER session variable.
                 foreach ((array)$usernew as $variable => $value) {
                     if ($variable === 'description' or $variable === 'password') {
