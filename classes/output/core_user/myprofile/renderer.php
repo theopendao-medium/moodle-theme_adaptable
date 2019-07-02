@@ -54,6 +54,8 @@ class renderer extends \core_user\output\myprofile\renderer {
         $courseid = optional_param('course', SITEID, PARAM_INT); // Course id (defaults to Site).
         $this->course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 
+//error_log(optional_param('aep', null, PARAM_ALPHA));
+
         require_once($CFG->dirroot.'/user/lib.php');
         /* Using this as the function copes with hidden fields and capabilities.  For example:
          * If the you're allowed to see the description.
@@ -251,7 +253,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         // Deciding where to send the user back in most cases.
         //if ($returnto === 'profile') {
             if ($this->course->id != SITEID) {
-                $returnurl = new \moodle_url('/user/view.php', array('id' => $this->user->id, 'course' => $course->id));
+                $returnurl = new \moodle_url('/user/view.php', array('id' => $this->user->id, 'course' => $this->course->id));
             } else {
                 $returnurl = new \moodle_url('/user/profile.php', array('id' => $this->user->id));
             }
@@ -259,10 +261,20 @@ class renderer extends \core_user\output\myprofile\renderer {
             $returnurl = new \moodle_url('/user/preferences.php', array('userid' => $user->id));
         }*/
 
-        $editprofileform = new editprofile_form(new \moodle_url($PAGE->url), array(
-            'editoroptions' => $editoroptions,
-            'filemanageroptions' => $filemanageroptions,
-            'user' => $this->user));
+        $editprofileform = new editprofile_form(
+            new \moodle_url(
+                $PAGE->url,
+                array(
+                    'id' => $this->user->id, 
+                    'course' => $this->course->id,
+                    'aep' => 'aep'
+                )
+            ),
+            array(
+                'editoroptions' => $editoroptions,
+                'filemanageroptions' => $filemanageroptions,
+                'user' => $this->user)
+            );
 
 
         if ($editprofileform->is_cancelled()) {

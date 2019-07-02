@@ -26,6 +26,10 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+if (optional_param('aep', null, PARAM_ALPHA) == 'aep') {
+    //\theme_adaptable\output\core_user\myprofile\editprofile::process_edit_profile();
+}
+
 // Include header.
 require_once(dirname(__FILE__) . '/includes/header.php');
 

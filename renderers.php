@@ -205,6 +205,17 @@ class theme_adaptable_core_renderer extends core_renderer {
     protected $language = null;
 
     /**
+     * Constructor
+     *
+     * @param moodle_page $page the page we are doing output for.
+     * @param string $target one of rendering target constants
+     */
+    public function __construct(\moodle_page $page, $target) {
+        error_log($page->state);
+        parent::__construct($page, $target);
+    }
+
+    /**
      * Internal implementation of user image rendering.
      *
      * @param user_picture $userpicture

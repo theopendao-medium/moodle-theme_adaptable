@@ -131,7 +131,7 @@ class editprofile_form extends \moodleform {
         $mform->disabledIf('newpassword', 'auth', 'in', $cannotchangepass);
 
         // Check if the user has active external tokens.
-        if ($userid and empty($CFG->passwordchangetokendeletion)) {
+        /*if ($userid and empty($CFG->passwordchangetokendeletion)) {
             if ($tokens = \webservice::get_active_tokens($userid)) {
                 $services = '';
                 foreach ($tokens as $token) {
@@ -143,7 +143,7 @@ class editprofile_form extends \moodleform {
                 $mform->disabledIf('signoutofotherservices', 'newpassword', 'eq', '');
                 $mform->setDefault('signoutofotherservices', 1);
             }
-        }
+        }*/
 
         $mform->addElement('advcheckbox', 'preference_auth_forcepasswordchange', get_string('forcepasswordchange'));
         $mform->addHelpButton('preference_auth_forcepasswordchange', 'forcepasswordchange');
