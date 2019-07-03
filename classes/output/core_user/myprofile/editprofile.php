@@ -42,6 +42,9 @@ class editprofile {
         $courseid = optional_param('course', SITEID, PARAM_INT); // Course id (defaults to Site).
         $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 
+        // User interests.
+        $user->interests = \core_tag_tag::get_item_tags_array('core', 'user', $userid);
+
         require_once($CFG->dirroot.'/lib/formslib.php');
         $usercontext = \context_user::instance($user->id);
         $editoroptions = array(
