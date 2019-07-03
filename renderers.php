@@ -211,7 +211,16 @@ class theme_adaptable_core_renderer extends core_renderer {
      * @param string $target one of rendering target constants
      */
     public function __construct(\moodle_page $page, $target) {
-        error_log($page->state);
+        // Cannot make this work!
+        /*static $formdatanotprocessed = true;
+        if ($formdatanotprocessed) {
+            if ($page->state == moodle_page::STATE_BEFORE_HEADER) {
+                if (optional_param('aep', null, PARAM_ALPHA) == 'aep') {
+                    \theme_adaptable\output\core_user\myprofile\editprofile::process_form();
+                }
+                $formdatanotprocessed = false;
+            }
+        }*/
         parent::__construct($page, $target);
     }
 

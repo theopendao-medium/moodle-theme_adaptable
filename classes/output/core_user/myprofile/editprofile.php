@@ -31,8 +31,10 @@ defined('MOODLE_INTERNAL') || die;
  * myprofile editprofile.
  */
 class editprofile {
-    static function process_edit_profile() {
+
+    static function generate_form() {
         global $CFG, $DB, $PAGE, $SITE, $USER;
+
         $userid = optional_param('id', 0, PARAM_INT);
         $userid = $userid ? $userid : $USER->id;
         $user = \core_user::get_user($userid);
@@ -40,27 +42,16 @@ class editprofile {
         $courseid = optional_param('course', SITEID, PARAM_INT); // Course id (defaults to Site).
         $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 
-        if ($user->id !== -1) {
-            $usercontext = \context_user::instance($user->id);
-            $editoroptions = array(
-                'maxfiles'   => EDITOR_UNLIMITED_FILES,
-                'maxbytes'   => $CFG->maxbytes,
-                'trusttext'  => false,
-                'forcehttps' => false,
-                'context'    => $usercontext
-            );
-            $user = file_prepare_standard_editor($user, 'description', $editoroptions, $usercontext, 'user', 'profile', 0);
-        } else {
-            $usercontext = null;
-            // This is a new user, we don't want to add files here.
-            $editoroptions = array(
-                'maxfiles' => 0,
-                'maxbytes' => 0,
-                'trusttext' => false,
-                'forcehttps' => false,
-                'context' => $coursecontext
-            );
-        }
+        $usercontext = \context_user::instance($user->id);
+        $editoroptions = array(
+            'maxfiles'   => EDITOR_UNLIMITED_FILES,
+            'maxbytes'   => $CFG->maxbytes,
+            'trusttext'  => false,
+            'forcehttps' => false,
+            'context'    => $usercontext
+        );
+        $user = file_prepare_standard_editor($user, 'description', $editoroptions, $usercontext, 'user', 'profile', 0);
+
         // Prepare filemanager draft area.
         $draftitemid = 0;
         $filemanagercontext = $editoroptions['context'];
@@ -72,27 +63,58 @@ class editprofile {
         \file_prepare_draft_area($draftitemid, $filemanagercontext->id, 'user', 'newicon', 0, $filemanageroptions);
         $user->imagefile = $draftitemid;
 
-        // Deciding where to send the user back in most cases.
-        //if ($returnto === 'profile') {
-            if ($course->id != SITEID) {
-                $returnurl = new \moodle_url('/user/view.php', array('id' => $user->id, 'course' => $course->id));
-            } else {
-                $returnurl = new \moodle_url('/user/profile.php', array('id' => $user->id));
-            }
-        /*} else {
-            $returnurl = new \moodle_url('/user/preferences.php', array('userid' => $user->id));
-        }*/
-
         $editprofileform = new editprofile_form(
-            new \moodle_url($PAGE->url),
+            new \moodle_url(
+                $PAGE->url,
+                array(
+                    'id' => $user->id, 
+                    'course' => $course->id,
+                    'aep' => 'aep'
+                )
+            ),
             array(
                 'editoroptions' => $editoroptions,
                 'filemanageroptions' => $filemanageroptions,
                 'user' => $user)
             );
 
+        return array(
+            'form' => $editprofileform,
+            'user' => $user,
+            'course' => $course,
+            'editoroptions' => $editoroptions,
+            'filemanageroptions' => $filemanageroptions,
+            'usercontext' => $usercontext
+            );
+    }
+
+    static function process_form($redirect = true, $editprofile = null) {
+        global $CFG, $DB, $SITE, $USER;
+
+        if (is_null($editprofile)) {
+            $editprofile = self::generate_form();
+        }
+
+        $editprofileform = $editprofile['form'];
+        $user = $editprofile['user'];
+        $course = $editprofile['course'];
+        $editoroptions = $editprofile['editoroptions'];
+        $filemanageroptions = $editprofile['filemanageroptions'];
+        $usercontext = $editprofile['usercontext'];
+
+        // Deciding where to send the user back in most cases.
+        if ($redirect) {
+            if ($course->id != SITEID) {
+                $returnurl = new \moodle_url('/user/view.php', array('id' => $user->id, 'course' => $course->id));
+            } else {
+                $returnurl = new \moodle_url('/user/profile.php', array('id' => $user->id));
+            }
+        }
+
         if ($editprofileform->is_cancelled()) {
-            redirect($returnurl);
+            if ($redirect) {
+                redirect($returnurl);
+            }
         } else if ($usernew = $editprofileform->get_data()) {
             $usercreated = false;
             if (empty($usernew->auth)) {
@@ -225,16 +247,24 @@ class editprofile {
                     // Admin account is fully configured - set flag here in case the redirect does not work.
                     unset_config('adminsetuppending');
                     // Redirect to admin/ to continue with installation.
-                    redirect("$CFG->wwwroot/$CFG->admin/");
+                    if ($redirect) {
+                        redirect("$CFG->wwwroot/$CFG->admin/");
+                    }
                 } else if (empty($SITE->fullname)) {
                     // Somebody double clicked when editing admin user during install.
-                    redirect("$CFG->wwwroot/$CFG->admin/");
+                    if ($redirect) {
+                        redirect("$CFG->wwwroot/$CFG->admin/");
+                    }
                 } else {
-                    redirect($returnurl);
+                    if ($redirect) {
+                        redirect($returnurl);
+                    }
                 }
             } else {
                 \core\session\manager::gc(); // Remove stale sessions.
-                redirect("$CFG->wwwroot/$CFG->admin/user.php");
+                if ($redirect) {
+                    redirect("$CFG->wwwroot/$CFG->admin/user.php");
+                }
             }
             // Never reached..
         }
