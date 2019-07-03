@@ -40,8 +40,8 @@ class renderer extends \core_user\output\myprofile\renderer {
     private $course = null;
 
     function __construct(\moodle_page $page, $target) {
-        // We need the user id!
-        // From user/profile.php - technically by the time we are instantiated then the user id will have been validated.
+        /* We need the user id!
+           From user/profile.php - technically by the time we are instantiated then the user id will have been validated. */
         global $CFG, $DB, $USER;
         $userid = optional_param('id', 0, PARAM_INT);
         $userid = $userid ? $userid : $USER->id;
@@ -70,7 +70,6 @@ class renderer extends \core_user\output\myprofile\renderer {
      * @return string
      */
     public function render_tree(tree $tree) {
-        //static $categorycolone = array('contact');
         $categories = array();
         foreach ($tree->categories as $category) {
             $categories[$category->name] = $category;
@@ -81,15 +80,12 @@ class renderer extends \core_user\output\myprofile\renderer {
         $output .= html_writer::start_tag('div', array('class' => 'col-md-4')); // Col one.
 
         $output .= html_writer::start_tag('div', array('class' => 'row'));
-        //foreach ($categorycolone as $categoryname) {
-        //    if (!empty($categories[$categoryname])) {
-                $output .= html_writer::start_tag('div', array('class' => 'col-12 contact'));
-                $contactcategory = $this->transform_contact_category($categories['contact']);
-                $output .= $this->render($contactcategory);
-                unset($categories['contact']);
-                $output .= html_writer::end_tag('div');
-        //    }
-        //}
+        $output .= html_writer::start_tag('div', array('class' => 'col-12 contact'));
+        $contactcategory = $this->transform_contact_category($categories['contact']);
+        $output .= $this->render($contactcategory);
+        unset($categories['contact']);
+        $output .= html_writer::end_tag('div');
+
         $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div');
 
@@ -99,7 +95,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div');
 
-        $output .= html_writer::tag('p', $this->developer($tree));
+        //$output .= html_writer::tag('p', $this->developer($tree));
         $output .= html_writer::end_tag('div');
 
         return $output;
@@ -155,10 +151,6 @@ class renderer extends \core_user\output\myprofile\renderer {
             $output .= html_writer::tag('h3', $category->title);
         }
         $output .= html_writer::start_tag('ul');
-        // TODO: Make efficient!
-        //if ($category->name == 'contact') {
-        //    $output .= $this->userimage();
-        //}
         foreach ($nodes as $node) {
             $output .= $this->render($node);
         }
