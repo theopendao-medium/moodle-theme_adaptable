@@ -42,6 +42,7 @@ class editprofile {
         $courseid = optional_param('course', SITEID, PARAM_INT); // Course id (defaults to Site).
         $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 
+        require_once($CFG->dirroot.'/lib/formslib.php');
         $usercontext = \context_user::instance($user->id);
         $editoroptions = array(
             'maxfiles'   => EDITOR_UNLIMITED_FILES,
@@ -248,25 +249,94 @@ class editprofile {
                     unset_config('adminsetuppending');
                     // Redirect to admin/ to continue with installation.
                     if ($redirect) {
-                        redirect("$CFG->wwwroot/$CFG->admin/");
+                        self::redirect("$CFG->wwwroot/$CFG->admin/");
                     }
                 } else if (empty($SITE->fullname)) {
                     // Somebody double clicked when editing admin user during install.
                     if ($redirect) {
-                        redirect("$CFG->wwwroot/$CFG->admin/");
+                        self::redirect("$CFG->wwwroot/$CFG->admin/");
                     }
                 } else {
                     if ($redirect) {
-                        redirect($returnurl);
+                        self::redirect($returnurl);
                     }
                 }
             } else {
                 \core\session\manager::gc(); // Remove stale sessions.
                 if ($redirect) {
-                    redirect("$CFG->wwwroot/$CFG->admin/user.php");
+                    self::redirect("$CFG->wwwroot/$CFG->admin/user.php");
                 }
             }
-            // Never reached..
+            // Never reached if redirect is true.
+        }
+    }
+
+    static function redirect($url) {
+        global $CFG, $OUTPUT, $PAGE;
+
+        // Adapted from function of same name in lib/weblib.php.
+        if ($url instanceof moodle_url) {
+            $url = $url->out(false);
+        }
+
+        // Prevent debug errors - make sure context is properly initialised.
+        if ($PAGE) {
+            $PAGE->set_context(null);
+            $PAGE->set_pagelayout('redirect');  // No header and footer needed.
+            $PAGE->set_title(get_string('pageshouldredirect', 'moodle'));
+        }
+
+        /* Technically, HTTP/1.1 requires Location: header to contain the absolute path.
+           (In practice browsers accept relative paths - but still, might as well do it properly.)
+           This code turns relative into absolute. */
+        if (!preg_match('|^[a-z]+:|i', $url)) {
+            // Get host name http://www.wherever.com.
+            $hostpart = preg_replace('|^(.*?[^:/])/.*$|', '$1', $CFG->wwwroot);
+            if (preg_match('|^/|', $url)) {
+                // URLs beginning with / are relative to web server root so we just add them in.
+                $url = $hostpart.$url;
+            } else {
+                // URLs not beginning with / are relative to path of current script, so add that on.
+                $url = $hostpart.preg_replace('|\?.*$|', '', me()).'/../'.$url;
+            }
+            // Replace all ..s.
+            while (true) {
+                $newurl = preg_replace('|/(?!\.\.)[^/]*/\.\./|', '/', $url);
+                if ($newurl == $url) {
+                    break;
+                }
+                $url = $newurl;
+            }
+        }
+
+        /* Sanitise url - we can not rely on moodle_url or our URL cleaning
+           because they do not support all valid external URLs. */
+        $url = preg_replace('/[\x00-\x1F\x7F]/', '', $url);
+        $url = str_replace('"', '%22', $url);
+        $encodedurl = preg_replace("/\&(?![a-zA-Z0-9#]{1,8};)/", "&amp;", $url);
+        $encodedurl = preg_replace('/^.*href="([^"]*)".*$/', "\\1", clean_text('<a href="'.$encodedurl.'" />', FORMAT_HTML));
+        $url = str_replace('&amp;', '&', $encodedurl);
+
+        /* Make sure the session is closed properly, this prevents problems in IIS
+           and also some potential PHP shutdown issues. */
+        \core\session\manager::write_close();
+
+        if (!headers_sent()) {
+            // 302 might not work for POST requests, 303 is ignored by obsolete clients.
+            @header($_SERVER['SERVER_PROTOCOL'] . ' 303 See Other');
+            @header('Location: '.$url);
+            echo \bootstrap_renderer::plain_redirect_message($encodedurl);
+            exit;
+        }
+
+        // Include a redirect message, even with a HTTP redirect, because that is recommended practice.
+        if ($PAGE) {
+            $CFG->docroot = false; // To prevent the link to moodle docs from being displayed on redirect page.
+            echo $OUTPUT->adaptable_redirect($encodedurl);
+            exit;
+        } else {
+            echo \bootstrap_renderer::early_redirect_message($encodedurl, '', '0');
+            exit;
         }
     }
 }

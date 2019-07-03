@@ -1800,4 +1800,5 @@ $string['loginmoodletext'] = 'Show default moodle text';
 $string['loginmoodletextdesc'] = 'Show the default moodle text in the login page.';
 
 // User profile
-$string['module'] = 'Module';
+$string['bio'] = 'Bio';
+$string['modules'] = 'Modules';

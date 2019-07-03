@@ -107,14 +107,9 @@ class renderer extends \core_user\output\myprofile\renderer {
 
         $output .= html_writer::start_tag('div', array('class' => 'col-md-8')); // Col two.
         $output .= html_writer::start_tag('div', array('class' => 'row'));
-        $output .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
+        /*$output .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
         $output .= $this->course($tree);
-        $output .= html_writer::end_tag('div');
-        /*foreach ($categories as $categoryname => $category) {
-            $output .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
-            $output .= $category;
-            $output .= html_writer::end_tag('div');
-        }*/
+        $output .= html_writer::end_tag('div');*/
         $output .= $this->tabs($categories, $tree);
 
         $output .= html_writer::end_tag('div');
@@ -178,7 +173,7 @@ class renderer extends \core_user\output\myprofile\renderer {
     protected function course() {
         $output = '';
 
-        $output .= html_writer::tag('h1', get_string('module', 'theme_adaptable'));
+        $output .= html_writer::tag('h1', get_string('modules', 'theme_adaptable'));
         $output .= html_writer::tag('p', 'Work in progress - for now, when accepted turn into theme settings.');
 
         if (!empty($this->user->userdetails['customfields'])) {
@@ -193,7 +188,7 @@ class renderer extends \core_user\output\myprofile\renderer {
     protected function create_aboutme($tree) {
         global $OUTPUT;
 
-        $aboutme = new category('aboutme', 'About me');
+        $aboutme = new category('aboutme', get_string('bio', 'theme_adaptable'));
 
         // Description.
         if (!empty($this->user->userdetails['description'])) {
@@ -220,8 +215,8 @@ class renderer extends \core_user\output\myprofile\renderer {
         $node = new node('editprofile', 'editprofile', '', null, null, $editprofileform['form']->render());
         $editprofile->add_node($node);
 
-        // Process the form but don't redirect.
-        editprofile::process_form(false, $editprofileform);
+        // Process the form.
+        editprofile::process_form(true, $editprofileform);
 
         return $editprofile;
     }
@@ -272,7 +267,11 @@ class renderer extends \core_user\output\myprofile\renderer {
                 if (!empty($markup)) {
                     $tab = new \stdClass;
                     $tab->name = $category->name;
-                    $tab->displayname = $category->title;
+                    if ($category->name == 'coursedetails') {
+                        $tab->displayname = get_string('modules', 'theme_adaptable');
+                    } else {
+                        $tab->displayname = $category->title;
+                    }
                     $tab->content = $markup;
                     $tabdata->tabs[] = $tab;
                 }
