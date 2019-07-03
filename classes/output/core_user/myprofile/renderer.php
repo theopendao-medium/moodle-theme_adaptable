@@ -47,29 +47,17 @@ class renderer extends \core_user\output\myprofile\renderer {
         $userid = $userid ? $userid : $USER->id;
         $this->user = \core_user::get_user($userid);
 
-        //require_once($CFG->dirroot.'/user/profile/lib.php');
-        //profile_load_data($this->user);
-        //$this->user->interests = \core_tag_tag::get_item_tags('core', 'user', $this->user->id);
-
         $courseid = optional_param('course', SITEID, PARAM_INT); // Course id (defaults to Site).
         $this->course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 
-//error_log(optional_param('aep', null, PARAM_ALPHA));
-
         require_once($CFG->dirroot.'/user/lib.php');
+
         /* Using this as the function copes with hidden fields and capabilities.  For example:
          * If the you're allowed to see the description.
          *
          * This way because the DB user record from get_user can contain the description that
          * the function user_get_user_details can exclude! */
         $this->user->userdetails = user_get_user_details($this->user, $this->course);
-//error_log(print_r($userdetails, true));
-        /*foreach($userdetails as $detailname => $detail) {
-            if (empty($this->user->$detailname)) {
-                $this->user->$detailname = $detail;
-            }
-        }*/
-//error_log(print_r($this->user, true));
 
         parent::__construct($page, $target);
     }
@@ -82,7 +70,6 @@ class renderer extends \core_user\output\myprofile\renderer {
      * @return string
      */
     public function render_tree(tree $tree) {
-//        error_log(print_r($tree, true));
         static $categorycolone = array('contact');
         $categories = array();
         foreach ($tree->categories as $category) {
@@ -107,11 +94,7 @@ class renderer extends \core_user\output\myprofile\renderer {
 
         $output .= html_writer::start_tag('div', array('class' => 'col-md-8')); // Col two.
         $output .= html_writer::start_tag('div', array('class' => 'row'));
-        /*$output .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
-        $output .= $this->course($tree);
-        $output .= html_writer::end_tag('div');*/
         $output .= $this->tabs($categories, $tree);
-
         $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div');
 
@@ -141,7 +124,9 @@ class renderer extends \core_user\output\myprofile\renderer {
         } else {
             $output = html_writer::start_tag('section', array('class' => 'node_category ' . $classes));
         }
-        $output .= html_writer::tag('h3', $category->title);
+        if (empty($category->notitle)) {
+            $output .= html_writer::tag('h3', $category->title);
+        }
         $output .= html_writer::start_tag('ul');
         // TODO: Make efficient!
         if ($category->name == 'contact') {
@@ -170,25 +155,10 @@ class renderer extends \core_user\output\myprofile\renderer {
         return $output;
     }
 
-    protected function course() {
-        $output = '';
-
-        $output .= html_writer::tag('h1', get_string('modules', 'theme_adaptable'));
-        $output .= html_writer::tag('p', 'Work in progress - for now, when accepted turn into theme settings.');
-
-        if (!empty($this->user->userdetails['customfields'])) {
-        foreach($this->user->userdetails['customfields'] as $cfield) {
-                $output .= html_writer::tag('p', '\''.$cfield['shortname'].'\' / \''.$cfield['name'].'\' is "'.$cfield['value'].'".');
-            }
-        }
-
-        return $output;
-    }
-
     protected function create_aboutme($tree) {
         global $OUTPUT;
 
-        $aboutme = new category('aboutme', get_string('bio', 'theme_adaptable'));
+        $aboutme = new category('aboutme', get_string('aboutme', 'theme_adaptable'));
 
         // Description.
         if (!empty($this->user->userdetails['description'])) {
@@ -257,12 +227,16 @@ class renderer extends \core_user\output\myprofile\renderer {
         $tab = new \stdClass;
         $tab->name = $category->name;
         $tab->displayname = $category->title;
+        $category->notitle = true;
         $tab->content = $this->render($category);
         $tabdata->tabs[] = $tab;
 
         foreach ($tabcategories as $categoryname) {
             if (!empty($categories[$categoryname])) {
                 $category = $categories[$categoryname];
+                if ($category->name == 'coursedetails') {
+                    $category->notitle = true;
+                }
                 $markup = $this->render($category);
                 if (!empty($markup)) {
                     $tab = new \stdClass;
@@ -279,7 +253,7 @@ class renderer extends \core_user\output\myprofile\renderer {
             }
         }
 
-        // Misc tab.
+        // More tab.
         $misccontent = html_writer::start_tag('div', array('class' => 'row'));
         foreach ($categories as $categoryname => $category) {
             $misccontent .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
@@ -288,8 +262,8 @@ class renderer extends \core_user\output\myprofile\renderer {
         }
         $misccontent .= html_writer::end_tag('div');
         $tab = new \stdClass;
-        $tab->name = 'misc';
-        $tab->displayname = 'Misc';
+        $tab->name = 'more';
+        $tab->displayname = get_string('more', 'theme_adaptable');
         $tab->content = $misccontent;
         $tabdata->tabs[] = $tab;
 
@@ -298,6 +272,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         $tab = new \stdClass;
         $tab->name = $category->name;
         $tab->displayname = $category->title;
+        $category->notitle = true;
         $tab->content = $this->render($category);
         $tabdata->tabs[] = $tab;
 
