@@ -70,25 +70,26 @@ class renderer extends \core_user\output\myprofile\renderer {
      * @return string
      */
     public function render_tree(tree $tree) {
-        static $categorycolone = array('contact');
+        //static $categorycolone = array('contact');
         $categories = array();
         foreach ($tree->categories as $category) {
             $categories[$category->name] = $category;
         }
 
-        $output = html_writer::start_tag('div', array('class' => 'profile_tree row'));
+        $output = html_writer::start_tag('div', array('class' => 'profile_tree adaptable_profile_tree row'));
 
         $output .= html_writer::start_tag('div', array('class' => 'col-md-4')); // Col one.
 
         $output .= html_writer::start_tag('div', array('class' => 'row'));
-        foreach ($categorycolone as $categoryname) {
-            if (!empty($categories[$categoryname])) {
-                $output .= html_writer::start_tag('div', array('class' => 'col-12 '.$categoryname));
-                $output .= $markup = $this->render($categories[$categoryname]);
-                unset($categories[$categoryname]);
+        //foreach ($categorycolone as $categoryname) {
+        //    if (!empty($categories[$categoryname])) {
+                $output .= html_writer::start_tag('div', array('class' => 'col-12 contact'));
+                $contactcategory = $this->transform_contact_category($categories['contact']);
+                $output .= $this->render($contactcategory);
+                unset($categories['contact']);
                 $output .= html_writer::end_tag('div');
-            }
-        }
+        //    }
+        //}
         $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div');
 
@@ -102,6 +103,32 @@ class renderer extends \core_user\output\myprofile\renderer {
         $output .= html_writer::end_tag('div');
 
         return $output;
+    }
+
+    protected function transform_contact_category($oldcontactcategory) {
+        $contactcategory = new category('contact', '');
+
+        $node = new node('contact', 'userimage', '', null, null,
+            $this->userimage());
+        $contactcategory->add_node($node);
+
+        $node = new node('contact', 'firstname', '', null, null,
+            $this->user->userdetails['firstname']);
+        $contactcategory->add_node($node);
+
+        $node = new node('contact', 'lastname', '', null, null,
+            $this->user->userdetails['lastname']);
+        $contactcategory->add_node($node);
+
+        $contactcategory->add_node($oldcontactcategory->nodes['editprofile']);
+
+        if (!empty($this->user->userdetails['email'])) {
+            $node = new node('contact', 'email', '', null, null,
+                $this->user->userdetails['email']);
+            $contactcategory->add_node($node);
+        }
+
+        return $contactcategory;
     }
 
     /**
@@ -129,9 +156,9 @@ class renderer extends \core_user\output\myprofile\renderer {
         }
         $output .= html_writer::start_tag('ul');
         // TODO: Make efficient!
-        if ($category->name == 'contact') {
-            $output .= $this->userimage();
-        }
+        //if ($category->name == 'contact') {
+        //    $output .= $this->userimage();
+        //}
         foreach ($nodes as $node) {
             $output .= $this->render($node);
         }
@@ -201,7 +228,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                     $customcoursesubtitle = $searcharray[$customcoursesubtitleprofilefield]['value'];
                 }
             }
-            
+
             if ((!empty($customcoursetitle)) || (!empty($customcoursesubtitle))) {
                 $category = new category('customuserprofile', get_string('course', 'theme_adaptable'));
 
