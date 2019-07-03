@@ -122,9 +122,9 @@ class renderer extends \core_user\output\myprofile\renderer {
         if (empty($classes)) {
             $output = html_writer::start_tag('section', array('class' => 'node_category'));
         } else {
-            $output = html_writer::start_tag('section', array('class' => 'node_category ' . $classes));
+            $output = html_writer::start_tag('section', array('class' => 'node_category '.$classes));
         }
-        if (empty($category->notitle)) {
+        if ((empty($category->notitle)) && ($category->title)) {
             $output .= html_writer::tag('h3', $category->title);
         }
         $output .= html_writer::start_tag('ul');
@@ -174,8 +174,49 @@ class renderer extends \core_user\output\myprofile\renderer {
             $aboutme->add_node($node);
         }
 
-
         return $aboutme;
+    }
+
+    protected function customuserprofile() {
+        $category = null;
+
+        $customcoursetitleprofilefield = get_config('theme_adaptable', 'customcoursetitle');
+        $customcoursesubtitleprofilefield = get_config('theme_adaptable', 'customcoursesubtitle');
+
+        if ((!empty($customcoursetitleprofilefield)) || (!empty($customcoursesubtitleprofilefield))) {
+            $customcoursetitle = '';
+            $customcoursesubtitle = '';
+            $searcharray = array();
+            foreach($this->user->userdetails['customfields'] as $cfield) {
+                $searcharray[$cfield['shortname']] = $cfield;
+            }
+
+            if (!empty($customcoursetitleprofilefield)) {
+                if (array_key_exists($customcoursetitleprofilefield, $searcharray)) {
+                    $customcoursetitle = $searcharray[$customcoursetitleprofilefield]['value'];
+                }
+            }
+            if (!empty($customcoursesubtitleprofilefield)) {
+                if (array_key_exists($customcoursesubtitleprofilefield, $searcharray)) {
+                    $customcoursesubtitle = $searcharray[$customcoursesubtitleprofilefield]['value'];
+                }
+            }
+            
+            if ((!empty($customcoursetitle)) || (!empty($customcoursesubtitle))) {
+                $category = new category('customuserprofile', get_string('course', 'theme_adaptable'));
+
+                if (!empty($customcoursetitle)) {
+                    $node = new node('customuserprofile', 'customcoursetitle', '', null, null, $customcoursetitle);
+                    $category->add_node($node);
+                }
+                if (!empty($customcoursesubtitle)) {
+                    $node = new node('customuserprofile', 'customcoursesubtitle', '', null, null, $customcoursesubtitle);
+                    $category->add_node($node);
+                }
+            }
+        }
+
+        return $category;
     }
 
     protected function create_editprofile() {
@@ -227,8 +268,14 @@ class renderer extends \core_user\output\myprofile\renderer {
         $tab = new \stdClass;
         $tab->name = $category->name;
         $tab->displayname = $category->title;
-        $category->notitle = true;
-        $tab->content = $this->render($category);
+        $customuserprofilecat = $this->customuserprofile();
+        $tab->content = '';
+        if (!is_null($customuserprofilecat)) {
+            $tab->content .= $this->render($customuserprofilecat);
+        } else {
+            $category->notitle = true;
+        }
+        $tab->content .= $this->render($category);
         $tabdata->tabs[] = $tab;
 
         foreach ($tabcategories as $categoryname) {
@@ -242,7 +289,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                     $tab = new \stdClass;
                     $tab->name = $category->name;
                     if ($category->name == 'coursedetails') {
-                        $tab->displayname = get_string('modules', 'theme_adaptable');
+                        $tab->displayname = get_string('courses', 'theme_adaptable');
                     } else {
                         $tab->displayname = $category->title;
                     }

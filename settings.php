@@ -61,6 +61,7 @@ if (is_siteadmin()) {
     include(dirname(__FILE__) . '/settings/dash_block_regions.php');
     include(dirname(__FILE__) . '/settings/course_formats.php');
     include(dirname(__FILE__) . '/settings/mobile_settings.php');
+    include(dirname(__FILE__) . '/settings/user.php');
     include(dirname(__FILE__) . '/settings/analytics.php');
     include(dirname(__FILE__) . '/settings/importexport_settings.php');
     include(dirname(__FILE__) . '/settings/custom_css.php');
