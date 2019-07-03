@@ -73,7 +73,7 @@ class editprofile_form extends \moodleform {
         // Print the required moodle fields first.
         $mform->addElement('header', 'moodle', $strgeneral);
 
-        $auths = \core_component::get_plugin_list('auth');
+        /*$auths = \core_component::get_plugin_list('auth');
         $enabled = get_string('pluginenabled', 'core_plugin');
         $disabled = get_string('plugindisabled', 'core_plugin');
         $authoptions = array($enabled => array(), $disabled => array());
@@ -100,38 +100,7 @@ class editprofile_form extends \moodleform {
             } else {
                 $authoptions[$disabled][$auth] = get_string('pluginname', "auth_{$auth}");
             }
-        }
-
-        $purpose = user_edit_map_field_purpose($userid, 'username');
-        $mform->addElement('text', 'username', get_string('username'), 'size="20"' . $purpose);
-        $mform->addRule('username', get_string('required'), 'required', null, 'client');
-        $mform->addHelpButton('username', 'username', 'auth');
-        $mform->setType('username', PARAM_RAW);
-
-        if ($userid !== -1) {
-            $mform->disabledIf('username', 'auth', 'in', $cannotchangeusername);
-        }
-
-        $mform->addElement('selectgroups', 'auth', get_string('chooseauthmethod', 'auth'), $authoptions);
-        $mform->addHelpButton('auth', 'chooseauthmethod', 'auth');
-
-        $mform->addElement('advcheckbox', 'suspended', get_string('suspended', 'auth'));
-        $mform->addHelpButton('suspended', 'suspended', 'auth');
-
-        $mform->addElement('checkbox', 'createpassword', get_string('createpassword', 'auth'));
-        $mform->disabledIf('createpassword', 'auth', 'in', $cannotchangepass);
-
-        if (!empty($CFG->passwordpolicy)) {
-            $mform->addElement('static', 'passwordpolicyinfo', '', print_password_policy());
-        }
-
-        $purpose = user_edit_map_field_purpose($userid, 'password');
-        $mform->addElement('passwordunmask', 'newpassword', get_string('newpassword'), 'size="20"' . $purpose);
-        $mform->addHelpButton('newpassword', 'newpassword');
-        $mform->setType('newpassword', \core_user::get_property_type('password'));
-        $mform->disabledIf('newpassword', 'createpassword', 'checked');
-
-        $mform->disabledIf('newpassword', 'auth', 'in', $cannotchangepass);
+        }*/
 
         // Check if the user has active external tokens.
         /*if ($userid and empty($CFG->passwordchangetokendeletion)) {
@@ -148,18 +117,15 @@ class editprofile_form extends \moodleform {
             }
         }*/
 
-        $mform->addElement('advcheckbox', 'preference_auth_forcepasswordchange', get_string('forcepasswordchange'));
+        /*$mform->addElement('advcheckbox', 'preference_auth_forcepasswordchange', get_string('forcepasswordchange'));
         $mform->addHelpButton('preference_auth_forcepasswordchange', 'forcepasswordchange');
-        $mform->disabledIf('preference_auth_forcepasswordchange', 'createpassword', 'checked');
+        $mform->disabledIf('preference_auth_forcepasswordchange', 'createpassword', 'checked');*/
 
-        // Shared fields.
-        \useredit_shared_definition($mform, $editoroptions, $filemanageroptions, $user);
-
-        // Next the customisable profile fields.
-        \profile_definition($mform, $userid);
+        // Fields.
+        $this->editprofile_definition($mform, $editoroptions, $filemanageroptions, $user);
 
         if ($userid == -1) {
-            $btnstring = get_string('createuser');
+            $btnstring = get_string('createuser');  // Should never happen, but leave as an indicator.
         } else {
             $btnstring = get_string('updatemyprofile');
         }
@@ -189,18 +155,18 @@ class editprofile_form extends \moodleform {
         }
 
         // User can not change own auth method.
-        if ($userid == $USER->id) {
+        /*if ($userid == $USER->id) {
             $mform->hardFreeze('auth');
             $mform->hardFreeze('preference_auth_forcepasswordchange');
-        }
+        }*/
 
         // Admin must choose some password and supply correct email.
-        if (!empty($USER->newadminuser)) {
+        /*if (!empty($USER->newadminuser)) {
             $mform->addRule('newpassword', get_string('required'), 'required', null, 'client');
             if ($mform->elementExists('suspended')) {
                 $mform->removeElement('suspended');
             }
-        }
+        }*/
 
         // Require password for new users.
         if ($userid > 0) {
@@ -258,12 +224,12 @@ class editprofile_form extends \moodleform {
         global $CFG, $DB;
 
         $usernew = (object)$usernew;
-        $usernew->username = trim($usernew->username);
+        //$usernew->username = trim($usernew->username);
 
         $user = $DB->get_record('user', array('id' => $usernew->id));
         $err = array();
 
-        if (!$user and !empty($usernew->createpassword)) {
+        /*if (!$user and !empty($usernew->createpassword)) {
             if ($usernew->suspended) {
                 // Show some error because we can not mail suspended users.
                 $err['suspended'] = get_string('error');
@@ -281,9 +247,9 @@ class editprofile_form extends \moodleform {
                     $err['newpassword'] = get_string('required');
                 }
             }
-        }
+        }*/
 
-        if (empty($usernew->username)) {
+        /*if (empty($usernew->username)) {
             // Might be only whitespace.
             $err['username'] = get_string('required');
         } else if (!$user or $user->username !== $usernew->username) {
@@ -299,9 +265,9 @@ class editprofile_form extends \moodleform {
                     $err['username'] = get_string('invalidusername');
                 }
             }
-        }
+        }*/
 
-        if (!$user or (isset($usernew->email) && $user->email !== $usernew->email)) {
+        /*if (!$user or (isset($usernew->email) && $user->email !== $usernew->email)) {
             if (!validate_email($usernew->email)) {
                 $err['email'] = get_string('invalidemail');
             } else if (empty($CFG->allowaccountssameemail)) {
@@ -317,7 +283,7 @@ class editprofile_form extends \moodleform {
                     $err['email'] = get_string('emailexists');
                 }
             }
-        }
+        }*/
 
         // Next the customisable profile fields.
         $err += profile_validation($usernew, $files);
@@ -328,6 +294,201 @@ class editprofile_form extends \moodleform {
             return $err;
         }
     }
+
+    /**
+    * Powerful function that is used by edit and editadvanced to add common form elements/rules/etc.
+    *
+    * @param moodleform $mform
+    * @param array $editoroptions
+    * @param array $filemanageroptions
+    * @param stdClass $user
+    */
+    function editprofile_definition(&$mform, $editoroptions, $filemanageroptions, $user) {
+        global $CFG, $USER, $DB;
+
+        if ($user->id > 0) {
+            useredit_load_preferences($user, false);
+        }
+
+        $strrequired = get_string('required');
+        $stringman = get_string_manager();
+
+        // Add the necessary names.
+        /*foreach (useredit_get_required_name_fields() as $fullname) {
+            $purpose = user_edit_map_field_purpose($user->id, $fullname);
+            $mform->addElement('text', $fullname,  get_string($fullname),  'maxlength="100" size="30"' . $purpose);
+            if ($stringman->string_exists('missing'.$fullname, 'core')) {
+                $strmissingfield = get_string('missing'.$fullname, 'core');
+            } else {
+                $strmissingfield = $strrequired;
+            }
+            $mform->addRule($fullname, $strmissingfield, 'required', null, 'client');
+            $mform->setType($fullname, PARAM_NOTAGS);
+        }*/
+
+        //$enabledusernamefields = useredit_get_enabled_name_fields();
+        // Add the enabled additional name fields.
+        /*foreach ($enabledusernamefields as $addname) {
+            $purpose = user_edit_map_field_purpose($user->id, $addname);
+            $mform->addElement('text', $addname,  get_string($addname), 'maxlength="100" size="30"' . $purpose);
+            $mform->setType($addname, PARAM_NOTAGS);
+        }*/
+
+    // Do not show email field if change confirmation is pending.
+    /*if ($user->id > 0 and !empty($CFG->emailchangeconfirmation) and !empty($user->preference_newemail)) {
+        $notice = get_string('emailchangepending', 'auth', $user);
+        $notice .= '<br /><a href="edit.php?cancelemailchange=1&amp;id='.$user->id.'">'
+                . get_string('emailchangecancel', 'auth') . '</a>';
+        $mform->addElement('static', 'emailpending', get_string('email'), $notice);
+    } else {
+        $purpose = user_edit_map_field_purpose($user->id, 'email');
+        $mform->addElement('text', 'email', get_string('email'), 'maxlength="100" size="30"' . $purpose);
+        $mform->addRule('email', $strrequired, 'required', null, 'client');
+        $mform->setType('email', PARAM_RAW_TRIMMED);
+    }*/
+
+    /*$choices = array();
+    $choices['0'] = get_string('emaildisplayno');
+    $choices['1'] = get_string('emaildisplayyes');
+    $choices['2'] = get_string('emaildisplaycourse');
+    $mform->addElement('select', 'maildisplay', get_string('emaildisplay'), $choices);
+    $mform->setDefault('maildisplay', core_user::get_property_default('maildisplay'));
+    $mform->addHelpButton('maildisplay', 'emaildisplay');*/
+
+    $mform->addElement('text', 'city', get_string('city'), 'maxlength="120" size="21"');
+    $mform->setType('city', PARAM_TEXT);
+    if (!empty($CFG->defaultcity)) {
+        $mform->setDefault('city', $CFG->defaultcity);
+    }
+
+    /*$purpose = user_edit_map_field_purpose($user->id, 'country');
+    $choices = get_string_manager()->get_list_of_countries();
+    $choices = array('' => get_string('selectacountry') . '...') + $choices;
+    $mform->addElement('select', 'country', get_string('selectacountry'), $choices, $purpose);
+    if (!empty($CFG->country)) {
+        $mform->setDefault('country', core_user::get_property_default('country'));
+    }*/
+
+    /*if (isset($CFG->forcetimezone) and $CFG->forcetimezone != 99) {
+        $choices = core_date::get_list_of_timezones($CFG->forcetimezone);
+        $mform->addElement('static', 'forcedtimezone', get_string('timezone'), $choices[$CFG->forcetimezone]);
+        $mform->addElement('hidden', 'timezone');
+        $mform->setType('timezone', core_user::get_property_type('timezone'));
+    } else {
+        $choices = core_date::get_list_of_timezones($user->timezone, true);
+        $mform->addElement('select', 'timezone', get_string('timezone'), $choices);
+    }*/
+
+    /*if ($user->id < 0) {
+        $purpose = user_edit_map_field_purpose($user->id, 'lang');
+        $translations = get_string_manager()->get_list_of_translations();
+        $mform->addElement('select', 'lang', get_string('preferredlanguage'), $translations, $purpose);
+        $lang = empty($user->lang) ? $CFG->lang : $user->lang;
+        $mform->setDefault('lang', $lang);
+    }
+
+    if (!empty($CFG->allowuserthemes)) {
+        $choices = array();
+        $choices[''] = get_string('default');
+        $themes = get_list_of_themes();
+        foreach ($themes as $key => $theme) {
+            if (empty($theme->hidefromselector)) {
+                $choices[$key] = get_string('pluginname', 'theme_'.$theme->name);
+            }
+        }
+        $mform->addElement('select', 'theme', get_string('preferredtheme'), $choices);
+    }*/
+
+    $mform->addElement('editor', 'description_editor', get_string('userdescription'), null, $editoroptions);
+    $mform->setType('description_editor', PARAM_RAW);
+    $mform->addHelpButton('description_editor', 'userdescription');
+
+    if (empty($USER->newadminuser)) {
+        $mform->addElement('header', 'moodle_picture', get_string('pictureofuser'));
+        $mform->setExpanded('moodle_picture', true);
+
+        if (!empty($CFG->enablegravatar)) {
+            $mform->addElement('html', html_writer::tag('p', get_string('gravatarenabled')));
+        }
+
+        $mform->addElement('static', 'currentpicture', get_string('currentpicture'));
+
+        $mform->addElement('checkbox', 'deletepicture', get_string('deletepicture'));
+        $mform->setDefault('deletepicture', 0);
+
+        $mform->addElement('filemanager', 'imagefile', get_string('newpicture'), '', $filemanageroptions);
+        $mform->addHelpButton('imagefile', 'newpicture');
+
+        $mform->addElement('text', 'imagealt', get_string('imagealt'), 'maxlength="100" size="30"');
+        $mform->setType('imagealt', PARAM_TEXT);
+
+    }
+
+    // Display user name fields that are not currenlty enabled here if there are any.
+    /*$disabledusernamefields = useredit_get_disabled_name_fields($enabledusernamefields);
+    if (count($disabledusernamefields) > 0) {
+        $mform->addElement('header', 'moodle_additional_names', get_string('additionalnames'));
+        foreach ($disabledusernamefields as $allname) {
+            $purpose = user_edit_map_field_purpose($user->id, $allname);
+            $mform->addElement('text', $allname, get_string($allname), 'maxlength="100" size="30"' . $purpose);
+            $mform->setType($allname, PARAM_NOTAGS);
+        }
+    }*/
+
+    if (\core_tag_tag::is_enabled('core', 'user') and empty($USER->newadminuser)) {
+        $mform->addElement('header', 'moodle_interests', get_string('interests'));
+        $mform->addElement('tags', 'interests', get_string('interestslist'),
+            array('itemtype' => 'user', 'component' => 'core'));
+        $mform->addHelpButton('interests', 'interestslist');
+    }
+
+    // Moodle optional fields.
+    /*$mform->addElement('header', 'moodle_optional', get_string('optional', 'form'));
+
+    $mform->addElement('text', 'url', get_string('webpage'), 'maxlength="255" size="50"');
+    $mform->setType('url', core_user::get_property_type('url'));
+
+    $mform->addElement('text', 'icq', get_string('icqnumber'), 'maxlength="15" size="25"');
+    $mform->setType('icq', core_user::get_property_type('icq'));
+    $mform->setForceLtr('icq');
+
+    $mform->addElement('text', 'skype', get_string('skypeid'), 'maxlength="50" size="25"');
+    $mform->setType('skype', core_user::get_property_type('skype'));
+    $mform->setForceLtr('skype');
+
+    $mform->addElement('text', 'aim', get_string('aimid'), 'maxlength="50" size="25"');
+    $mform->setType('aim', core_user::get_property_type('aim'));
+    $mform->setForceLtr('aim');
+
+    $mform->addElement('text', 'yahoo', get_string('yahooid'), 'maxlength="50" size="25"');
+    $mform->setType('yahoo', core_user::get_property_type('yahoo'));
+    $mform->setForceLtr('yahoo');
+
+    $mform->addElement('text', 'msn', get_string('msnid'), 'maxlength="50" size="25"');
+    $mform->setType('msn', core_user::get_property_type('msn'));
+    $mform->setForceLtr('msn');
+
+    $mform->addElement('text', 'idnumber', get_string('idnumber'), 'maxlength="255" size="25"');
+    $mform->setType('idnumber', core_user::get_property_type('idnumber'));
+
+    $mform->addElement('text', 'institution', get_string('institution'), 'maxlength="255" size="25"');
+    $mform->setType('institution', core_user::get_property_type('institution'));
+
+    $mform->addElement('text', 'department', get_string('department'), 'maxlength="255" size="25"');
+    $mform->setType('department', core_user::get_property_type('department'));
+
+    $mform->addElement('text', 'phone1', get_string('phone1'), 'maxlength="20" size="25"');
+    $mform->setType('phone1', core_user::get_property_type('phone1'));
+    $mform->setForceLtr('phone1');
+
+    $mform->addElement('text', 'phone2', get_string('phone2'), 'maxlength="20" size="25"');
+    $mform->setType('phone2', core_user::get_property_type('phone2'));
+    $mform->setForceLtr('phone2');
+
+    $mform->addElement('text', 'address', get_string('address'), 'maxlength="255" size="25"');
+    $mform->setType('address', core_user::get_property_type('address'));*/
+}
+
 }
 
 
