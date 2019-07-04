@@ -38,8 +38,9 @@ use stdClass;
 /**
  * The modchooser renderable class.
  *
- * @package    core_course
- * @copyright  2016 Frédéric Massart - FMCorz.net
+ * @package    theme_adaptable
+ * @copyright  &copy; 2019 - Coventry University
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class modchooser extends \core\output\chooser {
@@ -58,10 +59,34 @@ class modchooser extends \core\output\chooser {
         $sections = [];
         $context = context_course::instance($course->id);
 
+        // Common modules.
+        $commonmodnames = get_config('theme_adaptable', 'commonlyusedar');
+        if (!empty($commonmodnames)) {
+            if (count($modules)) {
+                $modnames = explode(',', $commonmodnames);
+                $commonmods = array();
+                foreach($modnames as $modname) {
+                    $modname = trim($modname);
+                    if (array_key_exists($modname, $modules)) {
+                        $commonmods[$modname] = $modules[$modname];
+                        unset($modules[$modname]);
+                    }
+                }
+                if (count($commonmods)) {
+                    $sections[] = new chooser_section('commonlyusedar', new lang_string('commonlyusedartitle', 'theme_adaptable'),
+                        array_map(function($commonmod) use ($context) {
+                            return new modchooser_item($commonmod, $context);
+                        }, $commonmods)
+                    );
+                }
+            }
+        }
+
          // Activities.
         $activities = array_filter($modules, function($mod) {
             return ($mod->archetype !== MOD_ARCHETYPE_RESOURCE && $mod->archetype !== MOD_ARCHETYPE_SYSTEM);
         });
+        // Add remaining activities.
         if (count($activities)) {
             $sections[] = new chooser_section('activities', new lang_string('activities'),
                 array_map(function($module) use ($context) {
@@ -70,9 +95,11 @@ class modchooser extends \core\output\chooser {
             );
         }
 
+         // Resources.
         $resources = array_filter($modules, function($mod) {
             return ($mod->archetype === MOD_ARCHETYPE_RESOURCE);
         });
+        // Add remaining resources.
         if (count($resources)) {
             $sections[] = new chooser_section('resources', new lang_string('resources'),
                 array_map(function($module) use ($context) {

@@ -751,6 +751,10 @@ $string['coursesettingsheading'] = 'Course Formats Settings';
 $string['coursesettingsdesc'] = 'Customize some of the most used Moodle course formats to fit the main design.';
 
 // Common settings.
+$string['commonlyusedar'] = 'Commonly used activities and resources';
+$string['commonlyusedardesc'] = 'Use this box to specifiy the list of activity/resource names (comma separated) you wish to see at the top of the module chooser.  Current possible names are {$a}.';
+$string['commonlyusedartitle'] = 'Commonly used activities and resources';
+
 $string['showyourprogress'] = 'Show &#39;Your Progress&#39; label ';
 $string['showyourprogressdesc'] = 'Show / hide the &#39;Your Progress&#39; label in the top of the course content. This label is only for information purposes and can be hidden. ';
 
