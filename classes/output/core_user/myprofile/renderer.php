@@ -77,7 +77,7 @@ class renderer extends \core_user\output\myprofile\renderer {
 
         $output = html_writer::start_tag('div', array('class' => 'profile_tree adaptable_profile_tree row'));
 
-        $output .= html_writer::start_tag('div', array('class' => 'col-md-4')); // Col one.
+        $output .= html_writer::start_tag('div', array('class' => 'ucol1 col-md-4')); // Col one.
 
         $output .= html_writer::start_tag('div', array('class' => 'row'));
         $output .= html_writer::start_tag('div', array('class' => 'col-12 contact'));
@@ -89,10 +89,8 @@ class renderer extends \core_user\output\myprofile\renderer {
         $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div');
 
-        $output .= html_writer::start_tag('div', array('class' => 'col-md-8')); // Col two.
-        $output .= html_writer::start_tag('div', array('class' => 'row'));
+        $output .= html_writer::start_tag('div', array('class' => 'ucol2 col-md-8')); // Col two.
         $output .= $this->tabs($categories, $tree);
-        $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div');
 
         //$output .= html_writer::tag('p', $this->developer($tree));
@@ -143,9 +141,9 @@ class renderer extends \core_user\output\myprofile\renderer {
 
         $classes = $category->classes;
         if (empty($classes)) {
-            $output = html_writer::start_tag('section', array('class' => 'node_category'));
+            $output = html_writer::start_tag('section', array('class' => 'node_category '.$category->name));
         } else {
-            $output = html_writer::start_tag('section', array('class' => 'node_category '.$classes));
+            $output = html_writer::start_tag('section', array('class' => 'node_category '.$category->name.' '.$classes));
         }
         if ((empty($category->notitle)) && ($category->title)) {
             $output .= html_writer::tag('h3', $category->title);
@@ -160,14 +158,56 @@ class renderer extends \core_user\output\myprofile\renderer {
         return $output;
     }
 
+    /**
+     * Render a node.
+     *
+     * @param node $node
+     *
+     * @return string
+     */
+    public function render_node(node $node) {
+        $return = '';
+        if (is_object($node->url)) {
+            $header = \html_writer::link($node->url, $node->title);
+        } else {
+            $header = $node->title;
+        }
+        $icon = $node->icon;
+        if (!empty($icon)) {
+            $header .= $this->render($icon);
+        }
+        $content = $node->content;
+        $classes = $node->classes;
+        if (!empty($content)) {
+            if ($header) {
+                // There is some content to display below this make this a header.
+                $return = \html_writer::tag('dt', $header);
+                $return .= \html_writer::tag('dd', $content);
+
+                $return = \html_writer::tag('dl', $return);
+            } else {
+                $return = \html_writer::span($content);
+            }
+            if ($classes) {
+                $return = \html_writer::tag('li', $return, array('class' => 'contentnode '.$node->name.' '.$classes));
+            } else {
+                $return = \html_writer::tag('li', $return, array('class' => 'contentnode '.$node->name));
+            }
+        } else {
+            $return = \html_writer::span($header);
+            $return = \html_writer::tag('li', $return, array('class' => $classes));
+        }
+
+        return $return;
+    }
+
     protected function userimage() {
         $output = '';
 
         if (!empty($this->user)) {
-            $userpicture = new \user_picture($this->user);
-            $userpicture->size = 1; // Size f1.
-            $output .= html_writer::start_tag('li');
-            $output .= html_writer::img($userpicture->get_url($this->page)->out(false), 'User image');  // TODO, better 'alt'.
+            global $OUTPUT;
+            $output .= html_writer::start_tag('li', array('class' => 'adaptableuserpicture'));
+            $output .= $OUTPUT->user_picture($this->user, array('size' => '1'));
             $output .= html_writer::end_tag('li');
         }
 
@@ -187,9 +227,9 @@ class renderer extends \core_user\output\myprofile\renderer {
         }
 
         // Interests.
-        if (!empty($tree->categories['contact']->nodes['interests'])) {
+        if (!empty($this->user->userdetails['interests'])) {
             $node = new node('aboutme', 'interests', get_string('interests'), null, null,
-                $tree->categories['contact']->nodes['interests']->content);
+                $OUTPUT->tag_list(\core_tag_tag::get_item_tags('core', 'user', $this->user->id), '')); // Odd but just the way things can be!
             $aboutme->add_node($node);
         }
 
