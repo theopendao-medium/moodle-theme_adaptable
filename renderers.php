@@ -3259,4 +3259,24 @@ EOT;
 
         return $output;
     }
+
+    /**
+     * Redirects the user by any means possible given the current state
+     *
+     * This function should not be called directly, it should always be called using
+     * the redirect function in lib/weblib.php
+     *
+     * The redirect function should really only be called before page output has started
+     * however it will allow itself to be called during the state STATE_IN_BODY
+     *
+     * @param string $encodedurl The URL to send to encoded if required
+     * @return string The HTML with javascript refresh...
+     */
+    public function adaptable_redirect($encodedurl) {
+        $url = str_replace('&amp;', '&', $encodedurl);
+        $this->page->requires->js_function_call('document.location.replace', array($url), false, '0');
+        $output = $this->opencontainers->pop_all_but_last();
+        $output .= $this->footer();
+        return $output;
+    }
 }
