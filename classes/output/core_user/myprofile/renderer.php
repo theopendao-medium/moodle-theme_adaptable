@@ -318,7 +318,8 @@ class renderer extends \core_user\output\myprofile\renderer {
         $customcoursetitleprofilefield = get_config('theme_adaptable', 'customcoursetitle');
         $customcoursesubtitleprofilefield = get_config('theme_adaptable', 'customcoursesubtitle');
 
-        if ((!empty($customcoursetitleprofilefield)) || (!empty($customcoursesubtitleprofilefield))) {
+        if ((!empty($this->user->userdetails['customfields'])) && 
+            ((!empty($customcoursetitleprofilefield)) || (!empty($customcoursesubtitleprofilefield))) {
             $customcoursetitle = '';
             $customcoursesubtitle = '';
             $searcharray = array();

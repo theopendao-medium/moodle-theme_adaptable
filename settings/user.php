@@ -34,14 +34,14 @@ $temp->add(new admin_setting_heading('theme_adaptable_user', get_string('userset
 $name = 'theme_adaptable/customcoursetitle';
 $title = get_string('customcoursetitle', 'theme_adaptable');
 $description = get_string('customcoursetitledesc', 'theme_adaptable');
-$setting = new admin_setting_configtext($name, $title, $description, 'coursetitle', PARAM_TEXT);
+$setting = new admin_setting_configtext($name, $title, $description, '', PARAM_TEXT);
 $temp->add($setting);
 
 // Custom course subtitle.
 $name = 'theme_adaptable/customcoursesubtitle';
 $title = get_string('customcoursesubtitle', 'theme_adaptable');
 $description = get_string('customcoursesubtitledesc', 'theme_adaptable');
-$setting = new admin_setting_configtext($name, $title, $description, 'coursesubtitle', PARAM_TEXT);
+$setting = new admin_setting_configtext($name, $title, $description, '', PARAM_TEXT);
 $temp->add($setting);
 
 $ADMIN->add('theme_adaptable', $temp);
