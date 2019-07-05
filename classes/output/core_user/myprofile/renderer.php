@@ -141,7 +141,7 @@ class renderer extends \core_user\output\myprofile\renderer {
         $user = $this->user;
 
         if (user_can_view_profile($user, $course)) {
-            $context = $PAGE->context;
+            $context = \context_user::instance($user->id, IGNORE_MISSING);
             // Check to see if we can display a message button.
             if (!empty($CFG->messaging) && has_capability('moodle/site:sendmessage', $context)) {
                 $userbuttons = array(
