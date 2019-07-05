@@ -33,51 +33,49 @@
     margin-bottom: 5px;
 }
 
-.adaptable_profile_tree .ucol1 .node_category.contact {
+#adaptable_profile_tree .ucol1 .node_category.contact {
     margin-top: 87px;
 }
 
-.adaptable_profile_tree .ucol1 .node_category.contact .firstname {
+#adaptable_profile_tree .ucol1 .node_category.contact .firstname {
     padding-top: 30px;
 }
 
-.adaptable_profile_tree .ucol1 .adaptableuserpicture {
+#adaptable_profile_tree .ucol1 .adaptableuserpicture {
     position: relative;
 }
 
-.adaptable_profile_tree .ucol1 .adaptableuserpicture a {
+#adaptable_profile_tree .ucol1 .adaptableuserpicture a {
     left: 0;
     position: absolute;
     right: 0;
     top: -80px;
 }
 
-.adaptable_profile_tree .ucol1 .adaptableuserpicture a img.userpicture {
+#adaptable_profile_tree .ucol1 .adaptableuserpicture a img.userpicture {
     margin-right: 0;
 }
 
 
-.path-user .adaptable_profile_tree .node_category .editprofile {
+.path-user #adaptable_profile_tree .node_category .editprofile {
     text-align: left;
 }
 
-.adaptable_profile_tree .ucol1 .adaptableuserpicture a,
-.path-user .adaptable_profile_tree .ucol1 .node_category .editprofile,
-.adaptable_profile_tree .ucol1 .email,
-.adaptable_profile_tree .ucol1 .firstname,
-.adaptable_profile_tree .ucol1 .lastname {
+#adaptable_profile_tree .ucol1 .adaptableuserpicture a,
+.path-user #adaptable_profile_tree .ucol1 .node_category .editprofile,
+#adaptable_profile_tree .ucol1 .contentnode {
     text-align: center;
 }
 
-.adaptable_profile_tree .ucol1 .firstname,
-.adaptable_profile_tree .ucol1 .lastname {
+#adaptable_profile_tree .ucol1 .firstname,
+#adaptable_profile_tree .ucol1 .lastname {
     font-weight: bold;
 }
 
-.adaptable_profile_tree .ucol1 .firstname {
+#adaptable_profile_tree .ucol1 .firstname {
     font-size: 150%;
 }
 
-.adaptable_profile_tree .ucol1 .lastname {
+#adaptable_profile_tree .ucol1 .lastname {
     font-size: 140%;
 }

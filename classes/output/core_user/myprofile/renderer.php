@@ -32,6 +32,8 @@ use core_user\output\myprofile\node;
 use core_user\output\myprofile\tree;
 use html_writer;
 
+require_once($CFG->dirroot.'/user/lib.php');
+
 /**
  * myprofile renderer.
  */
@@ -49,8 +51,6 @@ class renderer extends \core_user\output\myprofile\renderer {
 
         $courseid = optional_param('course', SITEID, PARAM_INT); // Course id (defaults to Site).
         $this->course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
-
-        require_once($CFG->dirroot.'/user/lib.php');
 
         /* Using this as the function copes with hidden fields and capabilities.  For example:
          * If the you're allowed to see the description.
@@ -75,7 +75,7 @@ class renderer extends \core_user\output\myprofile\renderer {
             $categories[$category->name] = $category;
         }
 
-        $output = html_writer::start_tag('div', array('class' => 'profile_tree adaptable_profile_tree row'));
+        $output = html_writer::start_tag('div', array('id' => 'adaptable_profile_tree', 'class' => 'profile_tree row'));
 
         $output .= html_writer::start_tag('div', array('class' => 'ucol1 col-md-4')); // Col one.
 
@@ -122,7 +122,77 @@ class renderer extends \core_user\output\myprofile\renderer {
             $contactcategory->add_node($node);
         }
 
+        $messagebuttons = $this->message_user();
+        if (!empty($messagebuttons)) {
+            foreach($messagebuttons as $button) {
+                $node = new node('contact', $button['type'], '', null, null, $button['content']);
+                $contactcategory->add_node($node);
+            }
+        }
+
         return $contactcategory;
+    }
+
+    protected function message_user() {
+        global $CFG, $PAGE, $USER;
+        $output = array();
+
+        $course = ($PAGE->context->contextlevel == CONTEXT_COURSE) ? $PAGE->course : null;  // Use Moodle code just in case!
+        $user = $this->user;
+
+        if (user_can_view_profile($user, $course)) {
+            $context = $PAGE->context;
+            // Check to see if we can display a message button.
+            if (!empty($CFG->messaging) && has_capability('moodle/site:sendmessage', $context)) {
+                $userbuttons = array(
+                    'messages' => array(
+                    'buttontype' => 'message',
+                    'title' => get_string('message', 'message'),
+                    'url' => new \moodle_url('/message/index.php', array('id' => $user->id)),
+                    'image' => 't/message',
+                    'linkattributes' => \core_message\helper::messageuser_link_params($user->id),
+                    'page' => $PAGE
+                    )
+                );
+                \core_message\helper::messageuser_requirejs();
+
+                if ($USER->id != $user->id) {
+                    $iscontact = \core_message\api::is_contact($USER->id, $user->id);
+                    $contacttitle = $iscontact ? 'removefromyourcontacts' : 'addtoyourcontacts';
+                    $contacturlaction = $iscontact ? 'removecontact' : 'addcontact';
+                    $contactimage = $iscontact ? 'removecontact' : 'addcontact';
+                    $userbuttons['togglecontact'] = array(
+                        'buttontype' => 'togglecontact',
+                        'title' => get_string($contacttitle, 'message'),
+                        'url' => new \moodle_url('/message/index.php', array(
+                                'user1' => $USER->id,
+                                'user2' => $user->id,
+                                $contacturlaction => $user->id,
+                                'sesskey' => sesskey())
+                        ),
+                        'image' => 't/'.$contactimage,
+                        'linkattributes' => \core_message\helper::togglecontact_link_params($user, $iscontact),
+                        'page' => $PAGE
+                    );
+                    \core_message\helper::togglecontact_requirejs();
+                }
+
+                $PAGE->requires->string_for_js('changesmadereallygoaway', 'moodle');
+                foreach ($userbuttons as $button) {
+                    $image = $this->pix_icon($button['image'], $button['title'], 'moodle', array(
+                        'class' => 'iconsmall',
+                        'role' => 'presentation'
+                    ));
+                    $image .= html_writer::span($button['title'], 'header-button-title');
+                    $output[] = array(
+                        'type' => $button['buttontype'],
+                        'content' => html_writer::link($button['url'], html_writer::tag('span', $image), $button['linkattributes'])
+                    );
+                }
+            }
+        }
+
+        return $output;
     }
 
     /**
