@@ -144,17 +144,23 @@ class renderer extends \core_user\output\myprofile\renderer {
             $context = \context_user::instance($user->id, IGNORE_MISSING);
             // Check to see if we can display a message button.
             if (!empty($CFG->messaging) && has_capability('moodle/site:sendmessage', $context)) {
-                $userbuttons = array(
-                    'messages' => array(
-                    'buttontype' => 'message',
-                    'title' => get_string('message', 'message'),
-                    'url' => new \moodle_url('/message/index.php', array('id' => $user->id)),
-                    'image' => 't/message',
-                    'linkattributes' => \core_message\helper::messageuser_link_params($user->id),
-                    'page' => $PAGE
-                    )
-                );
-                \core_message\helper::messageuser_requirejs();
+                $userbuttons = array();
+                if (($USER->id != $user->id) || ($CFG->branch > 36)) {
+                    if ($CFG->branch < 37) {
+                        $linkattributes = array('role' => 'button');
+                    } else {
+                        $linkattributes = \core_message\helper::messageuser_link_params($user->id);
+                        \core_message\helper::messageuser_requirejs();
+                    }
+                    $userbuttons['messages'] = array(
+                        'buttontype' => 'message',
+                        'title' => get_string('message', 'message'),
+                        'url' => new \moodle_url('/message/index.php', array('id' => $user->id)),
+                        'image' => 't/message',
+                        'linkattributes' => $linkattributes,
+                        'page' => $PAGE
+                    );
+                }
 
                 if ($USER->id != $user->id) {
                     $iscontact = \core_message\api::is_contact($USER->id, $user->id);
