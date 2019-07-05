@@ -60,10 +60,6 @@ class editprofile_form extends \moodleform {
         $user = $this->_customdata['user'];
         $userid = $user->id;
 
-        // Accessibility: "Required" is bad legend text.
-        $strgeneral  = get_string('general');
-        $strrequired = get_string('required');
-
         // Add some extra hidden fields.
         $mform->addElement('hidden', 'id');
         $mform->setType('id', \core_user::get_property_type('id'));
@@ -71,55 +67,7 @@ class editprofile_form extends \moodleform {
         $mform->setType('course', PARAM_INT);
 
         // Print the required moodle fields first.
-        $mform->addElement('header', 'moodle', $strgeneral);
-
-        /*$auths = \core_component::get_plugin_list('auth');
-        $enabled = get_string('pluginenabled', 'core_plugin');
-        $disabled = get_string('plugindisabled', 'core_plugin');
-        $authoptions = array($enabled => array(), $disabled => array());
-        $cannotchangepass = array();
-        $cannotchangeusername = array();
-        foreach ($auths as $auth => $unused) {
-            $authinst = get_auth_plugin($auth);
-
-            if (!$authinst->is_internal()) {
-                $cannotchangeusername[] = $auth;
-            }
-
-            $passwordurl = $authinst->change_password_url();
-            if (!($authinst->can_change_password() && empty($passwordurl))) {
-                if ($userid < 1 and $authinst->is_internal()) {
-                    // This is unlikely but we can not create account without password
-                    // when plugin uses passwords, we need to set it initially at least.
-                } else {
-                    $cannotchangepass[] = $auth;
-                }
-            }
-            if (is_enabled_auth($auth)) {
-                $authoptions[$enabled][$auth] = get_string('pluginname', "auth_{$auth}");
-            } else {
-                $authoptions[$disabled][$auth] = get_string('pluginname', "auth_{$auth}");
-            }
-        }*/
-
-        // Check if the user has active external tokens.
-        /*if ($userid and empty($CFG->passwordchangetokendeletion)) {
-            if ($tokens = \webservice::get_active_tokens($userid)) {
-                $services = '';
-                foreach ($tokens as $token) {
-                    $services .= format_string($token->servicename) . ',';
-                }
-                $services = get_string('userservices', 'webservice', rtrim($services, ','));
-                $mform->addElement('advcheckbox', 'signoutofotherservices', get_string('signoutofotherservices'), $services);
-                $mform->addHelpButton('signoutofotherservices', 'signoutofotherservices');
-                $mform->disabledIf('signoutofotherservices', 'newpassword', 'eq', '');
-                $mform->setDefault('signoutofotherservices', 1);
-            }
-        }*/
-
-        /*$mform->addElement('advcheckbox', 'preference_auth_forcepasswordchange', get_string('forcepasswordchange'));
-        $mform->addHelpButton('preference_auth_forcepasswordchange', 'forcepasswordchange');
-        $mform->disabledIf('preference_auth_forcepasswordchange', 'createpassword', 'checked');*/
+        $mform->addElement('static', 'moodle', '<h3>'.get_string('general').'</h3>');
 
         // Fields.
         $this->editprofile_definition($mform, $editoroptions, $filemanageroptions, $user);
@@ -153,20 +101,6 @@ class editprofile_form extends \moodleform {
         } else {
             $user = false;
         }
-
-        // User can not change own auth method.
-        /*if ($userid == $USER->id) {
-            $mform->hardFreeze('auth');
-            $mform->hardFreeze('preference_auth_forcepasswordchange');
-        }*/
-
-        // Admin must choose some password and supply correct email.
-        /*if (!empty($USER->newadminuser)) {
-            $mform->addRule('newpassword', get_string('required'), 'required', null, 'client');
-            if ($mform->elementExists('suspended')) {
-                $mform->removeElement('suspended');
-            }
-        }*/
 
         // Require password for new users.
         if ($userid > 0) {
@@ -224,66 +158,9 @@ class editprofile_form extends \moodleform {
         global $CFG, $DB;
 
         $usernew = (object)$usernew;
-        //$usernew->username = trim($usernew->username);
 
         $user = $DB->get_record('user', array('id' => $usernew->id));
         $err = array();
-
-        /*if (!$user and !empty($usernew->createpassword)) {
-            if ($usernew->suspended) {
-                // Show some error because we can not mail suspended users.
-                $err['suspended'] = get_string('error');
-            }
-        } else {
-            if (!empty($usernew->newpassword)) {
-                $errmsg = ''; // Prevent eclipse warning.
-                if (!check_password_policy($usernew->newpassword, $errmsg)) {
-                    $err['newpassword'] = $errmsg;
-                }
-            } else if (!$user) {
-                $auth = get_auth_plugin($usernew->auth);
-                if ($auth->is_internal()) {
-                    // Internal accounts require password!
-                    $err['newpassword'] = get_string('required');
-                }
-            }
-        }*/
-
-        /*if (empty($usernew->username)) {
-            // Might be only whitespace.
-            $err['username'] = get_string('required');
-        } else if (!$user or $user->username !== $usernew->username) {
-            // Check new username does not exist.
-            if ($DB->record_exists('user', array('username' => $usernew->username, 'mnethostid' => $CFG->mnet_localhost_id))) {
-                $err['username'] = get_string('usernameexists');
-            }
-            // Check allowed characters.
-            if ($usernew->username !== core_text::strtolower($usernew->username)) {
-                $err['username'] = get_string('usernamelowercase');
-            } else {
-                if ($usernew->username !== core_user::clean_field($usernew->username, 'username')) {
-                    $err['username'] = get_string('invalidusername');
-                }
-            }
-        }*/
-
-        /*if (!$user or (isset($usernew->email) && $user->email !== $usernew->email)) {
-            if (!validate_email($usernew->email)) {
-                $err['email'] = get_string('invalidemail');
-            } else if (empty($CFG->allowaccountssameemail)) {
-                // Make a case-insensitive query for the given email address.
-                $select = $DB->sql_equal('email', ':email', false) . ' AND mnethostid = :mnethostid AND id <> :userid';
-                $params = array(
-                    'email' => $usernew->email,
-                    'mnethostid' => $CFG->mnet_localhost_id,
-                    'userid' => $usernew->id
-                );
-                // If there are other user(s) that already have the same email, show an error.
-                if ($DB->record_exists_select('user', $select, $params)) {
-                    $err['email'] = get_string('emailexists');
-                }
-            }
-        }*/
 
         // Next the customisable profile fields.
         $err += profile_validation($usernew, $files);
@@ -310,7 +187,6 @@ class editprofile_form extends \moodleform {
             useredit_load_preferences($user, false);
         }
 
-        $strrequired = get_string('required');
         $stringman = get_string_manager();
 
         $mform->addElement('editor', 'description_editor', get_string('userdescription'), null, $editoroptions);
@@ -324,15 +200,14 @@ class editprofile_form extends \moodleform {
         }
 
         if (\core_tag_tag::is_enabled('core', 'user') and empty($USER->newadminuser)) {
-            $mform->addElement('header', 'moodle_interests', get_string('interests'));
+            $mform->addElement('static', 'moodle_interests', '<h3>'.get_string('interests').'</h3>');
             $mform->addElement('tags', 'interests', get_string('interestslist'),
                 array('itemtype' => 'user', 'component' => 'core'));
             $mform->addHelpButton('interests', 'interestslist');
         }
 
         if (empty($USER->newadminuser)) {
-            $mform->addElement('header', 'moodle_picture', get_string('pictureofuser'));
-            $mform->setExpanded('moodle_picture', true);
+            $mform->addElement('static', 'moodle_picture', '<h3>'.get_string('pictureofuser').'</h3>');
 
             if (!empty($CFG->enablegravatar)) {
                 $mform->addElement('html', html_writer::tag('p', get_string('gravatarenabled')));
