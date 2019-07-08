@@ -291,23 +291,28 @@ class renderer extends \core_user\output\myprofile\renderer {
     }
 
     protected function create_aboutme($tree) {
-        global $OUTPUT;
-
         $aboutme = new category('aboutme', get_string('aboutme', 'theme_adaptable'));
 
         // Description.
         if (!empty($this->user->userdetails['description'])) {
-            $node = new node('aboutme', 'description', get_string('description'), null, null,
-                $this->user->userdetails['description']);
-            $aboutme->add_node($node);
+            $description = $this->user->userdetails['description'];
+        } else {
+            $description = get_string('usernodescription', 'theme_adaptable');
         }
+        $node = new node('aboutme', 'description', get_string('description'), null, null,
+            $description);
+        $aboutme->add_node($node);
 
         // Interests.
         if (!empty($this->user->userdetails['interests'])) {
-            $node = new node('aboutme', 'interests', get_string('interests'), null, null,
-                $OUTPUT->tag_list(\core_tag_tag::get_item_tags('core', 'user', $this->user->id), '')); // Odd but just the way things can be!
-            $aboutme->add_node($node);
+            global $OUTPUT;
+            $interests = $OUTPUT->tag_list(\core_tag_tag::get_item_tags('core', 'user', $this->user->id), ''); // Odd but just the way things can be!
+        } else {
+            $interests = get_string('usernointerests', 'theme_adaptable');
         }
+        $node = new node('aboutme', 'interests', get_string('interests'), null, null,
+            $interests);
+        $aboutme->add_node($node);
 
         return $aboutme;
     }
