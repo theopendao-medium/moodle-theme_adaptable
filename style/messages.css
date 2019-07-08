@@ -24,6 +24,19 @@
  */
 
 @media screen and (min-width: 768px) {
+    /* M3.6 */
+    .message-drawer,
+    .message-drawer .btn,
+    .message-drawer .btn a,
+    .message-drawer .form-control,
+    /* M3.7 */
+    .message-app.drawer,
+    .message-app.drawer .btn,
+    .message-app.drawer .btn a,
+    .message-app.drawer .form-control {
+        font-size: 125%;
+    }
+
     .message-drawer, /* M3.6 */
     .message-app.drawer { /* M3.7 */
         width: 400px;
