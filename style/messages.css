@@ -35,3 +35,7 @@
     border-radius: 25px;
     margin-right: 4px;
 }
+
+[data-region='message-drawer'] [data-region='body-container'] .btn-link {
+    border-radius: 0;
+}
