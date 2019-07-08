@@ -128,6 +128,7 @@ $THEME->sheets = array(
         'extras',
         'form',
         'menu',
+        'notifications',
         'responsive',
         'custom'
 );

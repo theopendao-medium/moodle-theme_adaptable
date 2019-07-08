@@ -455,15 +455,6 @@ Only screen and (max-width : 1200px)
         float: none;
     }
 
-    /* Messages / Notifications dropdown */
-    .popover-region-container {
-        height: 600px;
-        float: left;
-        left: -100px;
-        top: 30px;
-        width: 300px;
-    }
-
     /* New styles for Adaptable 2. */
     #adaptable-page-header-wrapper .nav-link {
         padding: inherit;

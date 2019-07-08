@@ -1963,31 +1963,6 @@ div.questionbankwindow.block {
     height: 24px;
 }
 
-/* Messages / Notifications dropdown */
-.popover-region-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    height: 500px;
-    opacity: 1;
-    position: absolute;
-    right: 0;
-    top: 30px;
-    transition: height 0.25s ease 0s;
-    visibility: visible;
-    width: 300px;
-    z-index: 100;
-    box-shadow: 5px 5px 15px 1px #000;
-}
-
-.count-container {
-    right: -5px;
-}
-
-.popover-region-toggle::before,
-.popover-region-toggle::after {
-    visibility: hidden;
-}
-
 /* New message drawer (moodle 3.6 and higher) */
 .message-drawer {
     box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08);
