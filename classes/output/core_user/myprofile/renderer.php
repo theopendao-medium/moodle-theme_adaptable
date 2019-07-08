@@ -292,12 +292,15 @@ class renderer extends \core_user\output\myprofile\renderer {
 
     protected function create_aboutme($tree) {
         $aboutme = new category('aboutme', get_string('aboutme', 'theme_adaptable'));
+        $descriptionempty = false;
+        $interestsempty = false;
 
         // Description.
         if (!empty($this->user->userdetails['description'])) {
             $description = $this->user->userdetails['description'];
         } else {
             $description = get_string('usernodescription', 'theme_adaptable');
+            $descriptionempty = true;
         }
         $node = new node('aboutme', 'description', get_string('description'), null, null,
             $description);
@@ -309,12 +312,13 @@ class renderer extends \core_user\output\myprofile\renderer {
             $interests = $OUTPUT->tag_list(\core_tag_tag::get_item_tags('core', 'user', $this->user->id), ''); // Odd but just the way things can be!
         } else {
             $interests = get_string('usernointerests', 'theme_adaptable');
+            $interestsempty = true;
         }
         $node = new node('aboutme', 'interests', get_string('interests'), null, null,
             $interests);
         $aboutme->add_node($node);
 
-        return $aboutme;
+        return array('category' => $aboutme, 'diempty' => (($descriptionempty) && ($interestsempty)));
     }
 
     protected function customuserprofile() {
@@ -405,19 +409,20 @@ class renderer extends \core_user\output\myprofile\renderer {
         $tabdata->tabs = array();
 
         // Aboutme tab.
-        $category = $this->create_aboutme($tree);
-        $tab = new \stdClass;
-        $tab->name = $category->name;
-        $tab->displayname = $category->title;
+        $aboutme = $this->create_aboutme($tree);
+        $category = $aboutme['category'];
+        $aboutmetab = new \stdClass;
+        $aboutmetab->name = $category->name;
+        $aboutmetab->displayname = $category->title;
         $customuserprofilecat = $this->customuserprofile();
-        $tab->content = '';
+        $aboutmetab->content = '';
         if (!is_null($customuserprofilecat)) {
-            $tab->content .= $this->render($customuserprofilecat);
+            $aboutmetab->content .= $this->render($customuserprofilecat);
         } else {
             $category->notitle = true;
         }
-        $tab->content .= $this->render($category);
-        $tabdata->tabs[] = $tab;
+        $aboutmetab->content .= $this->render($category);
+        $tabdata->tabs[] = $aboutmetab;
 
         foreach ($tabcategories as $categoryname) {
             if (!empty($categories[$categoryname])) {
@@ -457,12 +462,19 @@ class renderer extends \core_user\output\myprofile\renderer {
 
         // Edit profile tab.
         $category = $this->create_editprofile();
-        $tab = new \stdClass;
-        $tab->name = $category->name;
-        $tab->displayname = $category->title;
+        $editprofiletab = new \stdClass;
+        $editprofiletab->name = $category->name;
+        $editprofiletab->displayname = $category->title;
         $category->notitle = true;
-        $tab->content = $this->render($category);
-        $tabdata->tabs[] = $tab;
+        $editprofiletab->content = $this->render($category);
+        $tabdata->tabs[] = $editprofiletab;
+
+        global $USER;
+        if (($this->user->id == $USER->id) && ($aboutme['diempty'])) {
+            $editprofiletab->selected = true;
+        } else {
+            $aboutmetab->selected = true;
+        }
 
         return $this->render_from_template('theme_adaptable/tabs', $tabdata);
     }

@@ -25,7 +25,8 @@
          {
             "name": "tab1",
             "displayname": "Tab1",
-            "content": "<p>Tab 1 content</p>"
+            "content": "<p>Tab 1 content</p>",
+            "selected": true
          },
          {
             "name": "tab2",
@@ -74,8 +75,8 @@
 
 <div id="{{containerid}}" class="tabcontentcontainer">
     {{#tabs}}
-    <input id="{{name}}" type="radio" name="tabs" class="adaptabletab">
-    <label for="{{name}}" class="adaptabletab"">{{displayname}}</label>
+    <input id="{{name}}" type="radio" name="tabs" class="adaptabletab"{{#selected}} checked="checked"{{/selected}}>
+    <label for="{{name}}" class="adaptabletab">{{displayname}}</label>
     {{/tabs}}
     {{#tabs}}
     <div id="adaptable-tab-{{name}}" class="adaptable-tab tab-panel">
@@ -83,8 +84,3 @@
     </div>
     {{/tabs}}
 </div>
-{{#js}}
-    require(['jquery'], function($) {
-        $("input:radio[name=tabs]:first").attr('checked', true);
-    });
-{{/js}}
