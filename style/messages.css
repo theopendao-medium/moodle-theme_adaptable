@@ -37,6 +37,13 @@
         font-size: 125%;
     }
 
+    /* M3.6 */
+    .message-drawer .btn,
+    /* M3.7 */
+    .message-app.drawer .btn {
+        height: auto;
+    }
+
     .message-drawer, /* M3.6 */
     .message-app.drawer { /* M3.7 */
         width: 400px;
