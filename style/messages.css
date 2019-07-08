@@ -36,6 +36,18 @@
     margin-right: 4px;
 }
 
+[data-region='message-drawer'] [data-region='header-container'] [data-region='contact-request-count'] {
+    color: #fff;
+}
+
+[data-region='message-drawer'] [data-region='header-container'] [data-region='contact-request-count'],
+[data-region='message-drawer'] [data-region='body-container'] [data-region='section-unread-count'],
+[data-region='message-drawer'] [data-region='body-container'] [data-region='unread-count'] {
+    background-color: red !important;
+    border-radius: 25px;
+}
+
+
 [data-region='message-drawer'] [data-region='body-container'] .btn-link {
     background-color: #fff;
     border-radius: 0;
