@@ -37,5 +37,11 @@
 }
 
 [data-region='message-drawer'] [data-region='body-container'] .btn-link {
+    background-color: #fff;
     border-radius: 0;
+    color: inherit !important;
+}
+
+[data-region='message-drawer'] [data-region='body-container'] .btn-link:hover {
+    color: #fff !important;
 }
