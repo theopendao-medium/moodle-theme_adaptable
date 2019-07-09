@@ -106,13 +106,19 @@ class renderer extends \core_user\output\myprofile\renderer {
             $this->userimage());
         $contactcategory->add_node($node);
 
-        $node = new node('contact', 'firstname', '', null, null,
-            $this->user->userdetails['firstname']);
-        $contactcategory->add_node($node);
+        if ((empty($this->user->userdetails['firstname'])) || (empty($this->user->userdetails['lastname']))) {
+            $node = new node('contact', 'fullname', '', null, null,
+                $this->user->userdetails['fullname']);
+            $contactcategory->add_node($node);
+        } else {
+            $node = new node('contact', 'firstname', '', null, null,
+                $this->user->userdetails['firstname']);
+            $contactcategory->add_node($node);
 
-        $node = new node('contact', 'lastname', '', null, null,
-            $this->user->userdetails['lastname']);
-        $contactcategory->add_node($node);
+            $node = new node('contact', 'lastname', '', null, null,
+                $this->user->userdetails['lastname']);
+            $contactcategory->add_node($node);
+        }
 
         $contactcategory->add_node($oldcontactcategory->nodes['editprofile']);
 

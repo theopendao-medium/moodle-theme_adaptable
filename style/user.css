@@ -37,7 +37,8 @@
     margin-top: 87px;
 }
 
-#adaptable_profile_tree .ucol1 .node_category.contact .firstname {
+#adaptable_profile_tree .ucol1 .node_category.contact .firstname,
+#adaptable_profile_tree .ucol1 .node_category.contact .fullname {
     padding-top: 30px;
 }
 
@@ -68,11 +69,13 @@
 }
 
 #adaptable_profile_tree .ucol1 .firstname,
+#adaptable_profile_tree .ucol1 .fullname,
 #adaptable_profile_tree .ucol1 .lastname {
     font-weight: bold;
 }
 
-#adaptable_profile_tree .ucol1 .firstname {
+#adaptable_profile_tree .ucol1 .firstname,
+#adaptable_profile_tree .ucol1 .fullname {
     font-size: 150%;
 }
 
