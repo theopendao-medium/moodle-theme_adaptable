@@ -77,8 +77,12 @@
 [data-region='message-drawer'] [data-region='body-container'] [data-region='unread-count'] {
     background-color: red !important;
     border-radius: 25px;
+    height: 25px;
 }
 
+[data-region='message-drawer'] [data-region='body-container'] [data-region='last-message-date'] {
+    padding-top: 0.1rem !important;
+}
 
 [data-region='message-drawer'] [data-region='body-container'] .btn-link {
     background-color: #fff;
