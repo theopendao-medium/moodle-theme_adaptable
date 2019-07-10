@@ -202,8 +202,8 @@
     /* cursor: pointer; */
 }
 
-#adaptable-page-header-wrapper #above-header .navbar .popover-region i,
-#adaptable-page-header-wrapper #header2 .navbar .popover-region i,
+#adaptable-page-header-wrapper #above-header .navbar .popover-region-toggle i,
+#adaptable-page-header-wrapper #header2 .navbar .popover-region-toggle i,
 #adaptable-page-header-wrapper #header2 .search-input-wrapper > div {
     color: [[setting:headertextcolor]];
     font-size: 1.2em;

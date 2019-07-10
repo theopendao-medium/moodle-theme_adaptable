@@ -54,6 +54,7 @@
 .popover-region-header-container,
 .popover-region-footer-container {
     height: 50px;
+    line-height: 50px;
 }
 
 .popover-region-header-text,
