@@ -33,8 +33,8 @@ $plugin->component = 'theme_adaptable';
 // Adaptable version date (YYYYMMDDrr where rr is the release number).
 $plugin->version   = 2019070101;
 
-// Moodle required version is 3.6.1.
-$plugin->requires  = 2018120301;
+// Moodle required version is 3.7 (Build: 20190520).
+$plugin->requires  = 2019052000.00;
 
 // Adaptable version using SemVer (https://semver.org).
 $plugin->release = '2.0.0';
@@ -44,4 +44,5 @@ $plugin->maturity = MATURITY_BETA;
 
 // Adaptable dependencies (Only Boost as it's the parent theme).
 $plugin->dependencies = array(
-        'theme_boost' => 2018120300);
+    'theme_boost' => 2019052000
+);
