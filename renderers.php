@@ -3283,12 +3283,21 @@ EOT;
             $id = clean_param($id, PARAM_ALPHANUMEXT);
         }
 
+        $expandable = false;
+        if (!empty($this->page->theme->settings->header2searchbox)) {
+            $expandable = $this->page->theme->settings->header2searchbox;
+        }
+
         // JS to animate the form.
-        $this->page->requires->js_call_amd('theme_adaptable/search-input', 'init', array('data' => array('id' => $id, 'expandable' => false)));
+        $this->page->requires->js_call_amd('theme_adaptable/search-input', 'init', array('data' => array('id' => $id, 'expandable' => $expandable)));
 
         $searchicon = html_writer::tag('div', $this->pix_icon('a/search', get_string('search', 'search'), 'moodle'),
             array('role' => 'button', 'tabindex' => 0));
-        $formattrs = array('class' => 'search-input-form expanded', 'action' => $CFG->wwwroot . '/search/index.php');
+        $formclass = 'search-input-form';
+        if (!$expandable) {
+            $formclass .= ' expanded';
+        }
+        $formattrs = array('class' => $formclass, 'action' => $CFG->wwwroot . '/search/index.php');
         $inputattrs = array('type' => 'text', 'name' => 'q', 'placeholder' => get_string('search', 'search'),
             'size' => 13, 'tabindex' => -1, 'id' => 'id_q_' . $id, 'class' => 'form-control');
 
@@ -3300,6 +3309,11 @@ EOT;
         }
         $searchinput = html_writer::tag('form', $contents, $formattrs);
 
-        return html_writer::tag('div', $searchicon . $searchinput, array('class' => 'search-input-wrapper nav-link expanded', 'id' => $id));
+        $wrapperclass = 'search-input-wrapper nav-link';
+        if (!$expandable) {
+            $wrapperclass .= ' expanded';
+        }
+
+        return html_writer::tag('div', $searchicon . $searchinput, array('class' => $wrapperclass, 'id' => $id));
     }
 }
