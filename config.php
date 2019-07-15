@@ -131,6 +131,7 @@ $THEME->sheets = array(
         'messages',
         'notifications',
         'responsive',
+        'search',
         'tabs',
         'user',
         'custom'
