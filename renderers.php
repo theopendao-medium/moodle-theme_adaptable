@@ -3311,7 +3311,7 @@ EOT;
 
         $wrapperclass = 'search-input-wrapper nav-link';
         if (!$expandable) {
-            $wrapperclass .= ' expanded';
+            $wrapperclass .= ' expanded expandable';
         }
 
         return html_writer::tag('div', $searchicon . $searchinput, array('class' => $wrapperclass, 'id' => $id));

@@ -1129,6 +1129,32 @@ input[type="radio"], input[type="checkbox"] {
     padding: 4px 12px;
 }
 
+@media (min-width: 576px) {
+    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable,
+    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable > form {
+        margin: 0;
+    }
+
+    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable {
+        padding: 0;
+        position: relative;
+    }
+
+    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable > div { /* The button! */
+        background-color: [[setting:backcolor]];
+        color: [[setting:fontcolor]];
+        height: 24px;
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        width: 24px;
+    }
+
+    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable > div .icon {
+        margin-top: 0;
+    }
+}
+
 #adaptable-page-header-wrapper #header2 .search-input-wrapper>div .icon {
     margin-top: 8px;
 }
