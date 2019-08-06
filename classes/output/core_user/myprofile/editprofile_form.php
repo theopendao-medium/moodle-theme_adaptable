@@ -210,7 +210,7 @@ class editprofile_form extends \moodleform {
             $mform->addElement('static', 'moodle_picture', '<h3>'.get_string('pictureofuser').'</h3>');
 
             if (!empty($CFG->enablegravatar)) {
-                $mform->addElement('html', html_writer::tag('p', get_string('gravatarenabled')));
+                $mform->addElement('html', \html_writer::tag('p', get_string('gravatarenabled')));
             }
 
             $mform->addElement('static', 'currentpicture', get_string('currentpicture'));
