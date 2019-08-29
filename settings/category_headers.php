@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die;
 // Category headers heading.
 $temp = new admin_settingpage('theme_adaptable_categoryheaders', get_string('categoryheaderssettings', 'theme_adaptable'));
 if ($ADMIN->fulltree) {
-    $temp->add(new admin_setting_heading('theme_adaptable_user', get_string('categoryheaderssettingsheading', 'theme_adaptable'),
+    $temp->add(new admin_setting_heading('theme_adaptable_categoryheaders', get_string('categoryheaderssettingsheading', 'theme_adaptable'),
         format_text(get_string('categoryheaderssettingsdesc', 'theme_adaptable'), FORMAT_MARKDOWN)));
 
     // Category headers to use.
@@ -45,7 +45,34 @@ if ($ADMIN->fulltree) {
         $customheaderids = explode(',', $tohavecustomheader);
         $topcats = \theme_adaptable\toolbox::get_top_categories_with_children();
         foreach ($customheaderids as $customheaderid) {
-            
+            $catinfo = $topcats[$customheaderid];
+            if (empty($catinfo['children'])) {
+                $headdesc = get_string('categoryheaderheaderdesc', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
+            } else {
+                $childrentext = '';
+                $first = true;
+                foreach ($catinfo['children'] as $catchildid => $catchild) {
+                    if ($first) {
+                        $first = false;
+                    } else {
+                        $childrentext .= ', ';
+                    }
+                    $childrentext .= $catchild.'('.$catchildid.')';
+                }
+                $headdesc = get_string('categoryheaderheaderdescchildren', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
+            }
+            $temp->add(new admin_setting_heading('theme_adaptable_categoryheader'.$customheaderid, get_string('categoryheaderheader', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name'])),
+                format_text($headdesc, FORMAT_MARKDOWN)));
+
+            $name = 'theme_adaptable/categoryheaderbgimage'.$customheaderid;
+            $title = get_string('categoryheaderbgimage', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
+            if (empty($catinfo['children'])) {
+                $description = get_string('categoryheaderbgimagedesc', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
+            } else {
+                $description = get_string('categoryheaderbgimagedescchildren', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
+            }
+            $setting = new admin_setting_configstoredfile($name, $title, $description, 'categoryheaderbgimage'.$customheaderid);
+            $temp->add($setting);
         }
     }
 }

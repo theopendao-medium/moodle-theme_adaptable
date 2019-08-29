@@ -470,6 +470,10 @@ function theme_adaptable_pluginfile($course, $cm, $context, $filearea, $args, $f
         $theme = theme_config::load('adaptable');
     }
     if ($context->contextlevel == CONTEXT_SYSTEM) {
+        // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+        if (!array_key_exists('cacheability', $options)) {
+            $options['cacheability'] = 'public';
+        }
         if ($filearea === 'logo') {
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
         } else if ($filearea === 'favicon') {
@@ -483,6 +487,8 @@ function theme_adaptable_pluginfile($course, $cm, $context, $filearea, $args, $f
         } else if (preg_match("/^p[1-9][0-9]?$/", $filearea) !== false) {
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if ((substr($filearea, 0, 9) === 'marketing') && (substr($filearea, 10, 5) === 'image')) {
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
+        } else if (preg_match("/^categoryheaderbgimage[1-9][0-9]*$/", $filearea) !== false) { // http://regexpal.com/ useful.
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if ($filearea === 'iphoneicon') {
             return $theme->setting_file_serve('iphoneicon', $args, $forcedownload, $options);

@@ -1813,6 +1813,10 @@ $string['categoryheaderssettingsdesc'] = 'Set settings for the headers within a 
 $string['categoryheaderssettingsheading'] = 'Change the header for one or more top level categories and below.';
 
 $string['categoryhavecustomheader'] = 'Category custom header';
-$string['categoryhavecustomheaderdesc'] = 'Select the top level categories that will have a custom header.  Note: Sub-categories of the selected will inherit the setting values.';
+$string['categoryhavecustomheaderdesc'] = 'Select the top level categories that will have a custom header.  Save and refesh the page to update  Note: Sub-categories of the selected will inherit the setting values.';
+$string['categoryheaderheader'] = 'Settings for the top level category \'{$a->name}\' with id \'{$a->id}\'.';
+$string['categoryheaderheaderdesc'] = 'Set the settings for the top level category \'{$a->name}\' with id \'{$a->id}\'.';
+$string['categoryheaderheaderdescchildren'] = 'Set the settings for the top level category \'{$a->name}\' with id \'{$a->id}\' and its children \'{$a->children}\'.';
 $string['categoryheaderbgimage'] = 'Category \'{$a->name}\' with id \'{$a->id}\' background image';
-$string['categoryheaderbgimagedesc'] = 'Set a background image for the top level category \'{$a->name}\' with id \'{$a->id}\' and its children \'{$a->children}\' in the header.  Minimum size is 1600x180px (1900x180px recommended).  The image will cover the full header.';
+$string['categoryheaderbgimagedesc'] = 'Set a background image for the top level category \'{$a->name}\' with id \'{$a->id}\' in the header.  Minimum size is 1600x180px (1900x180px recommended).  The image will cover the full header.';
+$string['categoryheaderbgimagedescchildren'] = 'Set a background image for the top level category \'{$a->name}\' with id \'{$a->id}\' and its children \'{$a->children}\' in the header.  Minimum size is 1600x180px (1900x180px recommended).  The image will cover the full header.';

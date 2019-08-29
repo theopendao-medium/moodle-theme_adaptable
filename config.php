@@ -127,6 +127,7 @@ $THEME->sheets = array(
         'course',
         'extras',
         'form',
+        'header',
         'menu',
         'messages',
         'notifications',
