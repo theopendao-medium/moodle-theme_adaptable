@@ -1806,3 +1806,11 @@ $string['customcoursesubtitle'] = 'Custom course title';
 $string['customcoursesubtitledesc'] = 'Name of the user profile custom field for the course title.';
 $string['usernodescription'] = 'User has not updated their description yet.';
 $string['usernointerests'] = 'User has not updated their interests yet.';
+
+// Category headers settings.
+$string['categoryheaderssettings'] = 'Category headers';
+$string['categoryheaderssettingsdesc'] = 'Set settings for the headers within a category.';
+$string['categoryheaderssettingsheading'] = 'Change the header for one or more top level categories and below.';
+
+$string['coursecategoryhavecustomheader'] = 'Category custom header';
+$string['coursecategoryhavecustomheaderdesc'] = 'Select the top level categories that will have a custom header.  Note: Sub-categories of the selected will inherit the setting values.';

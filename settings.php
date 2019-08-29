@@ -48,6 +48,7 @@ if (is_siteadmin()) {
     include(dirname(__FILE__) . '/settings/header_social.php');
     include(dirname(__FILE__) . '/settings/header_navbar.php');
     include(dirname(__FILE__) . '/settings/header_navbar_menu.php');
+    include(dirname(__FILE__) . '/settings/category_headers.php');
     include(dirname(__FILE__) . '/settings/alert_box.php');
     include(dirname(__FILE__) . '/settings/block_settings.php');
     include(dirname(__FILE__) . '/settings/block_regions.php');

@@ -53,6 +53,69 @@ class toolbox {
         return $settingurl;
     }
 
+    static function get_top_level_categories() {
+        $categoryids = array();
+        $categories = \core_course_category::get(0)->get_children(); // Parent = 0 i.e. top-level categories only.
+
+        foreach($categories as $category){
+            $categoryids[$category->id] = $category->name;
+        }
+
+        return $categoryids;
+    }
+
+    static public function get_current_top_level_catetgory() {
+        global $PAGE;
+        $catid = false;
+
+        if (is_array($PAGE->categories)) {
+            $catids = array_keys($PAGE->categories);
+            if (!empty($catids)) {
+                // The last entry in the array is the top level category.
+                $catid = $catids[(count($catids) - 1)];
+            }
+        } else if (!empty($$PAGE->course->category)) {
+            $catid = $PAGE->course->category;
+            // See if the course category is a top level one.
+            if (!array_key_exists($key, self::get_top_level_categories())) {
+                $catid = false;
+            }
+        }
+
+        return $catid;
+    }
+
+    static public function get_top_categories_with_children_ids() {
+        static $catlist = null;
+        static $dbcatlist = null;
+        
+        if (empty($catlist)) {
+            global $DB;
+            $dbcatlist = $DB->get_records('course_categories', null, 'sortorder', 'id, name, depth, path');
+            $catlist = array();
+
+            foreach ($dbcatlist as $category) {
+                if ($category->depth > 1 ) {
+                    $path = preg_split('|/|', $category->path, -1, PREG_SPLIT_NO_EMPTY);
+                    $top = $path[0];
+                    if (empty($catlist[$top])) {
+                        $catlist[$top] = array();
+                    }
+                    unset($path[0]);
+                    foreach ($path as $id) {
+                        if (!array_key_exists($id, $catlist[$top])) {
+                            $catlist[$top][$id] = $id;
+                        }
+                    }
+                } else if (empty($catlist[$category->id])) {
+                    $catlist[$category->id] = array();
+                }
+            }
+        }
+
+        return $catlist;
+    }
+
     static public function compile_properties($themename, $array = true) {
         global $CFG, $DB;
 
