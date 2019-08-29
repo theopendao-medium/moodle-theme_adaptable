@@ -85,6 +85,19 @@ if ($ADMIN->fulltree) {
             }
             $setting = new admin_setting_configstoredfile($name, $title, $description, 'categoryheaderlogo'.$customheaderid);
             $temp->add($setting);
+
+            // Site title.
+            $name = 'theme_adaptable/categoryheadersitetitle'.$customheaderid;
+            $title = get_string('categoryheadersitetitle', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
+            if (empty($catinfo['children'])) {
+                $description = get_string('categoryheadersitetitledesc', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
+            } else {
+                $description = get_string('categoryheadersitetitledescchildren', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
+            }
+            $default = '';
+            $setting = new admin_setting_configtext($name, $title, $description, $default);
+            $temp->add($setting);
+
         }
     }
 }

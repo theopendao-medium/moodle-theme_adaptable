@@ -149,7 +149,7 @@ if ($ADMIN->fulltree) {
     $radchoices = array(
         'fullname' => get_string('coursetitlefullname', 'theme_adaptable'),
         'shortname' => get_string('coursetitleshortname', 'theme_adaptable'),
-        'off' => get_string('hide'),
+        'off' => get_string('hide')
     );
     $setting = new admin_setting_configselect($name, $title, $description, 'fullname', $radchoices);
     $temp->add($setting);

@@ -1823,3 +1823,6 @@ $string['categoryheaderbgimagedescchildren'] = 'Set a background image for the t
 $string['categoryheaderlogo'] = 'Category \'{$a->name}\' with id \'{$a->id}\' logo';
 $string['categoryheaderlogodesc'] = 'Set a logo for the top level category \'{$a->name}\' with id \'{$a->id}\' in the header.  Recommended size is 200px by 80px.';
 $string['categoryheaderlogodescchildren'] = 'Set a logo for the top level category \'{$a->name}\' with id \'{$a->id}\' and its children \'{$a->children}\' in the header.  Recommended size is 200px by 80px.';
+$string['categoryheadersitetitle'] = 'Category \'{$a->name}\' with id \'{$a->id}\' site title';
+$string['categoryheadersitetitledesc'] = 'Set the site title for the top level category \'{$a->name}\' with id \'{$a->id}\' in the header when no other setting would override it.';
+$string['categoryheadersitetitledescchildren'] = 'Set the site title for the top level category \'{$a->name}\' with id \'{$a->id}\' and its children \'{$a->children}\' in the header when no other setting would override it.';

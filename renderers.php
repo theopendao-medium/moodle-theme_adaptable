@@ -2316,6 +2316,7 @@ EOT;
             (!empty($PAGE->theme->settings->coursetitlemaxwidth) ? $PAGE->theme->settings->coursetitlemaxwidth : 0);
 
         // If it is a mobile and the site title/course is not hidden or it is a desktop then we display the site title / course.
+        $usedefault = false;
         if (((theme_adaptable_is_mobile()) && ($hidecoursetitlemobile == 1)) || (theme_adaptable_is_desktop())) {
             // If course id is greater than 1 we display course title.
             if ($COURSE->id > 1) {
@@ -2355,23 +2356,31 @@ EOT;
                         break;
 
                     default:
-                        // None.
-                        $header = theme_adaptable_remove_site_fullname($PAGE->theme->settings->sitetitletext);
-                        $sitetitlehtml = $PAGE->theme->settings->sitetitletext;
-                        $retval .= '<div id="sitetitle" class="p-2 bd-highlight"s>'
-                                . format_text($sitetitlehtml, FORMAT_HTML) . '</div>';
-
+                        // 'off'.
+                        $usedefault = true;
                         break;
                 }
             }
 
-            // If course id is one we display the site title.
-            if ($COURSE->id == 1) {
+            // If course id is one or 'enableheading' was 'off' above then we display the site title.
+            if (($COURSE->id == 1) || ($usedefault)) {
                 switch ($PAGE->theme->settings->sitetitle) {
                     case 'default':
-                        // Default site title.
-                        $retval .= '<div id="sitetitle" class="p-2 bd-highlight"><h1>'
-                                    . format_string($SITE->fullname) . '</h1></div>';
+                        // Default or category set site title.
+                        $sitetitle = '';
+                        if (!empty($currenttopcat)) {
+                            $categoryheadersitetitleset = 'categoryheadersitetitle'.$currenttopcat;
+                            if (!empty($PAGE->theme->settings->$categoryheadersitetitleset)) {
+                                $sitetitle = $PAGE->theme->settings->$categoryheadersitetitleset;
+                            } else {
+                                $sitetitle = $SITE->fullname;
+                            }
+                        } else {
+                            $sitetitle = $SITE->fullname;
+                        }
+
+                        $retval .= '<div id="sitetitle" class="p-2 bd-highlight meee"><h1>'
+                                    . format_string($sitetitle) . '</h1></div>';
                         break;
 
                     case 'custom':
