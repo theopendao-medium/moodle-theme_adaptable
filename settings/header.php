@@ -94,7 +94,6 @@ if ($ADMIN->fulltree) {
     $title = get_string('logo', 'theme_adaptable');
     $description = get_string('logodesc', 'theme_adaptable');
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Page Header Height.

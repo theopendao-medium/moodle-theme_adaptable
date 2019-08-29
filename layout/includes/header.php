@@ -429,7 +429,7 @@ if (((theme_adaptable_is_mobile()) && ($hidealertsmobile == 1)) || (theme_adapta
         // Site title or logo.
         if (!$hidesitetitle) {
             echo '<div class="d-flex align-items-start bd-highlight">';
-            echo $OUTPUT->get_logo_title();
+            echo $OUTPUT->get_logo_title($currenttopcat);
             echo '</div>';
         }
         ?>
@@ -513,7 +513,7 @@ if (((theme_adaptable_is_mobile()) && ($hidealertsmobile == 1)) || (theme_adapta
             <?php
             // Site title or logo.
             if (!$hidesitetitle) {
-                echo $OUTPUT->get_logo_title();
+                echo $OUTPUT->get_logo_title($currenttopcat);
             }
             ?>
 

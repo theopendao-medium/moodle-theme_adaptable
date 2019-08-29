@@ -490,6 +490,8 @@ function theme_adaptable_pluginfile($course, $cm, $context, $filearea, $args, $f
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if (preg_match("/^categoryheaderbgimage[1-9][0-9]*$/", $filearea) !== false) { // http://regexpal.com/ useful.
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
+        } else if (preg_match("/^categoryheaderlogo[1-9][0-9]*$/", $filearea) !== false) { // http://regexpal.com/ useful.
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if ($filearea === 'iphoneicon') {
             return $theme->setting_file_serve('iphoneicon', $args, $forcedownload, $options);
         } else if ($filearea === 'iphoneretinaicon') {

@@ -2270,21 +2270,32 @@ EOT;
     }
 
     /**
-     * Returns html to render logo / title area
+     * Returns html to render logo / title area.
+     * @param bool/int $currenttopcat The id of the current top category or false if none.
      *
-     * @return string
+     * @return string Markup.
      */
-    public function get_logo_title() {
+    public function get_logo_title($currenttopcat) {
         global $PAGE, $COURSE, $CFG, $SITE;
         $retval = '';
 
         $hidelogomobile = $PAGE->theme->settings->hidelogomobile;
 
         if (((theme_adaptable_is_mobile()) && ($hidelogomobile == 1)) || (theme_adaptable_is_desktop())) {
-            if (!empty($PAGE->theme->settings->logo)) {
+            $logosetarea = '';
+            if (!empty($currenttopcat)) {
+                $categoryheaderlogoset = 'categoryheaderlogo'.$currenttopcat;
+                if (!empty($PAGE->theme->settings->$categoryheaderlogoset)) {
+                    $logosetarea = $categoryheaderlogoset;
+                }
+            }
+            if ((empty($logosetarea)) && (!empty($PAGE->theme->settings->logo))) {
+                $logosetarea = 'logo';
+            }
+            if (!empty($logosetarea)) {
                 // Logo.
                 $retval .= '<div class="p-2 bd-highlight">';
-                $logo = '<img src=' . $PAGE->theme->setting_file_url('logo', 'logo') . ' id="logo" alt="" />';
+                $logo = '<img src=' . $PAGE->theme->setting_file_url($logosetarea, $logosetarea) . ' id="logo" alt="" />';
 
                 // Exception - Quiz page - logo is not a link to site homepage.
                 if ($PAGE->pagetype == "mod-quiz-attempt") {

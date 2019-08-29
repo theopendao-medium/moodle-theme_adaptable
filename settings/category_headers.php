@@ -64,6 +64,7 @@ if ($ADMIN->fulltree) {
             $temp->add(new admin_setting_heading('theme_adaptable_categoryheader'.$customheaderid, get_string('categoryheaderheader', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name'])),
                 format_text($headdesc, FORMAT_MARKDOWN)));
 
+            // Background image.
             $name = 'theme_adaptable/categoryheaderbgimage'.$customheaderid;
             $title = get_string('categoryheaderbgimage', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
             if (empty($catinfo['children'])) {
@@ -72,6 +73,17 @@ if ($ADMIN->fulltree) {
                 $description = get_string('categoryheaderbgimagedescchildren', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
             }
             $setting = new admin_setting_configstoredfile($name, $title, $description, 'categoryheaderbgimage'.$customheaderid);
+            $temp->add($setting);
+
+            // Logo.
+            $name = 'theme_adaptable/categoryheaderlogo'.$customheaderid;
+            $title = get_string('categoryheaderlogo', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
+            if (empty($catinfo['children'])) {
+                $description = get_string('categoryheaderlogodesc', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
+            } else {
+                $description = get_string('categoryheaderlogodescchildren', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
+            }
+            $setting = new admin_setting_configstoredfile($name, $title, $description, 'categoryheaderlogo'.$customheaderid);
             $temp->add($setting);
         }
     }

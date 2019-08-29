@@ -1069,7 +1069,7 @@ $string['menusettings'] = 'Header Menus';
 $string['menusettingsheading'] = 'Customize menus in the upper header the header of this theme.';
 
 $string['logo'] = 'Logo';
-$string['logodesc'] = 'Upload a logo for use on your site. Recommended size is 200px x 80px';
+$string['logodesc'] = 'Upload a logo for use on your site.  Recommended size is 200px by 80px.';
 
 $string['favicon'] = 'Favicon';
 $string['favicondesc'] = 'Upload a favicon for use on your site,';
@@ -1820,3 +1820,6 @@ $string['categoryheaderheaderdescchildren'] = 'Set the settings for the top leve
 $string['categoryheaderbgimage'] = 'Category \'{$a->name}\' with id \'{$a->id}\' background image';
 $string['categoryheaderbgimagedesc'] = 'Set a background image for the top level category \'{$a->name}\' with id \'{$a->id}\' in the header.  Minimum size is 1600x180px (1900x180px recommended).  The image will cover the full header.';
 $string['categoryheaderbgimagedescchildren'] = 'Set a background image for the top level category \'{$a->name}\' with id \'{$a->id}\' and its children \'{$a->children}\' in the header.  Minimum size is 1600x180px (1900x180px recommended).  The image will cover the full header.';
+$string['categoryheaderlogo'] = 'Category \'{$a->name}\' with id \'{$a->id}\' logo';
+$string['categoryheaderlogodesc'] = 'Set a logo for the top level category \'{$a->name}\' with id \'{$a->id}\' in the header.  Recommended size is 200px by 80px.';
+$string['categoryheaderlogodescchildren'] = 'Set a logo for the top level category \'{$a->name}\' with id \'{$a->id}\' and its children \'{$a->children}\' in the header.  Recommended size is 200px by 80px.';
