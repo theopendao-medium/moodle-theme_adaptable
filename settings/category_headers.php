@@ -33,12 +33,21 @@ if ($ADMIN->fulltree) {
 
     // Category headers to use.
     $coursecatsoptions = \theme_adaptable\toolbox::get_top_level_categories();
-    $name = 'theme_adaptable/coursecategoryhavecustomheader';
-    $title = get_string('coursecategoryhavecustomheader', 'theme_adaptable');
-    $description = get_string('coursecategoryhavecustomheaderdesc', 'theme_adaptable');
+    $name = 'theme_adaptable/categoryhavecustomheader';
+    $title = get_string('categoryhavecustomheader', 'theme_adaptable');
+    $description = get_string('categoryhavecustomheaderdesc', 'theme_adaptable');
     $default = array();
     $setting = new admin_setting_configmultiselect($name, $title, $description, $default, $coursecatsoptions);
     $temp->add($setting);
+
+    $tohavecustomheader = get_config('theme_adaptable', 'categoryhavecustomheader');
+    if (!empty($tohavecustomheader)) {
+        $customheaderids = explode(',', $tohavecustomheader);
+        $topcats = \theme_adaptable\toolbox::get_top_categories_with_children();
+        foreach ($customheaderids as $customheaderid) {
+            
+        }
+    }
 }
 
 $ADMIN->add('theme_adaptable', $temp);

@@ -85,7 +85,7 @@ class toolbox {
         return $catid;
     }
 
-    static public function get_top_categories_with_children_ids() {
+    static public function get_top_categories_with_children() {
         static $catlist = null;
         static $dbcatlist = null;
         
@@ -99,16 +99,16 @@ class toolbox {
                     $path = preg_split('|/|', $category->path, -1, PREG_SPLIT_NO_EMPTY);
                     $top = $path[0];
                     if (empty($catlist[$top])) {
-                        $catlist[$top] = array();
+                        $catlist[$top] = array('name' => $dbcatlist[$top]->name, 'children' => array());
                     }
                     unset($path[0]);
                     foreach ($path as $id) {
-                        if (!array_key_exists($id, $catlist[$top])) {
-                            $catlist[$top][$id] = $id;
+                        if (!array_key_exists($id, $catlist[$top]['children'])) {
+                            $catlist[$top]['children'][$id] = $category->name;
                         }
                     }
                 } else if (empty($catlist[$category->id])) {
-                    $catlist[$category->id] = array();
+                    $catlist[$category->id] = array('name' => $category->name, 'children' => array());
                 }
             }
         }

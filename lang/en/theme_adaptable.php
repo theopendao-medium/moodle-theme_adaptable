@@ -1812,5 +1812,7 @@ $string['categoryheaderssettings'] = 'Category headers';
 $string['categoryheaderssettingsdesc'] = 'Set settings for the headers within a category.';
 $string['categoryheaderssettingsheading'] = 'Change the header for one or more top level categories and below.';
 
-$string['coursecategoryhavecustomheader'] = 'Category custom header';
-$string['coursecategoryhavecustomheaderdesc'] = 'Select the top level categories that will have a custom header.  Note: Sub-categories of the selected will inherit the setting values.';
+$string['categoryhavecustomheader'] = 'Category custom header';
+$string['categoryhavecustomheaderdesc'] = 'Select the top level categories that will have a custom header.  Note: Sub-categories of the selected will inherit the setting values.';
+$string['categoryheaderbgimage'] = 'Category \'{$a->name}\' with id \'{$a->id}\' background image';
+$string['categoryheaderbgimagedesc'] = 'Set a background image for the top level category \'{$a->name}\' with id \'{$a->id}\' and its children \'{$a->children}\' in the header.  Minimum size is 1600x180px (1900x180px recommended).  The image will cover the full header.';
