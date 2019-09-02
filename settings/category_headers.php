@@ -18,7 +18,7 @@
  * Category header settings
  *
  * @package    theme_adaptable
- * @copyright  &copy; 2019 - TBD
+ * @copyright  &copy; 2019 - G J Barnard
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -86,7 +86,7 @@ if ($ADMIN->fulltree) {
             $setting = new admin_setting_configstoredfile($name, $title, $description, 'categoryheaderlogo'.$customheaderid);
             $temp->add($setting);
 
-            // Site title.
+            // Custom title.
             $name = 'theme_adaptable/categoryheadercustomtitle'.$customheaderid;
             $title = get_string('categoryheadercustomtitle', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
             if (empty($catinfo['children'])) {
@@ -98,6 +98,18 @@ if ($ADMIN->fulltree) {
             $setting = new admin_setting_configtext($name, $title, $description, $default);
             $temp->add($setting);
 
+            // Custom CSS.
+            $name = 'theme_adaptable/categoryheadercustomcss'.$customheaderid;
+            $title = get_string('categoryheadercustomcss', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
+            if (empty($catinfo['children'])) {
+                $description = get_string('categoryheadercustomcssdesc', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name']));
+            } else {
+                $description = get_string('categoryheadercustomcssdescchildren', 'theme_adaptable', array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
+            }
+            $default = '';
+            $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $temp->add($setting);
         }
     }
 }

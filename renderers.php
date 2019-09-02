@@ -2320,9 +2320,9 @@ EOT;
         if (((theme_adaptable_is_mobile()) && ($hidecoursetitlemobile == 1)) || (theme_adaptable_is_desktop())) {
             $categoryheadercustomtitle = '';
             if (!empty($currenttopcat)) {
-                $categoryheadersitetitleset = 'categoryheadercustomtitle'.$currenttopcat;
-                if (!empty($PAGE->theme->settings->$categoryheadersitetitleset)) {
-                    $categoryheadercustomtitle = $PAGE->theme->settings->$categoryheadersitetitleset;
+                $categoryheadercustomtitleset = 'categoryheadercustomtitle'.$currenttopcat;
+                if (!empty($PAGE->theme->settings->$categoryheadercustomtitleset)) {
+                    $categoryheadercustomtitle = $PAGE->theme->settings->$categoryheadercustomtitleset;
                 }
             }
 

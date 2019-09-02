@@ -47,6 +47,9 @@ define('THEME_ADAPTABLE_DEFAULT_SLIDERCOUNT', '3');
  */
 function theme_adaptable_process_css($css, $theme) {
 
+    // Set category custom CSS.
+    $css = theme_adaptable_set_categorycustomcss($css, $theme->settings);
+
     // Set custom CSS.
     if (!empty($theme->settings->customcss)) {
         $customcss = $theme->settings->customcss;
@@ -321,6 +324,68 @@ function theme_adaptable_process_css($css, $theme) {
     return $css;
 }
 
+/**
+ * Adds any category custom CSS to the CSS before it is cached.
+ *
+ * @param string $css The original CSS.
+ * @param array $settings Theme settings.
+ * @return string The CSS which now contains our custom CSS.
+ */
+function theme_adaptable_set_categorycustomcss($css, $settings) {
+    $tohavecustomheader = $settings->categoryhavecustomheader;
+    $replacement = '';
+    if (!empty($tohavecustomheader)) {
+        $customheaderids = explode(',', $tohavecustomheader);
+        $topcats = \theme_adaptable\toolbox::get_top_categories_with_children();
+        $scss = new core_scss();
+        $categoryscss = '';
+        foreach ($customheaderids as $customheaderid) {
+            $categoryheadercustomcssset = 'categoryheadercustomcss'.$customheaderid;
+            if (!empty($settings->$categoryheadercustomcssset)) {
+                // Validate and add if ok.
+                try {
+                    $scss->compile($settings->$categoryheadercustomcssset);
+
+                    $catids = array($customheaderid);
+                    $catinfo = $topcats[$customheaderid];
+                    if (!empty($catinfo['children'])) {
+                        // Child categories.
+                        $catids = array_merge($catids, array_keys($catinfo['children']));
+                    }
+                    $categoryids = array();
+                    foreach ($catids as $catid) {
+                        $categoryids[] = '.category-'.$catid;
+                    }
+                    $categoryselector = implode(', ', $categoryids);
+                    $categoryscss .= $categoryselector.'{'.PHP_EOL;
+                    $categoryscss .= $settings->$categoryheadercustomcssset;
+                    $categoryscss .= PHP_EOL.'}'.PHP_EOL;
+                } catch (Leafo\ScssPhp\Exception\ParserException $e) {
+                    debugging(get_string('invalidcategorycss', 'theme_adaptable', array('css' => $settings->$categoryheadercustomcssset, 'topcatname' => $catinfo['name'], 'topcatid' => $customheaderid)), DEBUG_NONE);
+                } catch (Leafo\ScssPhp\Exception\CompilerException $e) {
+                    debugging(get_string('invalidcategorycss', 'theme_adaptable', array('css' => $settings->$categoryheadercustomcssset, 'topcatname' => $catinfo['name'], 'topcatid' => $customheaderid)), DEBUG_NONE);
+                }
+            }
+        }
+
+        if (!empty($categoryscss)) {
+            try {
+                $replacement = $scss->compile($categoryscss);
+            } catch (Leafo\ScssPhp\Exception\ParserException $e) {
+                debugging(get_string('invalidcategorygeneratedcss', 'theme_adaptable', array('css' => $categoryscss)), DEBUG_NONE);
+            } catch (Leafo\ScssPhp\Exception\CompilerException $e) {
+                debugging(get_string('invalidcategorygeneratedcss', 'theme_adaptable', array('css' => $categoryscss)), DEBUG_NONE);
+            }
+        }
+    }
+
+
+    $tag = '[[setting:catgorycustomcss]]';
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
 
 /**
  * Adds any custom CSS to the CSS before it is cached.

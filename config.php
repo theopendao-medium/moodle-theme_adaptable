@@ -135,6 +135,7 @@ $THEME->sheets = array(
         'search',
         'tabs',
         'user',
+        'categorycustom',
         'custom'
 );
 
