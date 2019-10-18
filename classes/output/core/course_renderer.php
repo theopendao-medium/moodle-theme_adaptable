@@ -105,7 +105,9 @@ class course_renderer extends \core_course_renderer {
             $this->strings->summary = get_string('summary');
         }
 
-        if ($chelper->get_show_courses() <= self::COURSECAT_SHOW_COURSES_COUNT) {
+        $showcourses = $chelper->get_show_courses();
+
+        if ($showcourses <= self::COURSECAT_SHOW_COURSES_COUNT) {
             return '';
         }
 
@@ -116,7 +118,7 @@ class course_renderer extends \core_course_renderer {
         $content = '';
         $classes = trim($additionalclasses);
 
-        if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
+        if ($showcourses < self::COURSECAT_SHOW_COURSES_EXPANDED) {
             $classes .= ' collapsed';
         }
 
@@ -130,27 +132,20 @@ class course_renderer extends \core_course_renderer {
         // Display course tiles depending the number per row.
         $content .= html_writer::start_tag('div',
               array('class' => 'col-'.$spanclass.' panel panel-default coursebox '.$additionalcss));
-        $urlb = new moodle_url('/course/view.php', array('id' => $course->id));
-
-        // Add the course link.
-        $content .= "<a href='$urlb'>";
 
         // Add the course name.
         $coursename = $chelper->get_course_formatted_name($course);
         $content .= html_writer::start_tag('div', array('class' => 'panel-heading'));
-        if ($type == 1) {
+        if (($type == 1) || ($showcourses <= self::COURSECAT_SHOW_COURSES_EXPANDED)) {
             $content .= html_writer::link(new moodle_url('/course/view.php', array('id' => $course->id)),
-                    $coursename, array('class' => $course->visible ? '' : 'dimmed', 'title' => $coursename));
+                $coursename, array('class' => $course->visible ? '' : 'dimmed', 'title' => $coursename));
         }
 
         // If we display course in collapsed form but the course has summary or course contacts, display the link to the info page.
-        if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
-            if ($course->has_summary() || $course->has_course_contacts() || $course->has_course_overviewfiles()) {
-                $url = new moodle_url('/course/info.php', array('id' => $course->id));
-                $arrow = html_writer::tag('span', '', array('class' => 'glyphicon glyphicon-info-sign'));
-                $content .= html_writer::link('#coursecollapse' . $course->id , '&nbsp;' . $arrow,
-                        array('data-toggle' => 'collapse', 'data-parent' => '#frontpage-category-combo'));
-            }
+        if ($showcourses < self::COURSECAT_SHOW_COURSES_EXPANDED) {
+            $arrow = html_writer::tag('span', '', array('class' => 'fa fa-chevron-down'));
+            $content .= html_writer::link('#coursecollapse' . $course->id , '&nbsp;' . $arrow,
+                array('data-toggle' => 'collapse', 'data-parent' => '#frontpage-category-combo'));
         }
 
         if ($type == 1) {
@@ -158,11 +153,10 @@ class course_renderer extends \core_course_renderer {
         }
 
         $content .= html_writer::end_tag('div'); // End .panel-heading.
-        $content .= html_writer::end_tag('a'); // End a.
 
-        if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
+        if ($showcourses < self::COURSECAT_SHOW_COURSES_EXPANDED) {
             $content .= html_writer::start_tag('div', array('id' => 'coursecollapse' . $course->id,
-                    'class' => 'panel-collapse collapse'));
+                'class' => 'panel-collapse collapse'));
         }
 
         $content .= html_writer::start_tag('div', array('class' => 'panel-body clearfix'));
@@ -170,7 +164,7 @@ class course_renderer extends \core_course_renderer {
         // This gets the course image or files.
         $content .= $this->coursecat_coursebox_content($chelper, $course, $type);
 
-        if ($chelper->get_show_courses() >= self::COURSECAT_SHOW_COURSES_EXPANDED) {
+        if ($showcourses >= self::COURSECAT_SHOW_COURSES_EXPANDED) {
             $icondirection = 'left';
             if ('ltr' === get_string('thisdirection', 'langconfig')) {
                 $icondirection = 'right';
@@ -187,7 +181,7 @@ class course_renderer extends \core_course_renderer {
 
         $content .= html_writer::end_tag('div'); // End .panel-body.
 
-        if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
+        if ($showcourses < self::COURSECAT_SHOW_COURSES_EXPANDED) {
             $content .= html_writer::end_tag('div'); // End .collapse.
         }
 
@@ -227,9 +221,7 @@ class course_renderer extends \core_course_renderer {
      */
     protected function coursecat_coursebox_content(coursecat_helper $chelper, $course, $type=3) {
         global $CFG, $OUTPUT, $PAGE;
-        if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
-            return '';
-        }
+
         if ($course instanceof stdClass) {
             require_once($CFG->libdir. '/coursecatlib.php');
             $course = new core_course_list_element($course);

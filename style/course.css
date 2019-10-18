@@ -59,8 +59,7 @@
     flex-wrap: wrap;
 }
 
-.frontpage-course-list-all,
-.frontpage-course-list-enrolled {
+#page-site-index .courses {
     display: flex;
     flex-flow: row wrap;
 }
@@ -73,12 +72,12 @@
 
 /* Media breakpoints for courses list area */
 @media (min-width: 992px) {
-    .frontpage-course-list-all {
+    #page-site-index .courses {
         max-width: 960px;
     }
 }
 @media (min-width: 1200px) {
-    .frontpage-course-list-all {
+    #page-site-index .courses {
         max-width: 100%;
     }
 }
@@ -88,6 +87,10 @@
     background-color: #fafafa !important;
     border: 5px solid rgba(255,255,255,1);
     border-radius: 2px;
+}
+
+.coursebox.panel,
+.coursebox.panel .panel-body {
     position: relative;
 }
 
