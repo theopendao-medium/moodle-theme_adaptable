@@ -135,8 +135,8 @@ class course_renderer extends \core_course_renderer {
 
         // Add the course name.
         $coursename = $chelper->get_course_formatted_name($course);
-        $content .= html_writer::start_tag('div', array('class' => 'panel-heading'));
-        if (($type == 1) || ($showcourses <= self::COURSECAT_SHOW_COURSES_EXPANDED)) {
+        if (($type == 1) || ($showcourses < self::COURSECAT_SHOW_COURSES_EXPANDED)) {
+            $content .= html_writer::start_tag('div', array('class' => 'panel-heading'));
             $content .= html_writer::link(new moodle_url('/course/view.php', array('id' => $course->id)),
                 $coursename, array('class' => $course->visible ? '' : 'dimmed', 'title' => $coursename));
         }
@@ -152,7 +152,9 @@ class course_renderer extends \core_course_renderer {
             $content .= $this->coursecat_coursebox_enrolmenticons($course, $type);
         }
 
-        $content .= html_writer::end_tag('div'); // End .panel-heading.
+        if (($type == 1) || ($showcourses < self::COURSECAT_SHOW_COURSES_EXPANDED)) {
+            $content .= html_writer::end_tag('div'); // End .panel-heading.
+        }
 
         if ($showcourses < self::COURSECAT_SHOW_COURSES_EXPANDED) {
             $content .= html_writer::start_tag('div', array('id' => 'coursecollapse' . $course->id,
