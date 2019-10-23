@@ -1252,3 +1252,11 @@ html[xmlns] .slides {
 .zoomin .hbl {
     display: none;
 }
+
+.fpcombocollapse .fp-chevron:before {
+    content: "\f077";
+}
+
+.fpcombocollapse.collapsed .fp-chevron:before {
+    content: "\f078";
+}
