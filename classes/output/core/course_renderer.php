@@ -143,7 +143,7 @@ class course_renderer extends \core_course_renderer {
 
         // If we display course in collapsed form but the course has summary or course contacts, display the link to the info page.
         if ($showcourses < self::COURSECAT_SHOW_COURSES_EXPANDED) {
-            $arrow = html_writer::tag('span', '', array('class' => 'fa fp-chevron'));
+            $arrow = html_writer::tag('span', '', array('class' => 'fa fp-chevron ml-1'));
             $content .= html_writer::link('#coursecollapse' . $course->id , '' . $arrow,
                 array('class' => 'fpcombocollapse collapsed', 'data-toggle' => 'collapse', 'data-parent' => '#frontpage-category-combo'));
         }
