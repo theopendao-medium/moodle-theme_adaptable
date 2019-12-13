@@ -206,6 +206,12 @@ if (file_exists("$CFG->dirroot/course/format/flexible/renderer.php")) {
     }
 }
 
+define('ADAPTABLE_COURSE_STARRED', 'starred');
+define('ADAPTABLE_COURSE_IN_PROGRESS', 'inprogress');
+define('ADAPTABLE_COURSE_PAST', 'past');
+define('ADAPTABLE_COURSE_FUTURE', 'future');
+define('ADAPTABLE_COURSE_HIDDEN', 'hidden');
+
 /**
  * Class for core renderer.
  *
@@ -269,8 +275,6 @@ class theme_adaptable_core_renderer extends core_renderer {
      * @return array list of courses
      */
     public function render_mycourses() {
-        global $USER;
-
         // Set limit of courses to show in dropdown from setting.
         $coursedisplaylimit = '20';
         if (isset($this->page->theme->settings->mycoursesmenulimit)) {
@@ -1839,6 +1843,7 @@ EOT;
                     if ($overridetype == 'profilefieldscohort') {
                         $overridelist = array_merge($this->get_cohort_enrollments(), $overridelist);
                     }
+                } else if ($overridetype == 'myoverview') {
                 }
 
                 if ($PAGE->theme->settings->mysitessortoverride == 'strings') {
@@ -1914,6 +1919,10 @@ EOT;
                     $icon = '';
 
                     if ($sortedcourses) {
+                        //if ($overridetype == 'myoverview') {
+                            $myoverviewcourses = $this->parsemyoverview($sortedcourses);
+                            error_log(print_r($myoverviewcourses, true));
+                        //}
                         foreach ($sortedcourses as $course) {
                             $coursename = '';
                             $rawcoursename = ''; // Untrimmed course name.
@@ -1950,14 +1959,14 @@ EOT;
                                                     new moodle_url('/course/view.php?id='.$course->id), $alttext, 100);
                                     } else {
                                         // If not in array add to sub menu item.
-                                        if (!isset($parent)) {
+                                        if (!isset($child)) {
                                             $icon = '<i class="fa fa-history"></i> ';
-                                            $parent = $branch->add($icon . $trunc = rtrim(
+                                            $child = $branch->add($icon . $trunc = rtrim(
                                                         mb_strimwidth(format_string(get_string('pastcourses', 'theme_adaptable')),
                                                         0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
                                         }
 
-                                        $parent->add($trunc = rtrim(mb_strimwidth(format_string($rawcoursename),
+                                        $child->add($trunc = rtrim(mb_strimwidth(format_string($rawcoursename),
                                                             0, $mysitesmaxlengthhidden)) . '...',
                                                             new moodle_url('/course/view.php?id='.$course->id),
                                                             format_string($rawcoursename));
@@ -1967,16 +1976,16 @@ EOT;
                         }
 
                         $icon = '<i class="fa fa-eye-slash"></i> ';
-                        $parent = null;
+                        $child = null;
                         foreach ($sortedcourses as $course) {
                             if (!$course->visible && $mysitesvisibility == 'includehidden') {
-                                if (empty($parent)) {
-                                    $parent = $branch->add($icon .
+                                if (empty($child)) {
+                                    $child = $branch->add($icon .
                                         $trunc = rtrim(mb_strimwidth(format_string(get_string('hiddencourses', 'theme_adaptable')),
                                         0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 2000);
                                 }
 
-                                $parent->add($icon . $trunc = rtrim(mb_strimwidth(format_string($course->fullname),
+                                $child->add($icon . $trunc = rtrim(mb_strimwidth(format_string($course->fullname),
                                         0, $mysitesmaxlengthhidden)) . '...',
                                         new moodle_url('/course/view.php?id='.$course->id), format_string($course->shortname));
                             }
@@ -2097,6 +2106,57 @@ EOT;
 
         return $menu;
 
+    }
+
+    protected function parsemyoverview($sortedcourses) {
+        global $CFG, $USER;
+
+        require_once($CFG->dirroot . '/course/lib.php');
+        $ufservice = \core_favourites\service_factory::get_service_for_user_context(\context_user::instance($USER->id));
+        $starred = $ufservice->find_favourites_by_type('core_course', 'courses');
+        $starredids = array();
+
+        if ($starred) {
+            $starredids = array_map(
+                function($favourite) {
+                    return $favourite->itemid;
+                }, $starred);
+        }
+
+        $hiddenids = get_hidden_courses_on_timeline($USER);
+
+error_log('starred '.print_r($starredids, true));
+error_log('hidden '.print_r($hiddenids, true));
+
+        $myoverviewcourses = array(
+            ADAPTABLE_COURSE_STARRED => array(),
+            ADAPTABLE_COURSE_IN_PROGRESS => array(),
+            ADAPTABLE_COURSE_PAST => array(),
+            ADAPTABLE_COURSE_FUTURE => array(),
+            ADAPTABLE_COURSE_HIDDEN => array()
+        );
+
+        foreach($sortedcourses as $course) {
+            if (in_array($course->id, $starredids)) {
+                $myoverviewcourses[ADAPTABLE_COURSE_STARRED][] = $course;
+            } else if (in_array($course->id, $hiddenids)) {
+                $myoverviewcourses[ADAPTABLE_COURSE_HIDDEN][] = $course;
+            } else {
+                switch (course_classify_for_timeline($course, $USER)) {
+                    case COURSE_TIMELINE_PAST:
+                        $myoverviewcourses[ADAPTABLE_COURSE_PAST][] = $course;
+                    break;
+                    case COURSE_TIMELINE_FUTURE:
+                        $myoverviewcourses[ADAPTABLE_COURSE_FUTURE][] = $course;
+                    break;
+                    case COURSE_TIMELINE_INPROGRESS:
+                        $myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS][] = $course;
+                    break;
+                }
+            }
+        }
+
+        return $myoverviewcourses;
     }
 
     /**
