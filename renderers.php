@@ -1921,38 +1921,48 @@ EOT;
                     if ($sortedcourses) {
                         if ($overridetype == 'myoverview') {
                             $myoverviewcourses = $this->parsemyoverview($sortedcourses);
-                            error_log('myoverview: '.print_r($myoverviewcourses, true));
 
-                            $this->addcoursestomenu($branch, $myoverviewcourses[ADAPTABLE_COURSE_STARRED],
-                                $showshortcode, $showhover, $mysitesmaxlength);
+                            if (!empty($myoverviewcourses[ADAPTABLE_COURSE_STARRED])) {
+                                $icon = '<i class="fa fa-star-o"></i> ';
+                                $this->addcoursestomenu($branch, $myoverviewcourses[ADAPTABLE_COURSE_STARRED],
+                                    $showshortcode, $showhover, $mysitesmaxlength, $icon);
+                            }
 
-                            $icon = '<i class="fa fa-tasks"></i> ';
-                            $child = $branch->add($icon . $trunc = rtrim(
-                                mb_strimwidth(format_string(get_string('inprogress', 'theme_adaptable')),
-                                0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
-                            $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS],
-                                $showshortcode, $showhover, $mysitesmaxlength);
+                            if (!empty($myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS])) {
+                                $icon = '<i class="fa fa-tasks"></i> ';
+                                $child = $branch->add($icon . $trunc = rtrim(
+                                    mb_strimwidth(format_string(get_string('inprogress', 'theme_adaptable')),
+                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
+                                $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS],
+                                    $showshortcode, $showhover, $mysitesmaxlength);
+                            }
 
-                            $icon = '<i class="fa fa-history"></i> ';
-                            $child = $branch->add($icon . $trunc = rtrim(
-                                mb_strimwidth(format_string(get_string('past', 'theme_adaptable')),
-                                0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
-                            $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_PAST],
-                                $showshortcode, $showhover, $mysitesmaxlength);
+                            if (!empty($myoverviewcourses[ADAPTABLE_COURSE_PAST])) {
+                                $icon = '<i class="fa fa-history"></i> ';
+                                $child = $branch->add($icon . $trunc = rtrim(
+                                    mb_strimwidth(format_string(get_string('past', 'theme_adaptable')),
+                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
+                                $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_PAST],
+                                    $showshortcode, $showhover, $mysitesmaxlength);
+                            }
 
-                            $icon = '<i class="fa fa-clock-o"></i> ';
-                            $child = $branch->add($icon . $trunc = rtrim(
-                                mb_strimwidth(format_string(get_string('future', 'theme_adaptable')),
-                                0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
-                            $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_FUTURE],
-                                $showshortcode, $showhover, $mysitesmaxlength);
+                            if (!empty($myoverviewcourses[ADAPTABLE_COURSE_FUTURE])) {
+                                $icon = '<i class="fa fa-clock-o"></i> ';
+                                $child = $branch->add($icon . $trunc = rtrim(
+                                    mb_strimwidth(format_string(get_string('future', 'theme_adaptable')),
+                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
+                                $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_FUTURE],
+                                    $showshortcode, $showhover, $mysitesmaxlength);
+                            }
 
-                            $icon = '<i class="fa fa-eye-slash"></i> ';
-                            $child = $branch->add($icon . $trunc = rtrim(
-                                mb_strimwidth(format_string(get_string('hiddenfromview', 'theme_adaptable')),
-                                0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
-                            $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_HIDDEN],
-                                $showshortcode, $showhover, $mysitesmaxlength);
+                            if (!empty($myoverviewcourses[ADAPTABLE_COURSE_HIDDEN])) {
+                                $icon = '<i class="fa fa-eye-slash"></i> ';
+                                $child = $branch->add($icon . $trunc = rtrim(
+                                    mb_strimwidth(format_string(get_string('hiddenfromview', 'theme_adaptable')),
+                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
+                                $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_HIDDEN],
+                                    $showshortcode, $showhover, $mysitesmaxlength);
+                            }
                         } else {
                             foreach ($sortedcourses as $course) {
                                 if ($course->visible) {
@@ -2160,9 +2170,6 @@ EOT;
 
         $hiddenids = get_hidden_courses_on_timeline($USER);
 
-error_log('starred '.print_r($starredids, true));
-error_log('hidden '.print_r($hiddenids, true));
-
         $myoverviewcourses = array(
             ADAPTABLE_COURSE_STARRED => array(),
             ADAPTABLE_COURSE_IN_PROGRESS => array(),
@@ -2195,9 +2202,9 @@ error_log('hidden '.print_r($hiddenids, true));
         return $myoverviewcourses;
     }
 
-    protected function addcoursestomenu(&$menu, $courses, $showshortcode, $showhover, $mysitesmaxlength) {
+    protected function addcoursestomenu(&$menu, $courses, $showshortcode, $showhover, $mysitesmaxlength, $icon = '') {
         foreach ($courses as $course) {
-            if ($course->visible) { // Note: TODO or if has view hidden courses capability.
+            if (($course->visible) || (has_capability('moodle/course:viewhiddencourses', $this->page->context))) {
                 if ($showshortcode) {
                     $coursename = mb_strimwidth(format_string($course->shortname), 0,
                         $mysitesmaxlength, '...', 'utf-8');
@@ -2212,7 +2219,7 @@ error_log('hidden '.print_r($hiddenids, true));
                     $alttext = '';
                 }
 
-                $menu->add($coursename, new moodle_url('/course/view.php?id='.$course->id), $alttext);
+                $menu->add($icon.$coursename, new moodle_url('/course/view.php?id='.$course->id), $alttext);
             }
         }
     }
