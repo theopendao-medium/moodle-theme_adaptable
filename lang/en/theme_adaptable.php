@@ -1411,8 +1411,12 @@ Moodle.com|http://moodle.com/
 $string['toolsmenulabel'] = 'Tools';
 $string['toolsmenulabel2'] = 'Tools 2';
 $string['events'] = 'Events';
-$string['mysites'] = 'My Courses';
+$string['future'] = 'Future';
 $string['hiddencourses'] = 'Hidden Courses';
+$string['hiddenfromview'] = 'Hidden From View';
+$string['inprogress'] = 'In Progress';
+$string['mysites'] = 'My Courses';
+$string['past'] = 'Past';
 $string['pastcourses'] = 'Past Courses';
 $string['people'] = 'Participants';
 $string['help'] = 'Help';
