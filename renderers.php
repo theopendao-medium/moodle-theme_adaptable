@@ -1932,7 +1932,7 @@ EOT;
                                 $icon = '<i class="fa fa-tasks"></i> ';
                                 $child = $branch->add($icon . $trunc = rtrim(
                                     mb_strimwidth(format_string(get_string('inprogress', 'theme_adaptable')),
-                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
+                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS],
                                     $showshortcode, $showhover, $mysitesmaxlength);
                             }
@@ -1941,7 +1941,7 @@ EOT;
                                 $icon = '<i class="fa fa-history"></i> ';
                                 $child = $branch->add($icon . $trunc = rtrim(
                                     mb_strimwidth(format_string(get_string('past', 'theme_adaptable')),
-                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
+                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_PAST],
                                     $showshortcode, $showhover, $mysitesmaxlength);
                             }
@@ -1950,7 +1950,7 @@ EOT;
                                 $icon = '<i class="fa fa-clock-o"></i> ';
                                 $child = $branch->add($icon . $trunc = rtrim(
                                     mb_strimwidth(format_string(get_string('future', 'theme_adaptable')),
-                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
+                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_FUTURE],
                                     $showshortcode, $showhover, $mysitesmaxlength);
                             }
@@ -1959,7 +1959,7 @@ EOT;
                                 $icon = '<i class="fa fa-eye-slash"></i> ';
                                 $child = $branch->add($icon . $trunc = rtrim(
                                     mb_strimwidth(format_string(get_string('hiddenfromview', 'theme_adaptable')),
-                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
+                                    0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_HIDDEN],
                                     $showshortcode, $showhover, $mysitesmaxlength);
                             }
