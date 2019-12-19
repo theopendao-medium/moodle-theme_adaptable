@@ -1831,24 +1831,28 @@ EOT;
                 $branchsort  = 10000;
                 $branch = $menu->add($branchlabel, $branchurl, '', $branchsort);
             }
+            
+            overridetype == null;
+            $overridelist == null;
 
-            if (!empty($PAGE->theme->settings->mysitessortoverride) && $PAGE->theme->settings->mysitessortoverride != 'off'
-                    && !empty($PAGE->theme->settings->mysitessortoverridefield)) {
-
+            if (!empty($PAGE->theme->settings->mysitessortoverride)){
                 $overridetype = $PAGE->theme->settings->mysitessortoverride;
+            }
+            
+            if (!empty($PAGE->theme->settings->mysitessortoverridefield)) {                    
                 $overridelist = $PAGE->theme->settings->mysitessortoverridefield;
+            }
 
-                if ($overridetype == 'profilefields' || $overridetype == 'profilefieldscohort') {
-                    $overridelist = $this->get_profile_field_contents($overridelist);
+            if (($overridetype == 'profilefields' || $overridetype == 'profilefieldscohort') && (isset($overridelist))){
+                $overridelist = $this->get_profile_field_contents($overridelist);
 
-                    if ($overridetype == 'profilefieldscohort') {
-                        $overridelist = array_merge($this->get_cohort_enrollments(), $overridelist);
-                    }
+                if ($overridetype == 'profilefieldscohort') {
+                    $overridelist = array_merge($this->get_cohort_enrollments(), $overridelist);
                 }
+            }
 
-                if ($PAGE->theme->settings->mysitessortoverride == 'strings') {
-                    $overridelist = explode(',', $overridelist);
-                }
+            if ($PAGE->theme->settings->mysitessortoverride == 'strings') {
+                $overridelist = explode(',', $overridelist);
             }
 
             if ($mysitesvisibility != 'disabled') {
