@@ -1832,8 +1832,8 @@ EOT;
                 $branch = $menu->add($branchlabel, $branchurl, '', $branchsort);
             }
             
-            $overridetype == null;
-            $overridelist == null;
+            $overridetype = null;
+            $overridelist = null;
 
             if (!empty($PAGE->theme->settings->mysitessortoverride)){
                 $overridetype = $PAGE->theme->settings->mysitessortoverride;
@@ -1844,6 +1844,7 @@ EOT;
             }
 
             if (($overridetype == 'profilefields' || $overridetype == 'profilefieldscohort') && (isset($overridelist))){
+                echo "override list is " . $overridelist;
                 $overridelist = $this->get_profile_field_contents($overridelist);
 
                 if ($overridetype == 'profilefieldscohort') {
@@ -1851,7 +1852,7 @@ EOT;
                 }
             }
 
-            if ($PAGE->theme->settings->mysitessortoverride == 'strings') {
+            if ($overridetype == 'strings' && isset($overridelist)) {
                 $overridelist = explode(',', $overridelist);
             }
 
