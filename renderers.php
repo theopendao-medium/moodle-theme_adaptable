@@ -282,7 +282,9 @@ class theme_adaptable_core_renderer extends core_renderer {
             $coursedisplaylimit = $this->page->theme->settings->mycoursesmenulimit;
         }
 
-        $courses = enrol_get_my_courses();
+        $courses = enrol_get_my_courses(
+            join(',', array_keys(\core_course\external\course_summary_exporter::define_properties()))
+        );
 
         $sortedcourses = array();
         $counter = 0;
@@ -1844,7 +1846,6 @@ EOT;
             }
 
             if (($overridetype == 'profilefields' || $overridetype == 'profilefieldscohort') && (isset($overridelist))){
-                echo "override list is " . $overridelist;
                 $overridelist = $this->get_profile_field_contents($overridelist);
 
                 if ($overridetype == 'profilefieldscohort') {
