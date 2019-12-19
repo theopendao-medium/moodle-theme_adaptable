@@ -1832,7 +1832,7 @@ EOT;
                 $branch = $menu->add($branchlabel, $branchurl, '', $branchsort);
             }
             
-            overridetype == null;
+            $overridetype == null;
             $overridelist == null;
 
             if (!empty($PAGE->theme->settings->mysitessortoverride)){
