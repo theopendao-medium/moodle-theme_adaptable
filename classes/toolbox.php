@@ -399,4 +399,34 @@ class toolbox {
         $rgba[] = $alpha;
         return 'rgba('.implode(", ", $rgba).')'; // Returns the rgba values separated by commas.
     }
+
+    /**
+     * Renderers the overridden template if the setting for that template has been enabled and set.
+     *
+     * @param string $templatename
+     * @param array|stdClass $data Context containing data for the template.
+     * @return string or false if not overridden.
+     */
+    static public function apply_template_override($templatename, $data) {
+        $output = false;
+
+        $overridetemplates = get_config('theme_adaptable', 'templatessel');
+        if ($overridetemplates) {
+            $overridetemplates = explode(',', $overridetemplates);
+            if (in_array($templatename, $overridetemplates)) {
+                global $PAGE;
+
+                $setting = 'activatetemplateoverride_'.$templatename;
+                if (!empty($PAGE->theme->settings->$setting)) {
+                    $setting = 'overriddentemplate_'.$templatename;
+                    if (!empty($PAGE->theme->settings->$setting)) {
+                        global $OUTPUT;
+                        $output = $OUTPUT->render_from_template($templatename, $data);
+                    }
+                }
+            }
+        }
+
+        return $output;
+    }
 }

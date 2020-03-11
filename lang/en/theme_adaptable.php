@@ -1595,7 +1595,7 @@ $string['templatessel'] = 'Templates to override';
 $string['templatesseldesc'] = 'Select the templates to override, then each will be shown on their own page.  If not selected here, then the template will not be overridden even if it is enabled.  To select none, use the \'Ctrl\' key.';
 $string['overridetemplate'] = 'Override template: {$a}';
 $string['activatetemplateoverride'] = 'Activate template override for \'{$a}\'';
-$string['activatetemplateoverridedesc'] = 'When ticked then the value in the \'{$a->setting}\' setting will be used as the \'{$a->template}\' if it contains text.';
+$string['activatetemplateoverridedesc'] = 'When ticked then the value in the \'{$a->setting}\' setting will be used as the \'{$a->template}\' template if it contains text.';
 $string['overriddentemplate'] = 'Overridden template: {$a}';
 $string['overriddentemplatedesc'] = 'If set then the text here will be used as the template \'{$a}\'.  To ensure that the preview works, there needs to be the standard example context in JSON format.';
 

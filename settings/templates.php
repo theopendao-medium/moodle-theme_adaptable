@@ -29,8 +29,8 @@ if ($ADMIN->fulltree) {
     format_text(get_string('templatesheadingdesc', 'theme_adaptable'), FORMAT_MARKDOWN)));
 
     static $templates = array(
-        'forum_post_email_htmlemail' => 'forum_post_email_htmlemail',
-        'forum_post_email_textemail' => 'forum_post_email_textemail'
+        'mod_forum/forum_post_email_htmlemail' => 'mod_forum/forum_post_email_htmlemail',
+        'mod_forum/forum_post_email_textemail' => 'mod_forum/forum_post_email_textemail'
     );
     $name = 'theme_adaptable/templatessel';
     $title = get_string('templatessel', 'theme_adaptable');
@@ -53,15 +53,16 @@ if ($overridetemplates) {
 
     $overridetemplates = explode(',', $overridetemplates);
     foreach($overridetemplates as $overridetemplate) {
-        $temppage = new admin_settingpage('theme_adaptable_templates_'.$overridetemplate, get_string('overridetemplate', 'theme_adaptable', $overridetemplate));
+        $overridetemplatesetting = str_replace('/', '_', $overridetemplate);
+        $temppage = new admin_settingpage('theme_adaptable_templates_'.$overridetemplatesetting, get_string('overridetemplate', 'theme_adaptable', $overridetemplate));
         if ($ADMIN->fulltree) {
-            $name = 'theme_adaptable/activatetemplateoverride_'.$overridetemplate;
+            $name = 'theme_adaptable/activatetemplateoverride_'.$overridetemplatesetting;
             $title = get_string('activatetemplateoverride', 'theme_adaptable', $overridetemplate);
-            $description = get_string('activatetemplateoverridedesc', 'theme_adaptable', array('template' => $overridetemplate, 'setting' => $overridetemplate));
+            $description = get_string('activatetemplateoverridedesc', 'theme_adaptable', array('template' => $overridetemplate, 'setting' => $overridetemplatesetting));
             $setting = new admin_setting_configcheckbox($name, $title, $description, false);
             $temppage->add($setting);
 
-            $name = 'theme_adaptable/overriddentemplate'.$overridetemplate;
+            $name = 'theme_adaptable/overriddentemplate'.$overridetemplatesetting;
             $title = get_string('overriddentemplate', 'theme_adaptable', $overridetemplate);
             $description = get_string('overriddentemplatedesc', 'theme_adaptable', $overridetemplate);
             $default = '';
