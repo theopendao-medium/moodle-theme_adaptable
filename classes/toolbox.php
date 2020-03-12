@@ -410,21 +410,16 @@ class toolbox {
     static public function apply_template_override($templatename, $data) {
         $output = false;
 
-error_log('apply_template_override 1:'.$templatename);
         $overridetemplates = get_config('theme_adaptable', 'templatessel');
         if ($overridetemplates) {
-error_log('apply_template_override ot:'.$overridetemplates);
             $overridetemplates = explode(',', $overridetemplates);
             if (in_array($templatename, $overridetemplates)) {
                 global $PAGE;
-error_log('apply_template_override ia:'.$templatename);
 
                 $overridetemplatesetting = str_replace('/', '_', $templatename);
                 $setting = 'activatetemplateoverride_'.$overridetemplatesetting;
-error_log('apply_template_override act:'.$templatename.' - '.$PAGE->theme->settings->$setting);
                 if (!empty($PAGE->theme->settings->$setting)) {
                     $setting = 'overriddentemplate_'.$overridetemplatesetting;
-error_log('apply_template_override sett:'.$templatename.' - '.$PAGE->theme->settings->$setting);
                     if (!empty($PAGE->theme->settings->$setting)) {
                         $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
 
@@ -433,7 +428,6 @@ error_log('apply_template_override sett:'.$templatename.' - '.$PAGE->theme->sett
                            'name' as passed in.  The engine then calls 'loadSource' from 'loadTemplate' which can
                            have 'Mustache_Source' as an input, being the mustache template source itself. */
                         $output = $renderer->render_from_template($PAGE->theme->settings->$setting, $data);
-error_log('apply_template_override OUT:'.$output);
                     }
                 }
             }

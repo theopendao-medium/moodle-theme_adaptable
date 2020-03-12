@@ -33,73 +33,27 @@ defined('MOODLE_INTERNAL') || die();
 class mustache_renderer extends \renderer_base {
 
     /**
-     * @var Mustache_Engine $mustache The mustache template compiler.
+     * @var Mustache_Loader $stringloader The mustache string loader.
      */
-    protected $mustache;
+    protected $stringloader;
 
     /**
-     * Return an instance of the mustache class.
+     * Renders a template by name with the given context.
+     *
+     * The provided data needs to be array/stdClass made up of only simple types.
+     * Simple types are array,stdClass,bool,int,float,string
      *
      * @since 2.9
-     * @return Mustache_Engine
+     * @param array|stdClass $context Context containing data for the template.
+     * @return string|boolean
      */
-    protected function get_mustache() {
-        global $CFG;
-
-        if ($this->mustache === null) {
-            require_once("{$CFG->libdir}/filelib.php");
-
-            $themename = $this->page->theme->name;
-            $themerev = theme_get_revision();
-
-            // Create new localcache directory.
-            $cachedir = make_localcache_directory("mustache/$themerev/$themename");
-
-            // Remove old localcache directories.
-            $mustachecachedirs = glob("{$CFG->localcachedir}/mustache/*", GLOB_ONLYDIR);
-            foreach ($mustachecachedirs as $localcachedir) {
-                $cachedrev = [];
-                preg_match("/\/mustache\/([0-9]+)$/", $localcachedir, $cachedrev);
-                $cachedrev = isset($cachedrev[1]) ? intval($cachedrev[1]) : 0;
-                if ($cachedrev > 0 && $cachedrev < $themerev) {
-                    fulldelete($localcachedir);
-                }
-            }
-
-            $loader = new \Mustache_Loader_StringLoader();
-            $stringhelper = new \core\output\mustache_string_helper();
-            $quotehelper = new \core\output\mustache_quote_helper();
-            $jshelper = new \core\output\mustache_javascript_helper($this->page);
-            $pixhelper = new \core\output\mustache_pix_helper($this);
-            $shortentexthelper = new \core\output\mustache_shorten_text_helper();
-            $userdatehelper = new \core\output\mustache_user_date_helper();
-
-            // We only expose the variables that are exposed to JS templates.
-            $safeconfig = $this->page->requires->get_config_for_javascript($this->page, $this);
-
-            $helpers = array('config' => $safeconfig,
-                             'str' => array($stringhelper, 'str'),
-                             'quote' => array($quotehelper, 'quote'),
-                             'js' => array($jshelper, 'help'),
-                             'pix' => array($pixhelper, 'pix'),
-                             'shortentext' => array($shortentexthelper, 'shorten'),
-                             'userdate' => array($userdatehelper, 'transform'),
-                         );
-
-            $this->mustache = new \core\output\mustache_engine(array(
-                'cache' => $cachedir,
-                'escape' => 's',
-                'loader' => $loader,
-                'helpers' => $helpers,
-                'pragmas' => [\Mustache_Engine::PRAGMA_BLOCKS],
-                // Don't allow the JavaScript helper to be executed from within another
-                // helper. If it's allowed it can be used by users to inject malicious
-                // JS into the page.
-                'blacklistednestedhelpers' => ['js']));
-
+    public function render_from_template($templatename, $context) {
+        if ($this->stringloader === null) {
+            // Change loader!
+            $mustache = $this->get_mustache();
+            $this->stringloader = new \Mustache_Loader_StringLoader();
+            $mustache->setLoader($this->stringloader);
         }
-
-        return $this->mustache;
+        return parent::render_from_template($templatename, $context);
     }
-
 }
