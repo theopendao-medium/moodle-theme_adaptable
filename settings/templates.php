@@ -62,7 +62,7 @@ if ($overridetemplates) {
             $setting = new admin_setting_configcheckbox($name, $title, $description, false);
             $temppage->add($setting);
 
-            $name = 'theme_adaptable/overriddentemplate'.$overridetemplatesetting;
+            $name = 'theme_adaptable/overriddentemplate_'.$overridetemplatesetting;
             $title = get_string('overriddentemplate', 'theme_adaptable', $overridetemplate);
             $description = get_string('overriddentemplatedesc', 'theme_adaptable', $overridetemplate);
             $default = '';

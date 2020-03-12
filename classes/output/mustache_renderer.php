@@ -33,6 +33,11 @@ defined('MOODLE_INTERNAL') || die();
 class mustache_renderer extends \renderer_base {
 
     /**
+     * @var Mustache_Engine $mustache The mustache template compiler.
+     */
+    protected $mustache;
+
+    /**
      * Return an instance of the mustache class.
      *
      * @since 2.9
@@ -61,7 +66,7 @@ class mustache_renderer extends \renderer_base {
                 }
             }
 
-            $loader = new \theme_adaptable\output\core\output\mustache_setting_string_loader();
+            $loader = new \theme_adaptable\output\mustache_setting_string_loader();
             $stringhelper = new \core\output\mustache_string_helper();
             $quotehelper = new \core\output\mustache_quote_helper();
             $jshelper = new \core\output\mustache_javascript_helper($this->page);
@@ -86,7 +91,7 @@ class mustache_renderer extends \renderer_base {
                 'escape' => 's',
                 'loader' => $loader,
                 'helpers' => $helpers,
-                'pragmas' => [Mustache_Engine::PRAGMA_BLOCKS],
+                'pragmas' => [\Mustache_Engine::PRAGMA_BLOCKS],
                 // Don't allow the JavaScript helper to be executed from within another
                 // helper. If it's allowed it can be used by users to inject malicious
                 // JS into the page.

@@ -424,8 +424,8 @@ error_log('apply_template_override ia:'.$templatename);
 error_log('apply_template_override act:'.$templatename.' - '.$PAGE->theme->settings->$setting);
                 if (!empty($PAGE->theme->settings->$setting)) {
                     $setting = 'overriddentemplate_'.$overridetemplatesetting;
+error_log('apply_template_override sett:'.$templatename.' - '.$PAGE->theme->settings->$setting);
                     if (!empty($PAGE->theme->settings->$setting)) {
-error_log('apply_template_override sett:'.$templatename);
                         $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
 
                         $output = $renderer->render_from_template($PAGE->theme->settings->$setting, $data);
