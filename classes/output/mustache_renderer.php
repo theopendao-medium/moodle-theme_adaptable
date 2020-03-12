@@ -55,6 +55,7 @@ class mustache_renderer extends \renderer_base {
             $mustache->setLoader($this->stringloader);
             // Needed to get the partials from the file system, otherwise they are not processed.
             $partialsloader = new \core\output\mustache_filesystem_loader();
+            //$partialsloader = new \Mustache_Loader_StringLoader();
             $mustache->setPartialsLoader($partialsloader);
         }
         return parent::render_from_template($templatename, $context);

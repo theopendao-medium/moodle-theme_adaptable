@@ -24,6 +24,8 @@ defined('MOODLE_INTERNAL') || die;
 
 class adaptable_admin_setting_configtemplate extends admin_setting_configtextarea {
 
+    private $themesetting;
+
     /**
      * Config template constructor
      *
@@ -33,11 +35,51 @@ class adaptable_admin_setting_configtemplate extends admin_setting_configtextare
      * @param string $description long localised info
      * @param string $defaultsetting
      */
-    public function __construct($name, $visiblename, $description, $defaultsetting) {
+    public function __construct($name, $visiblename, $description, $defaultsetting, $themesetting) {
         global $PAGE;
         $PAGE->requires->js_call_amd('theme_adaptable/templatepreview', 'init');
+
+        $this->themesetting = $themesetting;
 
         parent::__construct($name, $visiblename, $description, $defaultsetting);
     }
 
+    /**
+     * Returns an XHTML string for the editor
+     *
+     * @param string $data
+     * @param string $query
+     * @return string XHTML string for the editor
+     */
+    public function output_html($data, $query='') {
+        global $OUTPUT;
+
+        $default = $this->get_defaultsetting();
+        $defaultinfo = $default;
+        if (!is_null($default) and $default !== '') {
+            $defaultinfo = "\n".$default;
+        }
+
+        $overridetemplate = get_config('theme_adaptable', $this->themesetting);
+        if (!empty($overridetemplate)) {
+            global $PAGE;
+
+            $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
+
+            //$data = new \stdClass;
+            preg_match('/Example context \(json\):([\s\S]*)/', $overridetemplate, $matched);  // From 'display.js' in the template tool.
+            $json = trim(substr($matched[1], 0, strpos($matched[1], '}}')));
+            $data = json_decode($json);
+
+error_log('MAT:'.print_r($matched[1], true));
+error_log('JSON:'.print_r($json, true));
+error_log('DAT:'.print_r($data, true));
+
+            $element = $renderer->render_from_template($overridetemplate, $data);
+        } else {
+            $element = '';
+        }
+
+        return format_admin_setting($this, $this->visiblename, $element, $this->description, true, '', $defaultinfo, $query);
+    }
 }
