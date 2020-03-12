@@ -51,7 +51,7 @@ class renderer_htmlemail extends \mod_forum\output\email\renderer {
             $output = $this->render_from_template('mod_forum/'.$templatename, $data);
         }
 
-        error_log('theme_adaptable mail: '.$output);
+        //error_log('theme_adaptable mail: '.$output);
 
         return $output;
     }
