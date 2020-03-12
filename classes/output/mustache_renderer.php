@@ -49,10 +49,13 @@ class mustache_renderer extends \renderer_base {
      */
     public function render_from_template($templatename, $context) {
         if ($this->stringloader === null) {
-            // Change loader!
+            // Change loaders!
             $mustache = $this->get_mustache();
             $this->stringloader = new \Mustache_Loader_StringLoader();
             $mustache->setLoader($this->stringloader);
+            // Needed to get the partials from the file system, otherwise they are not processed.
+            $partialsloader = new \core\output\mustache_filesystem_loader();
+            $mustache->setPartialsLoader($partialsloader);
         }
         return parent::render_from_template($templatename, $context);
     }
