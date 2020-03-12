@@ -66,7 +66,7 @@ class mustache_renderer extends \renderer_base {
                 }
             }
 
-            $loader = new \theme_adaptable\output\mustache_setting_string_loader();
+            $loader = new \Mustache_Loader_StringLoader();
             $stringhelper = new \core\output\mustache_string_helper();
             $quotehelper = new \core\output\mustache_quote_helper();
             $jshelper = new \core\output\mustache_javascript_helper($this->page);

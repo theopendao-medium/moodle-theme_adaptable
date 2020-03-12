@@ -428,6 +428,10 @@ error_log('apply_template_override sett:'.$templatename.' - '.$PAGE->theme->sett
                     if (!empty($PAGE->theme->settings->$setting)) {
                         $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
 
+                        /* Pass in the setting value as our Mustache engine uses the Mustache_Loader_StringLoader
+                           instead of effectively the Mustache_Loader_FilesystemLoader and that just returns the
+                           'name' as passed in.  The engine then calls 'loadSource' from 'loadTemplate' which can
+                           have 'Mustache_Source' as an input, being the mustache template source itself. */
                         $output = $renderer->render_from_template($PAGE->theme->settings->$setting, $data);
 error_log('apply_template_override OUT:'.$output);
                     }
