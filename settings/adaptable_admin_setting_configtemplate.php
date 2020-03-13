@@ -24,22 +24,21 @@ defined('MOODLE_INTERNAL') || die;
 
 class adaptable_admin_setting_configtemplate extends admin_setting_configtextarea {
 
-    private $themesetting;
-
     /**
-     * Config template constructor
-     *
-     * @param string $name unique ascii name, either 'mysetting' for settings that in config, or 'myplugin/mysetting' for ones in
-     * config_plugins.
-     * @param string $visiblename localised
-     * @param string $description long localised info
-     * @param string $defaultsetting
+     * @param string $name
+     * @param string $visiblename
+     * @param string $description
+     * @param mixed $defaultsetting string or array
+     * @param mixed $paramtype
+     * @param string $cols The number of columns to make the editor
+     * @param string $rows The number of rows to make the editor
      */
-    public function __construct($name, $visiblename, $description, $defaultsetting, $themesetting) {
+    public function __construct($name, $visiblename, $description, $defaultsetting, $paramtype=PARAM_RAW, $cols='60', $rows='8') {
+        $this->rows = $rows;
+        $this->cols = $cols;
+
         global $PAGE;
         $PAGE->requires->js_call_amd('theme_adaptable/templatepreview', 'init');
-
-        $this->themesetting = $themesetting;
 
         parent::__construct($name, $visiblename, $description, $defaultsetting);
     }
@@ -60,7 +59,20 @@ class adaptable_admin_setting_configtemplate extends admin_setting_configtextare
             $defaultinfo = "\n".$default;
         }
 
-        $overridetemplate = get_config('theme_adaptable', $this->themesetting);
+        $context = (object) [
+            'cols' => $this->cols,
+            'rows' => $this->rows,
+            'id' => $this->get_id(),
+            'name' => $this->get_full_name(),
+            'value' => $data,
+            'forceltr' => $this->get_force_ltr(),
+        ];
+        $element = $OUTPUT->render_from_template('core_admin/setting_configtextarea', $context);
+
+        $element = format_admin_setting($this, $this->visiblename, $element, $this->description, true, '', $defaultinfo, $query);
+
+        $overridetemplate = get_config('theme_adaptable', $this->name);
+
         if (!empty($overridetemplate)) {
             global $PAGE;
 
@@ -75,11 +87,13 @@ error_log('MAT:'.print_r($matched[1], true));
 error_log('JSON:'.print_r($json, true));
 error_log('DAT:'.print_r($data, true));
 
-            $element = $renderer->render_from_template($overridetemplate, $data);
-        } else {
-            $element = '';
+            $context = (object) [
+                'templatetitle' => $this->visiblename,
+                'templatepreview' => $renderer->render_from_template($overridetemplate, $data)
+            ];
+            $element .= $OUTPUT->render_from_template('theme_adaptable/adaptable_admin_setting_configtemplate', $context);
         }
 
-        return format_admin_setting($this, $this->visiblename, $element, $this->description, true, '', $defaultinfo, $query);
+        return $element;
     }
 }

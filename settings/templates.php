@@ -66,15 +66,15 @@ if ($overridetemplates) {
             $title = get_string('overriddentemplate', 'theme_adaptable', $overridetemplate);
             $description = get_string('overriddentemplatedesc', 'theme_adaptable', $overridetemplate);
             $default = '';
-            $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+            $setting = new adaptable_admin_setting_configtemplate($name, $title, $description, $default);
             $temppage->add($setting);
 
-            $name = 'theme_adaptable/overriddentemplatedisplay_'.$overridetemplatesetting;
+            /*$name = 'theme_adaptable/overriddentemplatedisplay_'.$overridetemplatesetting;
             $title = get_string('overriddentemplate', 'theme_adaptable', $overridetemplate);
             $description = get_string('overriddentemplatedesc', 'theme_adaptable', $overridetemplate);
             $default = '';
             $setting = new adaptable_admin_setting_configtemplate($name, $title, $description, $default, 'overriddentemplate_'.$overridetemplatesetting);
-            $temppage->add($setting);
+            $temppage->add($setting);*/
         }
         $ADMIN->add('theme_adaptable', $temppage);
     }

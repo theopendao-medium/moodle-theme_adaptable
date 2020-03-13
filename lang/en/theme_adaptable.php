@@ -1598,6 +1598,7 @@ $string['activatetemplateoverride'] = 'Activate template override for \'{$a}\'';
 $string['activatetemplateoverridedesc'] = 'When ticked then the value in the \'{$a->setting}\' setting will be used as the \'{$a->template}\' template if it contains text.';
 $string['overriddentemplate'] = 'Overridden template: {$a}';
 $string['overriddentemplatedesc'] = 'If set then the text here will be used as the template \'{$a}\'.  To ensure that the preview works, there needs to be the standard example context in JSON format.';
+$string['overriddentemplatepreview'] = 'Preview';
 
 // Analytics *********************************.
 $string['analyticssettings'] = 'Analytics';
