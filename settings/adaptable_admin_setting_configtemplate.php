@@ -78,14 +78,9 @@ class adaptable_admin_setting_configtemplate extends admin_setting_configtextare
 
             $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
 
-            //$data = new \stdClass;
             preg_match('/Example context \(json\):([\s\S]*)/', $overridetemplate, $matched);  // From 'display.js' in the template tool.
             $json = trim(substr($matched[1], 0, strpos($matched[1], '}}')));
             $data = json_decode($json);
-
-error_log('MAT:'.print_r($matched[1], true));
-error_log('JSON:'.print_r($json, true));
-error_log('DAT:'.print_r($data, true));
 
             $context = (object) [
                 'templatetitle' => $this->visiblename,
