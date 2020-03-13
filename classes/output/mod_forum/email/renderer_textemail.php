@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Forum post renderable.
  */
-class renderer_htmlemail extends \mod_forum\output\email\renderer {
+class renderer_htmlemail extends \mod_forum\output\email\renderer_textemail {
 
     /**
      * Display a forum post in the relevant context.
@@ -39,7 +39,7 @@ class renderer_htmlemail extends \mod_forum\output\email\renderer {
      * @return string
      */
     public function render_forum_post_email(\mod_forum\output\forum_post_email $post) {
-        // Was ($this, $this->target === RENDERER_TARGET_TEXTEMAIL) and as we are already 'htmlemail' it will always be false.
+        // Was ($this, $this->target === RENDERER_TARGET_TEXTEMAIL) and as we are already 'textemail' it will always be false.
         $data = $post->export_for_template($this, false);
 
         $templatename = $this->forum_post_template();

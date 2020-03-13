@@ -31,7 +31,11 @@ if ($ADMIN->fulltree) {
     static $templates = array(
         'mod_forum/forum_post_email_htmlemail' => 'mod_forum/forum_post_email_htmlemail',
         'mod_forum/forum_post_email_htmlemail_body' => 'mod_forum/forum_post_email_htmlemail_body',
-        'mod_forum/forum_post_email_textemail' => 'mod_forum/forum_post_email_textemail'
+        'mod_forum/forum_post_email_textemail' => 'mod_forum/forum_post_email_textemail',
+        'mod_forum/forum_post_emaildigestbasic_htmlemail' => 'mod_forum/forum_post_emaildigestbasic_htmlemail',
+        'mod_forum/forum_post_emaildigestbasic_textemail' => 'mod_forum/forum_post_emaildigestbasic_textemail',
+        'mod_forum/forum_post_emaildigestfull_htmlemail' => 'mod_forum/forum_post_emaildigestfull_htmlemail',
+        'mod_forum/forum_post_emaildigestfull_textemail' => 'mod_forum/forum_post_emaildigestfull_textemail'
     );
     $name = 'theme_adaptable/templatessel';
     $title = get_string('templatessel', 'theme_adaptable');

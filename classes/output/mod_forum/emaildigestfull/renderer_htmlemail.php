@@ -23,14 +23,14 @@
  *
  */
 
-namespace theme_adaptable\output\mod_forum\email;
+namespace theme_adaptable\output\mod_forum\emaildigestfull;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
  * Forum post renderable.
  */
-class renderer_htmlemail extends \mod_forum\output\email\renderer {
+class renderer_htmlemail extends \mod_forum\output\emaildigestfull\renderer {
 
     /**
      * Display a forum post in the relevant context.

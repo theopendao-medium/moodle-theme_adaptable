@@ -413,13 +413,16 @@ class toolbox {
         $overridetemplates = get_config('theme_adaptable', 'templatessel');
         if ($overridetemplates) {
             $overridetemplates = explode(',', $overridetemplates);
+
             if (in_array($templatename, $overridetemplates)) {
                 global $PAGE;
 
                 $overridetemplatesetting = str_replace('/', '_', $templatename);
                 $setting = 'activatetemplateoverride_'.$overridetemplatesetting;
+
                 if (!empty($PAGE->theme->settings->$setting)) {
                     $setting = 'overriddentemplate_'.$overridetemplatesetting;
+
                     if (!empty($PAGE->theme->settings->$setting)) {
                         $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
 
