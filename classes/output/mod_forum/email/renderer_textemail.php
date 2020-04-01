@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Forum post renderable.
  */
-class renderer_htmlemail extends \mod_forum\output\email\renderer_textemail {
+class renderer_textemail extends \mod_forum\output\email\renderer_textemail {
 
     /**
      * Display a forum post in the relevant context.
