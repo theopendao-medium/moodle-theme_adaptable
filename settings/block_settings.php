@@ -28,6 +28,20 @@ defined('MOODLE_INTERNAL') || die;
 
     $temp = new admin_settingpage('theme_adaptable_blocks', get_string('blocksettings', 'theme_adaptable'));
 
+    // General.
+    $name = 'theme_adaptable/settingsblocksgeneral';
+    $heading = get_string('settingsblocksgeneral', 'theme_adaptable');
+    $setting = new admin_setting_heading($name, $heading, '');
+    $temp->add($setting);
+
+    // Show the navigation block on the course page.
+    $name = 'theme_adaptable/shownavigationblockoncoursepage';
+    $title = get_string('shownavigationblockoncoursepage', 'theme_adaptable');
+    $description = get_string('shownavigationblockoncoursepagedesc', 'theme_adaptable');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $temp->add($setting);
+
     // Colours.
     $name = 'theme_adaptable/settingscolors';
     $heading = get_string('settingscolors', 'theme_adaptable');

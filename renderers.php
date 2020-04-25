@@ -3304,6 +3304,48 @@ EOT;
     }
 
     /**
+     * Output all the blocks in a particular region.
+     *
+     * @param string $region the name of a region on this page.
+     * @return string the HTML to be output.
+     */
+    public function blocks_for_region($region) {
+        /* If 'shownavigationblockoncoursepage' is false and we are in a 'course' or 'incourse' page then
+           the navigation block will not be shown. */
+        if ((!empty($this->page->theme->settings->shownavigationblockoncoursepage)) ||
+            (($this->page->pagelayout != 'course') && ($this->page->pagelayout != 'incourse'))) {
+            return parent::blocks_for_region($region);
+        }
+        $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        $blocks = $this->page->blocks->get_blocks_for_region($region);
+
+        $lastblock = null;
+        $zones = array();
+        foreach ($blocks as $block) {
+            if ($block->instance->blockname == 'navigation') {
+                continue;
+            }
+            $zones[] = $block->title;
+        }
+        $output = '';
+
+        foreach ($blockcontents as $bc) {
+            if ($bc->attributes['data-block'] == 'navigation') {
+                continue;
+            }
+            if ($bc instanceof block_contents) {
+                $output .= $this->block($bc, $region);
+                $lastblock = $bc->title;
+            } else if ($bc instanceof block_move_target) {
+                $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
+            } else {
+                throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+            }
+        }
+        return $output;
+    }
+
+    /**
      * Render blocks
      * @param string $region
      * @param array $classes

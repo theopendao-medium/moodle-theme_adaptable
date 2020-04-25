@@ -131,6 +131,7 @@ $string['settingsmessagescolors'] = 'Messages Pop-Up Colours';
 $string['settingsfootercolors'] = 'Footer Colours';
 $string['settingsfonts'] = 'Fonts';
 $string['settingsanalytics'] = 'Analytics';
+$string['settingsblocksgeneral'] = 'General';
 $string['settingscolors'] = 'Colours';
 $string['settingsborders'] = 'Borders';
 $string['settingstopicsweeks'] = 'Topics / Weeks';
@@ -860,6 +861,9 @@ $string['socialwallactionlinkcolordesc'] = 'The colour of action links in Social
 $string['socialwallactionlinkhovercolor'] = 'Action link hover colour';
 $string['socialwallactionlinkhovercolordesc'] = 'The colour of action links when hovered in Social Wall.';
 
+// Blocks General **************************************************.
+$string['shownavigationblockoncoursepage'] = 'Show Navigation Block on course page';
+$string['shownavigationblockoncoursepagedesc'] = 'Set this to show the navigation block on the course page.';
 
 // Fonts ***********************************************************.
 $string['fontsettings'] = 'Fonts';
