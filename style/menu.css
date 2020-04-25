@@ -732,3 +732,10 @@ a.dropdown-menu > .active > a:focus,
 #adaptable-page-header-nav-drawer button {
     cursor: pointer;
 }
+
+#adaptable-page-header-wrapper .icon {
+    height: 14px;
+    margin-right: 0;
+    padding-right: 4px;
+    width: 14px;
+}

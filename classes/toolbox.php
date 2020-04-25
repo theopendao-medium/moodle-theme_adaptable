@@ -365,6 +365,47 @@ class toolbox {
     }
 
     /**
+     * States if the Kaltura plugin is installed.
+     * Ref: https://moodle.org/plugins/view.php?id=447
+     *
+     * @rerurn boolean true or false.
+     */
+    static public function kalturaplugininstalled() {
+        global $CFG;
+
+        static $paths = array(
+            'local/kalturamediagallery',
+            'local/mymedia'
+        );
+
+        $hascount = 0;
+        foreach ($paths as $path) {
+            if (file_exists($CFG->dirroot.'/'.$path)) {
+                $hascount++;
+            }
+        }
+
+        return (count($paths) == $hascount);
+    }
+
+    /**
+     * Gets the Font Awesome markup for the given icon.
+     *
+     * @param string $icon
+     * @param array $classes - Optional extra classes to add.
+     * @param array $sttributes - Optional attributes to add.
+     * @param string $content - Optional content.
+     *
+     * @rerurn string markup.
+     */
+    static public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '') {
+        $classes[] = 'fa fa-'.$theicon;
+        $attributes['aria-hidden'] = 'true';
+        $attributes['class'] = implode(' ', $classes);
+        return \html_writer::tag('i', $content, $attributes);
+    }
+
+    /**
      * Returns the RGB for the given hex.
      *
      * @param string $hex
