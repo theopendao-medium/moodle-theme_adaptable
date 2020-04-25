@@ -2106,6 +2106,15 @@ EOT;
                         $branch->add($branchlabel, $branchurl, '', 100005);
                     }
 
+                    // Kaltura video gallery.
+                    if (\theme_adaptable\toolbox::kalturaplugininstalled()) {
+                        $branchtitle = get_string('nav_mediagallery', 'local_kalturamediagallery');
+                        $branchlabel = $OUTPUT->pix_icon('media-gallery', '', 'local_kalturamediagallery').$branchtitle;
+                        $branchurl = new moodle_url('/local/kalturamediagallery/index.php',
+                            array('courseid' => $PAGE->course->id));
+                        $branch->add($branchlabel, $branchurl, '', 100006);
+                    }
+
                     // Display Competencies.
                     if (get_config('core_competency', 'enabled')) {
                         if ($PAGE->theme->settings->enablecompetencieslink) {
@@ -2113,7 +2122,7 @@ EOT;
                             $branchlabel = $OUTPUT->pix_icon('i/competencies', '', '', array('class' => 'icon')).$branchtitle;
                             $branchurl = new moodle_url('/admin/tool/lp/coursecompetencies.php',
                                          array('courseid' => $PAGE->course->id));
-                            $branch->add($branchlabel, $branchurl, '', 100006);
+                            $branch->add($branchlabel, $branchurl, '', 100007);
                         }
                     }
 
