@@ -93,8 +93,10 @@ define(['jquery', 'core/log'], function($ , log) {
 
                 // Anchor.
                 if (window.location.hash) {
-                    var anchorTop = $(window.location.hash).offset().top;
-                    $('html, body').animate({scrollTop: anchorTop - 102}, duration);
+                    if ($("body").hasClass("pagelayout-course")) {
+                        var anchorTop = $(window.location.hash).offset().top;
+                        $('html, body').animate({scrollTop: anchorTop - 102}, duration);
+                    }
                 }
             });
         }
