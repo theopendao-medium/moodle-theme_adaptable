@@ -1599,6 +1599,7 @@ $string['activatetemplateoverridedesc'] = 'When ticked then the value in the \'{
 $string['overriddentemplate'] = 'Overridden template: {$a}';
 $string['overriddentemplatedesc'] = 'If set then the text here will be used as the template \'{$a}\'.  To ensure that the preview works, there needs to be the standard example context in JSON format.';
 $string['overriddentemplatepreview'] = 'Preview';
+$string['overriddentemplatenopreview'] = 'No preview because of missing JSON example';
 
 // Analytics *********************************.
 $string['analyticssettings'] = 'Analytics';

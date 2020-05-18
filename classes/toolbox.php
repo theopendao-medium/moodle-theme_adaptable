@@ -401,14 +401,13 @@ class toolbox {
     }
 
     /**
-     * Renderers the overridden template if the setting for that template has been enabled and set.
+     * Gets the overridden template if the setting for that template has been enabled and set.
      *
      * @param string $templatename
-     * @param array|stdClass $data Context containing data for the template.
      * @return string or false if not overridden.
      */
-    static public function apply_template_override($templatename, $data) {
-        $output = false;
+    static public function get_template_override($templatename) {
+        $template = false;
 
         $overridetemplates = get_config('theme_adaptable', 'templatessel');
         if ($overridetemplates) {
@@ -424,16 +423,36 @@ class toolbox {
                     $setting = 'overriddentemplate_'.$overridetemplatesetting;
 
                     if (!empty($PAGE->theme->settings->$setting)) {
-                        $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
-
-                        /* Pass in the setting value as our Mustache engine uses the Mustache_Loader_StringLoader
-                           instead of effectively the Mustache_Loader_FilesystemLoader and that just returns the
-                           'name' as passed in.  The engine then calls 'loadSource' from 'loadTemplate' which can
-                           have 'Mustache_Source' as an input, being the mustache template source itself. */
-                        $output = $renderer->render_from_template($PAGE->theme->settings->$setting, $data);
+                        $template = $PAGE->theme->settings->$setting;
                     }
                 }
             }
+        }
+
+        return $template;
+    }
+
+
+    /**
+     * Renderers the overridden template if the setting for that template has been enabled and set.
+     *
+     * @param string $templatename
+     * @param array|stdClass $data Context containing data for the template.
+     * @return string or false if not overridden.
+     */
+    static public function apply_template_override($templatename, $data) {
+        $output = false;
+
+        $template = self::get_template_override($templatename);
+        if (!empty($template)) {
+            global $PAGE;
+            $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
+
+            /* Pass in the setting value as our Mustache engine uses the Mustache_Loader_StringLoader
+               instead of effectively the Mustache_Loader_FilesystemLoader and that just returns the
+               'name' as passed in.  The engine then calls 'loadSource' from 'loadTemplate' which can
+               have 'Mustache_Source' as an input, being the mustache template source itself. */
+            $output = $renderer->render_from_template($template, $data);
         }
 
         return $output;

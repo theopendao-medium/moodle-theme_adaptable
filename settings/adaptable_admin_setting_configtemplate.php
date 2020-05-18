@@ -79,14 +79,20 @@ class adaptable_admin_setting_configtemplate extends admin_setting_configtextare
             $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
 
             preg_match('/Example context \(json\):([\s\S]*)/', $overridetemplate, $matched);  // From 'display.js' in the template tool.
-            $json = trim(substr($matched[1], 0, strpos($matched[1], '}}')));
-            $data = json_decode($json);
 
-            $context = (object) [
-                'templatetitle' => $this->visiblename,
-                'templatepreview' => $renderer->render_from_template($overridetemplate, $data)
-            ];
-            $element .= $OUTPUT->render_from_template('theme_adaptable/adaptable_admin_setting_configtemplate', $context);
+            if (!empty($matched[1])) {
+                $json = trim(substr($matched[1], 0, strpos($matched[1], '}}')));
+                $data = json_decode($json);
+
+                $context = (object) [
+                    'templatetitle' => $this->visiblename,
+                    'templatepreview' => $renderer->render_from_template($overridetemplate, $data)
+                ];
+                $element .= $OUTPUT->render_from_template('theme_adaptable/adaptable_admin_setting_configtemplate', $context);
+            } else {
+                $context = array();
+                $element .= $OUTPUT->render_from_template('theme_adaptable/adaptable_admin_setting_configtemplate_nopreview', $context);
+            }
         }
 
         return $element;
