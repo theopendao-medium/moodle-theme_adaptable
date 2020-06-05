@@ -213,7 +213,8 @@ if ($ADMIN->fulltree) {
         'strings' => get_string('mysitessortoverridestrings', 'theme_adaptable'),
         'profilefields' => get_string('mysitessortoverrideprofilefields', 'theme_adaptable'),
         'profilefieldscohort' => get_string('mysitessortoverrideprofilefieldscohort', 'theme_adaptable'),
-        'myoverview' => get_string('mysitessortoverridemyoverview', 'theme_adaptable')
+        'myoverview' => get_string('mysitessortoverridemyoverview', 'theme_adaptable'),
+        'last' => get_string('mysitessortoverridelast', 'theme_adaptable')
     );
     $setting = new admin_setting_configselect($name, $title, $description, 'myoverview', $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');

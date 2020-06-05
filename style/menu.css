@@ -739,3 +739,8 @@ a.dropdown-menu > .active > a:focus,
     padding-right: 4px;
     width: 14px;
 }
+
+#main-navbar span.onlyenrolled {
+    background-color: #009688;
+    color: #fff;
+}

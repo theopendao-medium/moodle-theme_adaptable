@@ -1774,6 +1774,40 @@ EOT;
     }
 
     /**
+     * Compares two course entries against their access time for a user to see which is first.
+     *
+     * @param stdClass $a A course.
+     * @param stdClass $b A course.
+     *
+     * @return int -1 'a' is first, 1 'b' is first or 0 they are equal.
+     */
+    protected static function timeaccesscompare($a, $b) {
+        // The timeaccess is lastaccess entry and timestart an enrol entry.
+        if ((!empty($a->timeaccess)) && (!empty($b->timeaccess))) {
+            // Both last access.
+            if ($a->timeaccess == $b->timeaccess) {
+                return 0;
+            }
+            return ($a->timeaccess > $b->timeaccess) ? -1 : 1;
+        } else if ((!empty($a->timestart)) && (!empty($b->timestart))) {
+            // Both enrol.
+            if ($a->timestart == $b->timestart) {
+                return 0;
+            }
+            return ($a->timestart > $b->timestart) ? -1 : 1;
+        }
+
+        /* Must be comparing an enrol with a last access.
+           -1 is to say that 'a' comes before 'b'. */
+        if (!empty($a->timestart)) {
+            // If 'a' is the enrol entry.
+            return -1;
+        }
+        // Then 'b' must be the enrol entry.
+        return 1;
+    }
+
+    /**
      * Returns menu object containing main navigation.
      *
      * @return menu boject
@@ -1986,6 +2020,56 @@ EOT;
                                     $showshortcode, $showhover, $mysitesmaxlength);
                             }
                         } else {
+                            if ($overridetype == 'last') {
+                                //  Get the last accessed information for the user and populate.
+                                global $DB, $USER;
+                                $lastaccess = $DB->get_records('user_lastaccess', array('userid' => $USER->id), '', 'courseid, timeaccess');
+                                if ($lastaccess) {
+                                    foreach ($sortedcourses as $course) {
+                                        if (!empty($lastaccess[$course->id])) {
+                                            $course->timeaccess = $lastaccess[$course->id]->timeaccess;
+                                        }
+                                    }
+                                }
+                                // Determine if we need to query the enrolment and user enrolment tables.
+                                $enrolquery = false;
+                                foreach ($sortedcourses as $course) {
+                                    if (empty($course->timeaccess)) {
+                                        $enrolquery = true;
+                                        break;
+                                    }
+                                }
+                                if ($enrolquery) {
+                                    // We do.
+                                    $params = array('userid' => $USER->id);
+                                    $sql = "SELECT ue.id, e.courseid, ue.timestart
+                                        FROM {enrol} e
+                                        JOIN {user_enrolments} ue ON (ue.enrolid = e.id AND ue.userid = :userid)";
+                                    $enrolments = $DB->get_records_sql($sql, $params, 0, 0);
+                                    if ($enrolments) {
+                                        // Sort out any multiple enrolments on the same course.
+                                        $userenrolments = array();
+                                        foreach ($enrolments as $enrolment) {
+                                            if (!empty($userenrolments[$enrolment->courseid])) {
+                                                if ($userenrolments[$enrolment->courseid] < $enrolment->timestart) {
+                                                    // Replace.
+                                                    $userenrolments[$enrolment->courseid] = $enrolment->timestart;
+                                                }
+                                            } else {
+                                                $userenrolments[$enrolment->courseid] = $enrolment->timestart;
+                                            }
+                                        }
+                                        // We don't need to worry about timeend etc. as our course list will be valid for the user from above.
+                                        foreach ($sortedcourses as $course) {
+                                            if (empty($course->timeaccess)) {
+                                                $course->timestart = $userenrolments[$course->id];
+                                            }
+                                        }
+                                    }
+                                }
+                                uasort($sortedcourses, array($this, 'timeaccesscompare'));
+                            }
+
                             foreach ($sortedcourses as $course) {
                                 if ($course->visible) {
                                     $coursename = '';
@@ -2006,6 +2090,9 @@ EOT;
                                     }
 
                                     if (!$overridelist) { // Feature not in use, add to menu as normal.
+                                        if (!empty($course->timestart)) {
+                                            $coursename = '<span class="onlyenrolled">'.$coursename.'</span>';
+                                        }
                                         $branch->add($coursename,
                                             new moodle_url('/course/view.php?id='.$course->id), $alttext);
                                     } else {
@@ -2017,6 +2104,9 @@ EOT;
                                                  $this->check_if_in_array_string($overridelist, $course->shortname))) {
                                             $icon = '';
 
+                                            if (!empty($course->timestart)) {
+                                                $coursename = '<span class="onlyenrolled">'.$coursename.'</span>';
+                                            }
                                             $branch->add($icon . $coursename,
                                                 new moodle_url('/course/view.php?id='.$course->id), $alttext, 100);
                                         } else {
@@ -2033,10 +2123,19 @@ EOT;
                                                 $rawcoursename = $course->fullname;
                                             }
 
-                                            $child->add($trunc = rtrim(mb_strimwidth(format_string($rawcoursename),
-                                                0, $mysitesmaxlengthhidden)) . '...',
-                                                new moodle_url('/course/view.php?id='.$course->id),
-                                                format_string($rawcoursename));
+                                            if (!empty($course->timestart)) {
+                                                $rawcoursename = '<span class="onlyenrolled">'.$coursename.'</span>';
+                                                $child->add('<span class="onlyenrolled">'.rtrim(mb_strimwidth(format_string($rawcoursename),
+                                                    0, $mysitesmaxlengthhidden)) . '...</span>',
+                                                    new moodle_url('/course/view.php?id='.$course->id),
+                                                    format_string($rawcoursename));
+                                            } else {
+                                                $child->add(rtrim(mb_strimwidth(format_string($rawcoursename),
+                                                    0, $mysitesmaxlengthhidden)) . '...',
+                                                    new moodle_url('/course/view.php?id='.$course->id),
+                                                    format_string($rawcoursename));
+                                            }
+
                                         }
                                     }
                                 }

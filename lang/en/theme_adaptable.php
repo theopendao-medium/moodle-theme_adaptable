@@ -552,6 +552,7 @@ $string['mysitessortoverridestrings'] = 'Display enrolled containing strings in 
 $string['mysitessortoverrideprofilefields'] = 'Display courses found in profile fields in first list, others in sub menu';
 $string['mysitessortoverrideprofilefieldscohort'] = 'Display courses found in profile fields + cohorts in first list, others in sub menu';
 $string['mysitessortoverridemyoverview'] = 'Use list from my overview';
+$string['mysitessortoverridelast'] = 'Last accessed time or enrolment start time if never accessed';
 
 $string['mysitesmaxlength'] = 'My Courses Max Length';
 $string['mysitesmaxlengthdesc'] = 'Adjust the max length of coursenames in the My Courses dropdown to optimise for your font.';
