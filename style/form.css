@@ -41,3 +41,64 @@
         max-width: 66.6666666667%;
     }
 }
+
+#admin-activatetemplateoverride_mod_forum_forum_post_email_htmlemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_email_htmlemail .col-sm-9,
+#admin-overriddentemplate_mod_forum_forum_post_email_htmlemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_email_htmlemail .col-sm-9,
+#admin-activatetemplateoverride_mod_forum_forum_post_email_htmlemail_body .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_email_htmlemail_body .col-sm-9,
+#admin-overriddentemplate_mod_forum_forum_post_email_htmlemail_body .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_email_htmlemail_body .col-sm-9,
+#admin-activatetemplateoverride_mod_forum_forum_post_email_textemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_email_textemail .col-sm-9,
+#admin-overriddentemplate_mod_forum_forum_post_email_textemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_email_textemail .col-sm-9,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestbasic_htmlemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestbasic_htmlemail .col-sm-9,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestbasic_htmlemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestbasic_htmlemail .col-sm-9,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestbasic_textemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestbasic_textemail .col-sm-9,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestbasic_textemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestbasic_textemail .col-sm-9,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestfull_htmlemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestfull_htmlemail .col-sm-9,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestfull_htmlemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestfull_htmlemail .col-sm-9,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestfull_textemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestfull_textemail .col-sm-9,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestfull_textemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestfull_textemail .col-sm-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+#admin-activatetemplateoverride_mod_forum_forum_post_email_htmlemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_email_htmlemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_email_htmlemail_body .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_email_htmlemail_body .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_email_htmlemail_body .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_email_htmlemail_body .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_email_textemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_email_textemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_email_textemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_email_textemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestbasic_htmlemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestbasic_htmlemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestbasic_htmlemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestbasic_htmlemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestbasic_textemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestbasic_textemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestbasic_textemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestbasic_textemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestfull_htmlemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestfull_htmlemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestfull_htmlemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestfull_htmlemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestfull_textemail .col-sm-3,
+#admin-activatetemplateoverride_mod_forum_forum_post_emaildigestfull_textemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestfull_textemail .col-sm-3,
+#admin-overriddentemplate_mod_forum_forum_post_emaildigestfull_textemail .col-sm-3 {
+    text-align: left !important;
+}
