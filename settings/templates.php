@@ -71,7 +71,7 @@ if ($overridetemplates) {
             $title = get_string('overriddentemplate', 'theme_adaptable', $overridetemplate);
             $description = get_string('overriddentemplatedesc', 'theme_adaptable', $overridetemplate);
             $default = '';
-            $setting = new adaptable_admin_setting_configtemplate($name, $title, $description, $default);
+            $setting = new adaptable_admin_setting_configtemplate($name, $title, $description, $default, $overridetemplate);
             $temppage->add($setting);
         }
         $ADMIN->add('theme_adaptable', $temppage);

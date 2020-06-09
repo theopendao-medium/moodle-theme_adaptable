@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_adaptable/adaptable_admin_setting_configtemplate_nopreview
+    @template theme_adaptable/adaptable_admin_setting_configtemplate_source
 
     Template which defines the preview bit of the adaptable_admin_setting_configtemplate admin setting.
 
@@ -26,9 +26,14 @@
     * none
 
     Context variables required for this template:
+    * templatesource
 
     Example context (json):
     {
+        "templatesource": "Mustache Source String"
     }
 }}
-<h3>{{#str}}overriddentemplatenopreview, theme_adaptable{{/str}}</h3>
+<h3>{{#str}}originaltemplatesource, theme_adaptable{{/str}}</h3>
+<pre>
+{{templatesource}}
+</pre>

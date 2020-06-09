@@ -24,6 +24,8 @@ defined('MOODLE_INTERNAL') || die;
 
 class adaptable_admin_setting_configtemplate extends admin_setting_configtextarea {
 
+    private $templatename;
+
     /**
      * @param string $name
      * @param string $visiblename
@@ -33,9 +35,11 @@ class adaptable_admin_setting_configtemplate extends admin_setting_configtextare
      * @param string $cols The number of columns to make the editor
      * @param string $rows The number of rows to make the editor
      */
-    public function __construct($name, $visiblename, $description, $defaultsetting, $paramtype=PARAM_RAW, $cols='60', $rows='8') {
+    public function __construct($name, $visiblename, $description, $defaultsetting, $templatename, $paramtype=PARAM_RAW, $cols='60', $rows='8') {
         $this->rows = $rows;
         $this->cols = $cols;
+
+        $this->templatename = $templatename;
 
         global $PAGE;
         $PAGE->requires->js_call_amd('theme_adaptable/templatepreview', 'init');
@@ -51,7 +55,7 @@ class adaptable_admin_setting_configtemplate extends admin_setting_configtextare
      * @return string XHTML string for the editor
      */
     public function output_html($data, $query='') {
-        global $OUTPUT;
+        global $OUTPUT, $PAGE;
 
         $default = $this->get_defaultsetting();
         $defaultinfo = $default;
@@ -71,29 +75,40 @@ class adaptable_admin_setting_configtemplate extends admin_setting_configtextare
 
         $element = format_admin_setting($this, $this->visiblename, $element, $this->description, true, '', $defaultinfo, $query);
 
+        $sourcerenderer = $PAGE->get_renderer('theme_adaptable', 'mustachesource');
+        $originalsource = $sourcerenderer->get_template($this->templatename);
+
         $overridetemplate = get_config('theme_adaptable', $this->name);
 
         if (!empty($overridetemplate)) {
-            global $PAGE;
-
-            $renderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
-
-            preg_match('/Example context \(json\):([\s\S]*)/', $overridetemplate, $matched);  // From 'display.js' in the template tool.
-
-            if (!empty($matched[1])) {
-                $json = trim(substr($matched[1], 0, strpos($matched[1], '}}')));
-                $data = json_decode($json);
-
-                $context = (object) [
-                    'templatetitle' => $this->visiblename,
-                    'templatepreview' => $renderer->render_from_template($overridetemplate, $data)
-                ];
-                $element .= $OUTPUT->render_from_template('theme_adaptable/adaptable_admin_setting_configtemplate', $context);
-            } else {
-                $context = array();
-                $element .= $OUTPUT->render_from_template('theme_adaptable/adaptable_admin_setting_configtemplate_nopreview', $context);
-            }
+            $templateoverridden = true;
+        } else {
+            $templateoverridden = false;
+            $overridetemplate = $originalsource;
         }
+
+        $mustacherenderer = $PAGE->get_renderer('theme_adaptable', 'mustache');
+
+        preg_match('/Example context \(json\):([\s\S]*)/', $overridetemplate, $matched);  // From 'display.js' in the template tool.
+
+        if (!empty($matched[1])) {
+            $json = trim(substr($matched[1], 0, strpos($matched[1], '}}')));
+            $data = json_decode($json);
+
+            $context = (object) [
+                'templatepreview' => $mustacherenderer->render_from_template($overridetemplate, $data),
+                'templateoverridden' => $templateoverridden
+            ];
+            $element .= $OUTPUT->render_from_template('theme_adaptable/adaptable_admin_setting_configtemplate', $context);
+        } else {
+            $context = array();
+            $element .= $OUTPUT->render_from_template('theme_adaptable/adaptable_admin_setting_configtemplate_nopreview', $context);
+        }
+
+        $context = (object) [
+            'templatesource' => $originalsource
+        ];
+        $element .= $OUTPUT->render_from_template('theme_adaptable/adaptable_admin_setting_configtemplate_source', $context);
 
         return $element;
     }
