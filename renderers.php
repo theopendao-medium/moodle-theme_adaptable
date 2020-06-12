@@ -2282,10 +2282,18 @@ EOT;
      * @return string Icon markup(s).
      */
     protected function getcoursemenuicons($course, $existingicon = '') {
+        global $CFG;
         $icon = $existingicon;
 
         if (!empty($course->timestart)) {
             $icon .= \theme_adaptable\toolbox::getfontawesomemarkup('sign-in');
+        }
+
+        if (!empty($CFG->contextlocking)) {
+            $context = context_course::instance($course->id);
+            if ($context->locked) {
+                $icon .= \theme_adaptable\toolbox::getfontawesomemarkup('lock');
+            }
         }
 
         if (empty($icon)) {
@@ -2377,7 +2385,7 @@ EOT;
                     $alttext = '';
                 }
 
-                $courseicon = $this->getcoursemenuicons($course, $eyeslashicon);
+                $courseicon = $this->getcoursemenuicons($course, $icon);
                 $menu->add($courseicon.$coursename, new moodle_url('/course/view.php?id='.$course->id), $alttext);
             }
         }
