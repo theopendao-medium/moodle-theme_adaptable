@@ -2060,8 +2060,10 @@ EOT;
                             }
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_HIDDEN])) {
-                                $icon = \theme_adaptable\toolbox::getfontawesomemarkup('eye-slash');
-                                $child = $branch->add($icon . rtrim(
+                                $faicon = (!empty($this->page->theme->settings->chiddenicon)) ? 
+                                    $this->page->theme->settings->chiddenicon : 'eye-slash';
+                                $hiddenicon = \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
+                                $child = $branch->add($hiddenicon . rtrim(
                                     mb_strimwidth(format_string(get_string('hiddenfromview', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_HIDDEN],
@@ -2130,10 +2132,12 @@ EOT;
                                 }
                             }
 
-                            $eyeslashicon = \theme_adaptable\toolbox::getfontawesomemarkup('eye-slash');
+                            $faicon = (!empty($this->page->theme->settings->chiddenicon)) ? 
+                                $this->page->theme->settings->chiddenicon : 'eye-slash';
+                            $hiddenicon = \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
                             $child = null;
                             foreach ($sortedcourses as $course) {
-                                $icon = $this->getcoursemenuicons($course, $eyeslashicon);
+                                $icon = $this->getcoursemenuicons($course, $hiddenicon);
                                 if (!$course->visible && $mysitesvisibility == 'includehidden') {
                                     if (empty($child)) {
                                         $child = $branch->add($icon.
@@ -2286,18 +2290,24 @@ EOT;
         $icon = $existingicon;
 
         if (!empty($course->timestart)) {
-            $icon .= \theme_adaptable\toolbox::getfontawesomemarkup('exclamation-circle');
+            $faicon = (!empty($this->page->theme->settings->cneveraccessedicon)) ? 
+                $this->page->theme->settings->cneveraccessedicon : 'exclamation-circle';
+            $icon .= \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
         }
 
         if (!empty($CFG->contextlocking)) {
             $context = context_course::instance($course->id);
             if ($context->locked) {
-                $icon .= \theme_adaptable\toolbox::getfontawesomemarkup('snowflake-o');
+                $faicon = (!empty($this->page->theme->settings->cfrozenicon)) ? 
+                    $this->page->theme->settings->cfrozenicon : 'snowflake-o';
+                $icon .= \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
             }
         }
 
         if (empty($icon)) {
-            $icon = \theme_adaptable\toolbox::getfontawesomemarkup('graduation-cap');
+            $faicon = (!empty($this->page->theme->settings->cdefaulticon)) ? 
+                $this->page->theme->settings->cdefaulticon : 'graduation-cap';
+            $icon = \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
         }
 
         return $icon;

@@ -572,6 +572,15 @@ $string['enablehomedesc'] = 'Display a link to the frontpage.';
 $string['enablehomeredirect'] = 'Enable Home redirect=0';
 $string['enablehomeredirectdesc'] = 'Enable redirect=0 on home. This is for use on sites where where My Home is default homepage. It prevents users clicking the Home link from being redirected back to My Home / Dashboard';
 
+$string['chiddenicon'] = 'My courses hidden icon';
+$string['chiddenicondesc'] = 'The Font Awesome 4 icon without the prefixing \'fa-\' to be used for hidden courses.  If empty, the default will be used.';
+$string['cfrozenicon'] = 'My courses frozen icon';
+$string['cfrozenicondesc'] = 'The Font Awesome 4 icon without the prefixing \'fa-\' to be used for frozen courses.  If empty, the default will be used.';
+$string['cneveraccessedicon'] = 'My courses never accessed icon';
+$string['cneveraccessedicondesc'] = 'The Font Awesome 4 icon without the prefixing \'fa-\' to be used for courses that the user is enrolled on but not accessed.  If empty, the default will be used.';
+$string['cdefaulticon'] = 'My courses default icon';
+$string['cdefaulticondesc'] = 'The Font Awesome 4 icon without the prefixing \'fa-\' to be used for courses when they don\'t already have an icon.  If empty, the default will be used.';
+
 
 // Colours *********************************************************.
 $string['colorsettings'] = 'Colours';
