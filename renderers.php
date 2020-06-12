@@ -2027,13 +2027,13 @@ EOT;
                             $myoverviewcourses = $this->parsemyoverview($sortedcourses);
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_STARRED])) {
-                                $icon = '<i class="fa fa-star-o"></i> ';
+                                $icon = \theme_adaptable\toolbox::getfontawesomemarkup('star-o');
                                 $this->addcoursestomenu($branch, $myoverviewcourses[ADAPTABLE_COURSE_STARRED],
                                     $showshortcode, $showhover, $mysitesmaxlength, $icon);
                             }
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS])) {
-                                $icon = '<i class="fa fa-tasks"></i> ';
+                                $icon = \theme_adaptable\toolbox::getfontawesomemarkup('tasks');
                                 $child = $branch->add($icon . rtrim(
                                     mb_strimwidth(format_string(get_string('inprogress', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
@@ -2042,7 +2042,7 @@ EOT;
                             }
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_PAST])) {
-                                $icon = '<i class="fa fa-history"></i> ';
+                                $icon = \theme_adaptable\toolbox::getfontawesomemarkup('history');
                                 $child = $branch->add($icon . rtrim(
                                     mb_strimwidth(format_string(get_string('past', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
@@ -2051,7 +2051,7 @@ EOT;
                             }
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_FUTURE])) {
-                                $icon = '<i class="fa fa-clock-o"></i> ';
+                                $icon = \theme_adaptable\toolbox::getfontawesomemarkup('clock-o');
                                 $child = $branch->add($icon . rtrim(
                                     mb_strimwidth(format_string(get_string('future', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
@@ -2060,7 +2060,7 @@ EOT;
                             }
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_HIDDEN])) {
-                                $icon = '<i class="fa fa-eye-slash"></i> ';
+                                $icon = \theme_adaptable\toolbox::getfontawesomemarkup('eye-slash');
                                 $child = $branch->add($icon . rtrim(
                                     mb_strimwidth(format_string(get_string('hiddenfromview', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
@@ -2286,18 +2286,18 @@ EOT;
         $icon = $existingicon;
 
         if (!empty($course->timestart)) {
-            $icon .= \theme_adaptable\toolbox::getfontawesomemarkup('sign-in');
+            $icon .= \theme_adaptable\toolbox::getfontawesomemarkup('exclamation-circle');
         }
 
         if (!empty($CFG->contextlocking)) {
             $context = context_course::instance($course->id);
             if ($context->locked) {
-                $icon .= \theme_adaptable\toolbox::getfontawesomemarkup('lock');
+                $icon .= \theme_adaptable\toolbox::getfontawesomemarkup('snowflake-o');
             }
         }
 
         if (empty($icon)) {
-            $icon = \theme_adaptable\toolbox::getfontawesomemarkup('list');
+            $icon = \theme_adaptable\toolbox::getfontawesomemarkup('graduation-cap');
         }
 
         return $icon;
