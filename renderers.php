@@ -1975,6 +1975,54 @@ EOT;
                     $icon = '';
 
                     if ($sortedcourses) {
+                        /* Add timeaccess and timestart to the courses for all override types to use in some shape or form.
+                           Get the last accessed information for the user and populate. */
+                        global $DB, $USER;
+                        $lastaccess = $DB->get_records('user_lastaccess', array('userid' => $USER->id), '', 'courseid, timeaccess');
+                        if ($lastaccess) {
+                            foreach ($sortedcourses as $course) {
+                                if (!empty($lastaccess[$course->id])) {
+                                    $course->timeaccess = $lastaccess[$course->id]->timeaccess;
+                                }
+                            }
+                        }
+                        // Determine if we need to query the enrolment and user enrolment tables.
+                        $enrolquery = false;
+                        foreach ($sortedcourses as $course) {
+                            if (empty($course->timeaccess)) {
+                                $enrolquery = true;
+                                break;
+                            }
+                        }
+                        if ($enrolquery) {
+                            // We do.
+                            $params = array('userid' => $USER->id);
+                            $sql = "SELECT ue.id, e.courseid, ue.timestart
+                                FROM {enrol} e
+                                JOIN {user_enrolments} ue ON (ue.enrolid = e.id AND ue.userid = :userid)";
+                            $enrolments = $DB->get_records_sql($sql, $params, 0, 0);
+                            if ($enrolments) {
+                                // Sort out any multiple enrolments on the same course.
+                                $userenrolments = array();
+                                foreach ($enrolments as $enrolment) {
+                                    if (!empty($userenrolments[$enrolment->courseid])) {
+                                        if ($userenrolments[$enrolment->courseid] < $enrolment->timestart) {
+                                            // Replace.
+                                            $userenrolments[$enrolment->courseid] = $enrolment->timestart;
+                                        }
+                                    } else {
+                                        $userenrolments[$enrolment->courseid] = $enrolment->timestart;
+                                    }
+                                }
+                                // We don't need to worry about timeend etc. as our course list will be valid for the user from above.
+                                foreach ($sortedcourses as $course) {
+                                    if (empty($course->timeaccess)) {
+                                        $course->timestart = $userenrolments[$course->id];
+                                    }
+                                }
+                            }
+                        }
+
                         if ($overridetype == 'myoverview') {
                             $myoverviewcourses = $this->parsemyoverview($sortedcourses);
 
@@ -1986,7 +2034,7 @@ EOT;
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS])) {
                                 $icon = '<i class="fa fa-tasks"></i> ';
-                                $child = $branch->add($icon . $trunc = rtrim(
+                                $child = $branch->add($icon . rtrim(
                                     mb_strimwidth(format_string(get_string('inprogress', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS],
@@ -1995,7 +2043,7 @@ EOT;
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_PAST])) {
                                 $icon = '<i class="fa fa-history"></i> ';
-                                $child = $branch->add($icon . $trunc = rtrim(
+                                $child = $branch->add($icon . rtrim(
                                     mb_strimwidth(format_string(get_string('past', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_PAST],
@@ -2004,7 +2052,7 @@ EOT;
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_FUTURE])) {
                                 $icon = '<i class="fa fa-clock-o"></i> ';
-                                $child = $branch->add($icon . $trunc = rtrim(
+                                $child = $branch->add($icon . rtrim(
                                     mb_strimwidth(format_string(get_string('future', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_FUTURE],
@@ -2013,7 +2061,7 @@ EOT;
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_HIDDEN])) {
                                 $icon = '<i class="fa fa-eye-slash"></i> ';
-                                $child = $branch->add($icon . $trunc = rtrim(
+                                $child = $branch->add($icon . rtrim(
                                     mb_strimwidth(format_string(get_string('hiddenfromview', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_HIDDEN],
@@ -2021,52 +2069,6 @@ EOT;
                             }
                         } else {
                             if ($overridetype == 'last') {
-                                //  Get the last accessed information for the user and populate.
-                                global $DB, $USER;
-                                $lastaccess = $DB->get_records('user_lastaccess', array('userid' => $USER->id), '', 'courseid, timeaccess');
-                                if ($lastaccess) {
-                                    foreach ($sortedcourses as $course) {
-                                        if (!empty($lastaccess[$course->id])) {
-                                            $course->timeaccess = $lastaccess[$course->id]->timeaccess;
-                                        }
-                                    }
-                                }
-                                // Determine if we need to query the enrolment and user enrolment tables.
-                                $enrolquery = false;
-                                foreach ($sortedcourses as $course) {
-                                    if (empty($course->timeaccess)) {
-                                        $enrolquery = true;
-                                        break;
-                                    }
-                                }
-                                if ($enrolquery) {
-                                    // We do.
-                                    $params = array('userid' => $USER->id);
-                                    $sql = "SELECT ue.id, e.courseid, ue.timestart
-                                        FROM {enrol} e
-                                        JOIN {user_enrolments} ue ON (ue.enrolid = e.id AND ue.userid = :userid)";
-                                    $enrolments = $DB->get_records_sql($sql, $params, 0, 0);
-                                    if ($enrolments) {
-                                        // Sort out any multiple enrolments on the same course.
-                                        $userenrolments = array();
-                                        foreach ($enrolments as $enrolment) {
-                                            if (!empty($userenrolments[$enrolment->courseid])) {
-                                                if ($userenrolments[$enrolment->courseid] < $enrolment->timestart) {
-                                                    // Replace.
-                                                    $userenrolments[$enrolment->courseid] = $enrolment->timestart;
-                                                }
-                                            } else {
-                                                $userenrolments[$enrolment->courseid] = $enrolment->timestart;
-                                            }
-                                        }
-                                        // We don't need to worry about timeend etc. as our course list will be valid for the user from above.
-                                        foreach ($sortedcourses as $course) {
-                                            if (empty($course->timeaccess)) {
-                                                $course->timestart = $userenrolments[$course->id];
-                                            }
-                                        }
-                                    }
-                                }
                                 uasort($sortedcourses, array($this, 'timeaccesscompare'));
                             }
 
@@ -2090,10 +2092,8 @@ EOT;
                                     }
 
                                     if (!$overridelist) { // Feature not in use, add to menu as normal.
-                                        if (!empty($course->timestart)) {
-                                            $coursename = '<span class="onlyenrolled">'.$coursename.'</span>';
-                                        }
-                                        $branch->add($coursename,
+                                        $icon = $this->getcoursemenuicons($course);
+                                        $branch->add($icon.$coursename,
                                             new moodle_url('/course/view.php?id='.$course->id), $alttext);
                                     } else {
                                         // We want to check against array from profile field.
@@ -2102,18 +2102,15 @@ EOT;
                                                 in_array($course->shortname, $overridelist)) ||
                                                 ($overridetype == 'strings' &&
                                                  $this->check_if_in_array_string($overridelist, $course->shortname))) {
-                                            $icon = '';
 
-                                            if (!empty($course->timestart)) {
-                                                $coursename = '<span class="onlyenrolled">'.$coursename.'</span>';
-                                            }
-                                            $branch->add($icon . $coursename,
+                                            $icon = $this->getcoursemenuicons($course);
+                                            $branch->add($icon.$coursename,
                                                 new moodle_url('/course/view.php?id='.$course->id), $alttext, 100);
                                         } else {
                                             // If not in array add to sub menu item.
                                             if (!isset($child)) {
                                                 $icon = '<i class="fa fa-history"></i> ';
-                                                $child = $branch->add($icon . $trunc = rtrim(
+                                                $child = $branch->add($icon . rtrim(
                                                     mb_strimwidth(format_string(get_string('pastcourses', 'theme_adaptable')),
                                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, $alttext, 1000);
                                             }
@@ -2123,35 +2120,28 @@ EOT;
                                                 $rawcoursename = $course->fullname;
                                             }
 
-                                            if (!empty($course->timestart)) {
-                                                $rawcoursename = '<span class="onlyenrolled">'.$coursename.'</span>';
-                                                $child->add('<span class="onlyenrolled">'.rtrim(mb_strimwidth(format_string($rawcoursename),
-                                                    0, $mysitesmaxlengthhidden)) . '...</span>',
-                                                    new moodle_url('/course/view.php?id='.$course->id),
-                                                    format_string($rawcoursename));
-                                            } else {
-                                                $child->add(rtrim(mb_strimwidth(format_string($rawcoursename),
-                                                    0, $mysitesmaxlengthhidden)) . '...',
-                                                    new moodle_url('/course/view.php?id='.$course->id),
-                                                    format_string($rawcoursename));
-                                            }
-
+                                            $icon = $this->getcoursemenuicons($course);
+                                            $child->add($icon.rtrim(mb_strimwidth(format_string($rawcoursename),
+                                                0, $mysitesmaxlengthhidden)) . '...',
+                                                new moodle_url('/course/view.php?id='.$course->id),
+                                                format_string($rawcoursename));
                                         }
                                     }
                                 }
                             }
 
-                            $icon = '<i class="fa fa-eye-slash"></i> ';
+                            $eyeslashicon = \theme_adaptable\toolbox::getfontawesomemarkup('eye-slash');
                             $child = null;
                             foreach ($sortedcourses as $course) {
+                                $icon = $this->getcoursemenuicons($course, $eyeslashicon);
                                 if (!$course->visible && $mysitesvisibility == 'includehidden') {
                                     if (empty($child)) {
-                                        $child = $branch->add($icon .
-                                            $trunc = rtrim(mb_strimwidth(format_string(get_string('hiddencourses', 'theme_adaptable')),
+                                        $child = $branch->add($icon.
+                                            rtrim(mb_strimwidth(format_string(get_string('hiddencourses', 'theme_adaptable')),
                                             0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 2000);
                                     }
 
-                                    $child->add($icon . $trunc = rtrim(mb_strimwidth(format_string($course->fullname),
+                                    $child->add($icon.rtrim(mb_strimwidth(format_string($course->fullname),
                                         0, $mysitesmaxlengthhidden)) . '...',
                                         new moodle_url('/course/view.php?id='.$course->id), format_string($course->shortname));
                                 }
@@ -2284,13 +2274,35 @@ EOT;
     }
 
     /**
+     * Get the icon markup of the icon(s) for the course that will be used in its menu item.
+     *
+     * @param stdClass $course Course.
+     * @param string $existingicon Existing icon markup if any.
+     *
+     * @return string Icon markup(s).
+     */
+    protected function getcoursemenuicons($course, $existingicon = '') {
+        $icon = $existingicon;
+
+        if (!empty($course->timestart)) {
+            $icon .= \theme_adaptable\toolbox::getfontawesomemarkup('sign-in');
+        }
+
+        if (empty($icon)) {
+            $icon = \theme_adaptable\toolbox::getfontawesomemarkup('list');
+        }
+
+        return $icon;
+    }
+
+    /**
      * Classify the courses in the same way that the My Overview block does non the dashboard.
      *
      * @param array $sortedcourses Array of courses - must contain the fields by 'define_properties' in 'course_summary_exporter'.
      *
      * @return array array of arrays that classify the courses.
      */
-     protected function parsemyoverview($sortedcourses) {
+     protected function parsemyoverview(&$sortedcourses) {
         global $CFG, $USER;
 
         $ufservice = \core_favourites\service_factory::get_service_for_user_context(\context_user::instance($USER->id));
@@ -2365,7 +2377,8 @@ EOT;
                     $alttext = '';
                 }
 
-                $menu->add($icon.$coursename, new moodle_url('/course/view.php?id='.$course->id), $alttext);
+                $courseicon = $this->getcoursemenuicons($course, $eyeslashicon);
+                $menu->add($courseicon.$coursename, new moodle_url('/course/view.php?id='.$course->id), $alttext);
             }
         }
     }
