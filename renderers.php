@@ -2061,7 +2061,7 @@ EOT;
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_HIDDEN])) {
                                 $faicon = (!empty($this->page->theme->settings->chiddenicon)) ? 
-                                    $this->page->theme->settings->chiddenicon : 'eye-slash';
+                                    $this->page->theme->settings->chiddenicon : '';
                                 $hiddenicon = \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
                                 $child = $branch->add($hiddenicon . rtrim(
                                     mb_strimwidth(format_string(get_string('hiddenfromview', 'theme_adaptable')),
@@ -2140,7 +2140,7 @@ EOT;
                                 $icon = $this->getcoursemenuicons($course, $hiddenicon);
                                 if (!$course->visible && $mysitesvisibility == 'includehidden') {
                                     if (empty($child)) {
-                                        $child = $branch->add($icon.
+                                        $child = $branch->add($hiddenicon.
                                             rtrim(mb_strimwidth(format_string(get_string('hiddencourses', 'theme_adaptable')),
                                             0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 2000);
                                     }
@@ -2291,7 +2291,7 @@ EOT;
 
         if (!empty($course->timestart)) {
             $faicon = (!empty($this->page->theme->settings->cneveraccessedicon)) ? 
-                $this->page->theme->settings->cneveraccessedicon : 'exclamation-circle';
+                $this->page->theme->settings->cneveraccessedicon : '';
             $icon .= \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
         }
 
@@ -2299,14 +2299,14 @@ EOT;
             $context = context_course::instance($course->id);
             if ($context->locked) {
                 $faicon = (!empty($this->page->theme->settings->cfrozenicon)) ? 
-                    $this->page->theme->settings->cfrozenicon : 'snowflake-o';
+                    $this->page->theme->settings->cfrozenicon : '';
                 $icon .= \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
             }
         }
 
         if (empty($icon)) {
             $faicon = (!empty($this->page->theme->settings->cdefaulticon)) ? 
-                $this->page->theme->settings->cdefaulticon : 'graduation-cap';
+                $this->page->theme->settings->cdefaulticon : '';
             $icon = \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
         }
 

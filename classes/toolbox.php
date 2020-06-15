@@ -396,13 +396,17 @@ class toolbox {
      * @param array $sttributes - Optional attributes to add.
      * @param string $content - Optional content.
      *
-     * @rerurn string markup.
+     * @rerurn string markup or empty string if no icon specified.
      */
     static public function getfontawesomemarkup($theicon, $classes = array(), $attributes = array(), $content = '') {
-        $classes[] = 'fa fa-'.$theicon;
-        $attributes['aria-hidden'] = 'true';
-        $attributes['class'] = implode(' ', $classes);
-        return \html_writer::tag('i', $content, $attributes);
+        $icon = '';
+        if (!empty($theicon)) {
+            $classes[] = 'fa fa-'.$theicon;
+            $attributes['aria-hidden'] = 'true';
+            $attributes['class'] = implode(' ', $classes);
+            $icon = \html_writer::tag('i', $content, $attributes);
+        }
+        return $icon;
     }
 
     /**
