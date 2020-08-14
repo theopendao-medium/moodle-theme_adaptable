@@ -49,7 +49,7 @@ if ($ADMIN->fulltree) {
             $catinfo = $topcats[$customheaderid];
             if (empty($catinfo['children'])) {
                 $headdesc = get_string('categoryheaderheaderdesc', 'theme_adaptable',
-                                        array('id' => $customheaderid, 'name' => $catinfo['name']));
+                    array('id' => $customheaderid, 'name' => $catinfo['name']));
             } else {
                 $childrentext = '';
                 $first = true;
@@ -65,19 +65,19 @@ if ($ADMIN->fulltree) {
                             array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
             }
             $temp->add(new admin_setting_heading('theme_adaptable_categoryheader'.$customheaderid,
-                        get_string('categoryheaderheader', 'theme_adaptable',
-                        array('id' => $customheaderid, 'name' => $catinfo['name'])), format_text($headdesc, FORMAT_MARKDOWN)));
+                get_string('categoryheaderheader', 'theme_adaptable',
+                array('id' => $customheaderid, 'name' => $catinfo['name'])), format_text($headdesc, FORMAT_MARKDOWN)));
 
             // Background image.
             $name = 'theme_adaptable/categoryheaderbgimage'.$customheaderid;
             $title = get_string('categoryheaderbgimage', 'theme_adaptable', array('id' => $customheaderid,
-                                'name' => $catinfo['name']));
+                'name' => $catinfo['name']));
             if (empty($catinfo['children'])) {
                 $description = get_string('categoryheaderbgimagedesc', 'theme_adaptable', array('id' => $customheaderid,
-                                          'name' => $catinfo['name']));
+                    'name' => $catinfo['name']));
             } else {
                 $description = get_string('categoryheaderbgimagedescchildren', 'theme_adaptable',
-                                          array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
+                    array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
             }
             $setting = new admin_setting_configstoredfile($name, $title, $description, 'categoryheaderbgimage'.$customheaderid);
             $temp->add($setting);
@@ -85,13 +85,13 @@ if ($ADMIN->fulltree) {
             // Logo.
             $name = 'theme_adaptable/categoryheaderlogo'.$customheaderid;
             $title = get_string('categoryheaderlogo', 'theme_adaptable', array('id' => $customheaderid,
-                                 'name' => $catinfo['name']));
+                'name' => $catinfo['name']));
             if (empty($catinfo['children'])) {
                 $description = get_string('categoryheaderlogodesc', 'theme_adaptable', array('id' => $customheaderid,
-                                          'name' => $catinfo['name']));
+                    'name' => $catinfo['name']));
             } else {
                 $description = get_string('categoryheaderlogodescchildren', 'theme_adaptable', array('id' => $customheaderid,
-                                          'name' => $catinfo['name'], 'children' => $childrentext));
+                    'name' => $catinfo['name'], 'children' => $childrentext));
             }
             $setting = new admin_setting_configstoredfile($name, $title, $description, 'categoryheaderlogo'.$customheaderid);
             $temp->add($setting);
@@ -99,14 +99,14 @@ if ($ADMIN->fulltree) {
             // Custom title.
             $name = 'theme_adaptable/categoryheadercustomtitle'.$customheaderid;
             $title = get_string('categoryheadercustomtitle', 'theme_adaptable', array('id' => $customheaderid,
-                                'name' => $catinfo['name']));
+                'name' => $catinfo['name']));
             if (empty($catinfo['children'])) {
                 $description = get_string('categoryheadercustomtitledesc', 'theme_adaptable', array('id' => $customheaderid,
-                                          'name' => $catinfo['name']));
+                    'name' => $catinfo['name']));
             } else {
                 $description = get_string('categoryheadercustomtitledescchildren', 'theme_adaptable',
-                                          array('id' => $customheaderid, 'name' => $catinfo['name'],
-                                                'children' => $childrentext));
+                    array('id' => $customheaderid, 'name' => $catinfo['name'],
+                    'children' => $childrentext));
             }
             $default = '';
             $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -115,13 +115,13 @@ if ($ADMIN->fulltree) {
             // Custom CSS.
             $name = 'theme_adaptable/categoryheadercustomcss'.$customheaderid;
             $title = get_string('categoryheadercustomcss', 'theme_adaptable', array('id' => $customheaderid,
-                                'name' => $catinfo['name']));
+                'name' => $catinfo['name']));
             if (empty($catinfo['children'])) {
                 $description = get_string('categoryheadercustomcssdesc', 'theme_adaptable',
-                                          array('id' => $customheaderid, 'name' => $catinfo['name']));
+                    array('id' => $customheaderid, 'name' => $catinfo['name']));
             } else {
                 $description = get_string('categoryheadercustomcssdescchildren', 'theme_adaptable',
-                                          array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
+                    array('id' => $customheaderid, 'name' => $catinfo['name'], 'children' => $childrentext));
             }
             $default = '';
             $setting = new admin_setting_configtextarea($name, $title, $description, $default);
@@ -130,5 +130,4 @@ if ($ADMIN->fulltree) {
         }
     }
 }
-
 $ADMIN->add('theme_adaptable', $temp);
