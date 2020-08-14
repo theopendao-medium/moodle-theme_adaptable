@@ -1249,8 +1249,8 @@ $string['alerttextdesc'] = 'Enter the text to display in the Alert box';
 $string['enablealerts'] = 'Enable / Disable Alerts';
 $string['enablealertsdesc'] = 'Enable / disable alerts on your site';
 
-$string['enablealertcoursepages'] = 'Enable Alert Box on Course Pages';
-$string['enablealertcoursepagesdesc'] = 'Turning this option on will display the top alert box in the courses pages';
+$string['enablealertcoursepages'] = 'Enable Alert Box on Course Pages - NOT IMPLEMENTED?';
+$string['enablealertcoursepagesdesc'] = 'Turning this option on will display the top alert box in the courses pages - NOT IMPLEMENTED?';
 
 $string['enablealertstriptags'] = 'Automatically strip html tags from alerts';
 $string['enablealertstriptagsdesc'] = 'Enable will clean up alert messages automatically, Disable will allow you to use html / links in messages but you will have to clean up manually in html view';
