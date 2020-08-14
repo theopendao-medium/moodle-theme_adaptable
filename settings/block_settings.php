@@ -26,8 +26,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-    $temp = new admin_settingpage('theme_adaptable_blocks', get_string('blocksettings', 'theme_adaptable'));
-
+$temp = new admin_settingpage('theme_adaptable_blocks', get_string('blocksettings', 'theme_adaptable'));
+if ($ADMIN->fulltree) {
     // General.
     $name = 'theme_adaptable/settingsblocksgeneral';
     $heading = get_string('settingsblocksgeneral', 'theme_adaptable');
@@ -243,7 +243,6 @@ defined('MOODLE_INTERNAL') || die;
     $description = get_string('blockiconsdesc', 'theme_adaptable');
     $default = true;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Block Header Icon size.
@@ -255,5 +254,5 @@ defined('MOODLE_INTERNAL') || die;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
-
-    $ADMIN->add('theme_adaptable', $temp);
+}
+$ADMIN->add('theme_adaptable', $temp);
