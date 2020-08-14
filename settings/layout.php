@@ -26,7 +26,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-    $temp = new admin_settingpage('theme_adaptable_layout', get_string('layoutsettings', 'theme_adaptable'));
+$temp = new admin_settingpage('theme_adaptable_layout', get_string('layoutsettings', 'theme_adaptable'));
+if ($ADMIN->fulltree) {
     $temp->add(new admin_setting_heading('theme_adaptable_layout', get_string('layoutsettingsheading', 'theme_adaptable'),
         format_text(get_string('layoutdesc', 'theme_adaptable'), FORMAT_MARKDOWN)));
 
@@ -105,7 +106,6 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-
     // Adaptable Tabbed layout changes.
     $name = 'theme_adaptable/tabbedlayoutheading';
     $heading = get_string('tabbedlayoutheading', 'theme_adaptable');
@@ -119,7 +119,6 @@ defined('MOODLE_INTERNAL') || die;
     $default = $tabbedlayoutdefaultscourse[0];
     $choices = $tabbedlayoutdefaultscourse;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Have a link back to the course page in the course tabs.
@@ -153,7 +152,6 @@ defined('MOODLE_INTERNAL') || die;
     $title = get_string('tabbedlayoutcoursepagetabpersistencetime', 'theme_adaptable');
     $description = get_string('tabbedlayoutcoursepagetabpersistencetimedesc', 'theme_adaptable');
     $setting = new admin_setting_configtext($name, $title, $description, '30', PARAM_INT);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Dashboard page tabbed layout.
@@ -163,7 +161,6 @@ defined('MOODLE_INTERNAL') || die;
     $default = $tabbedlayoutdefaultsdashboard[0];
     $choices = $tabbedlayoutdefaultsdashboard;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Dashboard page tab colour selected.
@@ -188,14 +185,12 @@ defined('MOODLE_INTERNAL') || die;
     $title = get_string('tabbedlayoutdashboardtab1condition', 'theme_adaptable');
     $description = get_string('tabbedlayoutdashboardtab1conditiondesc', 'theme_adaptable');
     $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_RAW, '');
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     $name = 'theme_adaptable/tabbedlayoutdashboardtab2condition';
     $title = get_string('tabbedlayoutdashboardtab2condition', 'theme_adaptable');
     $description = get_string('tabbedlayoutdashboardtab2conditiondesc', 'theme_adaptable');
     $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_RAW, '');
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
-
-    $ADMIN->add('theme_adaptable', $temp);
+}
+$ADMIN->add('theme_adaptable', $temp);
