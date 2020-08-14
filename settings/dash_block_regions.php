@@ -27,10 +27,10 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-    // Frontpage Block Regions Section.
-    $temp = new admin_settingpage('theme_adaptable_dash_block_regions',
+// Frontpage Block Regions Section.
+$temp = new admin_settingpage('theme_adaptable_dash_block_regions',
         get_string('dashboardblockregionsettings', 'theme_adaptable'));
-
+if ($ADMIN->fulltree) {
     $temp->add(new admin_setting_heading('theme_adaptable_heading', get_string('dashblocklayoutbuilder', 'theme_adaptable'),
         format_text(get_string('dashblocklayoutbuilderdesc', 'theme_adaptable'), FORMAT_MARKDOWN)));
 
@@ -38,7 +38,6 @@ defined('MOODLE_INTERNAL') || die;
     $title = get_string('dashblocksenabled', 'theme_adaptable');
     $description = get_string('dashblocksenableddesc', 'theme_adaptable');
     $setting = new admin_setting_configcheckbox($name, $title, $description, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     $name = 'theme_adaptable/dashblocksposition';
@@ -47,7 +46,6 @@ defined('MOODLE_INTERNAL') || die;
     $default = $dashboardblockregionposition['abovecontent'];
     $choices = $dashboardblockregionposition;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Block region builder.
@@ -62,7 +60,6 @@ defined('MOODLE_INTERNAL') || die;
         $default = $bootstrap12defaults[$i - 1];
         $choices = $bootstrap12;
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-        $setting->set_updatedcallback('theme_reset_all_caches');
         $temp->add($setting);
 
         $settingname = 'dashblocklayoutlayoutrow' . $i;
@@ -97,5 +94,5 @@ defined('MOODLE_INTERNAL') || die;
     $temp->add(new admin_setting_heading('theme_adaptable_dashlayoutblockscount', '', $mktcountmsg));
 
     $temp->add(new admin_setting_heading('theme_adaptable_dashlayoutbuilder', '', $imgblder));
-
-    $ADMIN->add('theme_adaptable', $temp);
+}
+$ADMIN->add('theme_adaptable', $temp);
