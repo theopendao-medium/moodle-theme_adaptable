@@ -27,10 +27,11 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-    // Fonts Section.
-    $temp = new admin_settingpage('theme_adaptable_font', get_string('fontsettings', 'theme_adaptable'));
+// Fonts Section.
+$temp = new admin_settingpage('theme_adaptable_font', get_string('fontsettings', 'theme_adaptable'));
+if ($ADMIN->fulltree) {
     $temp->add(new admin_setting_heading('theme_adaptable_font', get_string('fontsettingsheading', 'theme_adaptable'),
-                   format_text(get_string('fontdesc', 'theme_adaptable'), FORMAT_MARKDOWN)));
+        format_text(get_string('fontdesc', 'theme_adaptable'), FORMAT_MARKDOWN)));
 
     // Fonts heading.
     $name = 'theme_adaptable/settingsfonts';
@@ -67,7 +68,6 @@ defined('MOODLE_INTERNAL') || die;
         'tamil' => "Tamil",
         'thai' => "Thai"
     ));
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Main Font size.
@@ -186,7 +186,7 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    // Course font color.
+    // Course font color.  TODO - USED?
     $name = 'theme_adaptable/fonttitlecolorcourse';
     $title = get_string('fonttitlecolorcourse', 'theme_adaptable');
     $description = get_string('fonttitlecolorcoursedesc', 'theme_adaptable');
@@ -194,5 +194,5 @@ defined('MOODLE_INTERNAL') || die;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, '#ffffff', $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
-
-    $ADMIN->add('theme_adaptable', $temp);
+}
+$ADMIN->add('theme_adaptable', $temp);
