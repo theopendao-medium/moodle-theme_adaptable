@@ -28,12 +28,12 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-    // Frontpage courses section.
-    $temp = new admin_settingpage('theme_adaptable_frontpage_courses', get_string('frontpagecoursesettings', 'theme_adaptable'));
+// Frontpage courses section.
+$temp = new admin_settingpage('theme_adaptable_frontpage_courses', get_string('frontpagecoursesettings', 'theme_adaptable'));
+if ($ADMIN->fulltree) {
     $temp->add(new admin_setting_heading('theme_adaptable_frontpage_courses',
-                                         get_string('frontpagesettingsheading',
-                                         'theme_adaptable'),
-                                         format_text(get_string('frontpagedesc', 'theme_adaptable'), FORMAT_MARKDOWN)));
+        get_string('frontpagesettingsheading', 'theme_adaptable'),
+        format_text(get_string('frontpagedesc', 'theme_adaptable'), FORMAT_MARKDOWN)));
 
     $name = 'theme_adaptable/frontpagerenderer';
     $title = get_string('frontpagerenderer', 'theme_adaptable');
@@ -45,7 +45,6 @@ defined('MOODLE_INTERNAL') || die;
         4 => get_string('frontpagerendereroption4', 'theme_adaptable'),
     );
     $setting = new admin_setting_configselect($name, $title, $description, 2, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Number of tiles per row.
@@ -61,15 +60,13 @@ defined('MOODLE_INTERNAL') || die;
         2  => get_string('frontpagetiles6', 'theme_adaptable'),
     );
     $setting = new admin_setting_configselect($name, $title, $description, 4, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-
+    // TODO - Not served by theme_adaptable_pluginfile ?
     $name = 'theme_adaptable/frontpagerendererdefaultimage';
     $title = get_string('frontpagerendererdefaultimage', 'theme_adaptable');
     $description = get_string('frontpagerendererdefaultimagedesc', 'theme_adaptable');
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagerendererdefaultimage');
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Show course contacts.
@@ -102,10 +99,11 @@ defined('MOODLE_INTERNAL') || die;
     $title = get_string('enableavailablecourses', 'theme_adaptable');
     $description = get_string('enableavailablecoursesdesc', 'theme_adaptable');
     $setting = new admin_setting_configselect($name, $title, $description, 0,
-    array(
+        array(
             'inherit' => get_string('show'),
             'none' => get_string('hide')
         ));
+    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
-
-    $ADMIN->add('theme_adaptable', $temp);
+}
+$ADMIN->add('theme_adaptable', $temp);
