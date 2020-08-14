@@ -57,7 +57,6 @@ if ($ADMIN->fulltree) {
     $title = get_string('socialtarget', 'theme_adaptable');
     $description = get_string('socialtargetdesc', 'theme_adaptable');
     $setting = new admin_setting_configselect($name, $title, $description, '_self', $htmltarget);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     $name = 'theme_adaptable/socialiconlist';
