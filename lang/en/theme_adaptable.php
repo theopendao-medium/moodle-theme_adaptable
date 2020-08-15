@@ -925,8 +925,8 @@ $string['fonttitleweightdesc'] = 'Set the font weight used in the site title and
 $string['fonttitlesize'] = 'Site / Course title font size';
 $string['fonttitlesizedesc'] = 'Site title and course title font size used in site. Select a value fron the list.';
 
-$string['fonttitlecolorcourse'] = 'Course title font colour - USED??';
-$string['fonttitlecolorcoursedesc'] = 'Set the colour of the course title font in the theme, use html hex code - USED?';
+$string['fonttitlecolorcourse'] = 'Course title font colour';
+$string['fonttitlecolorcoursedesc'] = 'Set the colour of the course title font in the theme, use html hex code.';
 
 $string['fontsubset'] = 'Google Fonts subset';
 $string['fontsubsetdesc'] = 'Select other character subset than latin to be applied to all the fonts. Latin subset is already included by default.';
@@ -1249,8 +1249,8 @@ $string['alerttextdesc'] = 'Enter the text to display in the Alert box';
 $string['enablealerts'] = 'Enable / Disable Alerts';
 $string['enablealertsdesc'] = 'Enable / disable alerts on your site';
 
-$string['enablealertcoursepages'] = 'Enable Alert Box on Course Pages - NOT IMPLEMENTED?';
-$string['enablealertcoursepagesdesc'] = 'Turning this option on will display the top alert box in the courses pages - NOT IMPLEMENTED?';
+$string['enablealertcoursepages'] = 'Enable Alert Box on Course Pages';
+$string['enablealertcoursepagesdesc'] = 'Turning this option on will display the top alert box in the courses pages';
 
 $string['enablealertstriptags'] = 'Automatically strip html tags from alerts';
 $string['enablealertstriptagsdesc'] = 'Enable will clean up alert messages automatically, Disable will allow you to use html / links in messages but you will have to clean up manually in html view';
