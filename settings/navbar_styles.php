@@ -73,7 +73,6 @@ if ($ADMIN->fulltree) {
     $description = get_string('navbardisplayiconsdesc', 'theme_adaptable');
     $default = true;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     $name = 'theme_adaptable/navbardisplaysubmenuarrow';
@@ -81,7 +80,6 @@ if ($ADMIN->fulltree) {
     $description = get_string('navbardisplaysubmenuarrowdesc', 'theme_adaptable');
     $default = false;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Dropdown border radius.
