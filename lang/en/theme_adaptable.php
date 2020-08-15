@@ -925,8 +925,8 @@ $string['fonttitleweightdesc'] = 'Set the font weight used in the site title and
 $string['fonttitlesize'] = 'Site / Course title font size';
 $string['fonttitlesizedesc'] = 'Site title and course title font size used in site. Select a value fron the list.';
 
-$string['fonttitlecolorcourse'] = 'Course title font colour';
-$string['fonttitlecolorcoursedesc'] = 'Set the colour of the course title font in the theme, use html hex code.';
+$string['fonttitlecolorcourse'] = 'Course title font colour - USED??';
+$string['fonttitlecolorcoursedesc'] = 'Set the colour of the course title font in the theme, use html hex code - USED?';
 
 $string['fontsubset'] = 'Google Fonts subset';
 $string['fontsubsetdesc'] = 'Select other character subset than latin to be applied to all the fonts. Latin subset is already included by default.';
