@@ -71,9 +71,9 @@ if ($ADMIN->fulltree) {
     $temp->add($setting);
 
     // Main Font size.
-    $name = 'theme_adaptable/fontsize';
-    $title = get_string('fontsize', 'theme_adaptable');
-    $description = get_string('fontsizedesc', 'theme_adaptable');
+    $name = 'theme_adaptable/mainfontsize';
+    $title = get_string('mainfontsize', 'theme_adaptable');
+    $description = get_string('mainfontsizedesc', 'theme_adaptable');
     $setting = new admin_setting_configselect($name, $title, $description, '95%', $from85to110percent);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);

@@ -889,8 +889,8 @@ $string['fontnamedesc'] = 'Select the default font or <a href="https://www.googl
 $string['customfontname'] = 'Custom Main font';
 $string['customfontnamedesc'] = 'Enter the name of the custom Main Font only if you selected &apos;Custom&apos; in the Main Font dropdown.';
 
-$string['fontsize'] = 'Main font size';
-$string['fontsizedesc'] = 'Select the default font size (in percentage) used in the whole site.';
+$string['mainfontsize'] = 'Main font size';
+$string['mainfontsizedesc'] = 'Select the default font size (in percentage) used in the whole site.  Note:  This has been renamed from \'fontsize\' to avoid conflict with \'Boost\'s\'\ setting of the same name but with different units.';
 
 $string['fontheadername'] = 'Headers font';
 $string['fontheadernamedesc'] = 'Select the default font or <a href="https://www.google.com/fonts" target="_blank">Google Fonts</a> used in the text and blocks headers.';

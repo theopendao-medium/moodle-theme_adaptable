@@ -193,7 +193,7 @@ function theme_adaptable_process_css($css, $theme) {
         '[[setting:socialpaddingside]]' => 16,
         '[[setting:socialpaddingtop]]' => '0%',
         '[[setting:fontname]]' => 'Open Sans',
-        '[[setting:fontsize]]' => '95%',
+        '[[setting:mainfontsize]]' => '95%',
         '[[setting:fontheadername]]' => 'Roboto',
         '[[setting:fontcolor]]' => '#333333',
         '[[setting:fontheadercolor]]' => '#333333',

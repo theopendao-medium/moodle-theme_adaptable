@@ -34,7 +34,7 @@ body {
     background-size: 100% auto;
     color: [[setting:fontcolor]];
     font-family: [[setting:fontname]], sans-serif;
-    font-size: [[setting:fontsize]];
+    font-size: [[setting:mainfontsize]];
     font-weight: [[setting:fontweight]] !important;
     line-height: normal;
 }
@@ -59,7 +59,7 @@ select,
 textarea {
     color: [[setting:fontcolor]];
     font-family: [[setting:fontname]], sans-serif;
-    font-size: [[setting:fontsize]];
+    font-size: [[setting:mainfontsize]];
     font-weight: [[setting:fontweight]] !important;
 }
 
