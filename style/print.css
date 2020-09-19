@@ -112,8 +112,7 @@
 /* End media query */
 }
 
-/* Force sheet orientation to landscape */
 @page {
     margin: 2cm 1cm 2cm 2cm;
-    size: landscape;
+    size: [[setting:printpageorientation]];
 }

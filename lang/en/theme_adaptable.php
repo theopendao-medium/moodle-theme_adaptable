@@ -1926,3 +1926,14 @@ $string['categoryheadercustomcssdesc'] = 'Set custom CSS for the top level categ
 $string['categoryheadercustomcssdescchildren'] = 'Set custom CSS for the top level category \'{$a->name}\' with id \'{$a->id}\' and its children \'{$a->children}\'.  This will generate CSS for the theme selector prefixed with \'.category-{$a->id}\' and for all child ids.  If the CSS does not appear to be applied, then check the PHP log file.';
 $string['invalidcategorycss'] = 'Invalid category custom CSS for category \'{$a->topcatname}\' with id \'{$a->topcatid}\': \'{$a->css}\'.';
 $string['invalidcategorygeneratedcss'] = 'Invalid category custom generated CSS: \'{$a->css}\'.';
+
+// Print settings.
+$string['printsettings'] = 'Print';
+$string['printsettingsdesc'] = 'Set the settings for printing.';
+$string['printsettingsheading'] = 'Print settings';
+
+$string['printpageorientation'] = 'Page orientation';
+$string['printpageorientationdesc'] = 'Set orientation of the page to \'Portrait\' or \'Landscape\'.';
+$string['landscape'] = 'Landscape';
+$string['portrait'] = 'Portrait';
+
