@@ -26,11 +26,12 @@
 
 /* Hide some elements in Print view */
 @media print {
-    /* Removes header */
+    /* Remove things */
     #above-header,
     .socialbox,
     #navwrap,
-    #page-navbar {
+    #page-navbar,
+    #showsidebaricon {
         display: none !important;
     }
 
@@ -112,7 +113,7 @@
 
 /* Print settings */
 @page {
-    margin: 2cm 1cm 2cm 2cm;
+    margin: [[setting:printmargin]];
     size: [[setting:printpageorientation]];
 }
 
@@ -121,5 +122,10 @@
     li.activity.label,
     .file-picker td.label {
         font-size: [[setting:printbodyfontsize]];
+    }
+
+    body,
+    li {
+        line-height: [[setting:printlineheight]];
     }
 }

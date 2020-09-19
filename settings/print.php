@@ -50,5 +50,19 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configtext($name, $title, $description, '11pt', PARAM_TEXT);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+
+    $name = 'theme_adaptable/printmargin';
+    $title = get_string('printmargin', 'theme_adaptable');
+    $description = get_string('printmargindesc', 'theme_adaptable');
+    $setting = new admin_setting_configtext($name, $title, $description, '2cm 1cm 2cm 2cm', PARAM_TEXT);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_adaptable/printlineheight';
+    $title = get_string('printlineheight', 'theme_adaptable');
+    $description = get_string('printlineheightdesc', 'theme_adaptable');
+    $setting = new admin_setting_configtext($name, $title, $description, '1.2', PARAM_TEXT);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
 }
 $ADMIN->add('theme_adaptable', $temp);

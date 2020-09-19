@@ -1939,4 +1939,7 @@ $string['portrait'] = 'Portrait';
 
 $string['printbodyfontsize'] = 'Body font size';
 $string['printbodyfontsizedesc'] = 'Set the size of the body font.';
-
+$string['printmargin'] = 'Margin';
+$string['printmargindesc'] = 'Set the margin.';
+$string['printlineheight'] = 'Line height';
+$string['printlineheightdesc'] = 'Set the line height.';
