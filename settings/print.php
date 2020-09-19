@@ -44,5 +44,11 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    $name = 'theme_adaptable/printbodyfontsize';
+    $title = get_string('printbodyfontsize', 'theme_adaptable');
+    $description = get_string('printbodyfontsizedesc', 'theme_adaptable');
+    $setting = new admin_setting_configtext($name, $title, $description, '11pt', PARAM_TEXT);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
 }
 $ADMIN->add('theme_adaptable', $temp);

@@ -296,7 +296,8 @@ function theme_adaptable_process_css($css, $theme) {
         '[[setting:dangericoncolor]]' => '#d9534f',
         '[[setting:loginheader]]' => 1,
         '[[setting:loginfooter]]' => 1,
-        '[[setting:printpageorientation]]' => 'landscape'
+        '[[setting:printpageorientation]]' => 'landscape',
+        '[[setting:printbodyfontsize]]' => '11pt'
     );
 
     // Get all the defined settings for the theme and replace defaults.

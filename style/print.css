@@ -108,11 +108,18 @@
     footer {
         display: none !important;
     }
-
-/* End media query */
 }
 
+/* Print settings */
 @page {
     margin: 2cm 1cm 2cm 2cm;
     size: [[setting:printpageorientation]];
+}
+
+@media print {
+    body,
+    li.activity.label,
+    .file-picker td.label {
+        font-size: [[setting:printbodyfontsize]];
+    }
 }

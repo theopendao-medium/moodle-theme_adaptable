@@ -1937,3 +1937,6 @@ $string['printpageorientationdesc'] = 'Set orientation of the page to \'Portrait
 $string['landscape'] = 'Landscape';
 $string['portrait'] = 'Portrait';
 
+$string['printbodyfontsize'] = 'Body font size';
+$string['printbodyfontsizedesc'] = 'Set the size of the body font.';
+
