@@ -31,7 +31,9 @@
     .socialbox,
     #navwrap,
     #page-navbar,
-    #showsidebaricon {
+    #showsidebaricon,
+    .purgecaches,
+    #back-to-top {
         display: none !important;
     }
 
