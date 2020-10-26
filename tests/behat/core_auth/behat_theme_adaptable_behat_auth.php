@@ -25,7 +25,7 @@
  */
 
 // NOTE: no MOODLE_INTERNAL test here, this file may be required by behat before including /config.php.
-
+require_once(__DIR__ . '/../../../../../auth/tests/behat/behat_auth.php');
 
 /**
  * Log out step definition.
