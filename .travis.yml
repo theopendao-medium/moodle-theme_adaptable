@@ -28,7 +28,7 @@ matrix:
 env:
  global:
   - MOODLE_BRANCH=MOODLE_39_STABLE
-  - IGNORE_NAMES=*.txt,fallback.css,activity_navigation.mustache,message_drawer.mustache,overlaymenu.mustache,overlaymenuitem.mustache,savediscard.mustache,tabs.mustache,tourstep.mustache,admin_settingspage_tabs.php
+  - IGNORE_NAMES=*.txt,behat_*.php,fallback.css,activity_navigation.mustache,message_drawer.mustache,overlaymenu.mustache,overlaymenuitem.mustache,savediscard.mustache,tabs.mustache,tourstep.mustache,admin_settingspage_tabs.php
 
 before_install:
 # This disables XDebug which should speed up the build.  One reason to remove this
