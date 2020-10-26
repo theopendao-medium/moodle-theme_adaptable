@@ -38,8 +38,6 @@ require_once(__DIR__ . '/../../../../../auth/tests/behat/behat_auth.php');
 class behat_theme_adaptable_behat_auth extends behat_auth {
     /**
      * Logs out of the system.
-     *
-     * @Given /^I log out$/
      */
     public function i_log_out() {
 
@@ -47,6 +45,7 @@ class behat_theme_adaptable_behat_auth extends behat_auth {
         $this->wait_for_pending_js();
 
         // Click on logout link in user menu on the navbar.
+        $this->execute('behat_general::i_click_on', ['#usermenu', 'css_element']);
         $this->execute('behat_general::i_click_on_in_the', array(get_string('logout'), 'link', '#usermenu-dropdown', "css_element"));
     }
 }
