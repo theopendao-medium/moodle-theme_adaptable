@@ -12,7 +12,7 @@ define(['jquery', 'core/log'], function($, log) {
                 var zoomInIcon = $('#zoominicon');
                 if (zoomInIcon.length) {
                     var sidePost = $('#block-region-side-post');
-                    var zoomInFaIcon = $('#showhideblocksicon i.fa');
+                    var zoomInFaIcon = $('#zoominicon i.fa');
                     var body = $('body');
                     var zoomLeft = false;
                     if (zoomInIcon.hasClass('left')) {
