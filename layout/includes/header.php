@@ -240,8 +240,11 @@ if ($adaptableheaderstyle == "style1") {
     if (!$headercontext['nonavbar']) {
         // Social icons.
         if ($PAGE->theme->settings->socialorsearch == 'social') {
-            $headercontext['socialorsearch'] = '<div class="socialbox pull-right '.$PAGE->theme->settings->responsivesocial.'">';
-            $headercontext['socialorsearch'] .= $OUTPUT->socialicons().'</div>';
+            $headersocialcontext = [
+                'classes' => $PAGE->theme->settings->responsivesocial,
+                'output' => $OUTPUT
+            ];
+            $headercontext['socialorsearch'] = $OUTPUT->render_from_template('theme_adaptable/headersocial', $headersocialcontext);
         }
         // Search box.
         if ((!$hidesitetitle) && ($PAGE->theme->settings->socialorsearch == 'search') ) {
@@ -249,16 +252,6 @@ if ($adaptableheaderstyle == "style1") {
                 'url' => new moodle_url('/course/search.php')
             ];
             $headercontext['socialorsearch'] = $OUTPUT->render_from_template('theme_adaptable/headersearch', $headersearchcontext);
-            /*$headercontext['socialorsearch'] = '<div class="searchbox d-none d-lg-block">';
-            $headercontext['socialorsearch'] .= '<form action="'.new moodle_url('/course/search.php').'">';
-            $headercontext['socialorsearch'] .= '<label class="hidden" for="search-1" style="display: none;">'.get_string("searchcourses").'</label>';
-            $headercontext['socialorsearch'] .= '<div class="search-box grey-box bg-white clear-fix">';
-            $headercontext['socialorsearch'] .= '<input placeholder="'.get_string("searchcourses", "theme_adaptable").'"accesskey="6" ';
-            $headercontext['socialorsearch'] .= 'class="search_tour bg-white no-border left search-box__input ui-autocomplete-input" ';
-            $headercontext['socialorsearch'] .= 'type="text" name="search" id="search-1" autocomplete="off">';
-            $headercontext['socialorsearch'] .= '<button title="'.get_string("searchcourses", "theme_adaptable").'" type="submit" class="no-border bg-white pas search-box__button">';
-            $headercontext['socialorsearch'] .= '<abbr class="fa fa-search" title="'.get_string("searchcourses", "theme_adaptable").'"></abbr>';
-            $headercontext['socialorsearch'] .= '</button></div></form></div>';*/
         }
     }
 
