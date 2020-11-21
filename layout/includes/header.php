@@ -27,13 +27,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Set HTTPS if needed.
-if (empty($CFG->loginhttps)) {
-    $wwwroot = $CFG->wwwroot;
-} else {
-    $wwwroot = str_replace("http://", "https://", $CFG->wwwroot);
-}
-
 /* Check if this is a course or module page and check setting to hide site title.
    If not one of these pages, by default show it (set $hidesitetitle to false). */
 if ( (strstr($PAGE->pagetype, 'course')) ||
@@ -99,49 +92,15 @@ if ((empty($headerbg)) && (!empty($PAGE->theme->settings->headerbgimage))) {
     ' url('.$PAGE->theme->setting_file_url('headerbgimage', 'headerbgimage').');"';
 }
 
-// Choose the header style.  There styles available are:
-// "style1"  (original header)
-// "style2"  (2 row header).
+/* Choose the header style.  There styles available are:
+   "style1"  (original header)
+   "style2"  (2 row header).
+*/
 
 if (!empty($PAGE->theme->settings->headerstyle)) {
     $adaptableheaderstyle = $PAGE->theme->settings->headerstyle;
 } else {
     $adaptableheaderstyle = "style1";
-}
-
-// User image, name in user menu dropdown.
-$userpic = '';
-$username = '';
-$usermenu = '';
-// Only used when user is logged in.
-if (isloggedin()) {
-    // User icon.
-    $userpic = $OUTPUT->user_picture($USER, array('link' => false, 'visibletoscreenreaders' => false,
-               'size' => 50, 'class' => 'userpicture'));
-    // User name.
-    $username = format_string(fullname($USER));
-
-    // User menu dropdown.
-    if (!empty($PAGE->theme->settings->usernameposition)) {
-        $usernameposition = $PAGE->theme->settings->usernameposition;
-        if ($usernameposition == 'right') {
-            $usernamepositionleft = false;
-        } else {
-            $usernamepositionleft = true;
-        }
-    } else {
-        $usernamepositionleft = true;
-    }
-
-    // Set template data.
-    $data = [
-        'username' => $username,
-        'userpic' => $userpic,
-        'showusername' => $PAGE->theme->settings->showusername,
-        'usernamepositionleft' => $usernamepositionleft,
-        'userprofilemenu' => $OUTPUT->user_profile_menu(),
-    ];
-    $usermenu = $OUTPUT->render_from_template('theme_adaptable/usermenu', $data);
 }
 
 // Social icons class.
@@ -184,7 +143,7 @@ if (!empty($PAGE->theme->settings->responsivesectionnav)) {
 }
 ?>
 <body <?php echo $OUTPUT->body_attributes(array('theme_adaptable', 'two-column', $setzoom, 'header-'.$adaptableheaderstyle,
-        $pageheader, $hasheaderbg, $nomobilenavigation)); ?>>
+    $pageheader, $hasheaderbg, $nomobilenavigation)); ?>>
 
 <?php
 echo $OUTPUT->standard_top_of_body_html();
@@ -196,7 +155,7 @@ echo $OUTPUT->standard_top_of_body_html();
 <div id="page" class="<?php echo "$setfull $showiconsclass $standardscreenwidthclass"; ?>">
 
 <?php
-    echo $OUTPUT->get_alert_messages();
+echo $OUTPUT->get_alert_messages();
 
 $headercontext = [
     'output' => $OUTPUT
@@ -217,7 +176,39 @@ if ((!isloggedin() || isguestuser()) && ($PAGE->pagetype != "login-index")) {
     }
 } else {
     // Display user profile menu.
-    $headercontext['loginoruser'] = '<li class="nav-item dropdown ml-3 ml-md-4 mr-2 mr-md-0">'.$usermenu.'</li>';
+    // Only used when user is logged in.
+    if (isloggedin()) {
+        // User icon.
+        $userpic = $OUTPUT->user_picture($USER, array('link' => false, 'visibletoscreenreaders' => false,
+            'size' => 50, 'class' => 'userpicture'));
+        // User name.
+        $username = format_string(fullname($USER));
+
+        // User menu dropdown.
+        if (!empty($PAGE->theme->settings->usernameposition)) {
+            $usernameposition = $PAGE->theme->settings->usernameposition;
+            if ($usernameposition == 'right') {
+                $usernamepositionleft = false;
+            } else {
+                $usernamepositionleft = true;
+            }
+        } else {
+            $usernamepositionleft = true;
+        }
+
+        // Set template context.
+        $usermenucontext = [
+            'username' => $username,
+            'userpic' => $userpic,
+            'showusername' => $PAGE->theme->settings->showusername,
+            'usernamepositionleft' => $usernamepositionleft,
+            'userprofilemenu' => $OUTPUT->user_profile_menu(),
+        ];
+        $usermenu = $OUTPUT->render_from_template('theme_adaptable/usermenu', $usermenucontext);
+        $headercontext['loginoruser'] = '<li class="nav-item dropdown ml-3 ml-md-4 mr-2 mr-md-0">'.$usermenu.'</li>';
+    } else {
+        $headercontext['loginoruser'] = '';
+    }
 }
 
 if (!$hidesitetitle) {
@@ -226,9 +217,9 @@ if (!$hidesitetitle) {
 
 $headercontext['headerbg'] = $headerbg;
 $headercontext['responsivesearchicon'] = (!empty($PAGE->theme->settings->responsivesearchicon)) ? ' d-xs-block d-sm-block d-md-none my-auto' : ' d-none';
-
 $headercontext['shownavbar'] = $shownavbar;
 
+// Navbar Menu.
 if ($shownavbar) {
     $headercontext['shownavbar'] = [
         'disablecustommenu' => (empty($PAGE->theme->settings->disablecustommenu)),
@@ -340,209 +331,6 @@ if ($adaptableheaderstyle == "style1") {
 
     echo $OUTPUT->render_from_template('theme_adaptable/headerstyletwo', $headercontext);
 }
-
-// Navbar Menu.
-/*
-if ($shownavbar) {
-?>
-
-<div id="nav-drawer" data-region="drawer" class="d-print-none moodle-has-zindex closed" aria-hidden="true" tabindex="-1">
-    <div id="nav-drawer-inner">
-        <nav class="list-group">
-            <ul class="list-unstyled components">
-
-                <?php
-                echo $OUTPUT->navigation_menu('main-navigation-drawer');
-
-                if (empty($PAGE->theme->settings->disablecustommenu)) {
-                    echo $OUTPUT->custom_menu_drawer();
-                }
-                if ($PAGE->theme->settings->enabletoolsmenus) {
-                    echo $OUTPUT->tools_menu('tools-menu-drawer');
-                }
-                ?>
-
-            </ul>
-        </nav>
-
-        <nav class="list-group m-t-1">
-            <?php echo $OUTPUT->context_mobile_settings_menu(); ?>
-            <a class="list-group-item list-group-item-action " href="<?php echo $CFG->wwwroot.'/admin/search.php'; ?>">
-                <div class="m-l-0">
-                    <div class="media">
-                        <span class="media-left">
-                            <i class="icon fa fa-wrench fa-fw" aria-hidden="true"></i>
-                        </span>
-                        <span class="media-body "><?php echo get_string('administrationsite'); ?></span>
-                    </div>
-                </div>
-            </a>
-        </nav>
-    </div>
-</div>
-
-<div id="main-navbar" class="d-none d-lg-block">
-    <div class="container">
-        <div class="navbar navbar-expand-md btco-hover-menu">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-
-            <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <nav role="navigation" aria-label="<?php echo get_string('sitelinkslabel', 'theme_adaptable'); ?>">
-                <ul class="navbar-nav">
-                    <?php echo $OUTPUT->navigation_menu('main-navigation'); ?>
-
-                    <?php
-                    if (empty($PAGE->theme->settings->disablecustommenu)) {
-                        echo $OUTPUT->custom_menu();
-                    }
-                    if ($PAGE->theme->settings->enabletoolsmenus) {
-                        echo $OUTPUT->tools_menu();
-                    }
-                    ?>
-                </ul>
-            </nav>
-
-                <ul class="navbar-nav ml-auto">
-
-                    <?php
-                    $navbareditsettings = $PAGE->theme->settings->editsettingsbutton;
-                    $showcog = true;
-                    $showeditbuttons = false;
-
-                    if ($navbareditsettings == 'button') {
-                        $showeditbuttons = true;
-                        $showcog = false;
-                    } else if ($navbareditsettings == 'cogandbutton') {
-                        $showeditbuttons = true;
-                    }
-
-                    $coursemenucontent = $OUTPUT->context_header_settings_menu();
-                    if ($showcog) {
-                        if ($coursemenucontent) {
-                    ?>
-                            <li class="nav-item mr-2">
-                                <div class="context-header-settings-menu">
-                                    <?php echo $coursemenucontent; ?>
-                                </div>
-                            </li>
-                    <?php
-                        }
-                    }
-
-                    $othermenucontent = $OUTPUT->region_main_settings_menu();
-                    if ($showcog) {
-                        if ($othermenucontent) {
-                    ?>
-                            <li class="nav-item mr-2">
-                                <div id="region-main-settings-menu" class="region-main-settings-menu">
-                                    <?php echo $othermenucontent; ?>
-                                </div>
-                            </li>
-                    <?php
-                        }
-                    }
-                    ?>
-
-                    <?php
-                    // Ensure to only hide the button on relevant pages.  Some pages will need the button, such as the
-                    // dashboard page. Checking if the cog is being displayed above to figure out if it still needs to
-                    // show (when there is no cog). Also show mod pages (e.g. Forum, Lesson) as these sometimes have
-                    // a button for a specific purpose.
-                    if ( ($showeditbuttons) || (
-                        (empty($coursemenucontent)) &&
-                        (empty($othermenucontent))
-                        ) ||
-                        (strstr($PAGE->pagetype, 'mod-'))
-                    ) {
-                        $pageheadingbutton = $OUTPUT->page_heading_button();
-                        if (!empty($pageheadingbutton)) {
-                        ?>
-                        <li class="nav-item mx-0 my-auto">
-                             <div id="edittingbutton">
-                                <?php echo $pageheadingbutton; ?>
-                            </div>
-                        </li>
-                        <?php
-                        }
-                    }
-                    ?>
-
-                    <?php
-                    if (isloggedin()) {
-                        if (!empty($this->page->theme->settings->enableshowhideblocks)) {
-                            $zoomside = ((!empty($this->page->theme->settings->blockside)) &&
-                                        ($this->page->theme->settings->blockside == 1)) ? 'left' : 'right';
-                            $hidetitle = get_string('hideblocks', 'theme_adaptable');
-                            $showtitle = get_string('showblocks', 'theme_adaptable');
-                            if ($setzoom == 'zoomin') { // Blocks not shown.
-                                $zoominicontitle = $showtitle;
-                                if ($zoomside == 'right') {
-                                    $icontype = 'outdent';
-                                } else {
-                                    $icontype = 'indent';
-                                }
-                            } else {
-                                $zoominicontitle = $hidetitle;
-                                if ($zoomside == 'right') {
-                                    $icontype = 'indent';
-                                } else {
-                                    $icontype = 'outdent';
-                                }
-                            }
-                            echo html_writer::start_tag('li', array('class' => 'nav-item mr-1'));
-                            echo html_writer::start_tag('div',
-                                array('id' => 'zoominicon', 'class' => $zoomside. ' nav-link', 'title' => $zoominicontitle,
-                                    'data-hidetitle' => $hidetitle, 'data-showtitle' => $showtitle));
-                            echo html_writer::tag('i', '', array('class' => 'fa fa-lg fa-'.$icontype, 'aria-hidden' => 'true'));
-                            if ($PAGE->theme->settings->enableshowhideblockstext) {
-                                echo html_writer::tag('span', $zoominicontitle, array('class' => 'showhideblocksdesc'));
-                            }
-                            echo html_writer::end_tag('div');
-                            echo html_writer::end_tag('li');
-                            $PAGE->requires->js_call_amd('theme_adaptable/zoomin', 'init');
-                        }
-                        if ($PAGE->theme->settings->enablezoom) { ?>
-                            <li class="nav-item mx-0 hbll">
-                                <a class="nav-link moodlewidth" href="javascript:void(0);"
-                                    title="<?php echo get_string('fullscreen', 'theme_adaptable') ?>">
-                                    <i class="fa fa-expand fa-lg"></i>
-                                    <?php if ($PAGE->theme->settings->enablezoomshowtext) { ?>
-                                    <span class="zoomdesc"><?php echo get_string('fullscreen', 'theme_adaptable') ?></span>
-                                    <?php } ?>
-                                </a>
-                            </li>
-                            <li class="nav-item mx-0 sbll">
-                                <a class="nav-link moodlewidth" href="javascript:void(0);"
-                                    title="<?php echo get_string('standardview', 'theme_adaptable') ?>">
-                                    <i class="fa fa-compress fa-lg"></i>
-                                    <?php if ($PAGE->theme->settings->enablezoomshowtext) { ?>
-                                    <span class="zoomdesc"><?php echo get_string('standardview', 'theme_adaptable') ?></span>
-                                    <?php } ?>
-                                </a>
-                            </li>
-                    <?php
-                        }
-                    }
-                    ?>
-                </ul>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php
-}
-?>
-
-</header>
-
-<?php */
 
 // Display News Ticker.
 echo $OUTPUT->get_news_ticker();
