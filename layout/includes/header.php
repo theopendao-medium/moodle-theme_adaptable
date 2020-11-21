@@ -34,8 +34,8 @@ if (empty($CFG->loginhttps)) {
     $wwwroot = str_replace("http://", "https://", $CFG->wwwroot);
 }
 
-// Check if this is a course or module page and check setting to hide site title.
-// If not one of these pages, by default show it (set $hidesitetitle to false).
+/* Check if this is a course or module page and check setting to hide site title.
+   If not one of these pages, by default show it (set $hidesitetitle to false). */
 if ( (strstr($PAGE->pagetype, 'course')) ||
      (strstr($PAGE->pagetype, 'mod')) && ($this->page->course->id > 1) ) {
     $hidesitetitle = !empty(($PAGE->theme->settings->coursepageheaderhidesitetitle)) ? true : false;
@@ -225,8 +225,10 @@ if (!$hidesitetitle) {
 }
 
 $headercontext['headerbg'] = $headerbg;
-$headercontext['shownavbar'] = $shownavbar;
 $headercontext['responsivesearchicon'] = (!empty($PAGE->theme->settings->responsivesearchicon)) ? ' d-xs-block d-sm-block d-md-none my-auto' : ' d-none';
+
+$headercontext['shownavbar'] = $shownavbar;
+
 
 if ($adaptableheaderstyle == "style1") {
     $headercontext['menuslinkright'] = (!empty($PAGE->theme->settings->menuslinkright));
@@ -243,7 +245,11 @@ if ($adaptableheaderstyle == "style1") {
         }
         // Search box.
         if ((!$hidesitetitle) && ($PAGE->theme->settings->socialorsearch == 'search') ) {
-            $headercontext['socialorsearch'] = '<div class="searchbox d-none d-lg-block">';
+            $headersearchcontext = [
+                'url' => new moodle_url('/course/search.php')
+            ];
+            $headercontext['socialorsearch'] = $OUTPUT->render_from_template('theme_adaptable/headersearch', $headersearchcontext);
+            /*$headercontext['socialorsearch'] = '<div class="searchbox d-none d-lg-block">';
             $headercontext['socialorsearch'] .= '<form action="'.new moodle_url('/course/search.php').'">';
             $headercontext['socialorsearch'] .= '<label class="hidden" for="search-1" style="display: none;">'.get_string("searchcourses").'</label>';
             $headercontext['socialorsearch'] .= '<div class="search-box grey-box bg-white clear-fix">';
@@ -252,7 +258,7 @@ if ($adaptableheaderstyle == "style1") {
             $headercontext['socialorsearch'] .= 'type="text" name="search" id="search-1" autocomplete="off">';
             $headercontext['socialorsearch'] .= '<button title="'.get_string("searchcourses", "theme_adaptable").'" type="submit" class="no-border bg-white pas search-box__button">';
             $headercontext['socialorsearch'] .= '<abbr class="fa fa-search" title="'.get_string("searchcourses", "theme_adaptable").'"></abbr>';
-            $headercontext['socialorsearch'] .= '</button></div></form></div>';
+            $headercontext['socialorsearch'] .= '</button></div></form></div>';*/
         }
     }
 
