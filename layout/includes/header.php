@@ -229,6 +229,82 @@ $headercontext['responsivesearchicon'] = (!empty($PAGE->theme->settings->respons
 
 $headercontext['shownavbar'] = $shownavbar;
 
+if ($shownavbar) {
+    $headercontext['shownavbar'] = [
+        'disablecustommenu' => (empty($PAGE->theme->settings->disablecustommenu)),
+        'navigationmenu' => $OUTPUT->navigation_menu('main-navigation'),
+        'navigationmenudrawer' => $OUTPUT->navigation_menu('main-navigation-drawer'),
+        'output' => $OUTPUT,
+        'searchurl' => new moodle_url('/admin/search.php'),
+        'toolsmenu' => ($PAGE->theme->settings->enabletoolsmenus)
+    ];
+
+    if ($PAGE->theme->settings->enabletoolsmenus) {
+        $headercontext['shownavbar']['toolsmenudrawer'] = $OUTPUT->tools_menu('tools-menu-drawer');
+    }
+
+    $navbareditsettings = $PAGE->theme->settings->editsettingsbutton;
+    $headercontext['shownavbar']['showcog'] = true;
+    $showeditbuttons = false;
+
+    if ($navbareditsettings == 'button') {
+        $showeditbuttons = true;
+        $headercontext['shownavbar']['showcog'] = false;
+    } else if ($navbareditsettings == 'cogandbutton') {
+        $showeditbuttons = true;
+    }
+    
+    if ($headercontext['shownavbar']['showcog']) {
+        $headercontext['shownavbar']['coursemenucontent'] = $OUTPUT->context_header_settings_menu();
+        $headercontext['shownavbar']['othermenucontent'] = $OUTPUT->region_main_settings_menu();
+    }
+
+    /* Ensure to only hide the button on relevant pages.  Some pages will need the button, such as the
+       dashboard page. Checking if the cog is being displayed above to figure out if it still needs to
+       show (when there is no cog). Also show mod pages (e.g. Forum, Lesson) as these sometimes have
+       a button for a specific purpose. */
+    if (($showeditbuttons) || 
+        (($headercontext['shownavbar']['showcog']) && ((empty($headercontext['shownavbar']['coursemenucontent'])) && (empty($headercontext['shownavbar']['othermenucontent'])))) ||
+        (strstr($PAGE->pagetype, 'mod-'))) {
+        $headercontext['shownavbar']['pageheadingbutton'] = $OUTPUT->page_heading_button();
+    }
+
+    if (isloggedin()) {
+        if (!empty($this->page->theme->settings->enableshowhideblocks)) {
+            $zoomside = ((!empty($this->page->theme->settings->blockside)) && ($this->page->theme->settings->blockside == 1)) ? 'left' : 'right';
+            $hidetitle = get_string('hideblocks', 'theme_adaptable');
+            $showtitle = get_string('showblocks', 'theme_adaptable');
+            if ($setzoom == 'zoomin') { // Blocks not shown.
+                $zoominicontitle = $showtitle;
+                if ($zoomside == 'right') {
+                    $icontype = 'outdent';
+                } else {
+                    $icontype = 'indent';
+                }
+            } else {
+                $zoominicontitle = $hidetitle;
+                if ($zoomside == 'right') {
+                    $icontype = 'indent';
+                } else {
+                    $icontype = 'outdent';
+                }
+            }
+            $headercontext['shownavbar']['showhideblocks'] = true;
+            $headercontext['shownavbar']['showhideblockszoomside'] = $zoomside;
+            $headercontext['shownavbar']['showhideblockszoominicontitle'] = $zoominicontitle;
+            $headercontext['shownavbar']['showhideblockshidetitle'] = $hidetitle;
+            $headercontext['shownavbar']['showhideblocksshowtitle'] = $showtitle;
+            $headercontext['shownavbar']['showhideblocksicontype'] = $icontype;
+            $headercontext['shownavbar']['showhideblockstext'] = ($PAGE->theme->settings->enableshowhideblockstext);
+    
+            $PAGE->requires->js_call_amd('theme_adaptable/zoomin', 'init');
+        }
+        if ($PAGE->theme->settings->enablezoom) {
+            $headercontext['shownavbar']['enablezoom'] = true;
+            $headercontext['shownavbar']['enablezoomshowtext'] = ($PAGE->theme->settings->enablezoomshowtext);
+        }
+    }
+}
 
 if ($adaptableheaderstyle == "style1") {
     $headercontext['menuslinkright'] = (!empty($PAGE->theme->settings->menuslinkright));
@@ -266,6 +342,7 @@ if ($adaptableheaderstyle == "style1") {
 }
 
 // Navbar Menu.
+/*
 if ($shownavbar) {
 ?>
 
@@ -465,7 +542,7 @@ if ($shownavbar) {
 
 </header>
 
-<?php
+<?php */
 
 // Display News Ticker.
 echo $OUTPUT->get_news_ticker();

@@ -515,6 +515,8 @@ $string['sections'] = 'Sections';
 $string['enablecompetencieslink'] = 'Competencies link';
 $string['enablecompetencieslinkdesc'] = 'Display competencies link in the \'This course\' menu.  Note: \'core_competency|enabled\' needs to be ticked.';
 
+$string['search'] = 'Search';
+$string['togglenavigation'] = 'Toggle navigation';
 
 // Navbar styling *********************************************************.
 $string['navbardropdownborderradius'] = 'Dropdown menu border radius';
