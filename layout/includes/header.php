@@ -203,19 +203,17 @@ $headercontext = [
 ];
 
 if ((!isloggedin() || isguestuser()) && ($PAGE->pagetype != "login-index")) {
-    $headercontext['loginoruser'] = $OUTPUT->page_heading_menu();
-    if ($PAGE->theme->settings->displaylogin == 'box') { // Login button.
-        $headercontext['loginoruser'] .= '<form id="pre-login-form" class="form-inline my-2 my-lg-0" action="';
-        $headercontext['loginoruser'] .= new moodle_url('/login/index.php').'" method="post">';
-        $headercontext['loginoruser'] .= '<input type="hidden" name="logintoken" value="'.s(\core\session\manager::get_login_token()).'"/>';
-        $headercontext['loginoruser'] .= '<input type="text" name="username" placeholder="'.get_string('loginplaceholder', 'theme_adaptable').'" size="11">';
-        $headercontext['loginoruser'] .= '<input type="password" name="password" placeholder="'.get_string('passwordplaceholder', 'theme_adaptable').'" size="11">';
-        $headercontext['loginoruser'] .= '<button class="btn-login" type="submit">'.get_string('logintextbutton', 'theme_adaptable').'</button></form>';
-    } else if ($PAGE->theme->settings->displaylogin == 'button') {
-        $headercontext['loginoruser'] .= '<form id="pre-login-form" class="form-inline my-0 my-lg-1" action="';
-        $headercontext['loginoruser'] .= new moodle_url('/login/index.php').'" method="post">';
-        $headercontext['loginoruser'] .= '<input type="hidden" name="logintoken" value="'.s(\core\session\manager::get_login_token()).'"/>';
-        $headercontext['loginoruser'] .= '<button class="btn-login" type="submit">'.get_string('logintextbutton', 'theme_adaptable').'</button></form>';
+    if ($PAGE->theme->settings->displaylogin != 'no') {
+        $loginformcontext = [
+            'displayloginbox' => ($PAGE->theme->settings->displaylogin == 'box') ? true : false,
+            'output' => $OUTPUT,
+            'token' => s(\core\session\manager::get_login_token()),
+            'url' => new moodle_url('/login/index.php')
+        ];
+
+        $headercontext['loginoruser'] = $OUTPUT->render_from_template('theme_adaptable/headerloginform', $loginformcontext);
+    } else {
+        $headercontext['loginoruser'] = '';
     }
 } else {
     // Display user profile menu.
