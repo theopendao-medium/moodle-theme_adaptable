@@ -105,7 +105,7 @@ if ($ADMIN->fulltree) {
     $title = get_string('sitetitletext', 'theme_adaptable');
     $description = get_string('sitetitletextdesc', 'theme_adaptable');
     $default = '';
-    $setting = new adaptable_setting_confightmleditor($name, $title, $description, $default);
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $page->add($setting);
 
     // Display Course title in the header.
