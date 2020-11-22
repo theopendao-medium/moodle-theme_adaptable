@@ -2593,6 +2593,7 @@ EOT;
     public function get_logo_title($currenttopcat) {
         global $CFG, $COURSE, $SITE;
         $retval = '';
+        $logomarkup = '';
 
         $responsivelogo = $this->page->theme->settings->responsivelogo;
         $responsivecoursetitle = $this->page->theme->settings->responsivecoursetitle;
@@ -2607,21 +2608,22 @@ EOT;
         if ((empty($logosetarea)) && (!empty($this->page->theme->settings->logo))) {
             $logosetarea = 'logo';
         }
+
         if (!empty($logosetarea)) {
             // Logo.
-            $retval .= '<div class="pb-2 bd-highlight ' . $responsivelogo . '">';
+            $logomarkup = '<div class="pb-2 bd-highlight ' . $responsivelogo . '">';
             $logo = '<img src=' . $this->page->theme->setting_file_url($logosetarea, $logosetarea) . ' id="logo" alt="" />';
 
             // Exception - logo is not a link to site homepage.
             if (!empty($this->page->layout_options['nonavbar'])) {
-                $retval .= $logo;
+                $logomarkup .= $logo;
             } else {
                 // Standard - Output the logo as a link to site homepage.
-                $retval .= '<a href=' . $CFG->wwwroot . ' aria-label="home" title="' . format_string($SITE->fullname). '">';
-                $retval .= $logo;
-                $retval .= '</a>';
+                $logomarkup .= '<a href=' . $CFG->wwwroot . ' aria-label="home" title="' . format_string($SITE->fullname). '">';
+                $logomarkup .= $logo;
+                $logomarkup .= '</a>';
             }
-            $retval .= '</div>';
+            $logomarkup .= '</div>';
         }
 
         $coursetitlemaxwidth =
@@ -2635,6 +2637,11 @@ EOT;
             if (!empty($this->page->theme->settings->$categoryheadercustomtitleset)) {
                 $categoryheadercustomtitle = $this->page->theme->settings->$categoryheadercustomtitleset;
             }
+        }
+
+        $sitetitleposition = (!empty($this->page->theme->settings->sitetitleposition) ? $this->page->theme->settings->sitetitleposition : 'left');
+        if ($sitetitleposition == 'left') {
+            $retval .= $logomarkup;
         }
 
         // If course id is greater than 1 we display course title.
@@ -2719,6 +2726,10 @@ EOT;
                         }
                 }
             }
+        }
+
+        if ($sitetitleposition == 'right') {
+            $retval .= $logomarkup;
         }
 
         return $retval;
