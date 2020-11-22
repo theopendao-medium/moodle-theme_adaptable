@@ -1126,11 +1126,14 @@ $string['loadingcolor'] = 'Loading colour';
 $string['loadingcolordesc'] = 'The loading bar colour in the top of the page';
 
 $string['sitetitle'] = 'Display site title';
-$string['sitetitledesc'] = 'Display the default Moodle site title from <a href="./../admin/settings.php?section=frontpagesettings" target="_blank">Front Page Settings</a> or enter a custom site title in the text box below. If you add a logo image then the title is not displayed.';
+$string['sitetitledesc'] = 'Display the default Moodle site title from <a href="./../admin/settings.php?section=frontpagesettings" target="_blank">Front Page Settings</a> or enter a custom site title in the text box below.';
 
 $string['sitetitleoff'] = 'Disable site title';
 $string['sitetitledefault'] = 'Use Moodle site title (site name)';
-$string['sitetitlecustom'] = 'Use custom site title (enter in text box below)';
+$string['sitetitlecustom'] = 'Use custom site title (enter in the \'sitetitletext\' box below)';
+
+$string['sitetitleposition'] = 'Site title position';
+$string['sitetitlepositiondesc'] = 'The position of the site title.';
 
 $string['sitetitletext'] = 'Site title';
 $string['sitetitletextdesc'] = 'Site title displayed in the header. You can use any HTML tag and apply inline styles. It is recommended to use an h1 HTML tag around the title, instead of the p tag that gets added as default when you type something in this field.';

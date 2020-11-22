@@ -75,15 +75,17 @@
 
     <div id="page-header" class="container {{responsiveheader}}">
         <div class="row">
-            <div class="col-lg-4">
+            {{#sitetitleleft}}
+            <div class="col-lg-8">
                 {{#sitetitle}}
                 <div class="d-flex justify-items-start bd-highlight">
                     {{{sitetitle}}}
                 </div>
                 {{/sitetitle}}
             </div>
+            {{/sitetitleleft}}
 
-            <div class="col-lg-8 p-0 my-auto">
+            <div class="col-lg-4 p-0 my-auto">
             {{! Remove Search Box or Social icons when no navbar. }}
             {{^nonavbar}}
                 {{{socialorsearch}}}
@@ -92,6 +94,16 @@
                     {{{output.course_header}}}
                 </div>
             </div>
+
+            {{^sitetitleleft}}
+            <div class="col-lg-8">
+                {{#sitetitle}}
+                <div class="d-flex justify-items-end bd-highlight">
+                    {{{sitetitle}}}
+                </div>
+                {{/sitetitle}}
+            </div>
+            {{/sitetitleleft}}
         </div>
     </div>
 

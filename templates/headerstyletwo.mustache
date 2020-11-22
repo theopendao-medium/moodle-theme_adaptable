@@ -26,63 +26,79 @@
 }}
 <header id="adaptable-page-header-wrapper"{{headerbg}}>
     <div id="header2" class="container pt-2">
-      <div class="row">
-        <div class="d-none d-lg-block col-lg-4">
-            <div class="d-flex justify-items-start bd-highlight">
-                {{#sitetitle}}
-                    {{{sitetitle}}}
-                {{/sitetitle}}
+        <div class="row">
+            {{#sitetitleleft}}
+            <div class="d-none d-lg-block col-lg-4">
+                <div class="d-flex justify-items-start bd-highlight">
+                    {{#sitetitle}}
+                        {{{sitetitle}}}
+                    {{/sitetitle}}
 
-                <div id="course-header">
-                    {{{output.course_header}}}
+                    <div id="course-header">
+                        {{{output.course_header}}}
+                    </div>
                 </div>
             </div>
-        </div>
+            {{/sitetitleleft}}
 
-        <div class="col-lg-8 p-0 my-auto">
-            <nav class="navbar navbar-expand btco-hover-menu">
-                {{#shownavbar}}
-                <div id="adaptable-page-header-nav-drawer" data-region="drawer-toggle" class="d-lg-none mr-3">
-                    <button id="drawer" aria-expanded="false" aria-controls="nav-drawer" type="button" class="nav-link float-sm-left mr-1" data-side="left">
-                        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-                        <span class="sr-only">{{#str}}sidepanel{{/str}}</span>
-                    </button>
+            <div class="col-lg-8 p-0 my-auto">
+                <nav class="navbar navbar-expand btco-hover-menu">
+                    {{#shownavbar}}
+                    <div id="adaptable-page-header-nav-drawer" data-region="drawer-toggle" class="d-lg-none mr-3">
+                        <button id="drawer" aria-expanded="false" aria-controls="nav-drawer" type="button" class="nav-link float-sm-left mr-1" data-side="left">
+                            <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+                            <span class="sr-only">{{#str}}sidepanel{{/str}}</span>
+                        </button>
+                    </div>
+                    {{/shownavbar}}
+
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto">
+
+                            <div class="my-auto">
+                                {{{output.search_box}}}
+                            </div>
+
+                            <div class="my-auto m-1{{{topmenus}}}</div>';
+
+                            <div class="pull-left mr-2 my-auto">
+                                {{{output.user_menu}}}
+                            </div>
+
+                            <li class="nav-item mx-md-1 my-auto{{responsivesearchicon}}">
+                                <a class="nav-link" href="{{coursesearch}}">
+                                    <i class="icon fa fa-search fa-fw " title="{{#str}}search, theme_adaptable{{/str}}" aria-label="{{#str}}search, theme_adaptable{{/str}}"></i>
+                                </a>
+                            </li>
+
+                            <div class="my-auto mx-1">
+                                {{{output.navbar_plugin_output}}}
+                            </div>
+
+                            {{#langmenu}}
+                                {{{langmenu}}}
+                            {{/langmenu}}
+
+                            {{{loginoruser}}}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            {{^sitetitleleft}}
+            <div class="d-none d-lg-block col-lg-4">
+                <div class="d-flex justify-items-end bd-highlight">
+                    {{#sitetitle}}
+                        {{{sitetitle}}}
+                    {{/sitetitle}}
+
+                    <div id="course-header">
+                        {{{output.course_header}}}
+                    </div>
                 </div>
-                {{/shownavbar}}
-
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav ml-auto">
-
-                        <div class="my-auto">
-                            {{{output.search_box}}}
-                        </div>
-
-                        <div class="my-auto m-1{{{topmenus}}}</div>';
-
-                        <div class="pull-left mr-2 my-auto">
-                            {{{output.user_menu}}}
-                        </div>
-
-                        <li class="nav-item mx-md-1 my-auto{{responsivesearchicon}}">
-                            <a class="nav-link" href="{{coursesearch}}">
-                                <i class="icon fa fa-search fa-fw " title="{{#str}}search, theme_adaptable{{/str}}" aria-label="{{#str}}search, theme_adaptable{{/str}}"></i>
-                            </a>
-                        </li>
-
-                        <div class="my-auto mx-1">
-                            {{{output.navbar_plugin_output}}}
-                        </div>
-
-                        {{#langmenu}}
-                            {{{langmenu}}}
-                        {{/langmenu}}
-
-                        {{{loginoruser}}}
-                    </ul>
-                </div>
-            </nav>
+            </div>
+            {{/sitetitleleft}}
         </div>
-      </div>
     </div>
 
     {{#shownavbar}}
