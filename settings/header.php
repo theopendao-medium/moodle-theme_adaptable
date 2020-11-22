@@ -132,22 +132,6 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, 'breadcrumb', $radchoices);
     $page->add($setting);
 
-    // Site Title Padding.
-    $name = 'theme_adaptable/sitetitlepadding';
-    $title = get_string('sitetitlepadding', 'theme_adaptable');
-    $description = get_string('sitetitlepaddingdesc', 'theme_adaptable');
-    $setting = new admin_setting_configtext($name, $title, $description, '0px 0px 15px 0px');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $page->add($setting);
-
-    // Site Title Maximum Width.
-    $name = 'theme_adaptable/sitetitlemaxwidth';
-    $title = get_string('sitetitlemaxwidth', 'theme_adaptable');
-    $description = get_string('sitetitlemaxwidthdesc', 'theme_adaptable');
-    $setting = new admin_setting_configselect($name, $title, $description, '50%', $from35to80percent);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $page->add($setting);
-
     // Course Title Maximum Width.
     $name = 'theme_adaptable/coursetitlemaxwidth';
     $title = get_string('coursetitlemaxwidth', 'theme_adaptable');

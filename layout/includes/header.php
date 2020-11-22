@@ -244,7 +244,7 @@ if ($shownavbar) {
     } else if ($navbareditsettings == 'cogandbutton') {
         $showeditbuttons = true;
     }
-    
+
     if ($headercontext['shownavbar']['showcog']) {
         $headercontext['shownavbar']['coursemenucontent'] = $OUTPUT->context_header_settings_menu();
         $headercontext['shownavbar']['othermenucontent'] = $OUTPUT->region_main_settings_menu();
@@ -254,7 +254,7 @@ if ($shownavbar) {
        dashboard page. Checking if the cog is being displayed above to figure out if it still needs to
        show (when there is no cog). Also show mod pages (e.g. Forum, Lesson) as these sometimes have
        a button for a specific purpose. */
-    if (($showeditbuttons) || 
+    if (($showeditbuttons) ||
         (($headercontext['shownavbar']['showcog']) && ((empty($headercontext['shownavbar']['coursemenucontent'])) && (empty($headercontext['shownavbar']['othermenucontent'])))) ||
         (strstr($PAGE->pagetype, 'mod-'))) {
         $headercontext['shownavbar']['pageheadingbutton'] = $OUTPUT->page_heading_button();
@@ -287,7 +287,7 @@ if ($shownavbar) {
             $headercontext['shownavbar']['showhideblocksshowtitle'] = $showtitle;
             $headercontext['shownavbar']['showhideblocksicontype'] = $icontype;
             $headercontext['shownavbar']['showhideblockstext'] = ($PAGE->theme->settings->enableshowhideblockstext);
-    
+
             $PAGE->requires->js_call_amd('theme_adaptable/zoomin', 'init');
         }
         if ($PAGE->theme->settings->enablezoom) {

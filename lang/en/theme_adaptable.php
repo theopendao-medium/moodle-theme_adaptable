@@ -1051,12 +1051,6 @@ $string['breadcrumbdisplaydesc'] = 'Set the display of what should be in the bre
 $string['sitetitlecoursesdisabled'] = 'Disabled - only show course titles in course pages';
 $string['sitetitlecoursesenabled'] = 'Enabled - show site title and course titles in course pages';
 
-$string['sitetitlepadding'] = 'Site Title Padding';
-$string['sitetitlepaddingdesc'] = 'Set padding for the site / course title e.g. 5px 10px 5px 10px (top, right, bottom, left).';
-
-$string['sitetitlemaxwidth'] = 'Site Title Maximum Width';
-$string['sitetitlemaxwidthdesc'] = 'Set the maximum width of the site title area';
-
 $string['coursetitlemaxwidth'] = 'Course Title Maximum Length';
 $string['coursetitlemaxwidthdesc'] = 'Set the maximum number of characters of the course title area';
 
