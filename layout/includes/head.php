@@ -80,9 +80,10 @@ if ((!empty($fontname)) || (!empty($fontheadername)) || (!empty($fonttitlename))
 }
 
 // HTML head.
-echo $OUTPUT->standard_head_html() ?>
+echo $OUTPUT->standard_head_html();
+$siteurl = new moodle_url('');
+?>
     <!-- CSS print media -->
-    <link rel="stylesheet" type="text/css" href="<?php echo $wwwroot; ?>/theme/adaptable/style/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Twitter Card data -->
@@ -93,7 +94,7 @@ echo $OUTPUT->standard_head_html() ?>
     <!-- Open Graph data -->
     <meta property="og:title" content="<?php echo $OUTPUT->page_title(); ?>" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="<?php echo $wwwroot; ?>" />
+    <meta property="og:url" content="<?php echo $siteurl->out(); ?>" />
     <meta name="og:site_name" value="<?php echo $SITE->fullname; ?>" />
 
     <!-- Chrome, Firefox OS and Opera on Android topbar color -->
