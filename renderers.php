@@ -1208,7 +1208,7 @@ EOT;
             $target = $this->page->theme->settings->socialtarget;
         }
 
-        $retval = '<div class="socialbox">';
+        $retval = '';
 
         $socialiconlist = $this->page->theme->settings->socialiconlist;
         $lines = explode("\n", $socialiconlist);
@@ -1226,7 +1226,6 @@ EOT;
             }
         }
 
-        $retval .= '</div>';
         return $retval;
     }
 

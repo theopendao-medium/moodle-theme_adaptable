@@ -27,11 +27,10 @@
 <header id="adaptable-page-header-wrapper"{{headerbg}}>
     <div id="header2" class="container pt-2">
         <div class="row">
-            {{#pageheaderoriginal}}
             <div class="d-none d-lg-block col-lg-4">
-                <div class="d-flex justify-items-start bd-highlight">
+                <div class="d-flex justify-content-start bd-highlight">
                     {{#sitetitle}}
-                        {{{sitetitle}}}
+                        {{#sitelogo}}{{{sitelogo}}}{{/sitelogo}}{{{sitetitle}}}
                     {{/sitetitle}}
 
                     <div id="course-header">
@@ -39,7 +38,6 @@
                     </div>
                 </div>
             </div>
-            {{/pageheaderoriginal}}
 
             <div class="col-lg-8 p-0 my-auto">
                 <nav class="navbar navbar-expand btco-hover-menu">
@@ -85,20 +83,6 @@
                     </div>
                 </nav>
             </div>
-
-            {{^pageheaderoriginal}}
-            <div class="d-none d-lg-block col-lg-4">
-                <div class="d-flex justify-items-end bd-highlight">
-                    {{#sitetitle}}
-                        {{{sitetitle}}}
-                    {{/sitetitle}}
-
-                    <div id="course-header">
-                        {{{output.course_header}}}
-                    </div>
-                </div>
-            </div>
-            {{/pageheaderoriginal}}
         </div>
     </div>
 

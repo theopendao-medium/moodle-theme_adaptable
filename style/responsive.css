@@ -170,7 +170,8 @@ order for prescidence.
         padding-bottom: 5px;
     }
 
-    .search-box, .searchbox {
+    .search-box,
+    .searchbox {
         margin: 0;
         width: 100%;
     }

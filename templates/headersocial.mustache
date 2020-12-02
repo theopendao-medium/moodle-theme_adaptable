@@ -17,13 +17,13 @@
 {{!
     @template theme_adaptable/headersocial
 
-    Header style one.
+    Header social.
 
     Example context (json):
     {
         "output": core_renderer instance
     }
 }}
-<div class="socialbox {{#sitetitleleft}}pull-right{{/sitetitleleft}}{{^sitetitleleft}}pull-left{{/sitetitleleft}} {{classes}}">
+<div class="socialbox {{classes}}{{^pageheaderoriginal}} text-center{{/pageheaderoriginal}}">
     {{{output.socialicons}}}
 </div>
