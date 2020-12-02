@@ -78,12 +78,11 @@
             {{#pageheaderoriginal}}
             <div class="col-lg-8">
                 {{#sitetitle}}
-                <div class="d-flex justify-items-start bd-highlight">
-                    {{{sitetitle}}}
+                <div class="d-flex justify-content-start bd-highlight">
+                    {{#sitelogo}}{{{sitelogo}}}{{/sitelogo}}{{{sitetitle}}}
                 </div>
                 {{/sitetitle}}
             </div>
-            {{/pageheaderoriginal}}
 
             <div class="col-lg-4 p-0 my-auto">
             {{! Remove Search Box or Social icons when no navbar. }}
@@ -94,17 +93,38 @@
                     {{{output.course_header}}}
                 </div>
             </div>
+            {{/pageheaderoriginal}}
 
             {{^pageheaderoriginal}}
             <div class="col-lg-8">
                 {{#sitetitle}}
-                <div class="d-flex justify-items-end bd-highlight">
+                <div class="d-flex justify-content-start bd-highlight">
                     {{{sitetitle}}}
                 </div>
                 {{/sitetitle}}
             </div>
+            <div class="col-lg-4 p-0 my-auto">
+                {{#sitelogo}}
+                <div class="d-flex justify-content-end bd-highlight">
+                    {{{sitelogo}}}
+                </div>
+                {{/sitelogo}}
+            </div>
             {{/pageheaderoriginal}}
         </div>
+        {{^pageheaderoriginal}}
+        <div class="row">
+            <div class="col-12 p-0 my-auto">
+            {{! Remove Search Box or Social icons when no navbar. }}
+            {{^nonavbar}}
+                {{{socialorsearch}}}
+            {{/nonavbar}}
+                <div id="course-header">
+                    {{{output.course_header}}}
+                </div>
+            </div>
+        </div>
+        {{/pageheaderoriginal}}
     </div>
 
     {{#shownavbar}}

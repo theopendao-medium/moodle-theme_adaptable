@@ -321,7 +321,6 @@ div.signuppanel h2 {
 }
 
 .socialbox {
-    display: inline-block;
     margin-top: 15px;
     margin-bottom: 15px;
     padding-top: [[setting:socialpaddingtop]];
@@ -1463,8 +1462,8 @@ button.search-box__button {
 }
 
 .search-box {
-    float: right;
-    margin-bottom: 5px;
+    margin: 0 auto 5px;
+    width: 312px;
 }
 
 .bg-white {

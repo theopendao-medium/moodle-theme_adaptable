@@ -212,7 +212,8 @@ if ((!isloggedin() || isguestuser()) && ($PAGE->pagetype != "login-index")) {
 }
 
 if (!$hidesitetitle) {
-    $headercontext['sitetitle'] = $OUTPUT->get_logo($currenttopcat).$OUTPUT->get_title($currenttopcat);
+    $headercontext['sitelogo'] = $OUTPUT->get_logo($currenttopcat);
+    $headercontext['sitetitle'] = $OUTPUT->get_title($currenttopcat);
 }
 
 $headercontext['headerbg'] = $headerbg;
@@ -314,6 +315,7 @@ if ($adaptableheaderstyle == "style1") {
         if ($PAGE->theme->settings->socialorsearch == 'social') {
             $headersocialcontext = [
                 'classes' => $PAGE->theme->settings->responsivesocial,
+                'pageheaderoriginal' => $headercontext['pageheaderoriginal'],
                 'output' => $OUTPUT
             ];
             $headercontext['socialorsearch'] = $OUTPUT->render_from_template('theme_adaptable/headersocial', $headersocialcontext);

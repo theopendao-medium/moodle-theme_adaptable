@@ -1128,7 +1128,7 @@ $string['sitetitledefault'] = 'Use Moodle site title (site name)';
 $string['sitetitlecustom'] = 'Use custom site title (enter in the \'sitetitletext\' box below)';
 
 $string['pageheaderlayout'] = 'Page header layout';
-$string['pageheaderlayoutdesc'] = 'The page header layout.';
+$string['pageheaderlayoutdesc'] = 'The page header layout.  Only affects header style one.  Header style two unchanged.';
 $string['pageheaderoriginal'] = 'Original';
 $string['pageheaderalternative'] = 'Alternative';
 
