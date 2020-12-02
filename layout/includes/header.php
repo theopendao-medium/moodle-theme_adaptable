@@ -212,7 +212,7 @@ if ((!isloggedin() || isguestuser()) && ($PAGE->pagetype != "login-index")) {
 }
 
 if (!$hidesitetitle) {
-    $headercontext['sitetitle'] = $OUTPUT->get_logo_title($currenttopcat);
+    $headercontext['sitetitle'] = $OUTPUT->get_logo($currenttopcat).$OUTPUT->get_title($currenttopcat);
 }
 
 $headercontext['headerbg'] = $headerbg;

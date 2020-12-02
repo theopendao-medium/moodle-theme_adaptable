@@ -2579,13 +2579,11 @@ EOT;
      *
      * @return string Markup.
      */
-    public function get_logo_title($currenttopcat) {
-        global $CFG, $COURSE, $SITE;
-        $retval = '';
+    public function get_logo($currenttopcat) {
+        global $CFG, $SITE;
         $logomarkup = '';
 
         $responsivelogo = $this->page->theme->settings->responsivelogo;
-        $responsivecoursetitle = $this->page->theme->settings->responsivecoursetitle;
 
         $logosetarea = '';
         if (!empty($currenttopcat)) {
@@ -2615,6 +2613,20 @@ EOT;
             $logomarkup .= '</div>';
         }
 
+        return $logomarkup;
+    }
+
+    /**
+     * Returns html to render logo / title area.
+     * @param bool/int $currenttopcat The id of the current top category or false if none.
+     *
+     * @return string Markup.
+     */
+    public function get_title($currenttopcat) {
+        global $COURSE, $SITE;
+        $retval = '';
+
+        $responsivecoursetitle = $this->page->theme->settings->responsivecoursetitle;
         $coursetitlemaxwidth =
             (!empty($this->page->theme->settings->coursetitlemaxwidth) ? $this->page->theme->settings->coursetitlemaxwidth : 0);
 
@@ -2626,11 +2638,6 @@ EOT;
             if (!empty($this->page->theme->settings->$categoryheadercustomtitleset)) {
                 $categoryheadercustomtitle = $this->page->theme->settings->$categoryheadercustomtitleset;
             }
-        }
-
-        $sitetitleposition = (!empty($this->page->theme->settings->sitetitleposition) ? $this->page->theme->settings->sitetitleposition : 'left');
-        if ($sitetitleposition == 'left') {
-            $retval .= $logomarkup;
         }
 
         // If course id is greater than 1 we display course title.
@@ -2715,10 +2722,6 @@ EOT;
                         }
                 }
             }
-        }
-
-        if ($sitetitleposition == 'right') {
-            $retval .= $logomarkup;
         }
 
         return $retval;
