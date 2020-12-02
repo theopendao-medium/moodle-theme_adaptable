@@ -17,7 +17,7 @@
 {{!
     @template theme_adaptable/headersearch
 
-    Header style one.
+    Header search.
 
     Example context (json):
     {
@@ -25,7 +25,7 @@
     }
 }}
 <div class="searchbox d-none d-lg-block">
-    <form action="{{{url}}}">';
+    <form action="{{{url}}}">
         <label class="hidden" for="search-1" style="display: none;">{{#str}}searchcourses, theme_adaptable{{/str}}</label>
         <div class="search-box grey-box bg-white clear-fix">
             <input placeholder="{{#str}}searchcourses, theme_adaptable{{/str}}"accesskey="6" class="search_tour bg-white no-border left search-box__input ui-autocomplete-input" type="text" name="search" id="search-1" autocomplete="off">

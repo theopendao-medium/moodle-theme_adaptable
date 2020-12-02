@@ -100,12 +100,12 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, 'default', $radchoices);
     $page->add($setting);
 
-    $name = 'theme_adaptable/sitetitleposition';
-    $title = get_string('sitetitleposition', 'theme_adaptable');
-    $description = get_string('sitetitlepositiondesc', 'theme_adaptable');
+    $name = 'theme_adaptable/pageheaderlayout';
+    $title = get_string('pageheaderlayout', 'theme_adaptable');
+    $description = get_string('pageheaderlayoutdesc', 'theme_adaptable');
     $radchoices = array(
-        'left' => get_string('left', 'editor'),
-        'right' => get_string('right', 'editor')
+        'original' => get_string('pageheaderoriginal', 'theme_adaptable'),
+        'alternative' => get_string('pageheaderalternative', 'theme_adaptable')
     );
     $setting = new admin_setting_configselect($name, $title, $description, 'left', $radchoices);
     $page->add($setting);
