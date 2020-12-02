@@ -219,10 +219,10 @@ $headercontext['headerbg'] = $headerbg;
 $headercontext['nonavbar'] = (!empty($PAGE->layout_options['nonavbar']));
 $headercontext['responsivesearchicon'] = (!empty($PAGE->theme->settings->responsivesearchicon)) ? ' d-xs-block d-sm-block d-md-none my-auto' : ' d-none';
 $headercontext['shownavbar'] = $shownavbar;
-if (!empty($PAGE->theme->settings->sitetitleposition)) {
-    $headercontext['sitetitleleft'] = ($PAGE->theme->settings->sitetitleposition == 'left');
+if (!empty($PAGE->theme->settings->pageheaderlayout)) {
+    $headercontext['pageheaderoriginal'] = ($PAGE->theme->settings->pageheaderlayout == 'original');
 } else {
-    $headercontext['sitetitleleft'] = true;
+    $headercontext['pageheaderoriginal'] = true;
 }
 
 // Navbar Menu.
@@ -321,7 +321,6 @@ if ($adaptableheaderstyle == "style1") {
         // Search box.
         if ((!$hidesitetitle) && ($PAGE->theme->settings->socialorsearch == 'search') ) {
             $headersearchcontext = [
-                'sitetitleleft' => $headercontext['sitetitleleft'],
                 'url' => new moodle_url('/course/search.php')
             ];
             $headercontext['socialorsearch'] = $OUTPUT->render_from_template('theme_adaptable/headersearch', $headersearchcontext);

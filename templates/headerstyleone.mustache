@@ -75,7 +75,7 @@
 
     <div id="page-header" class="container {{responsiveheader}}">
         <div class="row">
-            {{#sitetitleleft}}
+            {{#pageheaderoriginal}}
             <div class="col-lg-8">
                 {{#sitetitle}}
                 <div class="d-flex justify-items-start bd-highlight">
@@ -83,7 +83,7 @@
                 </div>
                 {{/sitetitle}}
             </div>
-            {{/sitetitleleft}}
+            {{/pageheaderoriginal}}
 
             <div class="col-lg-4 p-0 my-auto">
             {{! Remove Search Box or Social icons when no navbar. }}
@@ -95,7 +95,7 @@
                 </div>
             </div>
 
-            {{^sitetitleleft}}
+            {{^pageheaderoriginal}}
             <div class="col-lg-8">
                 {{#sitetitle}}
                 <div class="d-flex justify-items-end bd-highlight">
@@ -103,7 +103,7 @@
                 </div>
                 {{/sitetitle}}
             </div>
-            {{/sitetitleleft}}
+            {{/pageheaderoriginal}}
         </div>
     </div>
 

@@ -1132,8 +1132,10 @@ $string['sitetitleoff'] = 'Disable site title';
 $string['sitetitledefault'] = 'Use Moodle site title (site name)';
 $string['sitetitlecustom'] = 'Use custom site title (enter in the \'sitetitletext\' box below)';
 
-$string['sitetitleposition'] = 'Site title position';
-$string['sitetitlepositiondesc'] = 'The position of the site title.';
+$string['pageheaderlayout'] = 'Page header layout';
+$string['pageheaderlayoutdesc'] = 'The page header layout.';
+$string['pageheaderoriginal'] = 'Original';
+$string['pageheaderalternative'] = 'Alternative';
 
 $string['sitetitletext'] = 'Site title';
 $string['sitetitletextdesc'] = 'Site title displayed in the header. You can use any HTML tag and apply inline styles. It is recommended to use an h1 HTML tag around the title, instead of the p tag that gets added as default when you type something in this field.';
