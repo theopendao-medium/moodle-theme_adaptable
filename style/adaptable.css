@@ -297,7 +297,6 @@ div.signuppanel h2 {
     position: relative;
     text-overflow: ellipsis;
     width: auto;
-    white-space: nowrap;
     vertical-align: middle;
 }
 
