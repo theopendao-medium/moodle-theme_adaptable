@@ -167,8 +167,19 @@ class renderer extends \core_user\output\myprofile\renderer {
         }
 
         if (!empty($this->user->userdetails['email'])) {
-            $node = new node('contact', 'email', '', null, null,
+            $node = new node('contact', 'email', get_string('email'), null, null,
                 $this->user->userdetails['email']);
+            $contactcategory->add_node($node);
+        }
+
+        if (!empty($this->user->userdetails['city'])) {
+            $node = new node('contact', 'city', get_string('city'), null, null,
+                $this->user->userdetails['city']);
+            $contactcategory->add_node($node);
+        }
+        if (!empty($this->user->userdetails['country'])) {
+            $node = new node('contact', 'country', get_string('country'), null, null,
+                $this->user->userdetails['country']);
             $contactcategory->add_node($node);
         }
 
@@ -430,7 +441,79 @@ class renderer extends \core_user\output\myprofile\renderer {
             $interests);
         $aboutme->add_node($node);
 
+        // Optional.
+        $this->optional_fields($aboutme, 'aboutme');
+
         return array('category' => $aboutme, 'diempty' => (($descriptionempty) && ($interestsempty)));
+    }
+
+    /**
+     * Add the optional fields to the stated category if they are populated.
+     *
+     * @param category $category Category object to add to.
+     * @param string $categoryname Category name to add to.
+     */
+    protected function optional_fields(category $category, $categoryname) {
+        if (!empty($this->user->userdetails['url'])) {
+            $node = new node($categoryname, 'url', get_string('url'), null, null,
+                $this->user->userdetails['url']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['icq'])) {
+            $node = new node($categoryname, 'icq', get_string('icqnumber'), null, null,
+                $this->user->userdetails['icq']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['skype'])) {
+            $node = new node($categoryname, 'skype', get_string('skypeid'), null, null,
+                $this->user->userdetails['skype']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['yahoo'])) {
+            $node = new node($categoryname, 'yahoo', get_string('yahooid'), null, null,
+                $this->user->userdetails['yahoo']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['aim'])) {
+            $node = new node($categoryname, 'aim', get_string('aimid'), null, null,
+                $this->user->userdetails['aim']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['msn'])) {
+            $node = new node($categoryname, 'msn', get_string('msnid'), null, null,
+                $this->user->userdetails['msn']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['address'])) {
+            $node = new node($categoryname, 'address', get_string('address'), null, null,
+                $this->user->userdetails['address']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['phone1'])) {
+            $node = new node($categoryname, 'phone1', get_string('phone1'), null, null,
+                $this->user->userdetails['phone1']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['phone2'])) {
+            $node = new node($categoryname, 'phone2', get_string('phone2'), null, null,
+                $this->user->userdetails['phone2']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['idnumber'])) {
+            $node = new node($categoryname, 'idnumber', get_string('idnumber'), null, null,
+                $this->user->userdetails['idnumber']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['institution'])) {
+            $node = new node($categoryname, 'institution', get_string('institution'), null, null,
+                $this->user->userdetails['institution']);
+            $category->add_node($node);
+        }
+        if (!empty($this->user->userdetails['department'])) {
+            $node = new node($categoryname, 'department', get_string('department'), null, null,
+                $this->user->userdetails['department']);
+            $category->add_node($node);
+        }
     }
 
     /**
@@ -566,6 +649,8 @@ class renderer extends \core_user\output\myprofile\renderer {
             $category->notitle = true;
         }
         $aboutmetab->content .= $this->render($category);
+        // Custom fields on About me tab.
+        $aboutmetab->content .= $this->userprofilefields();
         $tabdata->tabs[] = $aboutmetab;
 
         foreach ($tabcategories as $categoryname) {
@@ -597,7 +682,6 @@ class renderer extends \core_user\output\myprofile\renderer {
             $misccontent .= $this->render($category);
             $misccontent .= html_writer::end_tag('div');
         }
-        $misccontent .= $this->userprofilefields();
         $misccontent .= html_writer::end_tag('div');
         $tab = new \stdClass;
         $tab->name = 'more';
