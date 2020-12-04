@@ -33,6 +33,15 @@
     margin-bottom: 5px;
 }
 
+#page-user-profile .node_category li.aduseropt {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+
+#page-user-profile .node_category li.aduseropt dl {
+    margin-bottom: 0;
+}
+
 #adaptable_profile_tree .ucol1 .node_category.contact {
     margin-top: 3.5em; /* Magic number to line up with tabs. */
 }

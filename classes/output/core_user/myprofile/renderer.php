@@ -456,62 +456,62 @@ class renderer extends \core_user\output\myprofile\renderer {
     protected function optional_fields(category $category, $categoryname) {
         if (!empty($this->user->userdetails['url'])) {
             $node = new node($categoryname, 'url', get_string('url'), null, null,
-                $this->user->userdetails['url']);
+                $this->user->userdetails['url'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['icq'])) {
             $node = new node($categoryname, 'icq', get_string('icqnumber'), null, null,
-                $this->user->userdetails['icq']);
+                $this->user->userdetails['icq'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['skype'])) {
             $node = new node($categoryname, 'skype', get_string('skypeid'), null, null,
-                $this->user->userdetails['skype']);
+                $this->user->userdetails['skype'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['yahoo'])) {
             $node = new node($categoryname, 'yahoo', get_string('yahooid'), null, null,
-                $this->user->userdetails['yahoo']);
+                $this->user->userdetails['yahoo'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['aim'])) {
             $node = new node($categoryname, 'aim', get_string('aimid'), null, null,
-                $this->user->userdetails['aim']);
+                $this->user->userdetails['aim'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['msn'])) {
             $node = new node($categoryname, 'msn', get_string('msnid'), null, null,
-                $this->user->userdetails['msn']);
+                $this->user->userdetails['msn'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['address'])) {
             $node = new node($categoryname, 'address', get_string('address'), null, null,
-                $this->user->userdetails['address']);
+                $this->user->userdetails['address'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['phone1'])) {
             $node = new node($categoryname, 'phone1', get_string('phone1'), null, null,
-                $this->user->userdetails['phone1']);
+                $this->user->userdetails['phone1'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['phone2'])) {
             $node = new node($categoryname, 'phone2', get_string('phone2'), null, null,
-                $this->user->userdetails['phone2']);
+                $this->user->userdetails['phone2'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['idnumber'])) {
             $node = new node($categoryname, 'idnumber', get_string('idnumber'), null, null,
-                $this->user->userdetails['idnumber']);
+                $this->user->userdetails['idnumber'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['institution'])) {
             $node = new node($categoryname, 'institution', get_string('institution'), null, null,
-                $this->user->userdetails['institution']);
+                $this->user->userdetails['institution'], null, 'aduseropt');
             $category->add_node($node);
         }
         if (!empty($this->user->userdetails['department'])) {
             $node = new node($categoryname, 'department', get_string('department'), null, null,
-                $this->user->userdetails['department']);
+                $this->user->userdetails['department'], null, 'aduseropt');
             $category->add_node($node);
         }
     }
@@ -576,7 +576,7 @@ class renderer extends \core_user\output\myprofile\renderer {
             $customcoursetitleprofilefield = get_config('theme_adaptable', 'customcoursetitle');
             $customcoursesubtitleprofilefield = get_config('theme_adaptable', 'customcoursesubtitle');
 
-            $customfieldscat = new category('customfields', get_string('customfields', 'theme_adaptable'));
+            $customfieldscat = new category('customfields', '');
 
             $hasnodes = false;
             foreach ($this->user->userdetails['customfields'] as $cfield) {
@@ -592,9 +592,7 @@ class renderer extends \core_user\output\myprofile\renderer {
             }
 
             if ($hasnodes) {
-                $output .= html_writer::start_tag('div', array('class' => 'col-12 '.$customfieldscat->name));
                 $output .= $this->render($customfieldscat);
-                $output .= html_writer::end_tag('div');
             }
         }
 
