@@ -2597,7 +2597,7 @@ EOT;
 
         if (!empty($logosetarea)) {
             // Logo.
-            $logomarkup = '<div class="pb-2 bd-highlight ' . $responsivelogo . '">';
+            $logomarkup = '<div class="bd-highlight ' . $responsivelogo . '">';
             $logo = '<img src=' . $this->page->theme->setting_file_url($logosetarea, $logosetarea) . ' id="logo" alt="" />';
 
             // Exception - logo is not a link to site homepage.
@@ -2669,7 +2669,7 @@ EOT;
             switch ($this->page->theme->settings->enableheading) {
                 case 'fullname':
                     // Full Course Name.
-                    $retval .= '<div id="sitetitle" class="pb-2 pl-2 pr-2 bd-highlight ' . $responsivecoursetitle . '">';
+                    $retval .= '<div id="sitetitle" class="pb-2 bd-highlight ' . $responsivecoursetitle . '">';
                     if (!empty($categoryheadercustomtitle)) {
                         $retval .= '<h1>'. format_string($categoryheadercustomtitle) . '</h1>';
                     }
@@ -2679,7 +2679,7 @@ EOT;
 
                 case 'shortname':
                     // Short Course Name.
-                    $retval .= '<div id="sitetitle" class="pb-2 pl-2 pr-2 bd-highlight ' . $responsivecoursetitle . '">';
+                    $retval .= '<div id="sitetitle" class="pb-2 bd-highlight ' . $responsivecoursetitle . '">';
                     if (!empty($categoryheadercustomtitle)) {
                         $retval .= '<h1>'. format_string($categoryheadercustomtitle) . '</h1>';
                     }
@@ -2697,14 +2697,14 @@ EOT;
         // If course id is one or 'enableheading' was 'off' above then we display the site title.
         if (($COURSE->id == 1) || ($usedefault)) {
             if (!empty($categoryheadercustomtitle)) {
-                $retval .= '<div id="sitetitle" class="pb-2 pl-2 pr-2 bd-highlight ' . $responsivecoursetitle . '">';
+                $retval .= '<div id="sitetitle" class="pb-2 bd-highlight ' . $responsivecoursetitle . '">';
                 $retval .= '<h1>'. format_string($categoryheadercustomtitle) . '</h1>';
                 $retval .= '</div>';
             } else {
                 switch ($this->page->theme->settings->sitetitle) {
                     case 'default':
                         $sitetitle = $SITE->fullname;
-                        $retval .= '<div id="sitetitle" class="pb-2 pl-2 pr-2 bd-highlight ' . $responsivecoursetitle . '"><h1>'
+                        $retval .= '<div id="sitetitle" class="pb-2 bd-highlight ' . $responsivecoursetitle . '"><h1>'
                             . format_string($sitetitle) . '</h1></div>';
                         break;
 
@@ -2716,7 +2716,7 @@ EOT;
                             $header = format_string($header);
                             $this->page->set_heading($header);
 
-                            $retval .= '<div id="sitetitle" class="pb-2 pl-2 pr-2 bd-highlight ' . $responsivecoursetitle . '">'
+                            $retval .= '<div id="sitetitle" class="pb-2 bd-highlight ' . $responsivecoursetitle . '">'
                                 . format_text($sitetitlehtml, FORMAT_HTML) . '</div>';
                         }
                 }

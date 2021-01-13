@@ -25,7 +25,7 @@
     }
 }}
 <header id="adaptable-page-header-wrapper"{{headerbg}}>
-    <div id="above-header" class="mb-lg-2">
+    <div id="above-header">
         <div class="container">
             <nav class="navbar navbar-expand btco-hover-menu">
                 {{#shownavbar}}
@@ -102,6 +102,10 @@
                     {{{sitetitle}}}
                 </div>
                 {{/sitetitle}}
+                {{! Remove Search Box or Social icons when no navbar. }}
+                {{^nonavbar}}
+                    {{{socialorsearch}}}
+                {{/nonavbar}}
             </div>
             <div class="col-lg-4 p-0 my-auto">
                 {{#sitelogo}}
@@ -115,10 +119,6 @@
         {{^pageheaderoriginal}}
         <div class="row">
             <div class="col-12 p-0 my-auto">
-            {{! Remove Search Box or Social icons when no navbar. }}
-            {{^nonavbar}}
-                {{{socialorsearch}}}
-            {{/nonavbar}}
                 <div id="course-header">
                     {{{output.course_header}}}
                 </div>

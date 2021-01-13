@@ -325,6 +325,9 @@ if ($adaptableheaderstyle == "style1") {
             $headersearchcontext = [
                 'url' => new moodle_url('/course/search.php')
             ];
+            if (!empty($PAGE->theme->settings->pageheaderlayout)) {
+                $headersearchcontext['pagelayoutalternative'] = ($PAGE->theme->settings->pageheaderlayout == 'alternative');
+            }
             $headercontext['socialorsearch'] = $OUTPUT->render_from_template('theme_adaptable/headersearch', $headersearchcontext);
         }
     }

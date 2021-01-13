@@ -1432,6 +1432,12 @@ div.no-overflow, .yui3-datatable {
     padding: [[setting:searchboxpadding]];
 }
 
+#page-header .searchbox.pagelayoutalternative {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
 .greybox {
     border: 1px solid #ccc;
 }
@@ -1461,7 +1467,7 @@ button.search-box__button {
 }
 
 .search-box {
-    margin: 0 auto 5px;
+    margin: 0 auto;
     width: 312px;
 }
 
