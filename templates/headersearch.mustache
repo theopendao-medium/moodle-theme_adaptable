@@ -21,10 +21,11 @@
 
     Example context (json):
     {
-        "url": search url
+        "pagelayout": "pagelayoutoriginal".
+        "url": "search url"
     }
 }}
-<div class="searchbox {{#pagelayoutalternative}}pagelayoutalternative {{/pagelayoutalternative}}d-none d-lg-block">
+<div class="searchbox {{pagelayout}} d-none d-lg-block">
     <form action="{{{url}}}">
         <label class="hidden" for="search-1" style="display: none;">{{#str}}searchcourses, theme_adaptable{{/str}}</label>
         <div class="search-box grey-box bg-white clear-fix">

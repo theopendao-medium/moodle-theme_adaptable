@@ -1429,13 +1429,17 @@ div.no-overflow, .yui3-datatable {
 
 /* Search box */
 #page-header .searchbox {
+    bottom: 0;
     padding: [[setting:searchboxpadding]];
+    position: absolute;
+}
+
+#page-header .searchbox.pagelayoutoriginal {
+    right: 0;
 }
 
 #page-header .searchbox.pagelayoutalternative {
-    bottom: 0;
     left: 0;
-    position: absolute;
 }
 
 .greybox {
