@@ -1,0 +1,110 @@
+/*
+ * This file is part of Moodle - http://moodle.org/
+ *
+ * Moodle is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Moodle is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ * Adaptable Search style sheet - initially adapted from Boost search.scss in M3.7.
+ *
+ * @package    theme_adaptable
+ * @copyright  2021 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
+ */
+.search-input-wrapper {
+    float: right;
+    overflow: hidden;
+    padding-bottom: 0;
+    padding-top: 0;
+    transition: width 0.5s ease, left 0.5s ease;
+    width: 24px;
+}
+
+.search-input-wrapper > div {
+    float: left;
+    margin: 0;
+}
+.search-input-wrapper > div .icon {
+    margin-right: 0;
+    margin-top: 10px;
+}
+
+.search-input-wrapper > form {
+    margin-left: 25px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.search-input-wrapper > form > input {
+    margin: 0;
+}
+
+.search-input-wrapper form.expanded {
+    opacity: 1;
+}
+
+.search-input-wrapper.expanded {
+    width: 162px;
+}
+
+@media (max-width:575.98px) {
+    .search-input-wrapper > div {
+        margin: 0;
+    }
+
+    .search-input-wrapper > form {
+        display: none;
+    }
+    .search-input-wrapper.expanded {
+        width: 32px
+    }
+}
+
+@media (min-width: 576px) {
+    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable > form {
+        margin: 0;
+    }
+
+    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable {
+        padding: 0;
+        position: relative;
+    }
+
+    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable > div { /* The button! */
+        background-color: [[setting:regionmaincolor]];
+        color: [[setting:fontcolor]];
+        height: 32px;
+        position: absolute;
+        right: 1px;
+        text-align: right;
+        top: 1px;
+        width: 22px;
+    }
+
+    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable > div .icon {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .search-input-wrapper.expanded {
+        width: 32px;
+    }
+}
+
+#adaptable-page-header-wrapper #header2 .search-input-wrapper > div .icon {
+    margin-right: 0;
+    margin-top: 8px;
+    padding-right: 0;
+}

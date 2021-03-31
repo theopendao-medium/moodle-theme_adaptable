@@ -1107,41 +1107,6 @@ input[type="radio"], input[type="checkbox"] {
     margin-right: 5px;
 }
 
-@media (min-width: 576px) {
-    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable > form {
-        margin: 0;
-    }
-
-    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable {
-        padding: 0;
-        position: relative;
-    }
-
-    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable > div { /* The button! */
-        background-color: [[setting:backcolor]];
-        color: [[setting:fontcolor]];
-        height: 24px;
-        position: absolute;
-        right: 2px;
-        top: 2px;
-        width: 24px;
-    }
-
-    #adaptable-page-header-wrapper #header2 .search-input-wrapper.expandable > div .icon {
-        margin-top: 0;
-    }
-}
-
-@media (max-width: 575.98px) {
-    .search-input-wrapper.expanded {
-        width: 32px;
-    }
-}
-
-#adaptable-page-header-wrapper #header2 .search-input-wrapper>div .icon {
-    margin-top: 8px;
-}
-
 .navbar .singlebutton input {
     padding: 4px 15px;
     margin-left: 5px;

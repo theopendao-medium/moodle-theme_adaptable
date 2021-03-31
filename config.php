@@ -141,6 +141,7 @@ $THEME->sheets = array(
         'user',
         'categorycustom',
         'browser',
+        'search',
         'custom'
 );
 
