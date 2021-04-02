@@ -650,11 +650,11 @@ a.dropdown-item.i.fa.fa-users.fa-lg {
     font-size: 1.2em;
 }
 
-#adaptable-page-header-wrapper #main-navbar .nav-item .dropdown-toggle i {
-    width: 20px;
+#adaptable-page-header-wrapper #main-navbar .nav-item .nav-link .fa {
+    margin-right: 2px;
 }
 
-#adaptable-page-header-wrapper #main-navbar .nav-item i.fa-circle {
+#adaptable-page-header-wrapper #main-navbar .nav-item .fa-circle {
     font-size: 10px;
     margin-right: .25rem;
 }
