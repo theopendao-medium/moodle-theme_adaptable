@@ -512,6 +512,8 @@ a.dropdown-item.i.fa.fa-users.fa-lg {
 }
 
 #adaptable-page-header-wrapper #main-navbar .navbar-nav .nav-item .dropdown-menu > .nav-item .dropdown-menu {
+    max-height: 400px;
+    overflow-x: auto;
     top: -1px;
 }
 
