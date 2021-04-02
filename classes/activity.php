@@ -405,7 +405,7 @@ class activity {
         $coursemodulecontext = \context_module::instance($mod->id);
         $course = get_course($courseid);
         $assign = new \assign($coursemodulecontext, $mod, $course);
-        $activitygroup = groups_get_activity_group($mod);
+        $activitygroup = 0; // No current group.
         $instance = $assign->get_default_instance();
         if ($instance->teamsubmission) {
             $participants = $assign->count_teams($activitygroup);

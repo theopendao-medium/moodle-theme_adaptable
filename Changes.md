@@ -1,6 +1,7 @@
 Change Log in version 3.8.1.3 (2020070107)
 ==========================================
-1. Expandable search in header two not working well - #234.
+1. Fix 'Expandable search in header two not working well' - #234.
+2. Fix 'Assignment Grouping' - #233.
 
 Change Log in version 3.8.1.2 (2020070106)
 ==========================================
