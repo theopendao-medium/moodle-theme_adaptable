@@ -1073,7 +1073,7 @@ $string['header2searchboxdesc'] = 'Disabled, static or expand and collapse funct
 
 $string['socialorsearch'] = 'Use Search Box or Social Icons';
 $string['socialorsearchdesc'] = 'You can set the theme to either display social icons or a search box in the header.<br />
-You can set social icons under the <a href="./../admin/settings.php?section=theme_adaptable_social">Header Social</a>settings page</strong>.';
+You can set social icons under the <a href="./../admin/settings.php?section=themesettingadaptable#theme_adaptable_social">Header social</a> settings page</strong>.';
 
 $string['socialorsearchnone'] = 'None';
 
