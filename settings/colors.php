@@ -73,6 +73,7 @@ if ($ADMIN->fulltree) {
     $default = '#51666C';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
     // Link hover color.
