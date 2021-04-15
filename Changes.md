@@ -5,6 +5,9 @@ Change Log in version 3.8.1.3 (2020070107)
 3. Fix 'This course section list overflows page' - #236.
 4. Fix 'Navbar link icon spacing wrong' - #235.
 5. Fix 'Missing theme cache reset' - Ref: https://moodle.org/mod/forum/discuss.php?d=420530.
+6. Added upgrade script to change settings with '0px' to '0' for upgrades that don't have "No such thing as '0px'" change.
+   Thus, when they do, the setting will be changed correctly instead of getting a default and effectively changing the
+   value of the setting.
 
 Change Log in version 3.8.1.2 (2020070106)
 ==========================================
