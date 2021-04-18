@@ -8,6 +8,7 @@ Change Log in version 3.8.1.3 (2020070107)
 6. Added upgrade script to change settings with '0px' to '0' for upgrades that don't have "No such thing as '0px'" change.
    Thus, when they do, the setting will be changed correctly instead of getting a default and effectively changing the
    value of the setting.
+7. README.md to Readme.md - #240.
 
 Change Log in version 3.8.1.2 (2020070106)
 ==========================================

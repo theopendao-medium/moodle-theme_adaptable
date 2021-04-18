@@ -51,7 +51,7 @@ Gareth J Barnard (<a href="http://moodle.org/user/profile.php?id=442195" target=
 <li>Gareth J Barnard (<a href="http://moodle.org/user/profile.php?id=442195" target="_blank">moodle.org/user/profile.php?id=442195</a>).</li>
 <li>Stuart Lamour.</li>
 <li>Alistair Spark (University College London).</li>
-</ul><p>amongst many other developers, testers, translators and volunteers (please see the <a href="adaptable/README.md" target="_blank">README.md</a> file).</p>
+</ul><p>amongst many other developers, testers, translators and volunteers (please see the <a href="adaptable/Readme.md" target="_blank">Readme.md</a> file).</p>
 <br>
 <h3>Reporting bugs</h3>
 <p>You can report bugs and enhancements you wish to fund in our \'<a href="https://gitlab.com/jezhops/moodle-theme_adaptable/-/issues" target="_blank">repository</a>\'.</p>
@@ -344,7 +344,7 @@ $string['sidebaricon'] = 'Show / hide the sidebar';
 // Marketing Blocks & Info Box *************************************.
 $string['marketingsettings'] = 'Marketing blocks';
 $string['marketingsettingsheading'] = 'Customize the marketing blocks that appear on the front page. See the layout <a href="./../theme/adaptable/pix/layout.png" target="_blank"> here</a>';
-$string['marketingdesc'] = 'There are two full width info boxes with differing styles you can use.<br/>In addition to this there is a layout builder allowing you to decide how many blocks you need and define your own layout, please see the <a href="./../theme/adaptable/README.txt" target="_blank">README</a> file that comes with this theme.';
+$string['marketingdesc'] = 'There are two full width info boxes with differing styles you can use.<br>In addition to this there is a layout builder allowing you to decide how many blocks you need and define your own layout.<br>Please see the \'Readme\' section on the \'Information\' settings tab for additional information.';
 
 $string['marketingbuilderheading'] = 'Marketing block layout builder';
 $string['marketingbuilderdesc'] = 'Use the tool below to setup your marketing blocks. Once defined the block settings will appear further down the page.';
@@ -353,20 +353,20 @@ $string['marketlayoutrow'] = 'Marketing block row';
 $string['marketlayoutrowdesc'] = 'Add / set layout for marketing block row on front page';
 
 $string['market'] = 'Marketing block ';
-$string['marketdesc'] = 'Add html for marketing block (see the <a href="./../theme/adaptable/README.txt" target="_blank">README</a> file for additional info and hints).';
+$string['marketdesc'] = 'Add html for marketing block.  Please see the \'Readme\' section on the \'Information\' settings tab for additional information.';
 
 $string['layoutaddcontent'] = 'Happy with your layout?  Now add content to your blocks:';
 $string['layoutaddcontentdesc1'] = 'You have configured ';
-$string['layoutaddcontentdesc2'] = ' marketing blocks. If you are happy with this layout add content to the blocks below.<br/>If you are not happy use the layout builder above to make changes.';
+$string['layoutaddcontentdesc2'] = ' marketing blocks. If you are happy with this layout add content to the blocks below.<br>If you are not happy use the layout builder above to make changes.';
 
 $string['infobox'] = 'Frontpage info box';
-$string['infoboxdesc'] = 'Frontpage info block HTML (see the <a href="./../theme/adaptable/README.txt" target="_blank">README</a> file for additional info and hints).<br><br><strong>Note: </strong><i>This element is only used for compatibility with BCU and will be removed in coming versions.</i>';
+$string['infoboxdesc'] = 'Frontpage info block HTML.  Please see the \'Readme\' section on the \'Information\' settings tab for additional information.<br><strong>Note: </strong><i>This element is only used for compatibility with BCU and will be removed in coming versions.</i>';
 
 $string['infoboxfullscreen'] = 'Make infobox full screen';
 $string['infoboxfullscreendesc'] = 'Turning this option on will make the infobox full screen.';
 
 $string['infobox2'] = 'Frontpage secondary info box';
-$string['infobox2desc'] = 'Frontpage secondary info box (see the <a href="./../theme/adaptable/README.txt" target="_blank">README</a> file for additional info and hints).<br><br><strong>Note: </strong><i>This element is only used for compatibility with BCU and will be removed in coming versions.</i>';
+$string['infobox2desc'] = 'Frontpage secondary info box.  Please see the \'Readme\' section on the \'Information\' settings tab for additional information.<br><strong>Note: </strong><i>This element is only used for compatibility with BCU and will be removed in coming versions.</i>';
 
 $string['frontpagemarketenabled'] = 'Enable marketing blocks';
 $string['frontpagemarketenableddesc'] = 'Set the marketing blocks in the frontpage.';
