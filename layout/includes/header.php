@@ -232,7 +232,6 @@ echo $OUTPUT->standard_top_of_body_html();
             'navigationmenu' => $OUTPUT->navigation_menu('main-navigation'),
             'navigationmenudrawer' => $OUTPUT->navigation_menu('main-navigation-drawer'),
             'output' => $OUTPUT,
-            'searchurl' => new moodle_url('/admin/search.php'),
             'toolsmenu' => ($PAGE->theme->settings->enabletoolsmenus)
         ];
 
