@@ -18,7 +18,7 @@
  * Adaptable header styles style sheet
  *
  * @package    theme_adaptable
- * @copyright  &copy; 2019 - TBD
+ * @copyright  &copy; 2019 - G J Barnard
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -28,4 +28,8 @@
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#sitetitle {
+    margin: auto 0;
 }

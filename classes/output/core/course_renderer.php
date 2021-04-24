@@ -486,7 +486,7 @@ class course_renderer extends \core_course_renderer {
         }
         if ($item->helpbutton !== null) {
             $content = trim($item->helpbutton).html_writer::tag('span', $content, array('class' => 'clearhelpbutton',
-                    'tabindex' => '0'));
+                'tabindex' => '0'));
         }
         if ($content === '') {
             return '';

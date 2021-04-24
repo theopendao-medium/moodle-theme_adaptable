@@ -1631,10 +1631,11 @@ EOT;
         if (isloggedin() && !isguestuser()) {
             if (!empty($this->page->theme->settings->enablehome)) {
                 $branchlabel = '';
+                $branchtitle = get_string('home', 'theme_adaptable');
                 if ($navbardisplayicons) {
                     $branchlabel .= '<i class="fa fa-home fa-lg"></i>';
                 }
-                $branchlabel .= get_string('home', 'theme_adaptable');
+                $branchlabel .= $branchtitle;
 
                 if (!empty($this->page->theme->settings->enablehomeredirect)) {
                     $branchurl   = new moodle_url('/?redirect=0');
@@ -1642,30 +1643,32 @@ EOT;
                     $branchurl   = new moodle_url('/');
                 }
                 $branchsort  = 9998;
-                $branch = $menu->add($branchlabel, $branchurl, '', $branchsort);
+                $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
             }
 
             if (!empty($this->page->theme->settings->enablemyhome)) {
                 $branchlabel = '';
+                $branchtitle = get_string('myhome');
                 if ($navbardisplayicons) {
                     $branchlabel .= '<i class="fa fa-dashboard fa-lg"></i>';
                 }
-                $branchlabel .= get_string('myhome');
+                $branchlabel .= $branchtitle;
                 $branchurl   = new moodle_url('/my/index.php');
                 $branchsort  = 9999;
-                $branch = $menu->add($branchlabel, $branchurl, '', $branchsort);
+                $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
             }
 
             if (!empty($this->page->theme->settings->enableevents)) {
                 $branchlabel = '';
+                $branchtitle = get_string('events', 'theme_adaptable');
                 if ($navbardisplayicons) {
                     $branchlabel .= '<i class="fa fa-calendar fa-lg"></i>';
                 }
-                $branchlabel .= get_string('events', 'theme_adaptable');
+                $branchlabel .= $branchtitle;
 
                 $branchurl   = new moodle_url('/calendar/view.php');
                 $branchsort  = 10000;
-                $branch = $menu->add($branchlabel, $branchurl, '', $branchsort);
+                $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
             }
 
             $overridetype = null;
@@ -1708,10 +1711,11 @@ EOT;
 
                 if ($showmysites) {
                     $branchlabel = '';
+                    $branchtitle = get_string('mysites', 'theme_adaptable');
                     if ($navbardisplayicons) {
                         $branchlabel .= '<i class="fa fa-briefcase fa-lg"></i>';
                     }
-                    $branchlabel .= get_string('mysites', 'theme_adaptable');
+                    $branchlabel .= $branchtitle;
 
                     $branchurl   = new moodle_url('#');
                     $branchsort  = 10001;
@@ -1752,7 +1756,7 @@ EOT;
 
                     /* Add top level menu option here after finding out if there will be at least one course to display.  This is
                        for the option of displaying a sub-menu arrow symbol above, if configured in the theme settings. */
-                    $branch = $menu->add($branchlabel, $branchurl, '', $branchsort);
+                    $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
                     $icon = '';
 
                     if ($sortedcourses) {
@@ -1890,10 +1894,11 @@ EOT;
             if (!empty($this->page->theme->settings->enablethiscourse)) {
                 if (ISSET($COURSE->id) && $COURSE->id > 1) {
                     $branchlabel = '';
+                    $branchtitle = get_string('thiscourse', 'theme_adaptable');
                     if ($navbardisplayicons) {
                         $branchlabel .= '<i class="fa fa-sitemap fa-lg"></i><span class="menutitle">';
                     }
-                    $branchlabel .= get_string('thiscourse', 'theme_adaptable');
+                    $branchlabel .= $branchtitle;
                     if ($navbardisplayicons) {
                         $branchlabel .= '</span>';
                     }
@@ -1906,7 +1911,7 @@ EOT;
                     }
 
                     $branchurl = $this->page->url;
-                    $branch = $menu->add($branchlabel, $branchurl, '', 10002);
+                    $branch = $menu->add($branchlabel, $branchurl, $branchtitle, 10002);
 
                     // Course sections.
                     if ($this->page->theme->settings->enablecoursesections) {
@@ -1915,35 +1920,37 @@ EOT;
 
                     // Display Participants.
                     if ($this->page->theme->settings->displayparticipants) {
-                        $branchlabel = '<i class="icon fa fa-users fa-lg"></i>'.get_string('people', 'theme_adaptable');
+                        $branchtitle = get_string('people', 'theme_adaptable');
+                        $branchlabel = '<i class="icon fa fa-users fa-lg"></i>'.$branchtitle;
                         $branchurl = new moodle_url('/user/index.php', array('id' => $this->page->course->id));
-                        $branch->add($branchlabel, $branchurl, '', 100004);
+                        $branch->add($branchlabel, $branchurl, $branchtitle, 100004);
                     }
 
                     // Display Grades.
                     if ($this->page->theme->settings->displaygrades) {
-                        $branchlabel = $this->pix_icon('i/grades', '', '', array('class' => 'icon')).get_string('grades');
+                        $branchtitle = get_string('grades');
+                        $branchlabel = $this->pix_icon('i/grades', '', '', array('class' => 'icon')).$branchtitle;
                         $branchurl = new moodle_url('/grade/report/index.php', array('id' => $this->page->course->id));
-                        $branch->add($branchlabel, $branchurl, '', 100005);
+                        $branch->add($branchlabel, $branchurl, $branchtitle, 100005);
                     }
 
                     // Kaltura video gallery.
                     if (\theme_adaptable\toolbox::kalturaplugininstalled()) {
-                        $branchlabel = $this->pix_icon('media-gallery', '', 'local_kalturamediagallery').
-                            get_string('nav_mediagallery', 'local_kalturamediagallery');
+                        $branchtitle = get_string('nav_mediagallery', 'local_kalturamediagallery');
+                        $branchlabel = $this->pix_icon('media-gallery', '', 'local_kalturamediagallery').$branchtitle;
                         $branchurl = new moodle_url('/local/kalturamediagallery/index.php',
                             array('courseid' => $this->page->course->id));
-                        $branch->add($branchlabel, $branchurl, '', 100006);
+                        $branch->add($branchlabel, $branchurl, $branchtitle, 100006);
                     }
 
                     // Display Competencies.
                     if (get_config('core_competency', 'enabled')) {
                         if ($this->page->theme->settings->enablecompetencieslink) {
-                            $branchlabel = $this->pix_icon('i/competencies', '', '', array('class' => 'icon')).
-                                get_string('competencies', 'competency');
+                            $branchtitle = get_string('competencies', 'competency');
+                            $branchlabel = $this->pix_icon('i/competencies', '', '', array('class' => 'icon')).$branchtitle;
                             $branchurl = new moodle_url('/admin/tool/lp/coursecompetencies.php',
-                                         array('courseid' => $this->page->course->id));
-                            $branch->add($branchlabel, $branchurl, '', 100007);
+                                array('courseid' => $this->page->course->id));
+                            $branch->add($branchlabel, $branchurl, $branchtitle, 100007);
                         }
                     }
 
@@ -1952,11 +1959,11 @@ EOT;
                         if ($modname === 'resources') {
                             $icon = $this->pix_icon('icon', '', 'mod_page', array('class' => 'icon'));
                             $branch->add($icon.$modfullname, new moodle_url('/course/resources.php',
-                                    array('id' => $this->page->course->id)));
+                                array('id' => $this->page->course->id)), $modfullname);
                         } else {
                             $icon = $this->pix_icon('icon', '', $modname, array('class' => 'icon'));
                             $branch->add($icon.$modfullname, new moodle_url('/mod/'.$modname.'/index.php',
-                                    array('id' => $this->page->course->id)));
+                                    array('id' => $this->page->course->id)), $modfullname);
                         }
                     }
                 }
@@ -1996,7 +2003,7 @@ EOT;
                             array('helptarget' => $this->page->theme->settings->helptarget));
 
                         $branchsort  = 10003;
-                        $branch = $menu->add($branchlabel, $branchurl, '', $branchsort);
+                        $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
                     }
                 }
             }
@@ -2162,10 +2169,10 @@ EOT;
         if (!empty($sectionsformnenu)) { // Rare but possible!
             $branchtitle = get_string('sections', 'theme_adaptable');
             $branchlabel = '<i class="icon fa fa-list-ol fa-lg"></i>'.$branchtitle;
-            $branch = $menu->add($branchlabel, null, '', 100003);
+            $branch = $menu->add($branchlabel, null, $branchtitle, 100003);
 
             foreach ($sectionsformnenu as $sectionformenu) {
-                $branch->add($sectionformenu['sectionname'], $sectionformenu['url']);
+                $branch->add($sectionformenu['sectionname'], $sectionformenu['url'], $sectionformenu['sectionname']);
             }
         }
 
@@ -2351,15 +2358,16 @@ EOT;
 
         if (!empty($logosetarea)) {
             // Logo.
-            $logomarkup = '<div class="bd-highlight ' . $responsivelogo . '">';
-            $logo = '<img src=' . $this->page->theme->setting_file_url($logosetarea, $logosetarea) . ' id="logo" alt="" />';
+            $logomarkup = '<div class="p-2 bd-highlight '.$responsivelogo.'">';
+            $logo = '<img src='.$this->page->theme->setting_file_url($logosetarea, $logosetarea).' id="logo"';
+            $logo .= ' alt="'.get_string('logo', 'theme_adaptable').'">';
 
             // Exception - logo is not a link to site homepage.
             if (!empty($this->page->layout_options['nonavbar'])) {
                 $logomarkup .= $logo;
             } else {
                 // Standard - Output the logo as a link to site homepage.
-                $logomarkup .= '<a href=' . $CFG->wwwroot . ' aria-label="home" title="' . format_string($SITE->fullname). '">';
+                $logomarkup .= '<a href='.$CFG->wwwroot.' aria-label="home" title="'.format_string($SITE->fullname).'">';
                 $logomarkup .= $logo;
                 $logomarkup .= '</a>';
             }
@@ -2424,7 +2432,7 @@ EOT;
                 // Full / Short Course Name.
                 case 'fullname':
                 case 'shortname':
-                    $retval .= '<div id="sitetitle" class="pb-2 bd-highlight ' . $responsivecoursetitle . '">';
+                    $retval .= '<div id="sitetitle" class="bd-highlight ' . $responsivecoursetitle . '">';
                     if (!empty($categoryheadercustomtitle)) {
                         $retval .= '<h1>'. format_string($categoryheadercustomtitle) . '</h1>';
                     }
@@ -2441,14 +2449,14 @@ EOT;
         // If the course id is one or 'enableheading' was 'off' above then we display the site title.
         if (($COURSE->id == 1) || ($usedefault)) {
             if (!empty($categoryheadercustomtitle)) {
-                $retval .= '<div id="sitetitle" class="pb-2 bd-highlight ' . $responsivecoursetitle . '">';
+                $retval .= '<div id="sitetitle" class="bd-highlight ' . $responsivecoursetitle . '">';
                 $retval .= '<h1>'. format_string($categoryheadercustomtitle) . '</h1>';
                 $retval .= '</div>';
             } else {
                 switch ($this->page->theme->settings->sitetitle) {
                     case 'default':
                         $sitetitle = $SITE->fullname;
-                        $retval .= '<div id="sitetitle" class="pb-2 bd-highlight ' . $responsivecoursetitle . '"><h1>'
+                        $retval .= '<div id="sitetitle" class="bd-highlight ' . $responsivecoursetitle . '"><h1>'
                             . format_string($sitetitle) . '</h1></div>';
                         break;
 
@@ -2460,7 +2468,7 @@ EOT;
                             $header = format_string($header);
                             $this->page->set_heading($header);
 
-                            $retval .= '<div id="sitetitle" class="pb-2 bd-highlight ' . $responsivecoursetitle . '">'
+                            $retval .= '<div id="sitetitle" class="bd-highlight ' . $responsivecoursetitle . '">'
                                 . format_text($sitetitlehtml, FORMAT_HTML) . '</div>';
                         }
                 }
