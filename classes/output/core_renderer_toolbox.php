@@ -1537,6 +1537,7 @@ EOT;
                     $breadcrumbs .= '</li>';
                 }
                 $start = false;
+                continue; // This effectively removes the 'core' Home / Dashboard / User preference for such item.
             }
             $breadcrumbs .= '<span class="separator"><i class="fa-'.$breadcrumbseparator.' fa"></i></span><li>'.
                 $this->render($item).'</li>';
