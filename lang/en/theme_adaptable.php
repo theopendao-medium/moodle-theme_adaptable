@@ -476,8 +476,6 @@ $string['enableprivatefilesdesc'] = 'Display a link to the users private files.'
 $string['enablesearchbox'] = 'Enable search box';
 $string['enablesearchboxdesc'] = 'Display a search box in the header.';
 
-$string['searchcourses'] = 'Search courses';
-
 $string['enablepref'] = 'My preferences';
 $string['enableprefdesc'] = 'Display a link to the user preferences page.';
 
@@ -1063,9 +1061,6 @@ $string['headerstyle'] = 'Header style';
 $string['headerstyledesc'] = 'Choose the style of header.  Header 1 refers to the original 3 row Adaptable header.  Header 2 is a minimal 2 row header. Note that when using Header 2, for the setting "Use Search Box or Social Icons", this will always use a search box.';
 $string['headerstyle1'] = 'Header 1 (original 3 row header)';
 $string['headerstyle2'] = 'Header 2 (2 row header)';
-
-$string['header2searchbox'] = 'Header 2 search box expandable';
-$string['header2searchboxdesc'] = 'Disabled, static or expand and collapse functionality on the search box when using header 2.';
 
 $string['socialorsearch'] = 'Use Search Box or Social Icons';
 $string['socialorsearchdesc'] = 'You can set the theme to either display social icons or a search box in the header.<br />

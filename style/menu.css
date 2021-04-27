@@ -181,16 +181,10 @@ a.dropdown-item.i.fa.fa-users.fa-lg {
 }
 
 #adaptable-page-header-wrapper #above-header .navbar .popover-region-toggle i,
-#adaptable-page-header-wrapper #header2 .navbar .popover-region-toggle i,
-#adaptable-page-header-wrapper #header2 .search-input-wrapper > div {
+#adaptable-page-header-wrapper #header2 .navbar .popover-region-toggle i {
     color: [[setting:headertextcolor]];
     font-size: 1.2em;
 }
-
-#adaptable-page-header-wrapper #header2 .search-input-wrapper {
-    margin: 0 0.2rem 0 0.2rem;
-}
-
 
 #adaptable-page-header-wrapper #above-header .navbar > li {
     line-height: 23px;

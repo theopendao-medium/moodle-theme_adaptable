@@ -22,17 +22,9 @@
     Example context (json):
     {
         "pagelayout": "pagelayoutoriginal",
-        "url": "http://localhost"
+        "search": "The markup"
     }
 }}
 <div class="searchbox {{pagelayout}} d-none d-lg-block">
-    <form action="{{{url}}}">
-        <label class="hidden" for="search-1" style="display: none;">{{#str}}searchcourses, theme_adaptable{{/str}}</label>
-        <div class="search-box grey-box bg-white clear-fix">
-            <input placeholder="{{#str}}searchcourses, theme_adaptable{{/str}}" accesskey="6" class="search_tour bg-white no-border left search-box__input ui-autocomplete-input" type="text" name="search" id="search-1" autocomplete="off">
-            <button title="{{#str}}searchcourses, theme_adaptable{{/str}}" type="submit" class="no-border bg-white pas search-box__button">
-                <abbr class="fa fa-search" title="{{#str}}searchcourses, theme_adaptable{{/str}}"></abbr>
-            </button>
-        </div>
-    </form>
+    {{{search}}}
 </div>
