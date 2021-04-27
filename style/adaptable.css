@@ -280,19 +280,6 @@ div.signuppanel h2 {
     width: auto;
 }
 
-#coursesearchbox2 {
-    background: #fff url([[pix:theme|search2]]) no-repeat 98% 50%;
-    border-radius: 0;
-    box-shadow: none;
-    min-width: 240px;
-    padding: 8px 10px 5px;
-    width: auto;
-}
-
-#coursesearch2 {
-    padding-top: 23px;
-}
-
 .socialbox {
     margin-bottom: 15px;
     margin-top: 15px;

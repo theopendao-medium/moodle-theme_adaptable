@@ -513,10 +513,6 @@ order for prescidence.
     #page-header .userimg {
         display: none;
     }
-
-    #coursesearchbox2 {
-        display: none;
-    }
 }
 
 /* Mins in ascending order.
@@ -580,13 +576,6 @@ order for prescidence.
 /*=====================================================
 Other.
 ======================================================= */
-@media (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-    #coursesearchbox2 {
-        min-width: 140px;
-        margin-top: 5px;
-    }
-}
-
 @media (min-width: 481px) {
     /* Activity chooser styling. Desktop styling. */
     .jsenabled .choosercontainer #chooseform .alloptions {

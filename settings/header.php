@@ -213,18 +213,5 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, 'left', $radchoices);
     $page->add($setting);
 
-    // Header 2 search box.
-    $name = 'theme_adaptable/header2searchbox';
-    $title = get_string('header2searchbox', 'theme_adaptable');
-    $description = get_string('header2searchboxdesc', 'theme_adaptable');
-    $default = 'expandable';
-    $radchoices = array(
-        'expandable' => get_string('expandable', 'theme_adaptable'),
-        'static' => get_string('static', 'theme_adaptable'),
-        'disabled' => get_string('disabled', 'theme_adaptable')
-    );
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $radchoices);
-    $page->add($setting);
-
     $asettings->add($page);
 }

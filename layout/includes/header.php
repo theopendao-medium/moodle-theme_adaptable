@@ -305,9 +305,9 @@ echo $OUTPUT->standard_top_of_body_html();
         }
     }
 
+    $headercontext['navbarsearch'] = $OUTPUT->search_box();
     if ($adaptableheaderstyle == "style1") {
         $headercontext['menuslinkright'] = (!empty($PAGE->theme->settings->menuslinkright));
-        $headercontext['coursesearch'] = new moodle_url('/course/search.php');
         $headercontext['langmenu'] = (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']);
         $headercontext['responsiveheader'] = $PAGE->theme->settings->responsiveheader;
 
@@ -325,7 +325,7 @@ echo $OUTPUT->standard_top_of_body_html();
             if ((!$hidesitetitle) && ($PAGE->theme->settings->socialorsearch == 'search') ) {
                 $headersearchcontext = [
                     'pagelayout' => ($headercontext['pageheaderoriginal']) ? 'pagelayoutoriginal' : 'pagelayoutalternative',
-                    'url' => new moodle_url('/course/search.php')
+                    'search' => $OUTPUT->search_box()
                 ];
                 $headercontext['socialorsearch'] = $OUTPUT->render_from_template('theme_adaptable/headersearch', $headersearchcontext);
             }
