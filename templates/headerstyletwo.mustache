@@ -27,7 +27,7 @@
         "shownavbar": true,
         "topmenus": "",
         "responsivesearchicon": "",
-        "coursesearch": "",
+        "navbarsearch": "",
         "nonavbar": false,
         "langmenu": false,
         "loginoruser": ""
@@ -71,9 +71,7 @@
                             </li>
 
                             <li class="nav-item mx-md-1 my-auto{{responsivesearchicon}}">
-                                <a class="nav-link" href="{{coursesearch}}">
-                                    <i class="icon fa fa-search fa-fw " title="{{#str}}search, theme_adaptable{{/str}}" aria-label="{{#str}}search, theme_adaptable{{/str}}"></i>
-                                </a>
+                                {{{navbarsearch}}}
                             </li>
 
                             {{! Remove Messages and Notifications icons when no navbar. }}
