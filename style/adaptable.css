@@ -1090,10 +1090,6 @@ input[type="radio"], input[type="checkbox"] {
     padding: 0 15px;
 }
 
-.navbar input#navsearchbox {
-    margin-right: 5px;
-}
-
 .navbar .singlebutton input {
     padding: 4px 15px;
     margin-left: 5px;
@@ -1345,19 +1341,6 @@ div.no-overflow, .yui3-datatable {
     z-index: 2;
 }
 
-/* Search box */
-#page-header .searchbox {
-    padding: [[setting:searchboxpadding]];
-}
-
-#page-header .searchbox.pagelayoutoriginal .search-box {
-    margin: 0 0 0 auto;
-}
-
-#page-header .searchbox.pagelayoutalternative .search-box {
-    margin: 0 auto 0 0;
-}
-
 .greybox {
     border: 1px solid #ccc;
 }
@@ -1404,22 +1387,6 @@ button.search-box__button {
     border: 0 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-}
-
-#search-1 {
-    color: #444;
-    font-size: 14px;
-    margin: 0 !important;
-    padding: 5px 3px 5px 5px !important;
-}
-
-#search-1:focus {
-    border: none !important;
-    box-shadow: none;
-}
-
-.icon-search {
-    font-size: 1.4em;
 }
 
 div.questionbankwindow.block {
@@ -2111,12 +2078,6 @@ img.smallicon {
 
 .tag_list .inline-list a.label-info[href] {
     color: #fff !important;
-}
-
-.searchbox abbr[title]{
-    border-bottom: none;
-    cursor: pointer;
-    text-decoration: none;
 }
 
 .groupmanagementtable .row {

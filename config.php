@@ -136,6 +136,7 @@ $THEME->sheets = array(
         'navigation',
         'notifications',
         'responsive',
+        'search',
         'tabs',
         'user',
         'print',
