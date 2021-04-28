@@ -3554,16 +3554,19 @@ EOT;
            is disabled. */
         if (empty($CFG->enableglobalsearch) || !has_capability('moodle/search:query', \context_system::instance())) {
             $action = new moodle_url('/course/search.php');
+            $searchstring = get_string('coursesearch', 'theme_adaptable');
         } else {
             $action = new moodle_url('/search/index.php');
+            $searchstring = get_string('globalsearch', 'core_admin');
         }
 
         $data = [
             'action' => $action,
             'hiddenfields' => (object) ['name' => 'context', 'value' => $this->page->context->id],
             'inputname' => 'q',
-            'searchstring' => get_string('search'),
-            ];
+            'searchstring' => $searchstring
+        ];
+
         return $this->render_from_template('core/search_input_navbar', $data);
     }
 }

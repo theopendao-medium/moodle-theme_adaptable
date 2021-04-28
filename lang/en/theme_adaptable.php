@@ -475,6 +475,7 @@ $string['enableprivatefilesdesc'] = 'Display a link to the users private files.'
 
 $string['enablesearchbox'] = 'Enable search box';
 $string['enablesearchboxdesc'] = 'Display a search box in the header.';
+$string['coursesearch'] = 'Course search';
 
 $string['enablepref'] = 'My preferences';
 $string['enableprefdesc'] = 'Display a link to the user preferences page.';
