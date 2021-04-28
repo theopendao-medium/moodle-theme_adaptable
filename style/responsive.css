@@ -154,20 +154,6 @@ order for prescidence.
         margin-left: 10px !important;
     }
 
-    .searchbox {
-        padding-bottom: 5px;
-    }
-
-    .search-box,
-    .searchbox {
-        margin: 0;
-        width: 100%;
-    }
-
-    #search-1 {
-        width: calc(100% - 39px);
-    }
-
     .hbl, .sbl, .hbll, .sbll {
         display: none !important;
     }

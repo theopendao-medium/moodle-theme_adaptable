@@ -217,7 +217,7 @@ echo $OUTPUT->standard_top_of_body_html();
 
     $headercontext['headerbg'] = $headerbg;
     $headercontext['nonavbar'] = (!empty($PAGE->layout_options['nonavbar']));
-    $headercontext['responsivesearchicon'] = (!empty($PAGE->theme->settings->responsivesearchicon)) ? ' d-xs-block d-sm-block d-md-none my-auto' : ' d-none';
+    $headercontext['responsivesearchicon'] = (!empty($PAGE->theme->settings->responsivesearchicon)) ? ' d-md-block d-lg-none my-auto' : ' d-none';
     $headercontext['shownavbar'] = $shownavbar;
     if (!empty($PAGE->theme->settings->pageheaderlayout)) {
         $headercontext['pageheaderoriginal'] = ($PAGE->theme->settings->pageheaderlayout == 'original');
