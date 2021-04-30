@@ -247,7 +247,6 @@ function theme_adaptable_process_css($css, $theme) {
         '[[setting:responsivelogo]]' => 'd-none d-lg-block',
         '[[setting:responsivecoursetitle]]' => 'd-none d-lg-block',
         '[[setting:responsivesectionnav]]' => '1',
-        '[[setting:responsivesearchicon]]' => true,
         '[[setting:responsiveticker]]' => 'd-none d-lg-block',
         '[[setting:responsivebreadcrumb]]' => 'd-none d-md-flex',
         '[[setting:responsiveslider]]' => 'd-none d-lg-block',
