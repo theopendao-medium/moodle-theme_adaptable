@@ -227,8 +227,7 @@ a.dropdown-item.i.fa.fa-users.fa-lg {
 }
 
 #adaptable-page-header-wrapper #above-header .navbar .popover-region i
-#adaptable-page-header-wrapper #above-header a i,
-#adaptable-page-header-wrapper #header2 a.btn-open i {
+#adaptable-page-header-wrapper #above-header a i {
     color: [[setting:headertextcolor]];
 }
 
