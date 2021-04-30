@@ -3567,6 +3567,6 @@ EOT;
             'searchstring' => $searchstring
         ];
 
-        return $this->render_from_template('core/search_input_navbar', $data);
+        return $this->render_from_template('theme_adaptable/adaptable_search_input_navbar', $data);
     }
 }

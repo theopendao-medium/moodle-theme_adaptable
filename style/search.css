@@ -23,6 +23,74 @@
  *
  */
 
+/* M3.9- */
+.simplesearchform .btn {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.simplesearchform .btn .icon {
+    margin: 0;
+}
+
+.simplesearchform .btn-submit {
+    border-color: #8f959e;
+    color: #6c757d;
+}
+
+.simplesearchform .btn-close,
+.simplesearchform .btn-clear {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #6c757d;
+    z-index: 4;
+}
+
+.simplesearchform .btn-close {
+    right: 2.2rem;
+}
+
+.simplesearchform .btn-submit {
+    background-color: #f8f9fa;
+}
+
+.simplesearchform .withclear {
+    padding-right: 2rem;
+}
+
+.simplesearchform .searchinput {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.simplesearchform .collapsing {
+    height: inherit;
+    transition: none;
+    width: inherit;
+}
+
+@media (max-width: 991.98px) {
+    .simplesearchform .collapse.show,
+    .simplesearchform .collapsing {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        display: flex;
+        background-color: #fff;
+        z-index: 1060;
+        height: 50px;
+    }
+    .simplesearchform .collapse.show .form-inline,
+    .simplesearchform .collapsing .form-inline {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Now inline with M3.10+ version */
 .headersearch {
     padding: [[setting:searchboxpadding]];
 }

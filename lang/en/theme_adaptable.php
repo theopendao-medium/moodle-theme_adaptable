@@ -1073,6 +1073,10 @@ $string['headersearchandsocialsocialheader'] = 'Social in header';
 $string['headersearchandsocialsearchnavbar'] = 'Search on navbar';
 $string['headersearchandsocialsearchnavbarsocialheader'] = 'Search on navbar, social in header';
 
+// M3.9- for search
+$string['togglesearch'] = 'Toggle search input';
+
+
 $string['searchboxpadding'] = 'Header search box padding';
 $string['searchboxpaddingdesc'] = 'Set padding for the search box when it is in the header (if being used instead of social icons) <br />E.g. 5px 10px 5px 10px (top, right, bottom, left).<br> You can set social icons under the <a href="./../admin/settings.php?section=theme_adaptable_social">Header Social</a> settings page</strong>.';
 
