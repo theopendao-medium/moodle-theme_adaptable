@@ -37,6 +37,10 @@
     color: [[setting:fonttitlecolorcourse]];
 }
 
+#adaptable-page-header-wrapper #header2 a.btn-open i {
+    color: [[setting:headertextcolor]];
+}
+
 .headersearch abbr[title]{
     border-bottom: none;
     cursor: pointer;
