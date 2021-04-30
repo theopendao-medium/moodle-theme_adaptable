@@ -170,6 +170,21 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, 'search', $radchoices);
     $page->add($setting);
 
+    // Choose what to do with the search box and social icons.
+    $name = 'theme_adaptable/headersearchandsocial';
+    $title = get_string('headersearchandsocial', 'theme_adaptable');
+    $description = get_string('headersearchandsocialdesc', 'theme_adaptable');
+    $choices = array(
+        'none' => get_string('headersearchandsocialnone', 'theme_adaptable'),
+        'searchmobilenav' => get_string('headersearchandsocialsearchmobilenav', 'theme_adaptable'),
+        'searchheader' => get_string('headersearchandsocialsearchheader', 'theme_adaptable'),
+        'socialheader' => get_string('headersearchandsocialsocialheader', 'theme_adaptable'),
+        'searchnavbar' => get_string('headersearchandsocialsearchnavbar', 'theme_adaptable'),
+        'searchnavbarsocialheader' => get_string('headersearchandsocialsearchnavbarsocialheader', 'theme_adaptable'),
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, 'searchmobilenav', $choices);
+    $page->add($setting);
+
     // Search box padding.
     $name = 'theme_adaptable/searchboxpadding';
     $title = get_string('searchboxpadding', 'theme_adaptable');

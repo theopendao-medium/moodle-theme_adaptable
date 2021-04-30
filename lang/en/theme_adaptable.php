@@ -1072,8 +1072,18 @@ $string['socialorsearchnone'] = 'None';
 $string['socialorsearchsocial'] = 'Display social icons in header';
 $string['socialorsearchsearch'] = 'Display search box in header';
 
-$string['searchboxpadding'] = 'Search box padding';
-$string['searchboxpaddingdesc'] = 'Set padding above search box (if being used instead of social icons) <br />E.g. 5px 10px 5px 10px (top, right, bottom, left).<br> You can set social icons under the <a href="./../admin/settings.php?section=theme_adaptable_social">Header Social</a> settings page</strong>.';
+$string['headersearchandsocial'] = 'Header search and social';
+$string['headersearchandsocialdesc'] = 'Set the position of the search box and social icons in the header for header style one.<br />
+You can set social icons under the <a href="./../admin/settings.php?section=themesettingadaptable#theme_adaptable_social">Header social</a> settings page</strong>.';
+$string['headersearchandsocialnone'] = 'None';
+$string['headersearchandsocialsearchmobilenav'] = 'Search in header and navbar for mobiles';
+$string['headersearchandsocialsearchheader'] = 'Search in header';
+$string['headersearchandsocialsocialheader'] = 'Social in header';
+$string['headersearchandsocialsearchnavbar'] = 'Search on navbar';
+$string['headersearchandsocialsearchnavbarsocialheader'] = 'Search on navbar, social in header';
+
+$string['searchboxpadding'] = 'Header search box padding';
+$string['searchboxpaddingdesc'] = 'Set padding for the search box when it is in the header (if being used instead of social icons) <br />E.g. 5px 10px 5px 10px (top, right, bottom, left).<br> You can set social icons under the <a href="./../admin/settings.php?section=theme_adaptable_social">Header Social</a> settings page</strong>.';
 
 $string['enablesavecanceloverlay'] = 'Enable save / cancel overlay on settings pages';
 $string['enablesavecanceloverlaydesc'] = 'Display a save / cancel button overlay at the top of a settings page to make it easier to save settings.';
@@ -1343,8 +1353,6 @@ $string['responsivepagefooterdesc'] = 'What sized screens would you like the foo
 $string['responsiveslider'] = 'Frontpage slider';
 $string['responsivesliderdesc'] = 'What sized screens would you like the Frontpage Slider to be displayed on?';
 
-$string['responsivesearchicon'] = 'Show search icon';
-$string['responsivesearchicondesc'] = 'Show search icon on small screen devices.';
 $string['responsivebreadcrumb'] = 'Beadcrumb navigation';
 $string['responsivebreadcrumbdesc'] = 'What sized screens would you like Breadcrumb Navigation to be displayed on?';
 

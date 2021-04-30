@@ -27,12 +27,13 @@
         "shownavbar": true,
         "responsivesearchicon": "",
         "navbarsearch": "",
-        "nonavbar": false,
         "langmenu": false,
         "loginoruser": "",
         "menuslinkright": false,
         "pageheaderoriginal": true,
-        "socialorsearch": ""
+        "searchandsocialnavbar": "",
+        "searchandsocialnavbarextra": "",
+        "searchandsocialheader": "",
     }
 }}
 <header id="adaptable-page-header-wrapper"{{{headerbg}}}>
@@ -61,14 +62,16 @@
                         <li class="my-auto m-1">{{{output.get_top_menus}}}</li>
                         {{/menuslinkright}}
 
-                        <li class="nav-item navbarsearch mx-md-1 my-auto{{responsivesearchicon}}">
-                            {{{navbarsearch}}}
+                        {{#searchandsocialnavbar}}
+                        <li class="nav-item navbarsearch mx-md-1 my-auto{{searchandsocialnavbarextra}}">
+                            {{{searchandsocialnavbar}}}
                         </li>
+                        {{/searchandsocialnavbar}}
 
                         {{! Remove Messages and Notifications icons when no navbar. }}
-                        {{^nonavbar}}
+                        {{#shownavbar}}
                         <li class="my-auto mx-md-1 d-flex">{{{output.navbar_plugin_output}}}</li>
-                        {{/nonavbar}}
+                        {{/shownavbar}}
 
                         {{#langmenu}}
                         <li class="nav-item dropdown ml-2 my-auto">{{{output.lang_menu}}}</li>
@@ -98,10 +101,9 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                {{! Remove Search Box or Social icons when no navbar. }}
-                {{^nonavbar}}
-                    {{{socialorsearch}}}
-                {{/nonavbar}}
+                {{#searchandsocialheader}}
+                    {{{searchandsocialheader}}}
+                {{/searchandsocialheader}}
             </div>
             {{/pageheaderoriginal}}
 
@@ -112,10 +114,9 @@
                     {{{sitetitle}}}
                 </div>
                 {{/sitetitle}}
-                {{! Remove Search Box or Social icons when no navbar. }}
-                {{^nonavbar}}
-                    {{{socialorsearch}}}
-                {{/nonavbar}}
+                {{#searchandsocialheader}}
+                    {{{searchandsocialheader}}}
+                {{/searchandsocialheader}}
             </div>
             <div class="col-lg-4 p-0">
                 {{#sitelogo}}

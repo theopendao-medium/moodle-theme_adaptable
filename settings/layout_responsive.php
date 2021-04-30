@@ -87,14 +87,6 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, $default, $radchoices);
     $page->add($setting);
 
-    // Show search icon on small screens.
-    $name = 'theme_adaptable/responsivesearchicon';
-    $title = get_string('responsivesearchicon', 'theme_adaptable');
-    $description = get_string('responsivesearchicondesc', 'theme_adaptable');
-    $default = true;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $page->add($setting);
-
     // Hide Ticker.
     $name = 'theme_adaptable/responsiveticker';
     $title = get_string('responsiveticker', 'theme_adaptable');
