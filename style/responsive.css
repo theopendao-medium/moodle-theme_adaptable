@@ -197,11 +197,6 @@ order for prescidence.
         padding: inherit;
     }
 
-    #adaptable-page-header-wrapper .fa {
-        height: 24px;
-        margin-right: .5rem;
-        width: 24px;
-    }
 
     #adaptable-page-header-wrapper .topmenuleft {
         float: left !important;

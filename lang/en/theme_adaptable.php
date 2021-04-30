@@ -1059,9 +1059,9 @@ $string['headerstyleheading'] = 'Header style settings';
 $string['headerstyleheadingdesc'] = 'Adaptable supports two header styles, the original three row header and a newer simplified two row header.<br/>Be aware that if you switch to the newer two row header you will <strong>NOT</strong> be able to:<br /><ol><li>Show social icons in the header.</li><li>Display the site logo on mobile devices.</li></ol>';
 
 $string['headerstyle'] = 'Header style';
-$string['headerstyledesc'] = 'Choose the style of header.  Header 1 refers to the original 3 row Adaptable header.  Header 2 is a minimal 2 row header. Note that when using Header 2, for the setting "Use Search Box or Social Icons", this will always use a search box.';
-$string['headerstyle1'] = 'Header 1 (original 3 row header)';
-$string['headerstyle2'] = 'Header 2 (2 row header)';
+$string['headerstyledesc'] = 'Choose the style of header.  Header one refers to the original three row Adaptable header.  Header two is a minimal two row header with a search box.';
+$string['headerstyle1'] = 'Header one (original three row header)';
+$string['headerstyle2'] = 'Header two (two row header)';
 
 $string['headersearchandsocial'] = 'Header search and social';
 $string['headersearchandsocialdesc'] = 'Set the position of the search box and social icons in the header for header style one.<br />
