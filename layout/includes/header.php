@@ -310,10 +310,9 @@ echo $OUTPUT->standard_top_of_body_html();
 
         $headersearchandsocial = (!empty($PAGE->theme->settings->headersearchandsocial)) ? $PAGE->theme->settings->headersearchandsocial : 'none';
 
-        // Social icons.
+        // Search box and social icons.
         switch ($headersearchandsocial) {
             case 'socialheader':
-            case 'searchnavbarsocialheader':
                 $headersocialcontext = [
                     'classes' => $PAGE->theme->settings->responsivesocial,
                     'pageheaderoriginal' => $headercontext['pageheaderoriginal'],
@@ -321,10 +320,6 @@ echo $OUTPUT->standard_top_of_body_html();
                 ];
                 $headercontext['searchandsocialheader'] = $OUTPUT->render_from_template('theme_adaptable/headersocial', $headersocialcontext);
             break;
-        }
-
-        // Search box.
-        switch ($headersearchandsocial) {
             case 'searchmobilenav':
                 $headercontext['searchandsocialnavbar'] = $OUTPUT->search_box();
                 $headercontext['searchandsocialnavbarextra'] = ' d-md-block d-lg-none my-auto';
@@ -342,8 +337,16 @@ echo $OUTPUT->standard_top_of_body_html();
                 $headercontext['searchandsocialheader'] = $OUTPUT->render_from_template('theme_adaptable/headersearch', $headersearchcontext);
             break;
             case 'searchnavbar':
+                $headercontext['searchandsocialnavbar'] = $OUTPUT->search_box();
+            break;
             case 'searchnavbarsocialheader':
                 $headercontext['searchandsocialnavbar'] = $OUTPUT->search_box();
+                $headersocialcontext = [
+                    'classes' => $PAGE->theme->settings->responsivesocial,
+                    'pageheaderoriginal' => $headercontext['pageheaderoriginal'],
+                    'output' => $OUTPUT
+                ];
+                $headercontext['searchandsocialheader'] = $OUTPUT->render_from_template('theme_adaptable/headersocial', $headersocialcontext);
             break;
         }
 

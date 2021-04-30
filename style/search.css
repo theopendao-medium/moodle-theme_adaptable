@@ -28,7 +28,7 @@
 }
 
 .headersearch .btn-close,
-.navbarsearch .btn-close {
+.navbarsearchsocial .btn-close {
     border-width: 0;
 }
 
@@ -44,13 +44,13 @@
 }
 
 .headersearch .form-inline,
-.navbarsearch .form-inline,
-#adaptable-page-header-wrapper #above-header .navbar .navbarsearch button {
+.navbarsearchsocial .form-inline,
+#adaptable-page-header-wrapper #above-header .navbar .navbarsearchsocial button {
     margin: 0;
 }
 
 .headersearch .form-inline input.form-control[type=text],
-.navbarsearch .form-inline input.form-control[type=text] {
+.navbarsearchsocial .form-inline input.form-control[type=text] {
     height: 35px;
 }
 
@@ -62,27 +62,27 @@
     }
 }
 
-#adaptable-page-header-wrapper .navbarsearch form .icon {
+#adaptable-page-header-wrapper .navbarsearchsocial form .icon {
     color: [[setting:fontcolor]];
 }
 
 .headersearch .simplesearchform .btn-submit,
-#adaptable-page-header-wrapper #above-header .navbar .navbarsearch button {
+#adaptable-page-header-wrapper #above-header .navbar .navbarsearchsocial button {
     border-radius: 0;
 }
-.navbarsearch .btn-open {
+.navbarsearchsocial .btn-open {
     border-width: 0;
     font-size: 1.2em;
 }
 
-#adaptable-page-header-wrapper .navbarsearch .icon {
+#adaptable-page-header-wrapper .navbarsearchsocial .icon {
     margin-right: 0;
     padding-right: 0;
 }
 
 @media (max-width: 991.98px) {
-    .navbarsearch .simplesearchform .collapse.show,
-    .navbarsearch .simplesearchform .collapsing {
+    .navbarsearchsocial .simplesearchform .collapse.show,
+    .navbarsearchsocial .simplesearchform .collapsing {
         position: relative;
         left: 0;
         top: 0;

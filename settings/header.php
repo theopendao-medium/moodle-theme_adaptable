@@ -158,18 +158,6 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configtext($name, $title, $description, 'angle-right');
     $page->add($setting);
 
-    // Choose to display search box or social icons.
-    $name = 'theme_adaptable/socialorsearch';
-    $title = get_string('socialorsearch', 'theme_adaptable');
-    $description = get_string('socialorsearchdesc', 'theme_adaptable');
-    $radchoices = array(
-        'none' => get_string('socialorsearchnone', 'theme_adaptable'),
-        'social' => get_string('socialorsearchsocial', 'theme_adaptable'),
-        'search' => get_string('socialorsearchsearch', 'theme_adaptable')
-    );
-    $setting = new admin_setting_configselect($name, $title, $description, 'search', $radchoices);
-    $page->add($setting);
-
     // Choose what to do with the search box and social icons.
     $name = 'theme_adaptable/headersearchandsocial';
     $title = get_string('headersearchandsocial', 'theme_adaptable');
