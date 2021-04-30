@@ -1063,15 +1063,6 @@ $string['headerstyledesc'] = 'Choose the style of header.  Header 1 refers to th
 $string['headerstyle1'] = 'Header 1 (original 3 row header)';
 $string['headerstyle2'] = 'Header 2 (2 row header)';
 
-$string['socialorsearch'] = 'Use Search Box or Social Icons';
-$string['socialorsearchdesc'] = 'You can set the theme to either display social icons or a search box in the header.<br />
-You can set social icons under the <a href="./../admin/settings.php?section=themesettingadaptable#theme_adaptable_social">Header social</a> settings page</strong>.';
-
-$string['socialorsearchnone'] = 'None';
-
-$string['socialorsearchsocial'] = 'Display social icons in header';
-$string['socialorsearchsearch'] = 'Display search box in header';
-
 $string['headersearchandsocial'] = 'Header search and social';
 $string['headersearchandsocialdesc'] = 'Set the position of the search box and social icons in the header for header style one.<br />
 You can set social icons under the <a href="./../admin/settings.php?section=themesettingadaptable#theme_adaptable_social">Header social</a> settings page</strong>.';
