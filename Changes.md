@@ -15,6 +15,7 @@ Change Log in version 3.10.1.3 (2021022303)
 11. Fix 'Breadcrumb trail' - #242.
 12. Enhancement 'Implement Global Search capability' - #241.
 13. Fix 'Inactive tabs are displaced' - #244.
+14. Fix 'Styling self-registration message card on login page' - #183.
 
 Change Log in version 3.10.1.2 (2021022302)
 ===========================================

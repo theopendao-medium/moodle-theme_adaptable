@@ -332,11 +332,12 @@ function theme_adaptable_process_css($css, $theme) {
     if (!empty($theme->settings->loginbgopacity)) {
             $loginbgopacity = '#page-login-index header {'.PHP_EOL;
             $loginbgopacity .= 'background-color: '.\theme_adaptable\toolbox::hex2rgba($theme->settings->headerbkcolor2,
-                               $theme->settings->loginbgopacity).' !important;'.PHP_EOL;
+                $theme->settings->loginbgopacity).' !important;'.PHP_EOL;
             $loginbgopacity .= '}'.PHP_EOL;
             $loginbgopacity .= '#page-login-index #page-navbar,'.PHP_EOL.
-            $loginbgopacity .= '#page-login-index.pagelayout-login #region-main [role="main"],'.PHP_EOL.
-            $loginbgopacity .= '#page-login-index .card {';
+                '#page-login-index.pagelayout-login #region-main [role="main"] > h2,'.PHP_EOL.
+                '#page-login-index.pagelayout-login #region-main [role="main"] > div.box,'.PHP_EOL.
+                '#page-login-index .card {';
             $loginbgopacity .= 'background-color: rgba(255, 255, 255, '.$theme->settings->loginbgopacity.') !important;'.PHP_EOL;
             $loginbgopacity .= '}'.PHP_EOL;
             $loginbgopacity .= '#page-login-index #page-footer {'.PHP_EOL;
