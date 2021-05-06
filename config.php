@@ -131,6 +131,7 @@ $THEME->sheets = array(
         'extras',
         'form',
         'header',
+        'login',
         'menu',
         'messages',
         'navigation',

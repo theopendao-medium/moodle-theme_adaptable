@@ -335,7 +335,8 @@ function theme_adaptable_process_css($css, $theme) {
                                $theme->settings->loginbgopacity).' !important;'.PHP_EOL;
             $loginbgopacity .= '}'.PHP_EOL;
             $loginbgopacity .= '#page-login-index #page-navbar,'.PHP_EOL.
-            '#page-login-index .card {';
+            $loginbgopacity .= '#page-login-index.pagelayout-login #region-main [role="main"],'.PHP_EOL.
+            $loginbgopacity .= '#page-login-index .card {';
             $loginbgopacity .= 'background-color: rgba(255, 255, 255, '.$theme->settings->loginbgopacity.') !important;'.PHP_EOL;
             $loginbgopacity .= '}'.PHP_EOL;
             $loginbgopacity .= '#page-login-index #page-footer {'.PHP_EOL;

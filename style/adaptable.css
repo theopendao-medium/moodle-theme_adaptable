@@ -2146,10 +2146,6 @@ img.smallicon {
     min-width: 0;
 }
 
-#page-login-index .card-header {
-    display: none;
-}
-
 /* Block action classes lifted from previously used bootstrapbase parent theme. */
 .block.hidden .header .block_action .block-hider-hide {
     display: none;
@@ -2352,39 +2348,6 @@ img.smallicon {
 .que .validationerror,
 .text-error {
     font-size: 24px !important;
-}
-
-/* Login Page */
-/* Background Image */
-/*rtl:ignore*/
-#page-login-index .outercont {
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    left: 50%;
-    padding: 0 15px;
-    position: relative;
-    margin: 0;
-    transform: translateX(-50%);
-}
-
-#page-login-index #page-footer {
-    margin: auto 0 0 !important;
-}
-
-#page-login-index .fullin.narrow .container,
-#page-login-index .fullin.standard .container {
-    width: 100% !important;
-}
-
-#page-login-index {
-    [[setting:loginbgimage]]
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    [[setting:loginbgstyle]]
-}
-
-#page-login-index #page {
-    background-image: none;
 }
 
 .progressbar_container {
