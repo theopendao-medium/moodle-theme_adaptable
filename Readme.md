@@ -50,11 +50,10 @@ G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.  Moodle profile | http
 
 Required version of Moodle
 ==========================
-This version works with Moodle 3.10 version 2020110900.00 (Build: 20201109) and above within the 3.10 branch until the next release.
+This version works with Moodle 3.11 version 2021051700.00 (Build: 20210517) and above within the 3.11 branch until the next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/310/en/Installing_Moodle'.
-
+'docs.moodle.org/311/en/Installing_Moodle'.
 
 Versioning
 ==========
