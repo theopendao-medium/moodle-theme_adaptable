@@ -552,10 +552,10 @@ class course_renderer extends \core_course_renderer {
      */
     public function course_section_cm($course, &$completioninfo, cm_info $mod, $sectionreturn, $displayoptions = array()) {
         $output = '';
-        // We return empty string (because course module will not be displayed at all) if
-        // 1) The activity is not visible to users and
-        // 2) The 'availableinfo' is empty, i.e. the activity was hidden in a way that leaves no info, such as using the
-        // eye icon.
+        /* We return empty string (because course module will not be displayed at all) if
+           1) The activity is not visible to users and
+           2) The 'availableinfo' is empty, i.e. the activity was hidden in a way that leaves no info, such as using the
+           eye icon. */
 
         if ( (method_exists($mod, 'is_visible_on_course_page')) && (!$mod->is_visible_on_course_page())
                 || (!$mod->uservisible && empty($mod->availableinfo)) ) {
@@ -599,12 +599,12 @@ class course_renderer extends \core_course_renderer {
             $output .= html_writer::end_tag('div'); // End .activityinstance class.
         }
 
-        // If there is content but NO link (eg label), then display the
-        // content here (BEFORE any icons). In this case icons must be
-        // displayed after the content so that it makes more sense visually
-        // and for accessibility reasons, e.g. if you have a one-line label
-        // it should work similarly (at least in terms of ordering) to an
-        // activity.
+        /* If there is content but NO link (eg label), then display the
+           content here (BEFORE any icons). In this case icons must be
+           displayed after the content so that it makes more sense visually
+           and for accessibility reasons, e.g. if you have a one-line label
+           it should work similarly (at least in terms of ordering) to an
+           activity.*/
         $contentpart = $this->course_section_cm_text($mod, $displayoptions);
         $url = $mod->url;
         if (empty($url)) {
@@ -618,12 +618,24 @@ class course_renderer extends \core_course_renderer {
             $modicons .= $mod->afterediticons;
         }
 
-        $modicons .= $this->course_section_cm_completion($course, $completioninfo, $mod, $displayoptions);
+        // Fetch completion details.
+        global $USER;
+        $showcompletionconditions = $course->showcompletionconditions == COMPLETION_SHOW_CONDITIONS;
+        $completiondetails = \core_completion\cm_completion_details::get_instance($mod, $USER->id, $showcompletionconditions);
+        $ismanualcompletion = $completiondetails->has_completion() && !$completiondetails->is_automatic();
 
-        if (!empty($modicons)) {
-            $output .= html_writer::start_tag('div', array('class' => 'actions-right'));
-            $output .= html_writer::span($modicons, 'actions');
-            $output .= html_writer::end_tag('div');
+        // Fetch activity dates.
+        $activitydates = [];
+        if ($course->showactivitydates) {
+            $activitydates = \core\activity_dates::get_dates_for_module($mod, $USER->id);
+        }
+
+        /* Show the activity information if:
+           - The course's showcompletionconditions setting is enabled; or
+           - The activity tracks completion manually; or
+           - There are activity dates to be shown. */
+        if ($showcompletionconditions || $ismanualcompletion || $activitydates) {
+            $output .= $this->output->activity_information($mod, $completiondetails, $activitydates);
         }
 
         // Get further information.

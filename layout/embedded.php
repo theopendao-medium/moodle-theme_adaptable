@@ -36,12 +36,27 @@ echo $OUTPUT->doctype() ?>
 </head>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>
-<?php echo $OUTPUT->standard_top_of_body_html() ?>
+<?php
+    echo $OUTPUT->standard_top_of_body_html();
+    $fakeblocks = $OUTPUT->blocks('side-pre', array(), 'aside', true);
+    $hasfakeblocks = strpos($fakeblocks, 'data-block="_fake"') !== false;
+?>
 <div id="page-wrapper">
-    <div id="page">
-        <div id="page-content" class="clearfix">
+<?php
+    echo '<div id="page"';
+    if ($hasfakeblocks) {
+        echo ' class="has-fake-blocks"';
+    }
+    echo '>';
+    if ($hasfakeblocks) {
+        echo '<section class="embedded-blocks" aria-label="'.get_string('blocks').'">';
+        echo $fakeblocks;
+        echo '</section>';
+    }
+?>
+        <section class="embedded-main">
             <?php echo $OUTPUT->main_content(); ?>
-        </div>
+        </section>
     </div>
 </div>
 <?php
