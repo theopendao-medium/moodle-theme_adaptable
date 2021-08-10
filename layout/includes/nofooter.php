@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 echo $OUTPUT->standard_after_main_region_html();
-echo '</div>'; // End #page
+echo '</div>'; // End #page.
 echo '</div>'; // End #page-wrapper.
 echo $OUTPUT->standard_end_of_body_html();
 echo $OUTPUT->get_all_tracking_methods(); ?>
