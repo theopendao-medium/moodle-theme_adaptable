@@ -56,5 +56,4 @@ class renderer_textemail extends \mod_forum\output\emaildigestbasic\renderer_tex
 
         return $output;
     }
-
 }

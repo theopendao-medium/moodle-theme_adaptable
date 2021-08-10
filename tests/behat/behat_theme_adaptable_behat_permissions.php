@@ -47,8 +47,8 @@ class behat_theme_adaptable_behat_permissions extends behat_permissions {
         $roleid = $DB->get_field('role', 'id', array('shortname' => strtolower($rolename)), MUST_EXIST);
         // Spawn a new system context instance.
         $systemcontext = context_system::instance();
-        // Add capabilities to role given the table of capabilities.
-        // Using getRows() as we are not sure if tests writers will add the header.
+        /* Add capabilities to role given the table of capabilities.
+           Using getRows() as we are not sure if tests writers will add the header. */
         foreach ($table->getRows() as $key => $row) {
             if (count($row) !== 2) {
                 $msg = 'You should specify a table with capability/permission columns';
@@ -96,8 +96,8 @@ class behat_theme_adaptable_behat_permissions extends behat_permissions {
         $roleid = $DB->get_field('role', 'id', array('shortname' => strtolower($rolename)), MUST_EXIST);
         // Spawn a new system context instance.
         $systemcontext = context_system::instance();
-        // Add capabilities to role given the table of capabilities.
-        // Using getRows() as we are not sure if tests writers will add the header.
+        /* Add capabilities to role given the table of capabilities.
+           Using getRows() as we are not sure if tests writers will add the header. */
         foreach ($table->getRows() as $key => $row) {
 
             if (count($row) !== 2) {

@@ -156,5 +156,4 @@ class behat_theme_adaptable_behat_navigation extends behat_navigation {
             [$nodetext, "link", $xpath, "xpath_element"]
         );
     }
-
 }

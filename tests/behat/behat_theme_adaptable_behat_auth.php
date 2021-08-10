@@ -37,4 +37,3 @@ class behat_theme_adaptable_behat_auth extends behat_auth {
         $this->execute('behat_forms::press_button', get_string('continue'));
     }
 }
-

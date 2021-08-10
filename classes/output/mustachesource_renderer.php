@@ -45,5 +45,4 @@ class mustachesource_renderer extends \renderer_base {
 
         return $mustache->getLoader()->load($templatename);
     }
-
 }

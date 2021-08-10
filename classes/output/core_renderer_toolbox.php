@@ -3182,7 +3182,7 @@ EOT;
      * @param boolean $fakeblocksonly Include fake blocks only.
      * @return string HTML.
      */
-     public function blocks($region, $classes = array(), $tag = 'aside', $fakeblocksonly = false) {
+    public function blocks($region, $classes = array(), $tag = 'aside', $fakeblocksonly = false) {
         $output = parent::blocks($region, $classes, $tag, $fakeblocksonly);
 
         if ((!empty($output)) && ($region == 'side-post')) {
