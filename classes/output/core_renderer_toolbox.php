@@ -2415,7 +2415,7 @@ EOT;
                     $retval .= '</div>';
                     break;
                 default:
-                    // Default 'off'.
+                    // Default is 'off'.
                     $usedefault = true;
                     break;
             }

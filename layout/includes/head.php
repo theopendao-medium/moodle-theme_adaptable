@@ -36,7 +36,6 @@ $fontssubset = '';
 
 switch ($PAGE->theme->settings->fontname) {
     case 'sans-serif':
-        // Use 'sans-serif'.
     break;
 
     default:
@@ -47,7 +46,6 @@ switch ($PAGE->theme->settings->fontname) {
 
 switch ($PAGE->theme->settings->fontheadername) {
     case 'sans-serif':
-        // Use 'sans-serif'.
     break;
 
     default:
@@ -58,7 +56,6 @@ switch ($PAGE->theme->settings->fontheadername) {
 
 switch ($PAGE->theme->settings->fonttitlename) {
     case 'sans-serif':
-        // Use 'sans-serif'.
     break;
 
     default:

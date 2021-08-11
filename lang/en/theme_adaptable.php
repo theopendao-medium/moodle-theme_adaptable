@@ -151,7 +151,7 @@ $string['frontpagerendereroption2'] = 'Tiles w/ overlay';
 $string['frontpagerendereroption3'] = 'Moodle default';
 $string['frontpagerendereroption4'] = 'Coventry tiles';
 
-// Information
+// Information.
 $string['settingsinformation'] = 'Information';
 $string['informationsettings'] = 'Information settings';
 $string['informationsettingsdesc'] = 'Information about the Adaptable theme.';
@@ -164,7 +164,7 @@ $string['themesupport'] = 'Support';
 $string['themesupportdesc'] = 'Theme support....';
 
 
-// Ticker **********************************************************.
+// Ticker.
 $string['tickersettings'] = 'News ticker';
 $string['tickersettingsheading'] = 'Setup news ticker on front page. See the layout <a href="./../theme/adaptable/pix/layout.png" target="_blank"> here</a>';
 $string['tickerdesc'] = 'Here you can set a news ticker to run across the front page of your Moodle site.
@@ -199,7 +199,7 @@ $string['ticker'] = 'Announcements';
 $string['tickerwidth'] = 'Fixed width';
 $string['tickerfullscreen'] = 'Full screen width';
 
-// Slideshow *******************************************************.
+// Slideshow.
 $string['slideshowsettings'] = 'Slideshow';
 $string['slideshowsettingsheading'] = 'Customize the carousel on the front page. See the layout <a href="./../theme/adaptable/pix/layout.png" target="_blank"> here</a>';
 $string['slideshowdesc'] = 'Upload the images, add the links and description for the carousel on the front page.';
@@ -275,7 +275,7 @@ $string['sliderstyle1'] = 'Slider style 1';
 $string['sliderstyle2'] = 'Slider style 2';
 
 
-// Block Regions ***************************************************.
+// Block Regions.
 $string['blocklayoutbuilder'] = 'Frontpage block regions';
 $string['blocklayoutbuilderdesc'] = 'Below you can build your own layout for block regions on the front page.<br/>To add content these regions you will need to <strong> turn editing on on the front page of Moodle</strong>.<br/>Then you can begin to drag/drop blocks into the regions you create!';
 
@@ -341,7 +341,7 @@ $string['layoutcount2'] = ' block regions. You are currently using: ';
 
 $string['sidebaricon'] = 'Show / hide the sidebar';
 
-// Marketing Blocks & Info Box *************************************.
+// Marketing Blocks & Info Box.
 $string['marketingsettings'] = 'Marketing blocks';
 $string['marketingsettingsheading'] = 'Customize the marketing blocks that appear on the front page. See the layout <a href="./../theme/adaptable/pix/layout.png" target="_blank"> here</a>';
 $string['marketingdesc'] = 'There are two full width info boxes with differing styles you can use.<br>In addition to this there is a layout builder allowing you to decide how many blocks you need and define your own layout.<br>Please see the \'Readme\' section on the \'Information\' settings tab for additional information.';
@@ -383,7 +383,7 @@ $string['expandable'] = 'Expandable';
 $string['static'] = 'Static';
 
 
-// Footer **********************************************************.
+// Footer.
 $string['footersettings'] = 'Footer';
 $string['footersettingsheading'] = 'Set the content that should appear in the footer. See the layout <a href="./../theme/adaptable/pix/layout.png" target="_blank"> here</a> ';
 
@@ -422,7 +422,7 @@ $string['moodledocs'] = 'Moodle docs link';
 $string['moodledocsdesc'] = 'Display the Moodle docs link in the footer.';
 
 
-// NavBar **********************************************************.
+// NavBar.
 $string['stickynavbar'] = 'Sticky navbar at the top';
 $string['stickynavbardesc'] = 'Stick the navbar at the top of the screen when scrolling down.';
 
@@ -507,7 +507,7 @@ $string['enablecompetencieslinkdesc'] = 'Display competencies link in the \'This
 
 $string['togglenavigation'] = 'Toggle navigation';
 
-// Navbar styling *********************************************************.
+// Navbar styling.
 $string['navbardropdownborderradius'] = 'Dropdown menu border radius';
 $string['navbardropdownborderradiusdesc'] = 'Controls the border radius for dropdown menus (e.g. rounded corners).';
 $string['navbardropdownhovercolor'] = 'Dropdown menu background hover colour';
@@ -519,7 +519,7 @@ $string['navbardropdowntexthovercolordesc'] = 'Dropdown menu text colour when ho
 $string['navbardropdowntransitiontime'] = 'Navbar transition time';
 $string['navbardropdowntransitiontimedesc'] = 'Navbar transition effect time in seconds.  Provides a fade-in animation effect when hovering over a menu that has sub-menus.';
 
-// This Course menu *********************************************************.
+// This Course menu.
 $string['enablemysitesdesc'] = 'Display a dropdown with the course activities and other options';
 $string['headernavbarthiscourseheading'] = 'This Course Menu';
 $string['headernavbarthiscourseheadingdesc'] = 'In this menu the student can access directly all the course activities and the participants list and their grades.';
@@ -529,7 +529,7 @@ $string['displayparticipantsdesc'] = 'Display the participants item in the menu.
 $string['displaygrades'] = 'Display grades';
 $string['displaygradesdesc'] = 'Display the grades item in the menu.';
 
-// My courses menu *********************************************************.
+// My courses menu.
 $string['enablemysitesdesc'] = 'Display a dropdown with a users courses';
 $string['headernavbarmycoursesheading'] = 'My courses menu';
 $string['headernavbarmycoursesheadingdesc'] = 'All options for the \'My courses\' (\'My sites\') menu option that displays list of current user\'s courses.';
@@ -577,7 +577,7 @@ $string['cdefaulticon'] = 'My courses default icon';
 $string['cdefaulticondesc'] = 'The Font Awesome 4 icon without the prefixing \'fa-\' to be used for courses when they don\'t already have an icon.  If empty, the default will be used.';
 
 
-// Colours *********************************************************.
+// Colours.
 $string['colorsettings'] = 'Colours';
 $string['colorsettingsheading'] = 'Modify the main colours used throughout the theme.';
 $string['colordesc'] = 'You can select the colours that you would like to use throughout the theme. Use Hex or any other standard notation. As an alternate option you can use transparent and inherited as a value';
@@ -752,7 +752,7 @@ $string['selectiontextdesc'] = 'Set the text colour when a text in the screen is
 $string['selectionbackground'] = 'Selection background colour';
 $string['selectionbackgrounddesc'] = 'Set the background colour when a text in the screen is selected.';
 
-// Course Formats *********************************************************.
+// Course Formats.
 $string['coursesettings'] = 'Course Formats';
 $string['coursesettingsheading'] = 'Course format settings';
 $string['coursesettingsdesc'] = 'Customize some of the most used Moodle course formats to fit the main design.';
@@ -865,11 +865,11 @@ $string['socialwallactionlinkcolordesc'] = 'The colour of action links in the \'
 $string['socialwallactionlinkhovercolor'] = 'Action link hover colour';
 $string['socialwallactionlinkhovercolordesc'] = 'The colour of action links when hovered in \'Social wall\'.';
 
-// Blocks General **************************************************.
+// Blocks General.
 $string['shownavigationblockoncoursepage'] = 'Show navigation block on course page';
 $string['shownavigationblockoncoursepagedesc'] = 'Set this to show the navigation block on the course page.';
 
-// Fonts ***********************************************************.
+// Fonts.
 $string['fontsettings'] = 'Fonts';
 $string['fontsettingsheading'] = 'Modify the fonts used throughout the theme.';
 $string['fontdesc'] = 'You can select the <a href="https://www.google.com/fonts" target="_blank">Google Fonts</a> that you would like to use throughout the theme. Select the subset needed (latin is always included) and enter the right font weight or the font will not displayed.';
@@ -938,7 +938,7 @@ $string['fontblockheadersize'] = 'Blocks header font size';
 $string['fontblockheadersizedesc'] = 'Set the font size used in the moodle blocks header.  Select a value fron the list.';
 
 
-// Icons ***********************************************************.
+// Icons.
 $string['blockicons'] = 'Block icons';
 $string['blockiconsdesc'] = 'Set this to show block icons in the block header area.';
 
@@ -946,7 +946,7 @@ $string['blockiconsheadersize'] = 'Blocks header icon size';
 $string['blockiconsheadersizedesc'] = 'Set the font icon size used in the moodle blocks header.  Select a value fron the list.';
 
 
-// Buttons *********************************************************.
+// Buttons.
 $string['buttonsettings'] = 'Buttons';
 $string['buttonsettingsheading'] = 'Customize the buttons of this theme.';
 $string['buttondesc'] = 'Alter the appearance of buttons used in this theme.';
@@ -1017,7 +1017,7 @@ $string['loginplaceholder'] = 'Username';
 $string['passwordplaceholder'] = 'Password';
 
 
-// Header ***********************************************************.
+// Header.
 $string['headersettings'] = 'Header';
 $string['headersettingsheading'] = 'Customize the header of this theme.  See the layout \'<a href="./../theme/adaptable/pix/layout.png" target="_blank">here</a>\'.';
 $string['headerdesc'] = 'Upload your favicon, logo, set login form in header, adjust titles in header.<br />You can set font size and styles for titles in the \'<a href="./../admin/settings.php?section=theme_adaptable_font">fonts</a>\' settings page.';
@@ -1155,7 +1155,7 @@ $string['fullscreenwidthdesc'] = 'Set the max width of the theme when it is in f
 $string['standardscreenwidth'] = 'Standard screen width.';
 $string['standardscreenwidthdesc'] = 'Set the width of the screen when toggled to "standard" view (also see related enablezoom and defaultzoom settings).';
 
-// Help Links ******************************************************.
+// Help Links.
 $string['headernavbarhelpheading'] = 'Help links and options';
 $string['headernavbarhelpheadingdesc'] = 'Options for help menu links.';
 
@@ -1174,7 +1174,7 @@ $string['helpprofilefield'] = 'Help link \'{$a->number}\' custom profile field (
 $string['helpprofilefielddesc'] = 'Add help link \'{$a->number}\' access rule using for custom profile field eg: usertype=student.';
 
 
-// Courses Overlay *************************************************.
+// Courses Overlay.
 $string['rendereroverlaycolor'] = 'Overlay colour';
 $string['rendereroverlaycolordesc'] = 'The colour of the overlay, when the "Tiles w/ overlay" renderer is selected.';
 
@@ -1208,7 +1208,7 @@ $string['tilesshowallcontactsdesc'] = 'Show all course contacts or just one.';
 $string['course'] = 'Course';
 
 
-// Alerts **********************************************************.
+// Alerts.
 // Alert message if acting as another role.
 $string['actingasrole'] = 'You are currently acting as a different role';
 
@@ -1279,7 +1279,7 @@ $string['alertaccessdesc'] = 'Set access restriction type for alert box visibili
 $string['beta'] = 'DEVELOPMENT VERSION. DO NOT USE IN PRODUCTION SITES';
 $string['deprecated'] = 'MOODLE DEPRECATED VERSION. DO NOT USE ADAPTABLE IN THIS SITE';
 
-// Alerts Colors****************************************************.
+// Alerts Colours.
 $string['alertcolorsheading'] = 'Customize top alert boxes';
 $string['alertcolorsheadingdesc'] = 'Set colours and icon.';
 
@@ -1310,7 +1310,7 @@ $string['alertbordercolorsuccessdesc'] = 'Border colour of the announcement type
 $string['alerticonsuccess'] = 'Announcement icon';
 $string['alerticonsuccessdesc'] = 'Set the \'<a href="http://fortawesome.github.io/Font-Awesome/icons/">Font Awesome Icon</a>\' to be used in announcement type alert boxes.  Enter the icon name without the fa- prefix.';
 
-// Mobile **********************************************************.
+// Mobile.
 $string['responsivesettings'] = 'Layout responsive';
 $string['responsivesettingsheading'] = 'Control how your site behaves at different screen sizes';
 $string['responsivesettingsdesc'] = 'Here you can control the responsive behaviour of your site (which elements appear on screens of different sizes).<br/>By default most non essential items are hidden on mobile devices, being set to appear only on larger screens.<br/>You can make elements appears on smaller screens by choosing to display them on "Extra Small" or "Small screens".<br/>To gain a better understanding of how these settings work please refer to the Bootstrap 4 documentation:<br/><br/>https://getbootstrap.com/docs/4.5/utilities/display/<br/><br/>';
@@ -1351,7 +1351,7 @@ $string['bs4large'] = 'Large - Extra large';
 $string['bs4extralarge'] = 'Extra large only';
 $string['bs4none'] = 'None';
 
-// Layout **********************************************************.
+// Layout.
 $string['layoutsettings'] = 'Layout';
 $string['layoutdesc'] = 'Set the default layout that users see.';
 $string['layoutsettingsheading'] = 'Control aspects of the site\'s layout';
@@ -1452,7 +1452,7 @@ $string['menusessionttl'] = 'Minutes to store access rules in session';
 $string['menusessionttldesc'] = 'Number of minutes after which menu access rules are refreshed in the users session.';
 
 
-// Tool menus ******************************************************.
+// Tool menus.
 $string['newmenudesc'] = 'Configure links to be shown under a top header menu.';
 $string['newmenufield'] = 'Custom profile field name=Value (optional)';
 $string['newmenufielddesc'] = 'Add access rule using for custom profile field eg: usertype=student.';
@@ -1530,7 +1530,7 @@ $string['toolsmenufield'] = 'Custom profile field name=Value (optional)';
 $string['toolsmenufielddesc'] = 'Add access rule using for custom profile field eg: usertype=student.';
 
 
-// Social settings *************************************************.
+// Social settings.
 $string['socialsettings'] = 'Header social';
 $string['socialheading'] = 'Social icon settings';
 $string['socialtitledesc'] = 'You can disable the sitewide search box and enable social icons / links in its place.<br/>To setup icons enter a delimited list into the "Social Icon List" field below.<br/>This should be in the format:
@@ -1583,7 +1583,7 @@ $string['overriddentemplatenopreview'] = 'No preview because of missing JSON exa
 $string['originaltemplatepreview'] = 'Original / overridden theme file preview';
 $string['originaltemplatesource'] = 'Original / overridden theme file source';
 
-// Analytics *********************************.
+// Analytics.
 $string['analyticssettings'] = 'Analytics';
 $string['analyticssettingsheading'] = 'Setup Google Analytics and/or Matomo';
 $string['analyticssettingsdesc'] = 'You can setup multiple codes for Google Analytics and targed them to user profile fields. Or you can use Matomo, the open source analytics.';
@@ -1629,7 +1629,7 @@ $string['piwiktrackadmin'] = 'Tracking admins';
 $string['piwiktrackadmindesc'] = 'Enable tracking of admin users (not recommended).';
 
 
-// Custom CSS and Javascript ********************************.
+// Custom CSS and Javascript.
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
 
@@ -1652,7 +1652,7 @@ $string['jssectionrestricteddashboardonlydesc'] = 'Show the javascript only on t
 // Cache definitions.
 $string['cachedef_userdata'] = 'A session cache used to store user specific data.';
 
-// Activity and section navigation *******************.
+// Activity and section navigation.
 $string['nextactivity'] = 'Next activity';
 $string['previousactivity'] = 'Previous activity';
 
@@ -1662,22 +1662,22 @@ $string['previoussection'] = 'Previous section';
 $string['maincoursepage'] = 'Main course page';
 $string['jumpto'] = 'Jump to...';
 
-// General *******************************************.
+// General.
 $string['hide'] = 'Hide';
 $string['show'] = 'Show';
 $string['versioninfo'] = 'Release {$a->release}, version {$a->version} on Moodle {$a->moodle}';
 
-// Grade editing *************************************.
+// Grade editing.
 $string['turngradereditingoff'] = 'Turn grader editing off';
 $string['turngradereditingon'] = 'Turn grader editing on';
 
-// Navbar Links menu *********************************.
+// Navbar Links menu.
 $string['linksmenu'] = 'Links menu';
 
-// Navbar user menu **********************************.
+// Navbar user menu.
 $string['usermenu'] = 'User menu';
 
-// Save / Discard button text ************************.
+// Save / Discard button text.
 $string['savebuttontext'] = 'Save changes';
 $string['discardbuttontext'] = 'Cancel';
 
@@ -1693,8 +1693,8 @@ $string['forumheaderbackgroundcolordesc'] = 'Background colour for a forum post.
 $string['forumbodybackgroundcolor'] = 'Forum post body background';
 $string['forumbodybackgroundcolordesc'] = 'Background colour for a forum post.';
 
-// Course page further information *******************.
-// Activity display **********************************.
+/* Course page further information.
+   Activity display. */
 $string['answered'] = 'Answered';
 $string['attempted'] = 'Attempted';
 $string['contributed'] = 'Contributed';
@@ -1827,7 +1827,7 @@ $string['editcognocourseupdatedesc'] = 'Show the cog / gear wheel to users who d
 $string['displayeditingbuttontext'] = 'Editing button text';
 $string['displayeditingbuttontextdesc'] = 'Show or hide the text on the editing button.  Note: Only applies to the course editing button.';
 
-// Login *******************************************************.
+// Login.
 $string['loginsettings'] = 'Login page';
 $string['loginsettingsheading'] = 'Customize the login page';
 $string['logindesc'] = 'Customize the login page with adding an image background and texts above and below the login box.';
