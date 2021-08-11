@@ -674,8 +674,6 @@ class course_renderer extends \core_course_renderer {
     protected function course_section_cm_get_meta(cm_info $mod) {
         global $COURSE;
 
-        $content = '';
-
         if (is_guest(context_course::instance($COURSE->id))) {
             return '';
         }
@@ -691,96 +689,26 @@ class course_renderer extends \core_course_renderer {
             // Can't get meta data for this module.
             return '';
         }
-        $content .= '';
-
-        $warningclass = '';
-        if ($meta->submitted) {
-            $warningclass = ' ad-activity-date-submitted ';
-        }
-
-        $activitycontent = $this->submission_cta($mod, $meta);
-
-        if (!(empty($activitycontent))) {
-            if ( ($mod->modname == 'assign') && ($meta->submitted) ) {
-                $content .= html_writer::start_tag('span', array('class' => 'ad-activity-due-date'.$warningclass));
-                $content .= $activitycontent;
-                $content .= html_writer::end_tag('span') . '<br>';
-            } else {
-                // Only display if this is really a student on the course (i.e. not anyone who can grade an assignment).
-                if (!has_capability('mod/assign:grade', $mod->context)) {
-                    $content .= html_writer::start_tag('div', array('class' => 'ad-activity-mod-engagement'.$warningclass));
-                    $content .= $activitycontent;
-                    $content .= html_writer::end_tag('div');
-                }
-            }
-        }
-
-        // Activity due date.
-        if (!empty($meta->extension) || !empty($meta->timeclose)) {
-            if (!empty($meta->extension)) {
-                $field = 'extension';
-            } else if (!empty($meta->timeclose)) {
-                $field = 'timeclose';
-            }
-
-            // Create URL for due date.
-            $url = new \moodle_url("/mod/{$mod->modname}/view.php", ['id' => $mod->id]);
-            $dateformat = get_string('strftimedate', 'langconfig');
-            $labeltext = get_string('due', 'theme_adaptable', userdate($meta->$field, $dateformat));
-            $warningclass = '';
-
-            // Display assignment status (due, nearly due, overdue), as long as it hasn't been submitted,
-            // or submission not required.
-            if ((!$meta->submitted) && (!$meta->submissionnotrequired)) {
-                $warningclass = '';
-                $labeltext = '';
-
-                // If assignment due in 7 days or less, display in amber, if overdue, then in red, or if submitted, turn to green.
-
-                // If assignment is 7 days before date due(nearly due).
-                $time = time();
-                $timedue = $meta->$field - (86400 * 7);
-                if (($time > $timedue) &&  ($time <= $meta->$field)) {
-                    if ($mod->modname == 'assign') {
-                        $warningclass = ' ad-activity-date-nearly-due';
-                    }
-                } else if ($time > $meta->$field) { // If assignment is actually overdue.
-                    if ($mod->modname == 'assign') {
-                        $warningclass = ' ad-activity-date-overdue';
-                    }
-                    $labeltext .= $this->output->pix_icon('i/warning', get_string('warning', 'theme_adaptable'));
-                }
-
-                $labeltext .= get_string('due', 'theme_adaptable', userdate($meta->$field, $dateformat));
-
-                $duedate = html_writer::start_tag('span', array('class' => 'ad-activity-due-date'.$warningclass));
-                $duedate .= html_writer::link($url, $labeltext);
-                $duedate .= html_writer::end_tag('span');
-                $content .= html_writer::start_tag('div', array('class' => 'ad-activity-mod-engagement'));
-                $content .= $duedate . html_writer::end_tag('div');
-            }
-        }
+        $content = '';
 
         if ($meta->isteacher) {
             // Teacher - useful teacher meta data.
             $engagementmeta = array();
 
-            // Below, !== false means we get 0 out of x submissions.
-            if (!$meta->submissionnotrequired && $meta->numparticipants !== false) {
-                /* If numparticipants is 0 then the code cannot determine how many students could
-                   take the activity.  Such as when the activity is hidden and would not be able
-                   to tell if a student could when it was visible. */
-                if ($meta->numparticipants == 0) {
-                    $engagementmeta[] = get_string('x'.$meta->submitstrkey, 'theme_adaptable',
-                        array(
-                            'completed' => $meta->numsubmissions
+            if (!$meta->submissionnotrequired) {
+                /* Below, != 0 means we would get x out of 0 submissions, so at least show something as
+                   the module could now be hidden, but there is still useful information. */
+                if ($meta->numparticipants != 0) {
+                    $engagementmeta[] = get_string('xofy'.$meta->submitstrkey, 'theme_adaptable',
+                        (object) array(
+                            'completed' => $meta->numsubmissions,
+                            'participants' => $meta->numparticipants
                         )
                     );
                 } else {
-                    $engagementmeta[] = get_string('xofy'.$meta->submitstrkey, 'theme_adaptable',
-                        array(
-                            'completed' => $meta->numsubmissions,
-                            'participants' => $meta->numparticipants
+                    $engagementmeta[] = get_string('x'.$meta->submitstrkey, 'theme_adaptable',
+                        (object) array(
+                            'completed' => $meta->numsubmissions
                         )
                     );
                 }
@@ -800,20 +728,21 @@ class course_renderer extends \core_course_renderer {
                 );
                 $url = new moodle_url("/mod/{$mod->modname}/view.php", $params);
 
-                $icon = html_writer::tag('i', '&nbsp;', array('class' => 'fa fa-info-circle'));
-                $content .= html_writer::start_tag('div', array('class' => 'ad-activity-mod-engagement'));
-                $content .= html_writer::link($url, $icon.$engagementstr, array('class' => 'ad-activity-action'));
+                $icon = $this->output->pix_icon('docs', get_string('info'));
+                $content .= html_writer::start_tag('div', array('class' => 'ct-activity-mod-engagement'));
+                $content .= html_writer::link($url, $icon.$engagementstr, array('class' => 'ct-activity-action'));
                 $content .= html_writer::end_tag('div');
             }
         } else {
             // Feedback meta.
             if (!empty($meta->grade)) {
-                $url = new \moodle_url('/grade/report/user/index.php', ['id' => $COURSE->id]);
+                   $url = new \moodle_url('/grade/report/user/index.php', ['id' => $COURSE->id]);
                 if (in_array($mod->modname, ['quiz', 'assign'])) {
                     $url = new \moodle_url('/mod/'.$mod->modname.'/view.php?id='.$mod->id);
                 }
-                $content .= html_writer::start_tag('span', array('class' => 'ad-activity-mod-feedback'));
-                $feedbackavailable = html_writer::tag('i', '&nbsp;', array('class' => 'fa fa-commenting-o')) .
+                $content .= html_writer::start_tag('span', array('class' => 'ct-activity-mod-feedback'));
+
+                $feedbackavailable = $this->output->pix_icon('t/message', get_string('feedback')) .
                     get_string('feedbackavailable', 'theme_adaptable');
                 $content .= html_writer::link($url, $feedbackavailable);
                 $content .= html_writer::end_tag('span');
@@ -821,58 +750,6 @@ class course_renderer extends \core_course_renderer {
         }
 
         return $content;
-    }
-
-    /**
-     * Submission call to action.
-     *
-     * @param cm_info $mod
-     * @param activity_meta $meta
-     * @return string
-     * @throws coding_exception
-     */
-    public function submission_cta(cm_info $mod, \theme_adaptable\activity_meta $meta) {
-        global $CFG;
-
-        if (empty($meta->submissionnotrequired)) {
-
-            $url = $CFG->wwwroot.'/mod/'.$mod->modname.'/view.php?id='.$mod->id;
-
-            if ($meta->submitted) {
-                if (empty($meta->timesubmitted)) {
-                    $submittedonstr = '';
-                } else {
-                    $submittedonstr = ' '.userdate($meta->timesubmitted, get_string('strftimedate', 'langconfig'));
-                }
-                $message = $this->output->pix_icon('i/checked', get_string('checked', 'theme_adaptable')).
-                    $meta->submittedstr.$submittedonstr;
-            } else {
-                if ($meta->expired) {
-                    $warningstr = $meta->expiredstr;
-                    $warningicon = 't/locked';
-                } else if ($meta->reopened) {
-                    $warningstr = $meta->reopenedstr;
-                    $warningicon = 't/unlocked';
-                } else if ($meta->draft) {
-                    $warningstr = $meta->draftstr;
-                    $warningicon = 'i/warning';
-                } else if ($meta->notopen) {
-                    $warningstr = $meta->notopenstr;
-                    $warningicon = 'i/warning';
-                } else if ($meta->notattempted) {
-                    $warningstr = get_string('notattempted', 'theme_adaptable');
-                    $warningicon = 'i/warning';
-                } else {
-                    $warningstr = $meta->notsubmittedstr;
-                    $warningicon = 'i/warning';
-                }
-
-                $message = $this->output->pix_icon($warningicon, get_string('warning', 'theme_adaptable')).$warningstr;
-            }
-
-            return html_writer::link($url, $message, array('class' => 'ad-activity-action'));
-        }
-        return '';
     }
 
     /**

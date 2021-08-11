@@ -848,72 +848,18 @@ div.fdescription.required {
 /* Activity further information styling */
 .ad-activity-meta-container {
     padding: 5px 0 0 0;
-    margin: 0 10px 0 30px;
-}
-
-.ad-activity-due-date {
-    background-color: #555555;
-    color: #ffffff;
-    padding: 7px;
-    margin: 0 10px 0 0;
-    line-height: 3em;
-    border-radius: 0.5em;
-    font-size: 0.9em;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.ad-activity-due-date a {
-    color: #fff;
 }
 
 .ad-activity-mod-feedback {
     padding: 5px 0;
 }
 
-.ad-activity-mod-feedback i {
-    font-size: 1.1em;
-}
-
-.ad-activity-action {
-    margin: 0 7px;
-}
-
 .ad-activity-action i {
     margin-right: 0.35rem;
 }
 
-.ad-activity-date-overdue {
-    background-color: #f8d7da;
-}
-
-.ad-activity-date-overdue a {
-    color: #721c24;
-}
-
-.ad-activity-date-overdue .text-warning {
-    color: #721C24 !important;
-}
-
-.ad-activity-date-submitted {
-    background-color: #d4edda;
-}
-
-.ad-activity-date-submitted a {
-    color: #155724;
-}
-
-.ad-activity-date-nearly-due {
-    background-color: #fff3cd;
-}
-
-.ad-activity-date-nearly-due a {
-    color: #856404;
-}
-
 .ad-activity-mod-feedback i,
-.ad-activity-mod-engagement i,
-.ad-activity-due-date i {
+.ad-activity-mod-engagement i {
     font-size: 1.1em;
 }
 
