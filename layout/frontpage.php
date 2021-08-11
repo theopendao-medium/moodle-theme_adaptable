@@ -91,6 +91,19 @@ if (!empty($PAGE->theme->settings->infobox2)) {
         <section id="region-main" class="<?php echo $regions['content'];?>">
             <?php
             echo $OUTPUT->course_content_header();
+            /*
+                public function notification($message, $type = null, $closebutton = true) {
+        $typemappings = [
+            // Valid types.
+            'success'           => \core\output\notification::NOTIFY_SUCCESS,
+            'info'              => \core\output\notification::NOTIFY_INFO,
+            'warning'           => \core\output\notification::NOTIFY_WARNING,
+            'error'             => \core\output\notification::NOTIFY_ERROR,
+            */
+            echo $OUTPUT->notification('Message', 'success', true);
+            echo $OUTPUT->notification('Message', 'info', false);
+            echo $OUTPUT->notification('Message', 'warning', true);
+            echo $OUTPUT->notification('Message', 'error', false);
             echo $OUTPUT->main_content();
             echo $OUTPUT->course_content_footer();
             ?>
