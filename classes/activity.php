@@ -87,9 +87,9 @@ class activity {
             ) {
 
         $courseid = $mod->course;
+        $meta = new activity_meta();
         // If role has specific "teacher" capabilities.
         if (has_capability('mod/assign:grade', $mod->context)) {
-            $meta = new activity_meta();
             $meta->isteacher = true;
             $meta->set_default('submitstrkey', $submitstrkey);
 
