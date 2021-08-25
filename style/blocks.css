@@ -69,9 +69,8 @@
 }
 
 /* Block header */
-.block .header,
-#dockeditempanel .dockeditempanel_hd {
-    background: [[setting:blockheaderbackgroundcolor]];
+.block .header {
+    background-color: [[setting:blockheaderbackgroundcolor]];
 }
 
 .block .header {
