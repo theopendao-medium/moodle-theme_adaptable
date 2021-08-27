@@ -2,6 +2,7 @@ Change Log in version 3.11.0.2 (2021081001)
 ===========================================
 1. Fix 'Actions' not available when editing, ref: https://moodle.org/mod/forum/discuss.php?d=425729#p1714807.
 2. Remove redundant CSS selector - #33.
+3. Fix 'Grader report preferences layout broken', ref: https://moodle.org/mod/forum/discuss.php?d=425016&parent=1715752.
 
 Change Log in version 3.11.0.1 (2021081000)
 ===========================================
