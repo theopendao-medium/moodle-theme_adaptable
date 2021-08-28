@@ -29,13 +29,15 @@ a.skip {
     left: -1000em;
 }
 
-.modchoosercontainer .btn {
-    border: none;
-    box-shadow: none;
-}
+.modchoosercontainer {
+    .btn {
+        border: none;
+        box-shadow: none;
+    }
 
-.modchoosercontainer .btn-icon {
-    padding-top: 0 !important;
+    .btn-icon {
+        padding-top: 0 !important;
+    }
 }
 
 body.h5p-embed #page-content {
