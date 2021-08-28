@@ -2,6 +2,7 @@ Change Log in version 3.10.1.4 (2021022304)
 ===========================================
 1. Remove redundant CSS selector - #33.
 2. Fix 'Grader report preferences layout broken', ref: https://moodle.org/mod/forum/discuss.php?d=425016&parent=1715752.
+3. Remove redundant navbar toggler and tidy the CSS.
 
 Change Log in version 3.10.1.3 (2021022303)
 ===========================================

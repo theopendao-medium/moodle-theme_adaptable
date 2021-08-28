@@ -1893,40 +1893,8 @@ a.cimbox {
     height: 60px;
 }
 
-/* New Messages / Notifications topbar (moodle 3.2 and higher) */
-/* messages icons margin */
-#nav-notification-popover-container,
-#nav-message-popover-container {
-    margin-left: 8px;
-}
-
-/* messages icons size */
-.popover-region-toggle .icon img{
-    width: 24px;
-    height: 24px;
-}
-
-/* New message drawer (moodle 3.6 and higher) */
-.message-drawer {
-    border-left: 1px solid [[setting:headerbkcolor]];
-    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08);
-}
-
 .rounded-circle {
     max-width: none !important;
-}
-
-/* Set icon colour to white to fit default Adaptable colours)
-Change the filter selector for other colours */
-.message-drawer button img.icon {
-    filter: grayscale(100%) brightness(5);
-    max-width: none !important;
-    margin-left: -5px;
-    padding-right: 0;
-}
-
-.message-app.drawer .btn-block { /* M3.7+ */
-    margin-left: 0;
 }
 
 /* Dimmed text (courses or users) */
