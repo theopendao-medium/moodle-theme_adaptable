@@ -51,3 +51,36 @@ header .nav-item {
         width: auto;
     }
 }
+
+/* New message drawer (moodle 3.6 and higher) */
+.message-app {
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Increase width slightly of default nav-drawer. */
+[data-region="drawer"] {
+    width: 300px;
+}
+
+/* Adjust height according to header style. */
+.header-style1 [data-region="drawer"] {
+    height: calc(100% - 105px);
+    top: 105px;
+}
+
+.header-style2 [data-region="drawer"] {
+    height: calc(100% - 46px);
+    top: 46px;
+}
+
+@media screen and (min-width: 768px) {
+    .header-style2 [data-region="drawer"] {
+        height: calc(100% - 72px);
+        top: 72px;
+    }
+}
+
+/* When the nav-drawer is closed take it out of the dom so it is not read by screenreaders. */
+#nav-drawer.closed #nav-drawer-inner {
+    display: none;
+}

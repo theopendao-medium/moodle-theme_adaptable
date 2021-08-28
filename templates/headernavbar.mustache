@@ -68,81 +68,74 @@
 
 <div id="main-navbar" class="d-none d-lg-block">
     <div class="container">
-        <div class="navbar navbar-expand-md btco-hover-menu">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{#str}}togglenavigation, theme_adaptable{{/str}}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <nav aria-label="{{#str}}sitelinkslabel, theme_adaptable{{/str}}">
-                    <ul class="navbar-nav">
-                        {{{navigationmenu}}}
-                        {{^disablecustommenu}}
-                            {{{output.custom_menu}}}
-                        {{/disablecustommenu}}
-                        {{#toolsmenu}}
-                            {{{output.tools_menu}}}
-                        {{/toolsmenu}}
-                    </ul>
-                </nav>
-
-                <ul class="navbar-nav ml-auto d-flex flex-wrap">
-                    {{#showcog}}
-                    {{#coursemenucontent}}
-                    <li class="nav-item mr-2">
-                        <div class="context-header-settings-menu">
-                            {{{coursemenucontent}}}
-                        </div>
-                    </li>
-                    {{/coursemenucontent}}
-
-                    {{#othermenucontent}}
-                    <li class="nav-item mr-2">
-                        <div id="region-main-settings-menu" class="region-main-settings-menu">
-                            {{{othermenucontent}}}
-                        </div>
-                    </li>
-                    {{/othermenucontent}}
-                    {{/showcog}}
-
-                    {{#pageheadingbutton}}
-                    <li id="editingbutton" class="nav-item mx-0 my-auto">
-                        {{{pageheadingbutton}}}
-                    </li>
-                    {{/pageheadingbutton}}
-
-                    {{#showhideblocks}}
-                    <li class="nav-item mr-1">
-                        <div id="zoominicon" class="{{showhideblockszoomside}} nav-link" title="{{showhideblockszoominicontitle}}" data-hidetitle="{{showhideblockshidetitle}}" data-showtitle="{{showhideblocksshowtitle}}">
-                            <i class="fa fa-lg fa-{{showhideblocksicontype}}" aria-hidden="true"></i>
-                            {{#showhideblockstext}}
-                            <span class="showhideblocksdesc">{{showhideblockszoominicontitle}}</span>
-                            {{/showhideblockstext}}
-                        </div>
-                    </li>
-                    {{/showhideblocks}}
-
-                    {{#enablezoom}}
-                    <li class="nav-item mx-0 hbll">
-                        <a class="nav-link moodlewidth" href="javascript:void(0);" title="{{#str}}fullscreen, theme_adaptable{{/str}}">
-                            <i class="fa fa-expand fa-lg" aria-hidden="true"></i>
-                            {{#enablezoomshowtext}}
-                            <span class="zoomdesc">{{#str}}fullscreen, theme_adaptable{{/str}}</span>
-                            {{/enablezoomshowtext}}
-                        </a>
-                    </li>
-                    <li class="nav-item mx-0 sbll">
-                        <a class="nav-link moodlewidth" href="javascript:void(0);" title="{{#str}}standardview, theme_adaptable{{/str}}">
-                            <i class="fa fa-compress fa-lg" aria-hidden="true"></i>
-                            {{#enablezoomshowtext}}
-                            <span class="zoomdesc">{{#str}}standardview, theme_adaptable{{/str}}</span>
-                            {{/enablezoomshowtext}}
-                        </a>
-                    </li>
-                    {{/enablezoom}}
+        <div class="navbar navbar-expand btco-hover-menu">
+            <nav aria-label="{{#str}}sitelinkslabel, theme_adaptable{{/str}}">
+                <ul class="navbar-nav">
+                    {{{navigationmenu}}}
+                    {{^disablecustommenu}}
+                        {{{output.custom_menu}}}
+                    {{/disablecustommenu}}
+                    {{#toolsmenu}}
+                        {{{output.tools_menu}}}
+                    {{/toolsmenu}}
                 </ul>
-            </div>
+            </nav>
+
+            <ul class="navbar-nav ml-auto d-flex flex-wrap">
+                {{#showcog}}
+                {{#coursemenucontent}}
+                <li class="nav-item mr-2">
+                    <div class="context-header-settings-menu">
+                        {{{coursemenucontent}}}
+                    </div>
+                </li>
+                {{/coursemenucontent}}
+
+                {{#othermenucontent}}
+                <li class="nav-item mr-2">
+                    <div id="region-main-settings-menu" class="region-main-settings-menu">
+                        {{{othermenucontent}}}
+                    </div>
+                </li>
+                {{/othermenucontent}}
+                {{/showcog}}
+
+                {{#pageheadingbutton}}
+                <li id="editingbutton" class="nav-item mx-0 my-auto">
+                    {{{pageheadingbutton}}}
+                </li>
+                {{/pageheadingbutton}}
+
+                {{#showhideblocks}}
+                <li class="nav-item mr-1">
+                    <div id="zoominicon" class="{{showhideblockszoomside}} nav-link" title="{{showhideblockszoominicontitle}}" data-hidetitle="{{showhideblockshidetitle}}" data-showtitle="{{showhideblocksshowtitle}}">
+                        <i class="fa fa-lg fa-{{showhideblocksicontype}}" aria-hidden="true"></i>
+                        {{#showhideblockstext}}
+                        <span class="showhideblocksdesc">{{showhideblockszoominicontitle}}</span>
+                        {{/showhideblockstext}}
+                    </div>
+                </li>
+                {{/showhideblocks}}
+
+                {{#enablezoom}}
+                <li class="nav-item mx-0 hbll">
+                    <a class="nav-link moodlewidth" href="javascript:void(0);" title="{{#str}}fullscreen, theme_adaptable{{/str}}">
+                        <i class="fa fa-expand fa-lg" aria-hidden="true"></i>
+                        {{#enablezoomshowtext}}
+                        <span class="zoomdesc">{{#str}}fullscreen, theme_adaptable{{/str}}</span>
+                        {{/enablezoomshowtext}}
+                    </a>
+                </li>
+                <li class="nav-item mx-0 sbll">
+                    <a class="nav-link moodlewidth" href="javascript:void(0);" title="{{#str}}standardview, theme_adaptable{{/str}}">
+                        <i class="fa fa-compress fa-lg" aria-hidden="true"></i>
+                        {{#enablezoomshowtext}}
+                        <span class="zoomdesc">{{#str}}standardview, theme_adaptable{{/str}}</span>
+                        {{/enablezoomshowtext}}
+                    </a>
+                </li>
+                {{/enablezoom}}
+            </ul>
         </div>
     </div>
 </div>
