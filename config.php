@@ -17,11 +17,12 @@
 /**
  * Version details
  *
- * @package    theme_adaptable
- * @copyright  2015-2019 Jeremy Hopkins (Coventry University)
- * @copyright  2015-2019 Fernando Acedo (3-bits.com)
- * @copyright  2017-2019 Manoj Solanki (Coventry University)
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   theme_adaptable
+ * @copyright 2015-2019 Jeremy Hopkins (Coventry University)
+ * @copyright 2015-2019 Fernando Acedo (3-bits.com)
+ * @copyright 2017-2019 Manoj Solanki (Coventry University)
+ * @copyright 2019-onwards G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
 
@@ -29,70 +30,69 @@ defined('MOODLE_INTERNAL') || die();
 
 global $PAGE;
 
-// Set up regions for individual pages.  This is done
-// to avoid being able to move regions (when configuring)
-// to non-existent block regions for the page .  This is because
-// Moodle shows all regions available even if they aren't used
-// on that specific page. Please note that frontpage and dashboard
-// page use $frontlayoutregions to avoid losing existing regions that
-// are renamed.
-
 // The plugin internal name.
 $THEME->name = 'adaptable';
 
-// Print sheet.
-$THEME->sheets = array('print');
+/* Set up regions for individual pages.  This is done
+   to avoid being able to move regions (when configuring)
+   to non-existent block regions for the page .  This is because
+   Moodle shows all regions available even if they aren't used
+   on that specific page. Please note that frontpage and dashboard
+   page use $frontlayoutregions to avoid losing existing regions that
+   are renamed. */
 
 // The frontpage regions.
-$frontlayoutregions = array('side-post',
-        'middle',
-        'frnt-footer',
-        'frnt-market-a',
-        'frnt-market-b',
-        'frnt-market-c',
-        'frnt-market-d',
-        'frnt-market-e',
-        'frnt-market-f',
-        'frnt-market-g',
-        'frnt-market-h',
-        'frnt-market-i',
-        'frnt-market-j',
-        'frnt-market-k',
-        'frnt-market-l',
-        'frnt-market-m',
-        'frnt-market-n',
-        'frnt-market-o',
-        'frnt-market-p',
-        'frnt-market-q',
-        'frnt-market-r',
-        'frnt-market-s',
-        'frnt-market-t',
-        'news-slider-a',
-        'course-tab-one-a',
-        'course-tab-two-a',
-        'my-tab-one-a',
-        'my-tab-two-a',
-        'course-section-a'
+$frontlayoutregions = array(
+    'side-post',
+    'middle',
+    'frnt-footer',
+    'frnt-market-a',
+    'frnt-market-b',
+    'frnt-market-c',
+    'frnt-market-d',
+    'frnt-market-e',
+    'frnt-market-f',
+    'frnt-market-g',
+    'frnt-market-h',
+    'frnt-market-i',
+    'frnt-market-j',
+    'frnt-market-k',
+    'frnt-market-l',
+    'frnt-market-m',
+    'frnt-market-n',
+    'frnt-market-o',
+    'frnt-market-p',
+    'frnt-market-q',
+    'frnt-market-r',
+    'frnt-market-s',
+    'frnt-market-t',
+    'news-slider-a',
+    'course-tab-one-a',
+    'course-tab-two-a',
+    'my-tab-one-a',
+    'my-tab-two-a',
+    'course-section-a'
 );
 
 // The course page regions.
-$courselayoutregions = array('side-post',
-        'middle',
-        'frnt-footer',
-        'course-top-a',
-        'course-top-b',
-        'course-top-c',
-        'course-top-d',
-        'news-slider-a',
-        'course-tab-one-a',
-        'course-tab-two-a',
-        'my-tab-one-a',
-        'my-tab-two-a',
-        'course-bottom-a',
-        'course-bottom-b',
-        'course-bottom-c',
-        'course-bottom-d',
-        'course-section-a'
+$courselayoutregions = array(
+    'side-post',
+    'middle',
+    'frnt-footer',
+    'course-top-a',
+    'course-top-b',
+    'course-top-c',
+    'course-top-d',
+    'news-slider-a',
+    'course-tab-one-a',
+    'course-tab-two-a',
+    'my-tab-one-a',
+    'my-tab-two-a',
+    'course-bottom-a',
+    'course-bottom-b',
+    'course-bottom-c',
+    'course-bottom-d',
+    'course-section-a'
 );
 
 $standardregions = array('side-post');
@@ -120,31 +120,19 @@ $THEME->parents = ['boost'];
 
 // Styles.
 $THEME->sheets = array(
-        'adaptable',
-        'backup-restore',
-        'blocks',
-        'bootstrap',
-        'button',
-        'cardblocks',
-        'core',
-        'course',
-        'extras',
-        'form',
-        'grade',
-        'header',
-        'login',
-        'menu',
-        'messages',
-        'navigation',
-        'notifications',
-        'responsive',
-        'search',
-        'tabs',
-        'user',
-        'print',
-        'categorycustom',
-        'browser',
-        'custom'
+    'adaptable',
+    'blocks',
+    'button',
+    'course',
+    'extras',
+    'login',
+    'menu',
+    'responsive',
+    'search',
+    'tabs',
+    'print',
+    'categorycustom',
+    'custom'
 );
 
 $THEME->supportscssoptimisation = false;
@@ -152,13 +140,10 @@ $THEME->yuicssmodules = array();
 $THEME->editor_sheets = array();
 
 $THEME->plugins_exclude_sheets = array(
-        'block' => array(
-                'html',
-        )
+    'block' => array(
+        'html',
+    )
 );
-
-// Dashboard regions.
-$usedashboard = true;
 
 // Disabling block docking.
 $THEME->enable_dock = false;
@@ -246,9 +231,9 @@ $THEME->layouts = array(
         'file' => 'embedded.php',
         'regions' => array()
     ),
-    // Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
-    // This must not have any blocks, and it is good idea if it does not have links to
-    // other places - for example there should not be a home link in the footer...
+    /* Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
+       This must not have any blocks, and it is good idea if it does not have links to
+       other places - for example there should not be a home link in the footer... */
     'maintenance' => array(
         'file' => 'maintenance.php',
         'regions' => array(),
@@ -285,5 +270,9 @@ $THEME->blockrtlmanipulations = array(
     'side-pre' => 'side-post',
     'side-post' => 'side-pre'
 );
+
+$THEME->scss = function(theme_config $theme) {
+    return theme_adaptable_get_main_scss_content($theme);
+};
 
 $THEME->csspostprocess = 'theme_adaptable_process_css';

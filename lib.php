@@ -21,11 +21,15 @@
  * @copyright 2015-2019 Jeremy Hopkins (Coventry University)
  * @copyright 2015-2019 Fernando Acedo (3-bits.com)
  * @copyright 2017-2019 Manoj Solanki (Coventry University)
+ * @copyright 2019-onwards G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
 
 defined('MOODLE_INTERNAL') || die;
+
+global $CFG;
+require_once($CFG->dirroot.'/theme/boost/lib.php');
 
 define('THEME_ADAPTABLE_DEFAULT_ALERTCOUNT', '1');
 define('THEME_ADAPTABLE_DEFAULT_ANALYTICSCOUNT', '1');
@@ -34,7 +38,25 @@ define('THEME_ADAPTABLE_DEFAULT_TOOLSMENUSCOUNT', '1');
 define('THEME_ADAPTABLE_DEFAULT_NEWSTICKERCOUNT', '1');
 define('THEME_ADAPTABLE_DEFAULT_SLIDERCOUNT', '3');
 
+/**
+ * Returns the main SCSS content.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string SCSS.
+ */
+function theme_adaptable_get_main_scss_content($theme) {
+    global $CFG;
 
+    static $boosttheme = null;
+    if (empty($boosttheme)) {
+        $boosttheme = theme_config::load('boost'); // Needs to be the Boost theme so that we get its settings.
+    }
+    $scss = theme_boost_get_main_scss_content($boosttheme);
+
+    $scss .= file_get_contents($CFG->dirroot.'/theme/adaptable/scss/main.scss');
+
+    return $scss;
+}
 
 /**
  * Parses CSS before it is cached.
@@ -330,20 +352,20 @@ function theme_adaptable_process_css($css, $theme) {
 
     $loginbgopacity = '';
     if (!empty($theme->settings->loginbgopacity)) {
-            $loginbgopacity = '#page-login-index header {'.PHP_EOL;
-            $loginbgopacity .= 'background-color: '.\theme_adaptable\toolbox::hex2rgba($theme->settings->headerbkcolor2,
-                $theme->settings->loginbgopacity).' !important;'.PHP_EOL;
-            $loginbgopacity .= '}'.PHP_EOL;
-            $loginbgopacity .= '#page-login-index #page-navbar,'.PHP_EOL.
-                '#page-login-index.pagelayout-login #region-main [role="main"] > h2,'.PHP_EOL.
-                '#page-login-index.pagelayout-login #region-main [role="main"] > div.box,'.PHP_EOL.
-                '#page-login-index .card {';
-            $loginbgopacity .= 'background-color: rgba(255, 255, 255, '.$theme->settings->loginbgopacity.') !important;'.PHP_EOL;
-            $loginbgopacity .= '}'.PHP_EOL;
-            $loginbgopacity .= '#page-login-index #page-footer {'.PHP_EOL;
-            $loginbgopacity .= 'background-color: '.\theme_adaptable\toolbox::hex2rgba($theme->settings->footerbkcolor,
-                               $theme->settings->loginbgopacity).') !important;'.PHP_EOL;
-            $loginbgopacity .= '}'.PHP_EOL;
+        $loginbgopacity = '#page-login-index header {'.PHP_EOL;
+        $loginbgopacity .= 'background-color: '.\theme_adaptable\toolbox::hex2rgba($theme->settings->headerbkcolor2,
+            $theme->settings->loginbgopacity).' !important;'.PHP_EOL;
+        $loginbgopacity .= '}'.PHP_EOL;
+        $loginbgopacity .= '#page-login-index #page-navbar,'.PHP_EOL.
+            '#page-login-index.pagelayout-login #region-main [role="main"] > h2,'.PHP_EOL.
+            '#page-login-index.pagelayout-login #region-main [role="main"] > div.box,'.PHP_EOL.
+            '#page-login-index .card {';
+        $loginbgopacity .= 'background-color: rgba(255, 255, 255, '.$theme->settings->loginbgopacity.') !important;'.PHP_EOL;
+        $loginbgopacity .= '}'.PHP_EOL;
+        $loginbgopacity .= '#page-login-index #page-footer {'.PHP_EOL;
+        $loginbgopacity .= 'background-color: '.\theme_adaptable\toolbox::hex2rgba($theme->settings->footerbkcolor,
+            $theme->settings->loginbgopacity).') !important;'.PHP_EOL;
+        $loginbgopacity .= '}'.PHP_EOL;
     }
     $defaults['[[setting:loginbgopacity]]'] = $loginbgopacity;
 
