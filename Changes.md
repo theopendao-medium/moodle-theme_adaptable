@@ -4,6 +4,8 @@ Change Log in version 3.10.1.4 (2021022304)
 2. Fix 'Grader report preferences layout broken', ref: https://moodle.org/mod/forum/discuss.php?d=425016&parent=1715752.
 3. Remove redundant navbar toggler and tidy the CSS.
 4. Further CSS tidy and refactor some to SCSS.
+5. Settings in the CSS can now be pre-processed before passed to the SCSS compiler.  Thus enabling further transition to SCSS of the CSS.
+   This will reduce the amount of source 'CSS' and help to spot duplication and mistakes.
 
 Change Log in version 3.10.1.3 (2021022303)
 ===========================================

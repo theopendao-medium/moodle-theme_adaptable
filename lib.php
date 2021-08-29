@@ -55,59 +55,73 @@ function theme_adaptable_get_main_scss_content($theme) {
 
     $scss .= file_get_contents($CFG->dirroot.'/theme/adaptable/scss/main.scss');
 
+    static $settingssheets = array(
+        'adaptable',
+        'blocks',
+        'button',
+        'course',
+        'extras',
+        'login',
+        'menu',
+        'responsive',
+        'search',
+        'tabs',
+        'print',
+        'categorycustom'
+    );
+
+    $settingsscss = '';
+    foreach ($settingssheets as $settingsheet) {
+        $settingsscss .= file_get_contents($CFG->dirroot.'/theme/adaptable/scss/settings/'.$settingsheet.'.scss');
+    }
+
+    $scss .= theme_adaptable_process_scss($settingsscss, $theme);
+
     return $scss;
 }
 
 /**
- * Parses CSS before it is cached.
+ * Parses SCSS before it is parsed by the SCSS compiler.
  *
- * This function can make alterations and replace patterns within the CSS.
+ * This function can make alterations and replace patterns within the SCSS.
  *
- * @param string $css The CSS
+ * @param string $scss The SCSS.
  * @param theme_config $theme The theme config object.
- * @return string The parsed CSS The parsed CSS.
+ * @return string The parsed SCSS.
  */
-function theme_adaptable_process_css($css, $theme) {
+function theme_adaptable_process_scss($scss, $theme) {
 
     // Set category custom CSS.
-    $css = theme_adaptable_set_categorycustomcss($css, $theme->settings);
+    $scss = theme_adaptable_set_categorycustomcss($scss, $theme->settings);
 
     // Collapsed Topics colours.
     if (empty($theme->settings->collapsedtopicscoloursenabled)) {
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span.the_toggle h3.sectionname,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span.the_toggle h3.sectionname a,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span.the_toggle h3.sectionname a:hover,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span.the_toggle h3.sectionname a:focus,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden h3.sectionname'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden h3.sectionname a,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden h3.sectionname a:hover,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden h3.sectionname a:focus {'.PHP_EOL;
-        $css .= '    color: [[setting:sectionheadingcolor]];'.PHP_EOL;
-        $css .= '}'.PHP_EOL;;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span.the_toggle h3.sectionname,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span.the_toggle h3.sectionname a,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span.the_toggle h3.sectionname a:hover,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span.the_toggle h3.sectionname a:focus,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden h3.sectionname'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden h3.sectionname a,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden h3.sectionname a:hover,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden h3.sectionname a:focus {'.PHP_EOL;
+        $scss .= '    color: [[setting:sectionheadingcolor]];'.PHP_EOL;
+        $scss .= '}'.PHP_EOL;
 
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content div.toggle,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content div.toggle:hover,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content div.toggle:focus {'.PHP_EOL;
-        $css .= '    background-color: [[setting:coursesectionheaderbg]];'.PHP_EOL;
-        $css .= '}'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content div.toggle,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content div.toggle:hover,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content div.toggle:focus {'.PHP_EOL;
+        $scss .= '    background-color: [[setting:coursesectionheaderbg]];'.PHP_EOL;
+        $scss .= '}'.PHP_EOL;
 
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span:hover,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span:focus,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden:hover,'.PHP_EOL;
-        $css .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden:focus {'.PHP_EOL;
-        $css .= '    color: inherit;'.PHP_EOL;
-        $css .= '}'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span:hover,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content .toggle span:focus,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden:hover,'.PHP_EOL;
+        $scss .= '.theme_adaptable .course-content ul.ctopics li.section .content.sectionhidden:focus {'.PHP_EOL;
+        $scss .= '    color: inherit;'.PHP_EOL;
+        $scss .= '}'.PHP_EOL;
     }
-
-    // Set custom CSS.
-    if (!empty($theme->settings->customcss)) {
-        $customcss = $theme->settings->customcss;
-    } else {
-        $customcss = null;
-    }
-    $css = theme_adaptable_set_customcss($css, $customcss);
 
     // Define the default settings for the theme in case they've not been set.
     $defaults = array(
@@ -364,7 +378,7 @@ function theme_adaptable_process_css($css, $theme) {
         $loginbgopacity .= '}'.PHP_EOL;
         $loginbgopacity .= '#page-login-index #page-footer {'.PHP_EOL;
         $loginbgopacity .= 'background-color: '.\theme_adaptable\toolbox::hex2rgba($theme->settings->footerbkcolor,
-            $theme->settings->loginbgopacity).') !important;'.PHP_EOL;
+            $theme->settings->loginbgopacity).' !important;'.PHP_EOL;
         $loginbgopacity .= '}'.PHP_EOL;
     }
     $defaults['[[setting:loginbgopacity]]'] = $loginbgopacity;
@@ -376,12 +390,36 @@ function theme_adaptable_process_css($css, $theme) {
     $defaults['[[setting:socialpaddingsidehalf]]'] = $socialpaddingsidehalf;
 
     // Replace the CSS with values from the $defaults array.
-    $css = strtr($css, $defaults);
+    $scss = strtr($scss, $defaults);
     if (empty($theme->settings->tilesshowallcontacts) || $theme->settings->tilesshowallcontacts == false) {
-        $css = theme_adaptable_set_tilesshowallcontacts($css, false);
+        $scss = theme_adaptable_set_tilesshowallcontacts($scss, false);
     } else {
-        $css = theme_adaptable_set_tilesshowallcontacts($css, true);
+        $scss = theme_adaptable_set_tilesshowallcontacts($scss, true);
     }
+    return $scss;
+}
+
+
+/**
+ * Parses CSS before it is cached.
+ *
+ * This function can make alterations and replace patterns within the CSS.
+ *
+ * @param string $css The CSS
+ * @param theme_config $theme The theme config object.
+ * @return string The parsed CSS The parsed CSS.
+ */
+function theme_adaptable_process_customcss($css, $theme) {
+
+    // Set custom CSS.
+    if (!empty($theme->settings->customcss)) {
+        $customcss = $theme->settings->customcss;
+    } else {
+        $customcss = null;
+    }
+    $css = theme_adaptable_set_customcss($css, $customcss);
+
+
     return $css;
 }
 
