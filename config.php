@@ -120,18 +120,6 @@ $THEME->parents = ['boost'];
 
 // Styles.
 $THEME->sheets = array(
-    'adaptable',
-    'blocks',
-    'button',
-    'course',
-    'extras',
-    'login',
-    'menu',
-    'responsive',
-    'search',
-    'tabs',
-    'print',
-    'categorycustom',
     'custom'
 );
 
@@ -275,4 +263,4 @@ $THEME->scss = function(theme_config $theme) {
     return theme_adaptable_get_main_scss_content($theme);
 };
 
-$THEME->csspostprocess = 'theme_adaptable_process_css';
+$THEME->csspostprocess = 'theme_adaptable_process_customcss';

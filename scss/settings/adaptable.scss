@@ -91,19 +91,17 @@ li {
     line-height: 28px;
 }
 
-#adaptable-page-header-wrapper .dropdown-menu > li > a:hover,
-#adaptable-page-header-wrapper .dropdown-menu > li > a:focus,
-#adaptable-page-header-wrapper .dropdown-submenu:hover > a,
-#adaptable-page-header-wrapper .dropdown-submenu:focus > a {
-    background-image: none;
+#adaptable-page-header-wrapper {
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus,
+    .dropdown-submenu:hover > a,
+    .dropdown-submenu:focus > a {
+        background-image: none;
+    }
 }
 
 /* Text Selection */
-::selection {
-    background-color: [[setting:selectionbackground]];
-    color: [[setting:selectiontext]];
-}
-
+::selection,
 ::-moz-selection {
     background-color: [[setting:selectionbackground]];
     color: [[setting:selectiontext]];
@@ -284,33 +282,28 @@ div.signuppanel h2 {
     margin-bottom: 15px;
     margin-top: 15px;
     vertical-align: middle;
-}
-
-.socialbox a {
-    color: [[setting:headertextcolor2]] !important;
+    a {
+        color: [[setting:headertextcolor2]] !important;
+    }
 }
 
 .socialicons {
     padding-top: [[setting:socialpaddingtop]];
-}
-
-.socialicons a {
-    padding-left: [[setting:socialpaddingsidehalf]]px;
-    padding-right: [[setting:socialpaddingsidehalf]]px);
-}
-
-.socialicons a:first-of-type {
-    padding-left: [[setting:socialpaddingside]]px;
-}
-
-.socialicons a:last-of-type {
-    padding-right: [[setting:socialpaddingside]]px;
-}
-
-.socialicons a i {
-    /* Make at least 29px, values look odd but on inspection they are needed to be so for FontAwesome. */
-    font-size: [[setting:socialsize]];
-    line-height: [[setting:socialsize]];
+    a {
+        padding-left: [[setting:socialpaddingsidehalf]]px;
+        padding-right: [[setting:socialpaddingsidehalf]]px;
+        &:first-of-type {
+            padding-left: [[setting:socialpaddingside]]px;
+        }
+        &:last-of-type {
+            padding-right: [[setting:socialpaddingside]]px;
+        }
+        i {
+            /* Make at least 29px, values look odd but on inspection they are needed to be so for FontAwesome. */
+            font-size: [[setting:socialsize]];
+            line-height: [[setting:socialsize]];
+        }
+    }
 }
 
 .headermenu {
@@ -963,13 +956,14 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 /* lang menu */
-.langmenu a {
-    color: [[setting:headertextcolor]];
-}
-
-.langmenu a:hover {
-    background-color: none;
-    color: [[setting:headertextcolor]];
+.langmenu {
+    a {
+        color: [[setting:headertextcolor]];
+        &:hover {
+            background-color: none;
+            color: [[setting:headertextcolor]];
+        }
+    }
 }
 
 /* alert messages */
@@ -981,14 +975,12 @@ input[type="radio"], input[type="checkbox"] {
     font-size: 14px;
     font-weight: 600;
     text-align: center;
-}
-
-.customalert a {
-    text-decoration: underline;
-}
-
-.customalert a:hover {
-    color: red;
+     a {
+        text-decoration: underline;
+        &:hover {
+            color: red;
+        }
+    }
 }
 
 
@@ -999,14 +991,13 @@ input[type="radio"], input[type="checkbox"] {
 #beta {
     background-color: #cc0000;
     min-height: 50px;
-}
-
-#beta h3 {
-    color: #fff !important;
-    font-size: 24px;
-    font-weight: bolder;
-    line-height: 48px;
-    text-align: center;
+     h3 {
+        color: #fff !important;
+        font-size: 24px;
+        font-weight: bolder;
+        line-height: 48px;
+        text-align: center;
+     }
 }
 
 /* Alerts */
@@ -1020,11 +1011,11 @@ input[type="radio"], input[type="checkbox"] {
     border-width: 1px;
     border-color: [[setting:alertbordercolorinfo]];
     color: [[setting:alertcolorinfo]];
-}
 
-.adaptable-alert-info a,
-.adaptable-alert-info a:hover {
-    color: [[setting:alertcolorinfo]];
+    a,
+    a:hover {
+        color: [[setting:alertcolorinfo]];
+    }
 }
 
 .adaptable-alert-success {
@@ -1032,10 +1023,11 @@ input[type="radio"], input[type="checkbox"] {
     border-color: [[setting:alertbordercolorsuccess]];
     border-width: 1px;
     color: [[setting:alertcolorsuccess]];
-}
-.adaptable-alert-success a,
-.adaptable-alert-success a:hover {
-    color: [[setting:alertcolorsuccess]];
+
+    a,
+    a:hover {
+        color: [[setting:alertcolorsuccess]];
+    }
 }
 
 .adaptable-alert-warning {
@@ -1043,10 +1035,11 @@ input[type="radio"], input[type="checkbox"] {
     border-color: [[setting:alertbordercolorwarning]];
     border-width: 1px;
     color: [[setting:alertcolorwarning]];
-}
-.adaptable-alert-warning a,
-.adaptable-alert-warning a:hover {
-    color: [[setting:alertcolorwarning]];
+
+    a,
+    a:hover {
+        color: [[setting:alertcolorwarning]];
+    }
 }
 
 /* admin errors */
@@ -1079,15 +1072,17 @@ input[type="radio"], input[type="checkbox"] {
     margin: 0 0;
 }
 
-#adaptable-page-header-wrapper .navbar #pre-login-form input {
-    margin: 5px;
-    padding: 2px;
-}
+#adaptable-page-header-wrapper .navbar #pre-login-form {
+    input {
+        margin: 5px;
+        padding: 2px;
+    }
 
-#adaptable-page-header-wrapper .navbar #pre-login-form .btn-login {
-    height: 30px;
-    margin: 3px 1px 1px 10px;
-    padding: 0 15px;
+    .btn-login {
+        height: 30px;
+        margin: 3px 1px 1px 10px;
+        padding: 0 15px;
+    }
 }
 
 .navbar .singlebutton input {
@@ -1275,10 +1270,6 @@ input[type="radio"], input[type="checkbox"] {
     display: inline;
 }
 
-#gridshadebox_content ul.gtopics {
-    margin: 12px 1px 0 1px;
-}
-
 .user-enroller-panel {
     z-index: 2;
 }
@@ -1291,6 +1282,10 @@ input[type="radio"], input[type="checkbox"] {
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     min-height: 200px;
     outline: 0;
+
+    ul.gtopics {
+        margin: 12px 1px 0 1px;
+    }
 }
 
 .sr-only {
