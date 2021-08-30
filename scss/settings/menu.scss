@@ -512,16 +512,16 @@
 }
 
 @media (min-width: 991px) {
-    #adaptable-page-header-wrapper .btco-hover-menu .collapse ul li {
+    #adaptable-page-header-wrapper .btco-hover-menu ul li {
         position:relative;
     }
 
-    #adaptable-page-header-wrapper .btco-hover-menu .collapse ul li:hover > ul,
-    #adaptable-page-header-wrapper .btco-hover-menu .collapse ul ul.dropdown-menu li:hover > ul {
+    #adaptable-page-header-wrapper .btco-hover-menu ul li:hover > ul,
+    #adaptable-page-header-wrapper .btco-hover-menu ul ul.dropdown-menu li:hover > ul {
         display: block;
     }
 
-    #adaptable-page-header-wrapper .btco-hover-menu .collapse ul ul.dropdown-menu {
+    #adaptable-page-header-wrapper .btco-hover-menu ul ul.dropdown-menu {
         display: none;
         margin-top: 0;
         min-width: 180px;
@@ -529,7 +529,7 @@
         position: absolute;
     }
 
-    #adaptable-page-header-wrapper .btco-hover-menu .collapse ul ul.dropdown-menu ul {
+    #adaptable-page-header-wrapper .btco-hover-menu ul ul.dropdown-menu ul {
         display: none;
         left: 100%;
         min-width: 180px;
@@ -537,16 +537,16 @@
         top: 0;
     }
 
-    #adaptable-page-header-wrapper .btco-hover-menu .collapse ul ul.dropdown-menu ul ul {
+    #adaptable-page-header-wrapper .btco-hover-menu ul ul.dropdown-menu ul ul {
         left: -100%;
         z-index: 1;
     }
 
-    #adaptable-page-header-wrapper #above-header .btco-hover-menu .collapse ul ul.dropdown-menu {
+    #adaptable-page-header-wrapper #above-header .btco-hover-menu ul ul.dropdown-menu {
         min-width: 60px;
     }
 
-    #adaptable-page-header-wrapper #above-header .btco-hover-menu .collapse ul [id^='langmenu'] {
+    #adaptable-page-header-wrapper #above-header .btco-hover-menu ul [id^='langmenu'] {
         min-width: 135px;
     }
 }
