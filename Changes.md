@@ -7,6 +7,7 @@ Change Log in version 3.11.0.2 (2021081001)
 5. Further CSS tidy and refactor some to SCSS.
 6. Settings in the CSS can now be pre-processed before passed to the SCSS compiler.  Thus enabling further transition to SCSS of the CSS.
    This will reduce the amount of source 'CSS' and help to spot duplication and mistakes.
+7. Added extra information in the settings tabs about maturity of the release.
 
 Change Log in version 3.11.0.1 (2021081000)
 ===========================================

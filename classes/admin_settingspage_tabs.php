@@ -85,16 +85,45 @@ class theme_adaptable_admin_settingspage_tabs extends theme_boost_admin_settings
             return '';
         }
 
-        $plugininfo = core_plugin_manager::instance()->get_plugin_info('theme_adaptable');
+        $themes = core_plugin_manager::instance()->get_present_plugins('theme');
+        if (!empty($themes['adaptable'])) {
+            $plugininfo = $themes['adaptable'];
+        } else {
+            $plugininfo = core_plugin_manager::instance()->get_plugin_info('theme_adaptable');
+            $plugininfo->version = $plugininfo->versiondisk;
+        }
+
         $context['versioninfo'] = get_string('versioninfo', 'theme_adaptable',
             array(
                 'moodle' => $CFG->release,
                 'release' => $plugininfo->release,
-                'version' => $plugininfo->versiondisk
+                'version' => $plugininfo->version
             )
         );
+
+        if (!empty($plugininfo->maturity)) {
+            switch ($plugininfo->maturity) {
+                case MATURITY_ALPHA:
+                    $context['maturity'] = get_string('versionalpha', 'theme_adaptable');
+                    $context['maturityalert'] = 'danger';
+                break;
+                case MATURITY_BETA:
+                    $context['maturity'] = get_string('versionbeta', 'theme_adaptable');
+                    $context['maturityalert'] = 'danger';
+                break;
+                case MATURITY_RC:
+                    $context['maturity'] = get_string('versionrc', 'theme_adaptable');
+                    $context['maturityalert'] = 'warning';
+                break;
+                case MATURITY_STABLE:
+                    $context['maturity'] = get_string('versionstable', 'theme_adaptable');
+                    $context['maturityalert'] = 'info';
+                break;
+            }
+        }
+
         if ($CFG->branch != $this->mbranch) {
-            $context['versioncheck'] = 'Release '.$plugininfo->release.', version '.$plugininfo->versiondisk.' is incompatible with Moodle '.$CFG->release;
+            $context['versioncheck'] = 'Release '.$plugininfo->release.', version '.$plugininfo->version.' is incompatible with Moodle '.$CFG->release;
             $context['versioncheck'] .= ', please get the correct version from ';
             $context['versioncheck'] .= '<a href="https://moodle.org/plugins/theme_adaptable" target="_blank">Moodle.org</a>.  ';
             $context['versioncheck'] .= 'If none is available, then please consider supporting the theme by funding it.  ';
