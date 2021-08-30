@@ -87,10 +87,6 @@ a:focus {
 }
 
 /* Lists */
-li {
-    line-height: 28px;
-}
-
 #adaptable-page-header-wrapper {
     .dropdown-menu > li > a:hover,
     .dropdown-menu > li > a:focus,
@@ -129,11 +125,6 @@ fieldset {
     margin: 3px 5px 5px 0;
 }
 
-select {
-    width: auto;
-}
-
-
 /* main headings */
 #page-content {
     padding: 12px 0 20px;
@@ -155,7 +146,8 @@ select {
     margin-bottom: 20px;
 }
 
-#nologo, #nologo a,
+#nologo,
+#nologo a,
 .generalbox h2,
 h3.sectionname,
 div.tabtree li.selected a span,
@@ -469,7 +461,6 @@ a.component-expand .badge {
     color: #fff;
     text-decoration: none;
 }
-
 
 .slidewrap {
     margin-bottom: [[setting:slidermarginbottom]];
@@ -815,10 +806,6 @@ div.redirectmessage {
     width: 60%;
 }
 
-.singleselect {
-    width: inherit;
-}
-
 #mode select,
 #forummenu select {
     height: 36px;
@@ -889,7 +876,6 @@ div.redirectmessage {
     max-width: 420px;
 }
 
-span2.mceEditor iframe,
 table.mceLayout2 iframe {
     max-width: 500px !important;
 }
@@ -981,11 +967,9 @@ input[type="radio"], input[type="checkbox"] {
             color: red;
         }
     }
-}
-
-
-.customalert p {
-  display: inline;
+    p {
+        display: inline;
+    }
 }
 
 #beta {
@@ -1323,7 +1307,8 @@ button.close {
     overflow-y: visible;
 }
 
-div.no-overflow, .yui3-datatable {
+div.no-overflow,
+.yui3-datatable {
     overflow-y: visible;
     overflow-x: auto;
 }
@@ -1386,12 +1371,6 @@ button.search-box__button {
 
 div.questionbankwindow.block {
     overflow: auto;
-}
-
-.que .formulation {
-    background-color: [[setting:currentcolor]];
-    border-color: #bce8f1;
-    color: [[setting:fontcolor]];
 }
 
 .container {
@@ -1756,6 +1735,7 @@ a.cimbox {
 .que .formulation {
     background-color: transparent !important;
     border: 1px solid [[setting:maincolor]] !important;
+    color: [[setting:fontcolor]];
 }
 
 .que .info {
@@ -1854,7 +1834,6 @@ a.cimbox {
 #page-mod-glossary-view .glossarycontrol {
     margin: -40px 5px;
 }
-
 
 .rcs-search {
     margin: auto 0 0 5px;
@@ -2066,11 +2045,6 @@ img.smallicon {
     color: #fff !important;
 }
 
-/* Filepicker area. */
-.filepicker-filelist .filepicker-container, .filemanager.fm-noitems .fm-empty-container {
-
-}
-
 /* Adaptable 2.0 */
 .p-0 {
     background-color: transparent !important;
@@ -2153,9 +2127,6 @@ img.smallicon {
 /* Transform default value text in settings to Italic. */
 .form-item .form-setting .form-defaultinfo {
     font-style: italic;
-}
-
-.form-item .form-setting .form-defaultinfo {
     padding-left: 5px;
 }
 
@@ -2191,6 +2162,7 @@ img.smallicon {
 .form-group textarea.form-control {
     margin: 0 0 0.7rem 0;
 }
+
 .moodle-dialogue-base .chooserdialogue .moodle-dialogue-wrap .moodle-dialogue-hd .yui3-widget-buttons {
     padding: 0.6em;
 }

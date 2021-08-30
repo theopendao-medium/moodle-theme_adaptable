@@ -55,7 +55,7 @@ function theme_adaptable_get_main_scss_content($theme) {
 
     $scss .= file_get_contents($CFG->dirroot.'/theme/adaptable/scss/main.scss');
 
-    static $settingssheets = array(
+    $settingssheets = array(
         'adaptable',
         'blocks',
         'button',
@@ -399,7 +399,6 @@ function theme_adaptable_process_scss($scss, $theme) {
     return $scss;
 }
 
-
 /**
  * Parses CSS before it is cached.
  *
@@ -418,7 +417,6 @@ function theme_adaptable_process_customcss($css, $theme) {
         $customcss = null;
     }
     $css = theme_adaptable_set_customcss($css, $customcss);
-
 
     return $css;
 }

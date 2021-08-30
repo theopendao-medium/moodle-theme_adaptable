@@ -92,13 +92,13 @@
 @media (max-width: 991.98px) {
     .navbarsearchsocial .simplesearchform .collapse.show,
     .navbarsearchsocial .simplesearchform .collapsing {
-        position: relative;
+        background-color: transparent;
+        display: flex;
+        height: auto;
         left: 0;
+        position: relative;
         top: 0;
         width: 100%;
-        display: flex;
-        background-color: transparent;
         z-index: 1060;
-        height: auto;
     }
 }

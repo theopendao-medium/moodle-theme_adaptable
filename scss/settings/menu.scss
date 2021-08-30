@@ -46,11 +46,6 @@
     content: none;
 }
 
-/* Used to add padding to top of page when sticky top menu is used */
-/* .page-header-margin {
-    padding-top: 30px;
-} */
-
 .adaptable-page-header-wrapper#affix {
     top: 0;
     width: 100%;
@@ -223,10 +218,10 @@
 
 /* New menus styles */
 .newmenus {
-    position: relative;
-    margin-left: 20px;
     font-size: [[setting:topmenufontsize]];
     height: 26px;
+    margin-left: 20px;
+    position: relative;
 }
 
 .newmenus .dropdown-menu .dropdown-menu {
@@ -257,10 +252,10 @@
 
 .newmenus .dropdown-toggle::after {
     color: [[setting:headertextcolor]];
-    content:"\f107";
-    font-family:"Font Awesome";
+    content: "\f107";
+    font-family: "Font Awesome";
     font-weight: normal;
-    margin-left:5px;
+    margin-left: 5px;
 }
 
 .newmenus .dropdown-menu .dropdown-toggle::after {
@@ -342,8 +337,8 @@
     .overlaymenu a {font-size: 20px}
     .overlaymenu .closebtn {
         font-size: 40px;
-        top: 15px;
         right: 35px;
+        top: 15px;
     }
 }
 
