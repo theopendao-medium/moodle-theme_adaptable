@@ -21,6 +21,9 @@
     Example context (json):
     {
         "versioninfo": "Release 3.0.3, version 2020073104 on Moodle 3.9.4 (Build: 20210118)",
+        "maturity": "Maturity info",
+        "maturityalert": "info",
+        "versioncheck": "Not supported on this version of Moodle",
         "tabs": [
          {
             "name": "tab1",
@@ -37,7 +40,15 @@
         ]
     }
 }}
+{{#maturity}}
+<div class="alert alert-{{maturityalert}} mb-3">
 <h3>{{versioninfo}}</h3>
+{{{maturity}}}
+</div>
+{{/maturity}}
+{{^maturity}}
+<h3>{{versioninfo}}</h3>
+{{/maturity}}
 {{#versioncheck}}
 <div class="alert alert-warning mb-3">
 {{{versioncheck}}}
