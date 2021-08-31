@@ -2183,30 +2183,15 @@ EOT;
     /**
      * Returns html to render main navigation menu
      *
-     * @param string $menuid The id to use when creating menu. Used so this can be called for a nav drawer style display.
+     * @param string $menuid The id to use when creating menu.  Used so this can be called for a nav drawer style display.
      *
-     * @return string
+     * @return string Markup.
      */
     public function navigation_menu($menuid) {
+        static $menu = null;
 
-        $sessttl = 0;
-        $cache = \cache::make('theme_adaptable', 'userdata');
-
-        if ($sessttl > 0 && time() <= $cache->get('usernavbarttl')) {
-            return $cache->get('mysitesvisibility');
-        }
-        static $builtmenu = null;
-
-        if ($builtmenu != null) {
-            $menu = $builtmenu;
-        } else {
+        if (is_null($menu)) {
             $menu = $this->navigation_menu_content();
-            $builtmenu = $menu;
-        }
-
-        if ($sessttl > 0) {
-            $cache->set('usernavbarttl', $sessttl);
-            $cache->set('usernavbar', $this->render_custom_menu($menu, '', '', $menuid));
         }
 
         return $this->render_custom_menu($menu, '', '', $menuid);

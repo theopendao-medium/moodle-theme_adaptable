@@ -1641,16 +1641,16 @@ $string['jssection'] = 'Javascript section';
 $string['jssectiondesc'] = 'Add javascript code to the site.';
 
 $string['jssectionrestricted'] = 'Conditional javascript section';
-$string['jssectionrestricteddesc'] = 'Add javascript code to the site conditionally based on a custom profile field. This javascript will only appear if this condition is met.';
+$string['jssectionrestricteddesc'] = 'Add javascript code to the site conditionally based on a custom profile field.  This javascript will only appear if this condition is met.';
 
 $string['jssectionrestrictedprofilefield'] = 'Javascript section custom profile field';
 $string['jssectionrestrictedprofilefielddesc'] = 'Show the javascript above ONLY when user matches this custom profile field value, eg: faculty=fbl.';
 
 $string['jssectionrestricteddashboardonly'] = 'Include javascript only on dashboard page';
-$string['jssectionrestricteddashboardonlydesc'] = 'Show the javascript only on the dashboard page. Otherwise this displays sitewide.';
+$string['jssectionrestricteddashboardonlydesc'] = 'Show the javascript only on the dashboard page.  Otherwise this displays sitewide.';
 
 // Cache definitions.
-$string['cachedef_userdata'] = 'A session cache used to store user specific data.';
+// TODO.
 
 // Activity and section navigation *******************.
 $string['nextactivity'] = 'Next activity';
