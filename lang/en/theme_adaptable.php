@@ -618,7 +618,7 @@ $string['messagingbackgroundcolor'] = 'Messages main window background colour';
 $string['messagingbackgroundcolordesc'] = 'Set the background colour for the messages main chat window.';
 
 $string['headerbkcolor2'] = 'Lower header background colour';
-$string['headerbkcolor2desc'] = 'Set the lower header background colour. Note that this also sets the colour for the background in Header style 2.';
+$string['headerbkcolor2desc'] = 'Set the lower header background colour.  Note that this also sets the colour for the background in Header style 2.';
 
 $string['headertextcolor'] = 'Top Header blocks text and link colour';
 $string['headertextcolordesc'] = 'Set the top header blocks text and link colour.';
