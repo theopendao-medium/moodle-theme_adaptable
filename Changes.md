@@ -1,5 +1,6 @@
 Change Log in version 3.11.0.3 (2021081002)
 ===========================================
+1. Fix 'setting colours (courses)' - Ref: https://moodle.org/mod/forum/discuss.php?d=426492.
 
 Change Log in version 3.11.0.2 (2021081001)
 ===========================================
