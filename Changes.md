@@ -1,3 +1,6 @@
+Change Log in version 3.11.0.3 (2021081002)
+===========================================
+
 Change Log in version 3.11.0.2 (2021081001)
 ===========================================
 1. Fix 'Actions' not available when editing, ref: https://moodle.org/mod/forum/discuss.php?d=425729#p1714807.
