@@ -8,6 +8,7 @@ Change Log in version 3.10.1.4 (2021022304)
    This will reduce the amount of source 'CSS' and help to spot duplication and mistakes.
 6. Added extra information in the settings tabs about maturity of the release.
 7. Fix 'Userdata cache not used' - #247.
+8. Fix 'setting colours (courses)' - Ref: https://moodle.org/mod/forum/discuss.php?d=426492.
 
 Change Log in version 3.10.1.3 (2021022303)
 ===========================================
