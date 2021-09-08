@@ -1,30 +1,29 @@
-/*
-* This file is part of Moodle - http://moodle.org/
-*
-* Moodle is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Moodle is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-*
-*
-* Adaptable Menu Style sheet
-*
-* @package    theme_adaptable
-* @copyright  2015-2016 Jeremy Hopkins (Coventry University)
-* @copyright  2015-2019 Fernando Acedo (3-bits.com)
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*
-*/
+//
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+//
+//
+// Adaptable Menu Style sheet
+//
+// @package    theme_adaptable
+// @copyright  2015-2016 Jeremy Hopkins (Coventry University)
+// @copyright  2015-2019 Fernando Acedo (3-bits.com)
+// @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+//
 
-/* Navwrap */
+// Navwrap.
 #adaptable-page-header-wrapper #main-navbar {
     background-color: [[setting:menubkcolor]];
     border-bottom: 3px solid [[setting:menubordercolor]];
@@ -40,7 +39,7 @@
     margin-right: -[[setting:menufontpadding]];
 }
 
-/* Remove caret from main navbar menu. */
+// Remove caret from main navbar menu.
 #adaptable-page-header-wrapper #main-navbar .dropdown-toggle::after,
 #adaptable-page-header-wrapper #nav-drawer .dropdown-toggle::after {
     content: none;
@@ -52,23 +51,23 @@
     z-index: 1010;
 }
 
-/* General menu styling */
+// General menu styling.
 
-/* Sticky navbar */
+// Sticky navbar.
 
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+// The sticky class is added to the navbar with JS when it reaches its scroll position.
 #adaptable-page-header-wrapper .adaptable-navbar-sticky {
     position: fixed;
     top: 0;
     width: 100%;
 }
 
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+// Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 #adaptable-page-header-wrapper .adaptable-navbar-sticky + .adaptable-navbar-sticky-content-padding {
     padding-top: 60px;
 }
 
-/* Page content */
+// Page content */
 #adaptable-page-header-wrapper .adaptable-navbar-sticky-content-padding {
     padding: 16px;
 }
@@ -80,7 +79,7 @@
     width: 22px;
 }
 
-/* New main navbar styling */
+// New main navbar styling */
 #adaptable-page-header-wrapper #main-navbar .navbar-nav > li > a.nav-link,
 #adaptable-page-header-wrapper #main-navbar .navbar-nav > li > div.nav-link,
 #adaptable-page-header-wrapper #main-navbar .navbar-nav .context-header-settings-menu .action-menu-trigger a.dropdown-toggle,
@@ -216,7 +215,7 @@
     margin-top: 2px;
 }
 
-/* New menus styles */
+// New menus styles */
 .newmenus {
     font-size: [[setting:topmenufontsize]];
     height: 26px;
@@ -266,16 +265,16 @@
     height: 100%;
 }
 
-/* The Overlay (background) */
+// The Overlay (background) */
 .overlaymenu {
-    background-color: rgb(0,0,0); /* Black fallback color */
-    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    background-color: rgb(0,0,0); // Black fallback color.
+    background-color: rgba(0,0,0, 0.9); // Black w/opacity.
     height: 0;
     left: 0;
-    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-x: hidden; // Disable horizontal scroll.
     position: fixed;
     top: 0;
-    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+    transition: 0.5s; // 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal).
     width: 100%;
     z-index: 1090;
 }
@@ -303,7 +302,7 @@
     font-size: 1.5em;
     padding: 8px;
     text-decoration: none;
-    transition: 0.3s; /* Transition effects on hover (color) */
+    transition: 0.3s; // Transition effects on hover (color).
 }
 
 .overlay-content li > a:hover {
@@ -332,7 +331,7 @@
     margin-right: 15px;
 }
 
-/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+// When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap.
 @media (max-height: 450px) {
     .overlaymenu a {font-size: 20px}
     .overlaymenu .closebtn {
@@ -342,14 +341,14 @@
     }
 }
 
-/* Styling the top menu link when it's configured not to appear on the right. */
+// Styling the top menu link when it's configured not to appear on the right.
 #adaptable-page-header-wrapper .topmenuleft {
     float: left;
     margin: 0;
     padding: 10px 0 0 0;
 }
 
-/* New dropdown-related classes.  These are mainly for settings. */
+// New dropdown-related classes.  These are mainly for settings.
 
 .navbar {
     -webkit-box-shadow: none;
@@ -392,9 +391,9 @@
     opacity: 1;
 }
 
-/* Bootstrap hides/shows dropdowns onclick via the class .show */
+// Bootstrap hides/shows dropdowns onclick via the class 'show'.
 .dropdown-menu.show {
-    display: block !important; /* SHAME - using important as this seems to be overwriten elsewhere. */
+    display: block !important; // SHAME - using important as this seems to be overwriten elsewhere.
 }
 
 #adaptable-page-header-wrapper .nav .dropdown-menu li a {
@@ -460,9 +459,9 @@
     top: -1px;
 }
 
-/* New bootstrap related css classes for hover menus. The below added for Adaptable for Moodle 3.6 onwards. */
+// New bootstrap related css classes for hover menus. The below added for Adaptable for Moodle 3.6 onwards.
 
-/*=-====Bootstrapthemes.co btco-hover-menu=====*/
+//=-====Bootstrapthemes.co btco-hover-menu=====
 
 #adaptable-page-header-wrapper .navbar-nav {
     margin-bottom: 0;
@@ -480,7 +479,7 @@
     color: rgb(64, 64, 64);
 }
 
-/* Drop-down menu for hover. */
+// Drop-down menu for hover.
 #adaptable-page-header-wrapper .btco-hover-menu {
     background: none;
     margin: 0;

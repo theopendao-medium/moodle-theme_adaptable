@@ -1,35 +1,33 @@
-/*
-* This file is part of Adaptable theme for moodle
-*
-* Moodle is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Moodle is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-*
-*
-* Adaptable course CSS file
-*
-* @package    theme_adaptable
-* @copyright  2015-2019 Jeremy Hopkins (Coventry University)
-* @copyright  2015-2019 Fernando Acedo (3-bits.com)
-* @copyright  2018-2019 Manoj Solanki (Coventry University)
-*
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+//
+// This file is part of Adaptable theme for moodle
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+//
+//
+// Adaptable course CSS file
+//
+// @package    theme_adaptable
+// @copyright  2015-2019 Jeremy Hopkins (Coventry University)
+// @copyright  2015-2019 Fernando Acedo (3-bits.com)
+// @copyright  2018-2019 Manoj Solanki (Coventry University)
+//
+// @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+//
 
-/* ****************** */
-/* Common settings    */
-/* ****************** */
+// Common settings.
 
-/* Remove 'Your Progress' in Course page (only 3.6 or lower). */
+// Remove 'Your Progress' in Course page (only 3.6 or lower).
 #completionprogressid {
     display: [[setting:showyourprogress]];
     margin-bottom: 15px;
@@ -45,16 +43,14 @@
     color: [[setting:fonttitlecolorcourse]];
 }
 
-/* ************************ */
-/* Course Tiles             */
-/* ************************ */
+// Course Tiles.
 
-/* Remove 'Available courses' label. */
+// Remove 'Available courses' label.
 #frontpage-available-course-list h2 {
     display: [[setting:enableavailablecourses]];
 }
 
-/* Display the course list container */
+// Display the course list container.
 
 #frontpage-available-course-list {
     display: block;
@@ -75,7 +71,7 @@
     width: 100%;
 }
 
-/* Media breakpoints for courses list area */
+// Media breakpoints for courses list area.
 @media (min-width: 992px) {
     #page-site-index .courses {
         max-width: 960px;
@@ -87,7 +83,7 @@
     }
 }
 
-/* Course tiles */
+// Course tiles.
 .coursebox.panel .panel-body {
     border: 4px solid [[setting:tilesbordercolor]];
     margin: 2px;
@@ -103,27 +99,27 @@
     margin-bottom: 30px;
 }
 
-/* 1 tile. */
+// 1 tile.
 .coursebox.col-12 .coursebtn {
     width: 20%;
 }
 
-/* 2 tiles. */
+// 2 tiles.
 .coursebox.col-6 .coursebtn {
     width: 40%;
 }
 
-/* 3 tiles. */
+// 3 tiles.
 .coursebox.col-4 .coursebtn {
     width: 50%;
 }
 
-/* 4 tiles. */
+// 4 tiles.
 .coursebox.col-3 .coursebtn {
     width: 50%;
 }
 
-/* 6 tiles. */
+// 6 tiles.
 .coursebox.col-2 .coursebtn {
     width: 80%;
 }
@@ -317,7 +313,7 @@
     overflow: hidden;
     transition: height .5s ease-in-out;
     width: auto;
-    z-index: 9; /* Override .cimbox class. */
+    z-index: 9; // Override .cimbox class. */
 }
 
 .covtiles .panel-body .coursebox-content:hover,
@@ -325,10 +321,7 @@
     height: calc(100% - 5px);
 }
 
-/* ************************ */
-/* Topics / Weekly format   */
-/* ************************ */
-
+// Topics / Weekly format.
 .course-content ul.topics li.section {
     padding-bottom: 0;
 }
@@ -436,7 +429,7 @@ body:not(.editing) .sitetopic ul.section,
     background-color: [[setting:coursesectionheaderbg]];
 }
 
-/* Alter nav on single-section for better onetopic course format support */
+// Alter nav on single-section for better onetopic course format support.
 .single-section .nav {
     margin-bottom: 0;
 }
@@ -457,7 +450,7 @@ body:not(.editing) .sitetopic ul.section,
     padding: 0 20px;
 }
 
-/* Current Section */
+// Current Section.
 #page .course-content ul li.section.main.current{
     background-color: [[setting:currentcolor]];
 }
@@ -476,12 +469,10 @@ body:not(.editing) .sitetopic ul.section,
     margin-right: 40px;
 }
 
-/* ************* */
-/* Social Wall   */
-/* ************* */
+// Social Wall   */
 
-/* All sections--------------------------------------------------------------------------- */
-/* Add padding, background, and word-wrap on all sections*/
+// All sections.
+// Add padding, background, and word-wrap on all sections.
 .format-socialwall .topics {
     padding: 2em;
     border-radius: [[setting:socialwallsectionradius]];
@@ -490,7 +481,7 @@ body:not(.editing) .sitetopic ul.section,
     font-family: [[setting:fontname]];
 }
 
-/*Add padding, background, and border to all sections */
+//Add padding, background, and border to all sections.
 .format-socialwall .section.main.clearfix#section-0,
 .format-socialwall .section.main.clearfix#section-2,
 .format-socialwall .topics > form,
@@ -503,8 +494,8 @@ body:not(.editing) .sitetopic ul.section,
     border-radius: [[setting:socialwallsectionradius]];
 }
 
-/* Section 0 ------------------------------------------------------------------------------- */
-/* Combine section 0, section 2, search form, and post count */
+// Section 0.
+// Combine section 0, section 2, search form, and post count.
 .format-socialwall .section.main.clearfix#section-0 {
     border-bottom: 0;
     margin-bottom: 0;
@@ -536,41 +527,41 @@ body:not(.editing) .sitetopic ul.section,
     border-top-right-radius: 0;
 }
 
-/* Make title background white */
+// Make title background white.
 .format-socialwall .section.main.clearfix#section-0 h3.sectionname {
     background: #fff;
 }
 
-/* Section 2------------------------------------------------------------------------------- */
-/* Make activity/resource link inactive */
+// Section .
+// Make activity/resource link inactive.
 .format-socialwall #postform input#sw-addactivitylink {
     pointer-events: none;
 }
 
-/* Text area resizing--------------------------------------------------------------------- */
-/* Allow the comment starting text area to expand to the width of the parent element */
+// Text area resizing.
+// Allow the comment starting text area to expand to the width of the parent element.
 .format-socialwall div.felement.ftextarea {
     max-width: 100%;
 }
-/* Set the starting text areas of post and comment to the maximum width, and stop them from expanding futher than their parent element */
+// Set the starting text areas of post and comment to the maximum width, and stop them from expanding futher than their parent element.
 .format-socialwall .sw-texarea, .format-socialwall .tl-commentform .tl-commenttext {
     box-sizing: border-box;
     min-width: 100%;
     max-width: 100%;
 }
 
-/* Post----------------------------------------------------------------------------------- */
-/* Add space between post text and author, and post text and attached files */
+// Post.
+// Add space between post text and author, and post text and attached files.
 .format-socialwall .tl-posttext .text_to_html {
     padding: 2em 0 1.5em;
 }
 
-/* Remove border between post author picture and post */
+// Remove border between post author picture and post.
 .format-socialwall .tl-text {
     border-left: 0;
 }
 
-/* Resize, re-align, and recolour post time edited ago */
+// Resize, re-align, and recolour post time edited ago.
 .format-socialwall .tl-edited-wrapper {
     font-size: 0.8em;
     text-align: right;
@@ -578,58 +569,58 @@ body:not(.editing) .sitetopic ul.section,
     background: #fff;
 }
 
-/* Comment--------------------------------------------------------------------------------- */
-/* Add space at the bottom of each comment */
+// Comment.
+// Add space at the bottom of each comment.
 .format-socialwall .tl-comment {
     padding-bottom: 1em;
 }
 
-/* Add space between comment author name and comment text */
+// Add space between comment author name and comment text.
 .format-socialwall .tl-text .tl-authorname {
     padding-bottom: 1.5em;
 }
 
-/* Add space between comment text and time ago */
+// Add space between comment text and time ago.
 .format-socialwall .tl-comment .tl-text div:nth-child(2) {
     padding-bottom: 1.5em;
 }
 
-/* Remove space at the bottom of replywrapper */
+// Remove space at the bottom of replywrapper.
 .format-socialwall .tl-comment-replywrapper {
     padding-bottom: 0;
 }
 
-/* Moves the required text to the right */
+// Moves the required text to the right.
 div.fdescription.required {
     float: right;
 }
 
-/* Post attachment------------------------------------------------------------------------- */
-/* Add space between attached files and post text or post author, and space between attached files and post action area */
+// Post attachment.
+// Add space between attached files and post text or post author, and space between attached files and post action area.
 .format-socialwall ul.section.tl-postattachment {
     padding: 2em 0 2.5em;
     margin: 0;
 }
 
-/* Present attached files horizontally */
+// Present attached files horizontally.
 .format-socialwall ul.section.tl-postattachment div {
     float: left;
 }
 
-/* Post action area------------------------------------------------------------------------ */
-/* Add space around post counts and timeago */
+// Post action area.
+// Add space around post counts and timeago.
 .format-socialwall .tl-counts, .format-socialwall .tl-timeago {
     font-size: 0.8em;
     color: [[setting:fontcolor]];
     padding: 1em 0 1.5em;
 }
 
-/* Add space after each count (likes and comments) */
+// Add space after each count (likes and comments).
 .format-socialwall .tl-counts span {
     padding-right: 1.5em;
 }
 
-/* Add space at the end of action area and remove right, bottom, left border */
+// Add space at the end of action area and remove right, bottom, left border.
 .format-socialwall .tl-post .tl-post-actionarea {
     padding: 0 0 1em;
     border-left: 0;
@@ -639,32 +630,32 @@ div.fdescription.required {
     border-top-right-radius: 0;
 }
 
-/* Post action links---------------------------------------------------------------------- */
-/* Make the color of action link grey */
+// Post action links.
+// Make the color of action link grey.
 .format-socialwall .tl-actionlink a {
     color: [[setting:socialwallactionlinkcolor]];
 }
 
-/* Add space after like */
+// Add space after like.
 .format-socialwall .tl-actionlink a.like {
     padding-right: 3em;
 }
 
-/* Add space after likenomore and change color to light blue */
+// Add space after likenomore and change color to light blue.
 .format-socialwall .tl-actionlink a.likenomore {
     padding-right: 3em;
     font-weight: bold;
 }
 
-/* Change color on hover over to all action link from grey to light blue */
+// Change color on hover over to all action link from grey to light blue.
 .format-socialwall .tl-actionlink a:hover {
     font-weight: bold;
     color: [[setting:socialwallactionlinkhovercolor]];
     text-decoration: none;
 }
 
-/* Before the like action link----------------------------------------------------- */
-/* Add a hollow thumbs up icon before like */
+// Before the like action link.
+// Add a hollow thumbs up icon before like.
 .format-socialwall .like:before {
     font-family: "Font Awesome 5 Free";
     content: "\f087";
@@ -672,7 +663,7 @@ div.fdescription.required {
     padding-right: .15em;
 }
 
-/* Add a full thumbs up icon before like */
+// Add a full thumbs up icon before like.
 .format-socialwall .likenomore:before {
     font-family: "Font Awesome 5 Free";
     content: "\f164";
@@ -680,7 +671,7 @@ div.fdescription.required {
     padding-right: .15em;
 }
 
-/* Add a hollow comment icon before like */
+// Add a hollow comment icon before like.
 .format-socialwall .tl-actionlink a:nth-child(3):before {
     font-family: "Font Awesome 5 Free";
     content: "\f0e5";
@@ -688,8 +679,8 @@ div.fdescription.required {
     padding-right: .15em;
 }
 
-/* Profile picture------------------------------------------------------------------ */
-/* Make the profile picture circular */
+// Profile picture.
+// Make the profile picture circular.
 .format-socialwall img.userpicture {
     border: 0.25em solid #ffffff;
     border-radius: 50%;
@@ -790,7 +781,7 @@ div.fdescription.required {
   font-style: normal;
 }
 
-/* Activity styling */
+// Activity styling */
 .block_site_main_menu .mod-indent .activity,
 .block_site_main_menu .main-menu-content .activity {
     padding: 5px 0 5px 0;
@@ -825,7 +816,7 @@ div.fdescription.required {
     margin-right: 0;
 }
 
-/* Label Info */
+// Label Info.
 .section .activity .availabilityinfo {
     margin-left: 30px;
     margin-top: 1em;
@@ -845,7 +836,7 @@ div.fdescription.required {
 }
 
 
-/* Activity further information styling */
+// Activity further information styling.
 .ad-activity-meta-container {
     padding: 5px 0 0 0;
 }
@@ -922,7 +913,7 @@ li.activity div.actions-right {
     padding: .1em;
 }
 
-/* region-main-settings-menu is used on pages other than course pages, but included here to keep the settings together. */
+// region-main-settings-menu is used on pages other than course pages, but included here to keep the settings together.
 .context-header-settings-menu,
 .region-main-settings-menu {
     height: 42px;
