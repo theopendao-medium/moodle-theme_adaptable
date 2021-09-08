@@ -10,6 +10,7 @@ Change Log in version 3.9.1.4 (2020073111)
 7. Added extra information in the settings tabs about maturity of the release.
 8. Fix 'Userdata cache not used' - #247.
 9. Fix 'setting colours (courses)' - Ref: https://moodle.org/mod/forum/discuss.php?d=426492.
+10. Fix empty setting value of 'pageheaderheight' causes SCSS compilation issue - Ref: https://moodle.org/mod/forum/discuss.php?d=426553.
 
 Change Log in version 3.9.1.3 (2020073110)
 ==========================================
