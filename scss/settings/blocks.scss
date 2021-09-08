@@ -1,29 +1,29 @@
-/*
-* This file is part of Adaptable theme for moodle
-*
-* Moodle is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Moodle is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-*
-*
-* Adaptable block styles sheet
-*
-* @package    theme_adaptable
-* @copyright  2015-2019 Jeremy Hopkins (Coventry University)
-* @copyright  2015-2019 Fernando Acedo (3-bits.com)
-* @copyright  2018-2019 Manoj Solanki (Coventry University)
-*
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+//
+// This file is part of Adaptable theme for moodle
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+//
+//
+// Adaptable block styles sheet
+//
+// @package    theme_adaptable
+// @copyright  2015-2019 Jeremy Hopkins (Coventry University)
+// @copyright  2015-2019 Fernando Acedo (3-bits.com)
+// @copyright  2018-2019 Manoj Solanki (Coventry University)
+//
+// @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+//
 
 .block-region-front .block {
     border: none;
@@ -43,7 +43,7 @@
     max-width: 100%;
 }
 
-/* Reset border values */
+// Reset border values.
 [class^="block-side-"] .card-body,
 .block {
     background-color: [[setting:blockbackgroundcolor]];
@@ -57,7 +57,7 @@
     padding: .5rem;
 }
 
-/* Block titles */
+// Block titles.
 .block .header,
 .block > .card-body,
 #dockeditempanel .dockeditempanel_hd {
@@ -68,7 +68,7 @@
     border-radius: [[setting:blockheadertopradius]] [[setting:blockheadertopradius]] [[setting:blockheaderbottomradius]] [[setting:blockheaderbottomradius]];
 }
 
-/* Block header */
+// Block header.
 .block .header {
     background-color: [[setting:blockheaderbackgroundcolor]];
 }
@@ -77,7 +77,7 @@
     padding-right: 0;
 }
 
-/* Block title */
+// Block title.
 .block .title h2 {
     color: [[setting:fontblockheadercolor]];
     font-size: [[setting:fontblockheadersize]];
@@ -102,7 +102,7 @@
     color: [[setting:fontblockheadercolor]] !important;
 }
 
-/* Block content */
+// Block content.
 .block > .content,
 #dockeditempanel .dockeditempanel_bd {
     border-width: [[setting:blockmainbordertop]] [[setting:blockmainborderright]] [[setting:blockmainborderbottom]] [[setting:blockmainborderleft]];
@@ -127,14 +127,14 @@
     width: 18px;
 }
 
-/** Some specific block styles for calendar block, login block, my profile block, etc. **/
-/* Navigation block */
+// Some specific block styles for calendar block, login block, my profile block, etc.
+// Navigation block.
 .jsenabled .block_settings .block_tree .tree_item.branch,
 .block_navigation .block_tree .tree_item.branch {
     color: [[setting:linkcolor]] !important;
 }
 
-/* Fix wrong indentation */
+// Fix wrong indentation.
 .block_navigation .block_tree p.hasicon img {
     padding-right: 0;
 }
@@ -153,18 +153,18 @@
     text-indent: -3px;
 }
 
-/* Course Timeline block */
+// Course Timeline block.
 .block .content .block-timeline a:hover {
     background-color: [[setting:navbardropdownhovercolor]] !important;
     color: [[setting:navbardropdowntexthovercolor]] !important;
 }
 
-/* Recently accessed courses block */
+// Recently accessed courses block.
 .block_recentlyaccessedcourses .paging-bar-container {
     margin-top: -3rem;
 }
 
-/* Login block */
+// Login block.
 .block_login label {
     font-size: 14px;
     color: #666;
@@ -276,12 +276,12 @@
   width: 33%;
 }
 
-/* Admin block */
+// Admin block.
 .block_adminblock .content {
     margin: 0 auto;
 }
 
-/* Course Overview block */
+// Course Overview block.
 .block_course_overview .content {
     margin: 0;
 }
@@ -303,7 +303,7 @@
 }
 
 
-/* Calendar block */
+// Calendar block.
 .block_calendar_month table.minicalendar.calendartable td {
     border: none !important;
 }
@@ -339,7 +339,7 @@
 }
 
 
-/* Comments block */
+// Comments block.
 .block_comments div.content li {
     list-style-type: none;
 }
@@ -350,7 +350,7 @@
     border-top: 1px solid #eee;
 }
 
-/* Site Info block */
+// Site Info block.
 .site-info-container {
     background-color: [[setting:maincolor]];
     padding: 5px 10px;
@@ -371,14 +371,14 @@
     text-align: right;
 }
 
-/* Server Info block */
+// Server Info block.
 .server-info-container {
     background-color: #39c121;
     padding: 5px 10px;
     height: 120px
 }
 
-/* Quiz editing block header */
+// Quiz editing block header.
 .questionbankwindow.block {
     padding: 0;
 }
@@ -396,7 +396,7 @@
     white-space: normal;
 }
 
-/* Hidden blocks */
+// Hidden blocks.
 .block.hidden .header {
     border-bottom: 0;
 }
@@ -409,13 +409,13 @@ body.has_dock div#dock {
     z-index: 3;
 }
 
-/* Squared dot */
+// Squared dot.
 .block_settings .block_tree li.item_with_icon > p img {
     left: 3px;
     top: 2px;
 }
 
-/* Add or hide block icons */
+// Add or hide block icons.
 .showblockicons .block .header .title h2:before {
     content: "\f0c9";
     display: inline-block;
@@ -428,7 +428,7 @@ body.has_dock div#dock {
     text-rendering: auto;
 }
 
-/* Block Icons */
+// Block Icons.
 .showblockicons .block_news_items.block .header .title h2:before {
     content: "\f0a1";
 }
@@ -579,7 +579,7 @@ body.has_dock div#dock {
     content: "\f277";
 }
 
-/* Overriden from Boost. */
+// Overriden from Boost..
 .block_tree .tree_item.branch {
     margin-left: 0;
 }
@@ -592,18 +592,18 @@ body.has_dock div#dock {
     padding-left: 5px;
 }
 
-/* Add slightly extra margin on right. */
+// Add slightly extra margin on right.
 .block_settings .block_tree p.hasicon .icon {
     margin-right: 4px;
 }
 
-/* Circle icon size decreased */
+// Circle icon size decreased.
 .block_settings .fa-circle {
     font-size: 10px;
     margin-right: .25rem;
 }
 
-/* Tabbed layout for course and dashboard */
+// Tabbed layout for course and dashboard.
 
 main.tabcontentcontainer {
   min-height: 400px;
@@ -676,14 +676,14 @@ main.tabcontentcontainer {
 .tabcontentcontainer input.dashboardtab:checked + label {
     border-color: [[setting:tabbedlayoutdashboardcolorselected]];
     background-color: [[setting:tabbedlayoutdashboardcolorselected]];
-    border-top: 4px solid [[setting:tabbedlayoutdashboardcolorselected]];  /* Override this in custom css to change the selected tab colour */
+    border-top: 4px solid [[setting:tabbedlayoutdashboardcolorselected]];  // Override this in custom css to change the selected tab colour.
     color: #FFF;
 }
 
 .tabcontentcontainer input.coursetab:checked + label {
     border-color: [[setting:tabbedlayoutcoursepagetabcolorselected]];
     background-color: [[setting:tabbedlayoutcoursepagetabcolorselected]];
-    border-top: 4px solid [[setting:tabbedlayoutcoursepagetabcolorselected]];  /* Override this in custom css to change the selected tab colour */
+    border-top: 4px solid [[setting:tabbedlayoutcoursepagetabcolorselected]];  // Override this in custom css to change the selected tab colour.
     color: #FFF;
 }
 
@@ -761,7 +761,7 @@ main.tabcontentcontainer {
     .tabcontentcontainer div.linktab,
     .tabcontentcontainer label.dashboardtab,
     .tabcontentcontainer label.coursetab {
-        width: 100%; /* Make tabs full width at this resolution. */
+        width: 100%; // Make tabs full width at this resolution.
         margin: 2px 0;
     }
 

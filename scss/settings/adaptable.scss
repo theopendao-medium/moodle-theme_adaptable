@@ -1,31 +1,31 @@
-/*
-* This file is part of Adaptable theme for moodle
-*
-* Moodle is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Moodle is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-*
-*
-* Adaptable main CSS file
-*
-* @package    theme_adaptable
-* @copyright  2015-2019 Jeremy Hopkins (Coventry University)
-* @copyright  2015-2019 Fernando Acedo (3-bits.com)
-* @copyright  2018-2019 Manoj Solanki (Coventry University)
-*
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+//
+// This file is part of Adaptable theme for moodle
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+//
+//
+// Adaptable main CSS file
+//
+// @package    theme_adaptable
+// @copyright  2015-2019 Jeremy Hopkins (Coventry University)
+// @copyright  2015-2019 Fernando Acedo (3-bits.com)
+// @copyright  2018-2019 Manoj Solanki (Coventry University)
+//
+// @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+//
 
-/* Main elements selectors */
+// Main elements selectors.
 html,
 body {
     color: [[setting:fontcolor]];
@@ -37,13 +37,13 @@ body {
     padding: 0;
 }
 
-#page-my-index, /* Overridden from Boost theme to ignore background colour set on dashboard. */
+#page-my-index, // Overridden from Boost theme to ignore background colour set on dashboard.
 body {
     background-color: [[setting:backcolor]];
     background-size: 100% auto;
 }
 
-/* Headings */
+// Headings.
 h1,
 h2,
 h3,
@@ -56,7 +56,7 @@ h6 {
     font-weight: [[setting:fontheaderweight]] !important;
 }
 
-/* Other text tags */
+// Other text tags.
 input,
 button,
 select,
@@ -67,7 +67,7 @@ textarea {
     font-weight: [[setting:fontweight]] !important;
 }
 
-/* Links */
+// Links.
 a,
 a:visited,
 .tabtree .tabrow0 li a {
@@ -86,7 +86,7 @@ a:focus {
     outline-offset: -2px;
 }
 
-/* Lists */
+// Lists.
 #adaptable-page-header-wrapper {
     .dropdown-menu > li > a:hover,
     .dropdown-menu > li > a:focus,
@@ -96,14 +96,14 @@ a:focus {
     }
 }
 
-/* Text Selection */
+// Text Selection.
 ::selection,
 ::-moz-selection {
     background-color: [[setting:selectionbackground]];
     color: [[setting:selectiontext]];
 }
 
-/* Forms */
+// Forms.
 fieldset {
     min-width: 0;
 }
@@ -125,7 +125,7 @@ fieldset {
     margin: 3px 5px 5px 0;
 }
 
-/* main headings */
+// Main headings.
 #page-content {
     padding: 12px 0 20px;
     position: relative;
@@ -176,7 +176,7 @@ div.signuppanel h2 {
     min-height: [[setting:pageheaderheight]];
 }
 
-/* Override default boost max height for header2. */
+// Override default boost max height for header2.
 #header2 .navbar {
     max-height: 150px;
 }
@@ -191,7 +191,7 @@ div.signuppanel h2 {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.10);
 }
 
-/* Page */
+// Page.
 #page {
     [[setting:homebkg]]
     clear: both;
@@ -205,7 +205,7 @@ div.signuppanel h2 {
     flex-shrink: 0;
 }
 
-/* Header */
+// Header.
 #adaptable-page-header-wrapper {
     background-color: [[setting:headerbkcolor2]];
     width: 100%;
@@ -291,7 +291,7 @@ div.signuppanel h2 {
             padding-right: [[setting:socialpaddingside]]px;
         }
         i {
-            /* Make at least 29px, values look odd but on inspection they are needed to be so for FontAwesome. */
+            // Make at least 29px, values look odd but on inspection they are needed to be so for FontAwesome.
             font-size: [[setting:socialsize]];
             line-height: [[setting:socialsize]];
         }
@@ -352,7 +352,7 @@ div.signuppanel h2 {
     padding-right: 3px;
 }
 
-/* Badges */
+// Badges.
 .badge {
     padding: .4rem .6em;
 }
@@ -688,7 +688,7 @@ langmenu a:hover {
     text-decoration: none !important;
 }
 
-/* Breadcrumb */
+// Breadcrumb //
 #page-navbar {
     margin-top: 10px;
 }
@@ -773,7 +773,7 @@ langmenu a:hover {
     width: 0;
 }
 
-/* Messages popup. */
+// Messages popup.
 #newmessageoverlay #newmessagetext {
     background-color: [[setting:messagepopupbackground]];
     border-radius: 5px 5px 0 0;
@@ -938,10 +938,10 @@ input[type="radio"], input[type="checkbox"] {
 
 #region-main
 .pagelayout-mydashboard #region-main {
-    padding: 0 5px; /* Override Boost. */
+    padding: 0 5px; // Override Boost.
 }
 
-/* lang menu */
+// Lang menu.
 .langmenu {
     a {
         color: [[setting:headertextcolor]];
@@ -952,7 +952,7 @@ input[type="radio"], input[type="checkbox"] {
     }
 }
 
-/* alert messages */
+// Alert messages.
 .alert .close {
     text-decoration: none;
 }
@@ -984,12 +984,12 @@ input[type="radio"], input[type="checkbox"] {
      }
 }
 
-/* Alerts */
+// Alerts.
 .alert {
     margin-bottom: 0;
 }
 
-/* Course alerts */
+// Course alerts.
 .adaptable-alert-info {
     background-color: [[setting:alertbackgroundcolorinfo]];
     border-width: 1px;
@@ -1026,7 +1026,7 @@ input[type="radio"], input[type="checkbox"] {
     }
 }
 
-/* admin errors */
+// Admin errors.
 .adminerror {
     background-color: #f2dede;
     border-color: #ebcccc;
@@ -1083,14 +1083,14 @@ input[type="radio"], input[type="checkbox"] {
     padding: 0;
 }
 
-/* Show modal pop-up. */
+// Show modal pop-up.
 #notice {
     margin: 30px auto;
     min-width: 220px;
     width: 70%;
 }
 
-/* Modal styles */
+// Modal styles.
 .moodle-dialogue-base .closebutton::after {
     color: #777;
 }
@@ -1224,7 +1224,7 @@ input[type="radio"], input[type="checkbox"] {
     line-height: 0;
 }
 
-/* Modal file Picker */
+// Modal file Picker.
 .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd,
 .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd.yui3-widget-hd {
     background:none;
@@ -1675,7 +1675,7 @@ a.cimbox {
     text-align: center;
 }
 
-/* Pace Settings */
+// Pace Settings.
 .pace {
   pointer-events: none;
   -webkit-user-select: none;
@@ -1697,7 +1697,7 @@ a.cimbox {
     z-index: 2000;
 }
 
-/* Hidden admin blocks */
+// Hidden admin blocks.
 .hidden-blocks .block {
     float: right;
     margin-left: 10px;
@@ -1725,12 +1725,11 @@ a.cimbox {
   border-top: 0;
 }
 
-/* Quiz navigation.
-   Published by Tim Hunt in the moodle forum
-
-   Some styles are modified for Adaptable
-   Important!: Some colours are hardcoded
-*/
+// Quiz navigation.
+//   Published by Tim Hunt in the moodle forum
+//   Some styles are modified for Adaptable
+//   Important!: Some colours are hardcoded
+//
 
 .que .formulation {
     background-color: transparent !important;
@@ -1783,54 +1782,54 @@ a.cimbox {
     margin-top: 25px;
 }
 
-/* Not yet answered */
+// Not yet answered.
 .path-mod-quiz #mod_quiz_navblock .qnbutton.notyetanswered .trafficlight,
 .path-mod-quiz #mod_quiz_navblock .qnbutton.invalidanswer .trafficlight {
     background-color: #fff;
 }
 
-/* Correct answer */
+// Correct answer.
 .path-mod-quiz #mod_quiz_navblock .qnbutton.correct .trafficlight {
     background-color: #8bc34a;
 }
 
-/* Blocked */
+// Blocked.
 .path-mod-quiz #mod_quiz_navblock .qnbutton.blocked .trafficlight {
     background-color: #000;
 }
 
-/* Wrong answer */
+// Wrong answer.
 .path-mod-quiz #mod_quiz_navblock .qnbutton.notanswered .trafficlight,
 .path-mod-quiz #mod_quiz_navblock .qnbutton.incorrect .trafficlight {
     background-color: #f44336;
 }
 
-/* Partially correct */
+// Partially correct.
 .path-mod-quiz #mod_quiz_navblock .qnbutton.partiallycorrect .trafficlight {
     background-color: #ff9800;
 }
 
-/* Answered */
+// Answered.
 .path-mod-quiz #mod_quiz_navblock .qnbutton.complete .trafficlight,
 .path-mod-quiz #mod_quiz_navblock .qnbutton.answersaved .trafficlight,
 .path-mod-quiz #mod_quiz_navblock .qnbutton.requiresgrading .trafficlight {
     background-color: #999;
 }
 
-/* Fix user image in quiz report */
+// Fix user image in quiz report.
 #page-mod-quiz-report table#attempts td,
 #page-mod-quiz-report table.quizresponseanalysis td {
     max-width: 100%;
     min-width: 30px;
 }
 
-/* Fix quiz page width */
+// Fix quiz page width.
 #page-mod-quiz-attempt .container {
     width: 100% !important;
 }
 
 
-/* Fix glossary print option */
+// Fix glossary print option.
 #page-mod-glossary-view .glossarycontrol {
     margin: -40px 5px;
 }
@@ -1839,7 +1838,7 @@ a.cimbox {
     margin: auto 0 0 5px;
 }
 
-/* Fix Video Player icons */
+// Fix Video Player icons.
 .vjs-icon-play::before,
 .video-js .vjs-big-play-button::before,
 .video-js .vjs-play-control::before,
@@ -1848,12 +1847,12 @@ a.cimbox {
     font-family: videojs;
 }
 
-/* Fix activity restriction dialog (and others?) */
+// Fix activity restriction dialog (and others?).
 .moodle-dialogue-content[role="dialog"] .row {
     margin-left: inherit;
 }
 
-/* Edit hover dropdown background */
+// Edit hover dropdown background.
 .moodle-actionmenu.show[data-enhanced] .menu a:hover {
     background-color: #c0c0c0;
 }
@@ -1862,7 +1861,7 @@ a.cimbox {
     height: auto;
 }
 
-/* img assignment */
+// img assignment.
 .path-mod-assign [data-region="user-info"] .img-rounded {
     height: 60px;
 }
@@ -1871,7 +1870,7 @@ a.cimbox {
     max-width: none !important;
 }
 
-/* Dimmed text (courses or users) */
+// Dimmed text (courses or users).
 .dimmed,
 a.dimmed,
 a.dimmed:link,
@@ -1898,7 +1897,7 @@ a.dimmed_text:visited,
     vertical-align: middle;
 }
 
-/* Plugins installation status */
+// Plugins installation status.
 .status-upgrade {
     background-color: #d9edf7;
 }
@@ -1908,7 +1907,7 @@ a.dimmed_text:visited,
 }
 
 
-/* Activity chooser styling. */
+// Activity chooser styling.
 .moodle-dialogue-base .moodle-dialogue.chooserdialogue {
     height: 100%;
     min-width: 90%;
@@ -1927,7 +1926,7 @@ a.dimmed_text:visited,
     width: 65%;
 }
 
-/* Only set these options if we're showing the js container */
+// Only set these options if we're showing the js container.
 .jsenabled .choosercontainer #chooseform .alloptions {
     max-width: 95%;
 }
@@ -1965,7 +1964,7 @@ a.dimmed_text:visited,
 .choosercontainer #chooseform .selected .instruction {
     display: none;
 }
-/* End Activity chooser styling */
+// End Activity chooser styling.
 
 #savediscardsection {
     background-color: #eee;
@@ -1974,7 +1973,7 @@ a.dimmed_text:visited,
     min-height: 30px;
     opacity: 0.8;
     padding: 10px;
-    position: fixed; /* For IE8 and earlier */
+    position: fixed; // For IE8 and earlier.
     top: 10px;
     width: 100%;
 }
@@ -2026,7 +2025,7 @@ img.smallicon {
     margin-left: 0;
 }
 
-/* Added to style the grid of letters etc on participants page */
+// Added to style the grid of letters etc on participants page.
 .userlist .initialbar .letter {
     border: 0;
     height: 1.8em;
@@ -2045,7 +2044,7 @@ img.smallicon {
     color: #fff !important;
 }
 
-/* Adaptable 2.0 */
+// Adaptable 2.0.
 .p-0 {
     background-color: transparent !important;
 }
@@ -2083,7 +2082,7 @@ img.smallicon {
     min-width: 0;
 }
 
-/* Block action classes lifted from previously used bootstrapbase parent theme. */
+// Block action classes lifted from previously used bootstrapbase parent theme.
 .block.hidden .header .block_action .block-hider-hide {
     display: none;
 }
@@ -2096,7 +2095,7 @@ img.smallicon {
     padding: 3px 2px;
 }
 
-.block .header .block_action > * {
+.block .header .block_action > {
     margin-left: 3px;
 }
 
@@ -2124,13 +2123,13 @@ img.smallicon {
     transition: ease [[setting:navbardropdowntransitiontime]];
 }
 
-/* Transform default value text in settings to Italic. */
+// Transform default value text in settings to Italic.
 .form-item .form-setting .form-defaultinfo {
     font-style: italic;
     padding-left: 5px;
 }
 
-/* Dialog box styling. */
+// Dialog box styling.
 .moodle-dialogue-base .moodle-dialogue-wrap .container,
 .moodle-dialogue-base .chooserdialogue .moodle-dialogue-wrap .container {
     width: 100%;
@@ -2179,7 +2178,7 @@ img.smallicon {
     z-index: 1;
 }
 
-/* Backup / restore and Course import page. */
+// Backup / restore and Course import page.
 .path-backup .mform .grouped_settings.section_level {
     padding: 10px 0 0 10px;
 }
@@ -2201,7 +2200,7 @@ img.smallicon {
     margin: 10px 0 0;
 }
 
-/* Course restore */
+// Course restore.
 .detail-pair-label,
 .detail-pair-value {
     font-size: 1rem !important;
@@ -2220,7 +2219,7 @@ img.smallicon {
     background-color: transparent;
 }
 
-/* File Picker */
+// File Picker.
 .fp-setlicense select {
     display: block;
 }
@@ -2250,19 +2249,19 @@ img.smallicon {
     margin: 0;
 }
 
-/* info icon */
+// Info icon.
 .text-info {
     color: [[setting:infoiconcolor]] !important;
-    margin-top: 9px; /* fix vertical alignment */
+    margin-top: 9px; // Fix vertical alignment.
 }
 
-/* Highlight results */
+// Highlight results.
 .highlight {
     background-color: #ff0;
     color: #000 !important;
 
 }
-/* danger icon */
+// Danger icon.
 .text-danger,
 .notconnected,
 .que .validationerror,
@@ -2272,7 +2271,7 @@ img.smallicon {
     margin-top: 8px !important;
 }
 
-/* Success / Fail icon */
+// Success / fail icon.
 .text-success,
 .green,
 .notifysuccess,

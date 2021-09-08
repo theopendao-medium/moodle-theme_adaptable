@@ -1,31 +1,31 @@
-/*
-* This file is part of Adaptable theme for moodle
-*
-* Moodle is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Moodle is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-*
-*
-* Adaptable buttons CSS file
-*
-* @package    theme_adaptable
-* @copyright  2015-2019 Jeremy Hopkins (Coventry University)
-* @copyright  2015-2019 Fernando Acedo (3-bits.com)
-* @copyright  2018-2019 Manoj Solanki (Coventry University)
-*
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+//
+// This file is part of Adaptable theme for moodle
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+//
+//
+// Adaptable buttons CSS file
+//
+// @package    theme_adaptable
+// @copyright  2015-2019 Jeremy Hopkins (Coventry University)
+// @copyright  2015-2019 Fernando Acedo (3-bits.com)
+// @copyright  2018-2019 Manoj Solanki (Coventry University)
+//
+// @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+//
 
-/* Default style for all the buttons */
+// Default style for all the buttons.
 .btn,
 .btn a {
     background-image: none;
@@ -43,7 +43,7 @@
     text-shadow: none;
 }
 
-/* Primary button */
+// Primary button.
 .btn-primary,
 .backup-restore .singlebutton button[type="submit"],
 .path-mod-workshop .assessment-summary.graded .singlebutton input[type="submit"],
@@ -69,7 +69,7 @@ div.discussionsubscription > a.discussiontoggle,
 .btn-link,
 a#adaptable-message-user-button,
 
-/* Add Restrictions Dialogue */
+// Add Restrictions Dialogue.
 #availability_addrestriction_date.btn.btn-secondary,
 #availability_addrestriction_grade.btn.btn-secondary,
 #availability_addrestriction_profile.btn.btn-secondary,
@@ -96,7 +96,7 @@ a#adaptable-message-user-button,
     color: [[setting:buttontextcolor]] !important;
 }
 
-/* Secondary button */
+// Secondary button.
 .btn-secondary {
     background-color: [[setting:buttoncolorscnd]];
     color: [[setting:buttontextcolorscnd]];
@@ -117,7 +117,7 @@ a.btn-secondary {
   margin-right: 3px;
 }
 
-/* Action buttons */
+// Action buttons.
 #notice .singlebutton + .singlebutton input,
 submit.buttons input[name="cancel"] {
     background-color: [[setting:editoffbk]] !important;
@@ -138,7 +138,7 @@ a.submit:hover,
 div.discussionsubscription > a.discussiontoggle:hover,
 a#adaptable-message-user-button:hover,
 
-/* Add Restrictions Dialogue */
+// Add Restrictions Dialogue.
 #availability_addrestriction_date.btn.btn-secondary:hover,
 #availability_addrestriction_grade.btn.btn-secondary:hover,
 #availability_addrestriction_profile.btn.btn-secondary:hover,
@@ -265,7 +265,7 @@ td.submit input[disabled] {
     margin-bottom: 10px;
 }
 
-/* Set Cancel button to a link instead a button to improve usability */
+// Set Cancel button to a link instead a button to improve usability.
 .submit.buttons input[name="cancel"],
 [data-role="end"],
 [data-role="cancel"],
@@ -285,7 +285,7 @@ button[name="resetbutton"] {
     border: none;
 }
 
-/* Set Cancel hover to a link with the same colour that Cancel but underlined */
+// Set Cancel hover to a link with the same colour that Cancel but underlined.
 .cancel a:hover,
 [data-role="end"]:hover,
 [data-role="cancel"]:hover,
@@ -297,7 +297,7 @@ button[name="resetbutton"]:hover,
     text-decoration: none !important;
 }
 
-/* Disabled button hardcoded to grey. */
+// Disabled button hardcoded to grey.
 .btn-primary.disabled,
 .btn-primary[disabled] {
     background-image: none;
@@ -313,7 +313,7 @@ button[name="resetbutton"]:hover,
     text-shadow: none;
 }
 
-/* Login */
+// Login.
 .btn-login {
     background-image: none;
     background-color: [[setting:buttonlogincolor]];
@@ -336,7 +336,7 @@ button[name="resetbutton"]:hover,
     text-decoration: none;
 }
 
-/* Login page button */
+// Login page button.
 #loginbtn,
 #guestlogin .btn {
     height: 50px;
@@ -347,7 +347,7 @@ button[name="resetbutton"]:hover,
     margin: 10px 0;
 }
 
-/* Complete activity button */
+// Complete activity button.
 .path-course-view li.activity span.autocompletion img,
 .path-course-view li.activity form.togglecompletion .btn {
     background-color: transparent;
@@ -355,24 +355,24 @@ button[name="resetbutton"]:hover,
     border: none;
 }
 
-/* Caret */
+// Caret.
 .btn .caret {
     border-top-color: [[setting:buttontextcolor]] !important;
 }
 
-/* Message Drawer styles (moodle 3.6 and higher) */
+// Message Drawer styles (moodle 3.6 and higher).
 
-/* Hide messages drawer unused buttons */
+// Hide messages drawer unused buttons.
 .message-drawer .btn.hidden {
     display: none !important;
 }
 
-/* Display buttons with same height than the rest */
+// Display buttons with same height than the rest.
 .message-drawer .btn-block {
     min-height: 36px;
 }
 
-/* Set action buttons to action colour */
+// Set action buttons to action colour.
 .message-drawer button[data-action="confirm-delete-conversation"],
 .message-drawer button[data-action="confirm-block"] {
     background-color: [[setting:editoffbk]] !important;
@@ -380,15 +380,15 @@ button[name="resetbutton"]:hover,
     color: #ffffff !important;
 }
 
-/* Remove border from progress icon button styling that is present due to previous styles
-   defined for a links used with button styling. */
+// Remove border from progress icon button styling that is present due to previous styles
+// defined for a links used with button styling.
 a.btn[data-toggle="popover"] {
     margin-left: 5px;
     border: none;
     background-color: transparent !important;
 }
 
-/* btn-group */
+// btn-group.
 .btn-group .btn  {
     margin-right: 5px;
 }
@@ -397,7 +397,7 @@ a.btn[data-toggle="popover"] {
     margin-right: 5px;
 }
 
-/* .btn-link styles. */
+// .btn-link styles.
 .btn-link {
     background-color: transparent;
     color: [[setting:linkcolor]] !important;
@@ -424,17 +424,17 @@ a.btn[data-toggle="popover"] {
     padding: 10px;
 }
 
-/* btn-icon */
+// btn-icon.
 .btn-icon {
     padding-top: 8px !important;
 }
 
-/* Forum subscribed button */
+// Forum subscribed button.
 div.discussionsubscription {
     margin-top: -2px !important;
 }
 
-/* Forum Move discussion button */
+// Forum Move discussion button.
 #forummenu .btn-secondary {
     margin-left: 5px;
 }
@@ -443,7 +443,7 @@ div.discussionsubscription {
     margin-top: 1rem;
 }
 
-/* Message button margin (applies to all the elements) */
+// Message button margin (applies to all the elements).
 #page-user-profile .node_category li,
 .path-user .node_category li {
     margin-top: 15px;

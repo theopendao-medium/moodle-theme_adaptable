@@ -1,38 +1,38 @@
-/*
-* This file is part of Adaptable theme for moodle
-*
-* Moodle is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Moodle is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-*
-*
-* Adaptable Responsive style sheet
-*
-* @package    theme_adaptable
-* @copyright  2015-2019 Jeremy Hopkins (Coventry University)
-* @copyright  2015-2019 Fernando Acedo (3-bits.com)
-* @copyright  2018-2019 Manoj Solanki (Coventry University)
-*
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+//
+// This file is part of Adaptable theme for moodle
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+//
+//
+// Adaptable Responsive style sheet
+//
+// @package    theme_adaptable
+// @copyright  2015-2019 Jeremy Hopkins (Coventry University)
+// @copyright  2015-2019 Fernando Acedo (3-bits.com)
+// @copyright  2018-2019 Manoj Solanki (Coventry University)
+//
+// @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+//
 
-/* =====================================================
-Media Queries - max's in reverse
-order for prescidence.
-====================================================== */
+// =======================================================
+// Media Queries - max's in reverse
+// order for prescidence.
+// =======================================================
 
-/*=====================================================
-1200px
-======================================================= */
+// =======================================================
+// 1200px
+// =======================================================
 
 @media (max-width: 1199px) {
     .showhideblocksdesc,
@@ -41,9 +41,9 @@ order for prescidence.
     }
 }
 
-/*=====================================================
-979px
-======================================================= */
+// =======================================================
+// 979px
+// =======================================================
 @media (max-width: 979px) {
     #page-header {
         min-height: 60px;
@@ -102,8 +102,8 @@ order for prescidence.
         left: 0 !important;
     }
 
-    /* Header */
-    /* Logo */
+    // Header.
+    // Logo.
     #logocontainer {
         clear: both;
         display: block !important;
@@ -118,7 +118,7 @@ order for prescidence.
         margin: 0 auto;
     }
 
-    /* Site title */
+    // Site title.
     #sitetitle {
         clear: both;
         display: block;
@@ -131,7 +131,7 @@ order for prescidence.
         top: 0;
     }
 
-    /* Social Icons */
+    // Social Icons.
     .socialbox {
         clear: both;
         display: table;
@@ -192,7 +192,7 @@ order for prescidence.
         float: none;
     }
 
-    /* New styles for Adaptable 2. */
+    // New styles for Adaptable 2.
     #adaptable-page-header-wrapper .nav-link {
         padding: inherit;
     }
@@ -220,7 +220,7 @@ order for prescidence.
         margin-top: 84px;
     }
 
-    /* Course activity and section layout updates to remove any extra padding on smaller screens. */
+    // Course activity and section layout updates to remove any extra padding on smaller screens.
     .section .activity .activityinstance {
         min-width: 100%;
     }
@@ -235,9 +235,9 @@ order for prescidence.
     }
 }
 
-/*=====================================================
-767px
-======================================================= */
+// =======================================================
+// 767px
+// =======================================================
 @media (max-width: 767px) {
     #page-login-index2 .forgetpass {
         clear: both;
@@ -295,27 +295,27 @@ order for prescidence.
         padding: 10px 0;
     }
 
-    /* 1 tile. */
+    // 1 tile.
     .coursebox.col-12 .coursebtn {
         width: 30% !important;
     }
 
-    /* 2 tiles. */
+    // 2 tiles.
     .coursebox.col-6 .coursebtn {
         width: 55% !important;
     }
 
-    /* 3 tiles. */
+    // 3 tiles.
     .coursebox.col-4 .coursebtn {
         width: 70% !important;
     }
 
-    /* 4 tiles. */
+    // 4 tiles.
     .coursebox.col-3 .coursebtn {
         width: 80% !important;
     }
 
-    /* 6 tiles. */
+    // 6 tiles.
     .coursebox.col-2 .coursebtn {
         width: 95% !important;
     }
@@ -428,7 +428,7 @@ order for prescidence.
         display: none;
     }
 
-    /* Links and Language menu, hide text on small screens. */
+    // Links and Language menu, hide text on small screens.
     #above-header .langdesc,
     #above-header .linksdesc {
         display: none;
@@ -454,7 +454,7 @@ order for prescidence.
     }
 
     .socialbox a i {
-        /* Make at least 29px, values look odd but on inspection they are needed to be so for FontAwesome. */
+        // Make at least 29px, values look odd but on inspection they are needed to be so for FontAwesome.
         font-size: [[setting:responsivesocialsize]];
         line-height: [[setting:responsivesocialsize]];
     }
@@ -463,19 +463,18 @@ order for prescidence.
     }
 }
 
-
-/*=====================================================
-576px
-======================================================= */
+// =======================================================
+// 576px
+// =======================================================
 @media (max-width: 576px) {
     .page-header-margin.header-style2 #page {
         margin-top: 38px;
     }
 }
 
-/*=====================================================
-480px
-======================================================= */
+// =======================================================
+// 480px
+// =======================================================
 @media (max-width: 480px) {
     .flex-caption {
         background-color: #000 !important;
@@ -496,21 +495,20 @@ order for prescidence.
     }
 }
 
-/* Mins in ascending order.
+// Mins in ascending order.
 
-/*=====================================================
-768px
-======================================================= */
+// =======================================================
+// 786px
+// =======================================================
 @media (min-width: 768px) {
     body.drawer-open-left {
         margin-left: 0;
     }
 }
 
-/*=====================================================
-1201px or higher / nozoom
-======================================================= */
-
+// =======================================================
+// 1201px or higher / nozoom
+// =======================================================
 @media (min-width: 1200px) {
     .standard .container {
         max-width: 100%;
@@ -553,12 +551,11 @@ order for prescidence.
     }
 }
 
-
-/*=====================================================
-Other.
-======================================================= */
+// =======================================================
+// Other.
+// =======================================================
 @media (min-width: 481px) {
-    /* Activity chooser styling. Desktop styling. */
+    // Activity chooser styling. Desktop styling.
     .jsenabled .choosercontainer #chooseform .alloptions {
         max-height: -webkit-calc(100vh - 15em) !important;
         max-height: calc(100vh - 15em) !important;
@@ -581,7 +578,7 @@ Other.
         top: 0;
     }
 
-    /* Selected option settings */
+    // Selected option settings.
     .jsenabled .choosercontainer #chooseform .instruction {
         display: block;
         font-size: 1.2em;
@@ -597,7 +594,7 @@ Other.
         background-color: #fff;
     }
 
-    /* Styling for overall activity chooser box */
+    // Styling for overall activity chooser box.
 
     .moodle-dialogue-base .chooserdialogue .moodle-dialogue-wrap .moodle-dialogue-hd,
     .moodle-dialogue-base .chooserdialogue .moodle-dialogue-wrap .moodle-dialogue-hd.yui3-widget-hd {
@@ -624,7 +621,7 @@ Other.
         padding: 0;
     }
 
-    /* End Activity chooser styling. */
+    // End Activity chooser styling.
 
 }
 
