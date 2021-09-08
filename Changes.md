@@ -10,6 +10,7 @@ Change Log in version 3.10.1.4 (2021022304)
 7. Fix 'Userdata cache not used' - #247.
 8. Fix 'setting colours (courses)' - Ref: https://moodle.org/mod/forum/discuss.php?d=426492.
 9. Fix empty setting value of 'pageheaderheight' causes SCSS compilation issue - Ref: https://moodle.org/mod/forum/discuss.php?d=426553.
+10. Change SCSS comments from CSS to SCSS ones so that they are not in the 'all' file sent to the browser and hence it will be smaller.
 
 Change Log in version 3.10.1.3 (2021022303)
 ===========================================
