@@ -192,14 +192,14 @@ function theme_adaptable_process_scss($scss, $theme) {
         '[[setting:coursesectionbgcolor]]' => '#FFFFFF',
         '[[setting:coursesectionheaderbg]]' => '#FFFFFF',
         '[[setting:coursesectionheaderbordercolor]]' => '#F3F3F3',
-        '[[setting:coursesectionheaderborderstyle]]' => '',
-        '[[setting:coursesectionheaderborderwidth]]' => '',
-        '[[setting:coursesectionheaderborderradiustop]]' => '',
-        '[[setting:coursesectionheaderborderradiusbottom]]' => '',
+        '[[setting:coursesectionheaderborderstyle]]' => 'none',
+        '[[setting:coursesectionheaderborderwidth]]' => '0px',
+        '[[setting:coursesectionheaderborderradiustop]]' => '0px',
+        '[[setting:coursesectionheaderborderradiusbottom]]' => '0px',
         '[[setting:coursesectionborderstyle]]' => '1px',
-        '[[setting:coursesectionborderwidth]]' => '',
+        '[[setting:coursesectionborderwidth]]' => '1px',
         '[[setting:coursesectionbordercolor]]' => '#e8eaeb',
-        '[[setting:coursesectionborderradius]]' => '',
+        '[[setting:coursesectionborderradius]]' => '0px',
         '[[setting:coursesectionactivityiconsize]]' => '24px',
         '[[setting:coursesectionactivityheadingcolour]]' => '#0066cc',
         '[[setting:coursesectionactivityborderwidth]]' => '2px',
@@ -239,7 +239,6 @@ function theme_adaptable_process_scss($scss, $theme) {
         '[[setting:editonbk]]' => '#4caf50',
         '[[setting:editoffbk]]' => '#f44336',
         '[[setting:edithorizontalpadding]]' => '4px',
-        '[[setting:edittopmargin]]' => '',
         '[[setting:editfont]]' => '#ffffff',
         '[[setting:sliderh3color]]' => '#ffffff',
         '[[setting:sliderh4color]]' => '#ffffff',
@@ -268,9 +267,6 @@ function theme_adaptable_process_scss($scss, $theme) {
         '[[setting:fonttitlesize]]' => '48px',
         '[[setting:fonttitlecolor]]' => '#ffffff',
         '[[setting:fonttitlecolorcourse]]' => '#ffffff',
-        '[[setting:customfontname]]' => '',
-        '[[setting:customfontheadername]]' => '',
-        '[[setting:customfonttitlename]]' => '',
         '[[setting:searchboxpadding]]' => '0 0 10px 0',
         '[[setting:enablesavecanceloverlay]]' => true,
         '[[setting:pageheaderheight]]' => '72px',
@@ -315,7 +311,7 @@ function theme_adaptable_process_scss($scss, $theme) {
         '[[setting:forumheaderbackgroundcolor]]' => '#ffffff',
         '[[setting:forumbodybackgroundcolor]]' => '#ffffff',
         '[[setting:introboxbackgroundcolor]]' => '#ffffff',
-        '[[setting:showyourprogress]]' => '',
+        '[[setting:showyourprogress]]' => 'none',
         '[[setting:tabbedlayoutdashboardcolorselected]]' => '#06c',
         '[[setting:tabbedlayoutdashboardcolorunselected]]' => '#eee',
         '[[setting:tabbedlayoutcoursepagetabcolorselected]]' => '#06c',
@@ -335,7 +331,7 @@ function theme_adaptable_process_scss($scss, $theme) {
 
     // Get all the defined settings for the theme and replace defaults.
     foreach ($theme->settings as $key => $val) {
-        if (array_key_exists('[[setting:'.$key.']]', $defaults)) {
+        if ((!empty($val)) && (array_key_exists('[[setting:'.$key.']]', $defaults))) {
             $defaults['[[setting:'.$key.']]'] = $val;
         }
     }
