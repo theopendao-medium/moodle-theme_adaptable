@@ -109,14 +109,14 @@
 
             {{^pageheaderoriginal}}
             <div class="col-lg-8">
-                {{#sitetitle}}
-                <div class="d-flex justify-content-start bd-highlight">
-                    {{{sitetitle}}}
+                <div class="d-flex justify-content-between bd-highlight">
+                    {{#sitetitle}}
+                        {{{sitetitle}}}
+                    {{/sitetitle}}
+                    {{#searchandsocialheader}}
+                        {{{searchandsocialheader}}}
+                    {{/searchandsocialheader}}
                 </div>
-                {{/sitetitle}}
-                {{#searchandsocialheader}}
-                    {{{searchandsocialheader}}}
-                {{/searchandsocialheader}}
             </div>
             <div class="col-lg-4 p-0">
                 {{#sitelogo}}

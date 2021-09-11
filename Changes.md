@@ -4,6 +4,7 @@ Change Log in version 3.11.0.3 (2021081002)
 2. Fix empty setting value of 'pageheaderheight' causes SCSS compilation issue - Ref: https://moodle.org/mod/forum/discuss.php?d=426553.
 3. Change SCSS comments from CSS to SCSS ones so that they are not in the 'all' file sent to the browser and hence it will be smaller.
 4. Fix dialog text colour, i.e. adding a new question to a quiz.
+5. Fix 'Title moved to top by search', ref: https://moodle.org/mod/forum/discuss.php?d=425729#p1718073.
 
 Change Log in version 3.11.0.2 (2021081001)
 ===========================================
