@@ -1,3 +1,6 @@
+Change Log in version 3.9.1.4 (2020073111)
+==========================================
+
 Change Log in version 3.9.1.3 (2020073110)
 ==========================================
 1. Fix 'Expandable search in header two not working well' - #234.
