@@ -55,5 +55,4 @@ class renderer_textemail extends \mod_forum\output\email\renderer_textemail {
 
         return $output;
     }
-
 }
