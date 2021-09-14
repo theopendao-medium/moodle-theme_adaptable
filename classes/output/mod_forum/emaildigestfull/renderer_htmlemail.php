@@ -57,5 +57,4 @@ class renderer_htmlemail extends \mod_forum\output\emaildigestfull\renderer {
 
         return $output;
     }
-
 }
