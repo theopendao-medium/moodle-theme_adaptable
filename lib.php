@@ -267,7 +267,7 @@ function theme_adaptable_process_scss($scss, $theme) {
         '[[setting:fonttitlesize]]' => '48px',
         '[[setting:fonttitlecolor]]' => '#ffffff',
         '[[setting:fonttitlecolorcourse]]' => '#ffffff',
-        '[[setting:searchboxpadding]]' => '0 0 10px 0',
+        '[[setting:searchboxpadding]]' => '0 0 0 0',
         '[[setting:enablesavecanceloverlay]]' => true,
         '[[setting:pageheaderheight]]' => '72px',
         '[[setting:emoticonsize]]' => '16px',
