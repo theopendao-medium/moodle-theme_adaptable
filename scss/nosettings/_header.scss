@@ -29,6 +29,8 @@
     background-size: cover;
 }
 
-#sitetitle {
-    margin: auto 0;
+#sitetitle img {
+    max-height: 107px;
+    max-width: 100%;
+    width: auto;
 }

@@ -1,5 +1,6 @@
 Change Log in version 3.9.1.5 (2020073112)
 ==========================================
+1. Re-fix 'Title moved to top by search', ref: https://moodle.org/mod/forum/discuss.php?d=425729#p1718073.
 
 Change Log in version 3.9.1.4 (2020073111)
 ==========================================
