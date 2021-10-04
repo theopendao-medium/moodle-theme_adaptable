@@ -57,6 +57,46 @@
     padding: .5rem;
 }
 
+// Block action classes lifted from previously used bootstrapbase parent theme.
+.block.hidden .header .block_action {
+    .block-hider-hide {
+        display: none;
+    }
+    .block-hider-show {
+        display: inline;
+    }
+}
+
+.block .header .block_action {
+    float: right;
+    margin-left: 5px;
+    padding: 1px 2px;
+}
+
+.block .header .block_action .block-hider-show,
+.block .header .block_action .block-hider-hide {
+    cursor: pointer;
+}
+
+.block .header .block_action .block-hider-show,
+.jsenabled .block.hidden .content {
+    display: none;
+}
+
+.jsenabled .block.hidden .content {
+    opacity: 0;
+}
+
+.jsenabled .block .content {
+    opacity: 1;
+    display: block;
+    -webkit-transition: ease [[setting:navbardropdowntransitiontime]];
+    -moz-transition: ease [[setting:navbardropdowntransitiontime]];
+    -ms-transition: ease [[setting:navbardropdowntransitiontime]];
+    -o-transition: ease [[setting:navbardropdowntransitiontime]];
+    transition: ease [[setting:navbardropdowntransitiontime]];
+}
+
 // Block titles.
 .block .header,
 .block > .card-body,
@@ -87,19 +127,16 @@
     text-transform: none;
 }
 
-.block .header .block_action {
-    margin: 0;
-    margin-top: -5px;
-}
-
-
-.block .header .action-menu {
-    border: none !important;
-    background-color: transparent !important;
-}
-
-.block .header .action-menu a {
-    color: [[setting:fontblockheadercolor]] !important;
+.block .header {
+    .action-menu {
+        .menubar {
+            margin-top: 4px;
+        }
+        .dropdown-toggle,
+        .action-menu-item {
+            color: [[setting:fontblockheadercolor]];
+        }
+    }
 }
 
 // Block content.
