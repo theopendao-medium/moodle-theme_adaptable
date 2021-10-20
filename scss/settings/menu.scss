@@ -142,17 +142,17 @@
     padding: .3rem 0.65rem;
 }
 
-#adaptable-page-header-wrapper #above-header .navbar-nav > li > a,
-#adaptable-page-header-wrapper #header2 .navbar-nav > div > li > a,
-#adaptable-page-header-wrapper #header2 .navbar-nav > li > a,
-#adaptable-page-header-wrapper #header2 .navbar-nav > a {
+#adaptable-page-header-wrapper #above-header .nav-link > i,
+#adaptable-page-header-wrapper #above-header .navbar-nav > li > a {
     color: [[setting:headertextcolor]];
+}
+
+#adaptable-page-header-wrapper #above-header .navbar-nav > li > a {
     font-size: [[setting:topmenufontsize]];
     text-decoration: none;
 }
 
-#adaptable-page-header-wrapper #above-header .navbar .popover-region-toggle i,
-#adaptable-page-header-wrapper #header2 .navbar .popover-region-toggle i {
+#adaptable-page-header-wrapper #above-header .navbar .popover-region-toggle i {
     color: [[setting:headertextcolor]];
     font-size: 1.2em;
 }
@@ -162,6 +162,7 @@
 }
 
 #adaptable-page-header-wrapper .nav-link {
+    color: inherit;
     padding: .1rem .2rem .1rem .2rem;
 }
 
@@ -169,33 +170,8 @@
     padding: .25rem 1.5rem;
 }
 
-#adaptable-page-header-wrapper #above-header .dropdown-toggle a,
-#adaptable-page-header-wrapper #above-header .dropdown-menu a,
-#adaptable-page-header-wrapper #header2 .dropdown-menu a,
-#adaptable-page-header-wrapper #header2 .dropdown-toggle a,
-#adaptable-page-header-wrapper #header2 .popover-region-container {
-    color: [[setting:linkcolor]];
-    font-family: [[setting:fontname]], sans-serif;
-    font-size: [[setting:topmenufontsize]];
-}
-
-#adaptable-page-header-wrapper #above-header .dropdown-toggle a i,
-#adaptable-page-header-wrapper #header2 .dropdown-menu a i,
-#adaptable-page-header-wrapper #header2 .dropdown-toggle a i,
-#adaptable-page-header-wrapper #above-header .dropdown-menu a i {
-    color: [[setting:linkcolor]];
-}
-
 #adaptable-page-header-wrapper #above-header .linksmenu {
     margin: 2px 15px 0 15px;
-}
-
-#adaptable-page-header-wrapper #above-header .langdesc,
-#adaptable-page-header-wrapper #above-header .linksdesc,
-#adaptable-page-header-wrapper #header2 .langdesc,
-#adaptable-page-header-wrapper #header2 .linksdesc {
-    color: [[setting:headertextcolor]];
-    font-size: [[setting:topmenufontsize]];
 }
 
 #adaptable-page-header-wrapper #above-header .navbar .popover-region i
@@ -468,6 +444,7 @@
 }
 
 #adaptable-page-header-wrapper .navbar .popover-region-toggle {
+    color: inherit;
     width: inherit;
 }
 
