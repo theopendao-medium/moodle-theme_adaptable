@@ -1,3 +1,6 @@
+Change Log in version 3.9.1.5 (2020073112)
+==========================================
+
 Change Log in version 3.9.1.4 (2020073111)
 ==========================================
 1. Fix 'Drag-and-drop onto image question type - preview not visible' - Ref: https://moodle.org/mod/forum/discuss.php?d=426557.
