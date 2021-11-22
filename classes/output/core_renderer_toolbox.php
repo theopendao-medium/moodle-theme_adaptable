@@ -1845,14 +1845,16 @@ EOT;
                             $hiddenicon = \theme_adaptable\toolbox::getfontawesomemarkup($faicon);
                             $child = null;
                             foreach ($sortedcourses as $course) {
-                                $icon = $this->getcoursemenuicons($course, $hiddenicon);
-                                if (!$course->visible && $mysitesvisibility == 'includehidden') {
+                                $coursecontext = \context_course::instance($course->id);
+                                if (!$course->visible && $mysitesvisibility == 'includehidden' &&
+                                    has_capability('moodle/course:viewhiddencourses', $coursecontext)) {
                                     if (empty($child)) {
                                         $child = $branch->add($hiddenicon.
                                             rtrim(mb_strimwidth(format_string(get_string('hiddencourses', 'theme_adaptable')),
                                             0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 2000);
                                     }
 
+                                    $icon = $this->getcoursemenuicons($course, $hiddenicon);
                                     $child->add($icon.rtrim(mb_strimwidth(format_string($course->fullname),
                                         0, $mysitesmaxlengthhidden)) . '...',
                                         new moodle_url('/course/view.php?id='.$course->id), format_string($course->shortname));
