@@ -1741,7 +1741,7 @@ EOT;
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_STARRED])) {
                                 $icon = \theme_adaptable\toolbox::getfontawesomemarkup('star-o');
                                 $this->addcoursestomenu($branch, $myoverviewcourses[ADAPTABLE_COURSE_STARRED],
-                                    $showshortcode, $showhover, $mysitesmaxlength, $icon);
+                                    $showshortcode, $showhover, $mysitesmaxlength, $mysitesvisibility, $icon);
                             }
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS])) {
@@ -1750,7 +1750,7 @@ EOT;
                                     mb_strimwidth(format_string(get_string('inprogress', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_IN_PROGRESS],
-                                    $showshortcode, $showhover, $mysitesmaxlength);
+                                    $showshortcode, $showhover, $mysitesmaxlength, $mysitesvisibility);
                             }
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_PAST])) {
@@ -1759,7 +1759,7 @@ EOT;
                                     mb_strimwidth(format_string(get_string('past', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_PAST],
-                                    $showshortcode, $showhover, $mysitesmaxlength);
+                                    $showshortcode, $showhover, $mysitesmaxlength, $mysitesvisibility);
                             }
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_FUTURE])) {
@@ -1768,7 +1768,7 @@ EOT;
                                     mb_strimwidth(format_string(get_string('future', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_FUTURE],
-                                    $showshortcode, $showhover, $mysitesmaxlength);
+                                    $showshortcode, $showhover, $mysitesmaxlength, $mysitesvisibility);
                             }
 
                             if (!empty($myoverviewcourses[ADAPTABLE_COURSE_HIDDEN])) {
@@ -1779,7 +1779,7 @@ EOT;
                                     mb_strimwidth(format_string(get_string('hiddenfromview', 'theme_adaptable')),
                                     0, $mysitesmaxlengthhidden)) . '...', $this->page->url, '', 1000);
                                 $this->addcoursestomenu($child, $myoverviewcourses[ADAPTABLE_COURSE_HIDDEN],
-                                    $showshortcode, $showhover, $mysitesmaxlength);
+                                    $showshortcode, $showhover, $mysitesmaxlength, $mysitesvisibility);
                             }
                         } else {
                             foreach ($sortedcourses as $course) {
@@ -2086,11 +2086,16 @@ EOT;
      * @param bool $showshortcode Use the course shortname instead of full.
      * @param bool $showhover Put the course full name in the alternative text.
      * @param int $mysitesmaxlength Max length of the course name string displayed.
+     * @param bool $mysitesvisibility Value of the 'enablemysites' setting.
      * @param string $icon Prefix an icon (HTML markup) if any.
      */
-    protected function addcoursestomenu(&$menu, $courses, $showshortcode, $showhover, $mysitesmaxlength, $icon = '') {
+    protected function addcoursestomenu(&$menu, $courses, $showshortcode, $showhover, $mysitesmaxlength, $mysitesvisibility,
+        $icon = '') {
         foreach ($courses as $course) {
-            if (($course->visible) || (has_capability('moodle/course:viewhiddencourses', $this->page->context))) {
+            $coursecontext = \context_course::instance($course->id);
+            if (($course->visible) ||
+                (!$course->visible && $mysitesvisibility == 'includehidden' &&
+                has_capability('moodle/course:viewhiddencourses', $coursecontext))) {
                 if ($showshortcode) {
                     $coursename = mb_strimwidth(format_string($course->shortname), 0,
                         $mysitesmaxlength, '...', 'utf-8');
