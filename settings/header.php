@@ -189,7 +189,7 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $page->add($setting);
 
-    // My courses section.
+    // Header style section.
     $page->add(new admin_setting_heading('theme_adaptable_headerstyle_heading',
         get_string('headerstyleheading', 'theme_adaptable'),
         format_text(get_string('headerstyleheadingdesc', 'theme_adaptable'), FORMAT_MARKDOWN)));

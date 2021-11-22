@@ -48,7 +48,7 @@ class topcoll_course_renderer extends \theme_adaptable\output\core\course_render
      * Note that for course modules that never have separate pages (i.e. labels)
      * this function return an empty string.
      *
-     * This method has only been overriden in order to strip -24 and similar from icon image filenames
+     * This method has only been overridden in order to strip -24 and similar from icon image filenames
      * to allow using of local theme icons in /pix_core/f.
      *
      * @param cm_info $mod

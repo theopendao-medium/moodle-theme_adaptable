@@ -478,9 +478,7 @@ function theme_adaptable_set_categorycustomcss($css, $settings) {
 
     $tag = '[[setting:catgorycustomcss]]';
 
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
+    return str_replace($tag, $replacement, $css);
 }
 
 /**
