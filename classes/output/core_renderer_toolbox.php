@@ -2085,7 +2085,7 @@ EOT;
      * @param array $courses Array of courses.
      * @param bool $showshortcode Use the course shortname instead of full.
      * @param bool $showhover Put the course full name in the alternative text.
-     * @param int $mysitesmaxlength Max lenghth of the course name string displayed.
+     * @param int $mysitesmaxlength Max length of the course name string displayed.
      * @param string $icon Prefix an icon (HTML markup) if any.
      */
     protected function addcoursestomenu(&$menu, $courses, $showshortcode, $showhover, $mysitesmaxlength, $icon = '') {

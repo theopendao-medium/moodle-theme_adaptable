@@ -111,10 +111,16 @@
 // Block header.
 .block .header {
     background-color: [[setting:blockheaderbackgroundcolor]];
-}
-
-.block .header {
     padding-right: 0;
+    .action-menu {
+        .menubar {
+            margin-top: 4px;
+        }
+        .dropdown-toggle,
+        .action-menu-item {
+            color: [[setting:fontblockheadercolor]];
+        }
+    }
 }
 
 // Block title.
@@ -125,18 +131,6 @@
     margin-bottom: 0;
     text-shadow: none;
     text-transform: none;
-}
-
-.block .header {
-    .action-menu {
-        .menubar {
-            margin-top: 4px;
-        }
-        .dropdown-toggle,
-        .action-menu-item {
-            color: [[setting:fontblockheadercolor]];
-        }
-    }
 }
 
 // Block content.
