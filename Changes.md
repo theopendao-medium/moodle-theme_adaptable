@@ -3,6 +3,8 @@ Change Log in version 3.10.1.5 (2021022305)
 1. Re-fix 'Title moved to top by search', ref: https://moodle.org/mod/forum/discuss.php?d=425729#p1718073.
 2. Fix 'block configuration actions menu does not contrast enough', ref: https://moodle.org/mod/forum/discuss.php?d=427627.
 3. Fix 'My Courses dropdown not showing all enrolled courses' - #258.
+4. Fix "My courses dropdown can show hidden courses when user does not have capability when 'mysitessortoverride' setting is not
+   set to 'Use list from my overview'", related to #258.
 
 Change Log in version 3.10.1.4 (2021022304)
 ===========================================
