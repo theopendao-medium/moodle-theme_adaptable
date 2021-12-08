@@ -59,7 +59,8 @@ You can use either the '[Themes forum](https://moodle.org/mod/forum/view.php?id=
 
 Currently developed and maintained by
 =====================================
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.  
-Moodle profile | [Moodle.org](http://moodle.org/user/profile.php?id=442195)
-@gjbarnard | [Twitter](https://twitter.com/gjbarnard).
-Web profile | [About.me](http://about.me/gjbarnard)
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
+
+- Moodle profile | [Moodle.org](http://moodle.org/user/profile.php?id=442195)
+- @gjbarnard | [Twitter](https://twitter.com/gjbarnard).
+- Web profile | [About.me](http://about.me/gjbarnard)

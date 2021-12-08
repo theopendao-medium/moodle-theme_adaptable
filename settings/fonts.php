@@ -44,7 +44,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_adaptable/fontname';
     $title = get_string('fontname', 'theme_adaptable');
     $description = get_string('fontnamedesc', 'theme_adaptable');
-    $default = 'Open Sans';
+    $default = 'Lexend Deca';
     $choices = $fontlist;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -127,7 +127,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_adaptable/fontheadername';
     $title = get_string('fontheadername', 'theme_adaptable');
     $description = get_string('fontheadernamedesc', 'theme_adaptable');
-    $default = 'Roboto';
+    $default = 'Archivo';
     $choices = $fontlist;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -154,7 +154,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_adaptable/fonttitlename';
     $title = get_string('fonttitlename', 'theme_adaptable');
     $description = get_string('fonttitlenamedesc', 'theme_adaptable');
-    $default = 'Roboto Condensed';
+    $default = 'Archivo';
     $choices = $fontlist;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
