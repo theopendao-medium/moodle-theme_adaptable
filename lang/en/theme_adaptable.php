@@ -32,10 +32,8 @@ $string['choosereadme'] = '
 <h2>Adaptable</h2>
 <p><img class="img-polaroid" src="adaptable/pix/screenshot.png" /></p>
 <h3>About</h3>
-<p>Adaptable is a two column responsive theme, highly customizable and based upon the popular BCU theme.  Versions 2 and 3 use Boost as a base theme and therefore Bootstrap 4.</p>
+<p>Adaptable is a responsive and highly customizable theme based upon the popular BCU theme.  Boost is the parent theme, which in turn utilises the Bootstrap framework.</p>
 <p>The theme is licensed under the GPL (GNU General Public License) version 3. You can find the full details \'<a href="http://www.gnu.org/licenses/gpl-3.0.html" target="_blank">here</a>\'.</p>
-<br>
-<h4>Modify it! - Improve it! - Share it!</h4>
 <br>
 <h3>Credits</h3>
 <p>This version of the theme has been developed by:<br>
@@ -72,43 +70,43 @@ $string['region-frnt-footer'] = 'Footer';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 $string['frnt-footer'] = 'Blocks in this area will only be visible to admin users';
-$string['side-post1'] = 'side bar in footer';
+$string['side-post1'] = 'Side bar in footer';
 
-$string['region-frnt-market-a'] = 'Page region 1';
-$string['region-frnt-market-b'] = 'Page region 2';
-$string['region-frnt-market-c'] = 'Page region 3';
-$string['region-frnt-market-d'] = 'Page region 4';
-$string['region-frnt-market-e'] = 'Page region 5';
-$string['region-frnt-market-f'] = 'Page region 6';
-$string['region-frnt-market-g'] = 'Page region 7';
-$string['region-frnt-market-h'] = 'Page region 8';
-$string['region-frnt-market-i'] = 'Page region 9';
-$string['region-frnt-market-j'] = 'Page region 10';
-$string['region-frnt-market-k'] = 'Page region 11';
-$string['region-frnt-market-l'] = 'Page region 12';
-$string['region-frnt-market-m'] = 'Page region 13';
-$string['region-frnt-market-n'] = 'Page region 14';
-$string['region-frnt-market-o'] = 'Page region 15';
-$string['region-frnt-market-p'] = 'Page region 16';
-$string['region-frnt-market-q'] = 'Page region 17';
-$string['region-frnt-market-r'] = 'Page region 18';
-$string['region-frnt-market-s'] = 'Page region 19';
-$string['region-frnt-market-t'] = 'Page region 20';
+$string['region-frnt-market-a'] = 'Page region one';
+$string['region-frnt-market-b'] = 'Page region two';
+$string['region-frnt-market-c'] = 'Page region three';
+$string['region-frnt-market-d'] = 'Page region four';
+$string['region-frnt-market-e'] = 'Page region five';
+$string['region-frnt-market-f'] = 'Page region six';
+$string['region-frnt-market-g'] = 'Page region seven';
+$string['region-frnt-market-h'] = 'Page region eight';
+$string['region-frnt-market-i'] = 'Page region nine';
+$string['region-frnt-market-j'] = 'Page region ten';
+$string['region-frnt-market-k'] = 'Page region eleven';
+$string['region-frnt-market-l'] = 'Page region twelve';
+$string['region-frnt-market-m'] = 'Page region thirteen';
+$string['region-frnt-market-n'] = 'Page region fourteen';
+$string['region-frnt-market-o'] = 'Page region fifteen';
+$string['region-frnt-market-p'] = 'Page region sixteen';
+$string['region-frnt-market-q'] = 'Page region seventeen';
+$string['region-frnt-market-r'] = 'Page region eighteen';
+$string['region-frnt-market-s'] = 'Page region nineteen';
+$string['region-frnt-market-t'] = 'Page region twenty';
 
 // Course page block regions.
-$string['region-course-top-a'] = 'Course page top region 1';
-$string['region-course-top-b'] = 'Course page top region 2';
-$string['region-course-top-c'] = 'Course page top region 3';
-$string['region-course-top-d'] = 'Course page top region 4';
+$string['region-course-top-a'] = 'Course page top region one';
+$string['region-course-top-b'] = 'Course page top region two';
+$string['region-course-top-c'] = 'Course page top region three';
+$string['region-course-top-d'] = 'Course page top region four';
 
 $string['region-news-slider-a'] = 'Course page slider region';
 
 $string['region-course-section-a'] = 'Course page activity end bottom region';
 
-$string['region-course-bottom-a'] = 'Course page bottom region 5';
-$string['region-course-bottom-b'] = 'Course page bottom region 6';
-$string['region-course-bottom-c'] = 'Course page bottom region 7';
-$string['region-course-bottom-d'] = 'Course page bottom region 8';
+$string['region-course-bottom-a'] = 'Course page bottom region five';
+$string['region-course-bottom-b'] = 'Course page bottom region six';
+$string['region-course-bottom-c'] = 'Course page bottom region seven';
+$string['region-course-bottom-d'] = 'Course page bottom region eight';
 
 // Settings page headings ******************************************.
 $string['settingsmaincolors'] = 'Main colours';
@@ -160,9 +158,6 @@ $string['themechanges'] = 'Changes';
 $string['themechangesdesc'] = 'Theme changes....';
 $string['themereadme'] = 'Readme';
 $string['themereadmedesc'] = 'Theme readme....';
-$string['themesupport'] = 'Support';
-$string['themesupportdesc'] = 'Theme support....';
-
 
 // Ticker.
 $string['tickersettings'] = 'News ticker';
@@ -175,7 +170,6 @@ $string['tickerdesc'] = 'Here you can set a news ticker to run across the front 
   &lt;p&gt;News item one.....&lt;/p&gt;
   &lt;p&gt;News item two.....&lt;/p&gt;
   </pre>';
-
 
 $string['tickerdefault'] = 'No news items to display';
 
@@ -238,42 +232,41 @@ $string['slideroption2snippet'] = '<p>Sample HTML for the slider captions:</p>
 $string['slidercount'] = 'Slider count';
 $string['slidercountdesc'] = 'Select how many slides you want to add <strong>then click SAVE</strong> to load the input fields.';
 
-$string['sliderh3color'] = 'Slider 1 H3 colour';
-$string['sliderh3colordesc'] = 'Choose the colour you want for the slider 1 H3 tag.';
+$string['sliderh3color'] = 'Slider one H3 colour';
+$string['sliderh3colordesc'] = 'Choose the colour you want for the slider one H3 tag.';
 
-$string['sliderh4color'] = 'Slider 1 H4 colour';
-$string['sliderh4colordesc'] = 'Choose the colour you want for the slider 1 H4 tag.';
+$string['sliderh4color'] = 'Slider one H4 colour';
+$string['sliderh4colordesc'] = 'Choose the colour you want for the slider one H4 tag.';
 
-$string['slidersubmitcolor'] = 'Slider 1 submit text';
-$string['slidersubmitcolordesc'] = 'Choose the text colour of the Slider 1 submit button.';
+$string['slidersubmitcolor'] = 'Slider one submit text';
+$string['slidersubmitcolordesc'] = 'Choose the text colour of the Slider one submit button.';
 
-$string['slidersubmitbgcolor'] = 'Slider 1 submit bg';
-$string['slidersubmitbgcolordesc'] = 'Choose the background colour of the Slider 1 submit button.';
+$string['slidersubmitbgcolor'] = 'Slider one submit bg';
+$string['slidersubmitbgcolordesc'] = 'Choose the background colour of the Slider one submit button.';
 
-$string['slider2h3color'] = 'Slider 2 H3 text colour';
-$string['slider2h3colordesc'] = 'Choose the text colour you want for the slider 2 H3 tag.';
+$string['slider2h3color'] = 'Slider two H3 text colour';
+$string['slider2h3colordesc'] = 'Choose the text colour you want for the slider two H3 tag.';
 
-$string['slider2h4color'] = 'Slider 2 H4 text colour';
-$string['slider2h4colordesc'] = 'Choose the text colour you want for the slider 2 H4 tag.';
+$string['slider2h4color'] = 'Slider two H4 text colour';
+$string['slider2h4colordesc'] = 'Choose the text colour you want for the slider two H4 tag.';
 
-$string['slider2h3bgcolor'] = 'Slider 2 H3 bg colour';
-$string['slider2h3bgcolordesc'] = 'Choose the background colour you want for the slider 2 H3 tag.';
+$string['slider2h3bgcolor'] = 'Slider two H3 bg colour';
+$string['slider2h3bgcolordesc'] = 'Choose the background colour you want for the slider two H3 tag.';
 
-$string['slider2h4bgcolor'] = 'Slider 2 H4 bg colour';
-$string['slider2h4bgcolordesc'] = 'Choose the background colour you want for the slider 2 H4 tag.';
+$string['slider2h4bgcolor'] = 'Slider two H4 bg colour';
+$string['slider2h4bgcolordesc'] = 'Choose the background colour you want for the slider two H4 tag.';
 
-$string['slideroption2submitcolor'] = 'Slider 2 submit text';
-$string['slideroption2submitcolordesc'] = 'Set a background colour for the submit text in slider style option 2 colour.';
+$string['slideroption2submitcolor'] = 'Slider two submit text';
+$string['slideroption2submitcolordesc'] = 'Set a background colour for the submit text in slider style option two colour.';
 
-$string['slideroption2color'] = 'Slider 2 submit bg';
+$string['slideroption2color'] = 'Slider two submit bg';
 $string['slideroption2colordesc'] = 'Set a background colour for the submit text in slider style option.';
 
-$string['slideroption2a'] = 'Slider style option 2 arrow background colour';
-$string['slideroption2adesc'] = 'Set the slider style option 2 arrow background colour';
+$string['slideroption2a'] = 'Slider style option two arrow background colour';
+$string['slideroption2adesc'] = 'Set the slider style option two arrow background colour';
 
-$string['sliderstyle1'] = 'Slider style 1';
-$string['sliderstyle2'] = 'Slider style 2';
-
+$string['sliderstyle1'] = 'Slider style one';
+$string['sliderstyle2'] = 'Slider style two';
 
 // Block Regions.
 $string['blocklayoutbuilder'] = 'Frontpage block regions';
@@ -382,7 +375,6 @@ $string['disabled'] = 'Disabled';
 $string['expandable'] = 'Expandable';
 $string['static'] = 'Static';
 
-
 // Footer.
 $string['footersettings'] = 'Footer';
 $string['footersettingsheading'] = 'Set the content that should appear in the footer. See the layout <a href="./../theme/adaptable/pix/layout.png" target="_blank"> here</a> ';
@@ -420,7 +412,6 @@ $string['gdprbuttondesc'] = 'Display the data retention summary button in the fo
 // Moodle Docs link.
 $string['moodledocs'] = 'Moodle docs link';
 $string['moodledocsdesc'] = 'Display the Moodle docs link in the footer.';
-
 
 // NavBar.
 $string['stickynavbar'] = 'Sticky navbar at the top';
@@ -575,7 +566,6 @@ $string['cneveraccessedicon'] = 'My courses never accessed icon';
 $string['cneveraccessedicondesc'] = 'The Font Awesome 4 icon without the prefixing \'fa-\' to be used for courses that the user is enrolled on but not accessed.  If empty, the default will be used.';
 $string['cdefaulticon'] = 'My courses default icon';
 $string['cdefaulticondesc'] = 'The Font Awesome 4 icon without the prefixing \'fa-\' to be used for courses when they don\'t already have an icon.  If empty, the default will be used.';
-
 
 // Colours.
 $string['colorsettings'] = 'Colours';
@@ -928,14 +918,12 @@ $string['fontblockheaderweightdesc'] = 'Set the font weight used in the moodle b
 $string['fontblockheadersize'] = 'Blocks header font size';
 $string['fontblockheadersizedesc'] = 'Set the font size used in the moodle blocks header.  Select a value fron the list.';
 
-
 // Icons.
 $string['blockicons'] = 'Block icons';
 $string['blockiconsdesc'] = 'Set this to show block icons in the block header area.';
 
 $string['blockiconsheadersize'] = 'Blocks header icon size';
 $string['blockiconsheadersizedesc'] = 'Set the font icon size used in the moodle blocks header.  Select a value fron the list.';
-
 
 // Buttons.
 $string['buttonsettings'] = 'Buttons';
@@ -1006,7 +994,6 @@ $string['buttonloginmargintopdesc'] = 'Allows spacing / position of the login bu
 
 $string['loginplaceholder'] = 'Username';
 $string['passwordplaceholder'] = 'Password';
-
 
 // Header.
 $string['headersettings'] = 'Header';
@@ -1164,7 +1151,6 @@ $string['helptitle'] = 'Help {$a->number}';
 $string['helpprofilefield'] = 'Help link \'{$a->number}\' custom profile field (optional)';
 $string['helpprofilefielddesc'] = 'Add help link \'{$a->number}\' access rule using for custom profile field eg: usertype=student.';
 
-
 // Courses Overlay.
 $string['rendereroverlaycolor'] = 'Overlay colour';
 $string['rendereroverlaycolordesc'] = 'The colour of the overlay, when the "Tiles w/ overlay" renderer is selected.';
@@ -1197,7 +1183,6 @@ $string['tilesshowallcontacts'] = 'Show all course contacts';
 $string['tilesshowallcontactsdesc'] = 'Show all course contacts or just one.';
 
 $string['course'] = 'Course';
-
 
 // Alerts.
 // Alert message if acting as another role.
@@ -1267,8 +1252,8 @@ $string['alertaccess'] = 'Alert visibility';
 $string['alertaccessdesc'] = 'Set access restriction type for alert box visibility.  Note: if using "Add custom profile field restriction" you will need to add values for profile fields below.';
 
 // Moodle/Adaptable version alert messages.
-$string['beta'] = 'DEVELOPMENT VERSION. DO NOT USE IN PRODUCTION SITES';
-$string['deprecated'] = 'MOODLE DEPRECATED VERSION. DO NOT USE ADAPTABLE IN THIS SITE';
+$string['beta'] = 'DEVELOPMENT VERSION.  DO NOT USE IN PRODUCTION SITES';
+$string['deprecated'] = 'MOODLE DEPRECATED VERSION.  DO NOT USE ADAPTABLE IN THIS SITE';
 
 // Alerts Colours.
 $string['alertcolorsheading'] = 'Customize top alert boxes';
@@ -1442,7 +1427,6 @@ $string['disablecustommenudesc'] = 'Disable Moodle custom menus in the navigatio
 $string['menusessionttl'] = 'Minutes to store access rules in session';
 $string['menusessionttldesc'] = 'Number of minutes after which menu access rules are refreshed in the users session.';
 
-
 // Tool menus.
 $string['newmenudesc'] = 'Configure links to be shown under a top header menu.';
 $string['newmenufield'] = 'Custom profile field name=Value (optional)';
@@ -1519,7 +1503,6 @@ $string['toolsmenulabel'] = 'Tools menu';
 
 $string['toolsmenufield'] = 'Custom profile field name=Value (optional)';
 $string['toolsmenufielddesc'] = 'Add access rule using for custom profile field eg: usertype=student.';
-
 
 // Social settings.
 $string['socialsettings'] = 'Header social';
@@ -1619,7 +1602,6 @@ $string['piwiksiteurldesc'] = 'Enter your Matomo analytics URL without http(s) o
 $string['piwiktrackadmin'] = 'Tracking admins';
 $string['piwiktrackadmindesc'] = 'Enable tracking of admin users (not recommended).';
 
-
 // Custom CSS and Javascript.
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
@@ -1640,9 +1622,6 @@ $string['jssectionrestrictedprofilefielddesc'] = 'Show the javascript above ONLY
 $string['jssectionrestricteddashboardonly'] = 'Include javascript only on dashboard page';
 $string['jssectionrestricteddashboardonlydesc'] = 'Show the javascript only on the dashboard page.  Otherwise this displays sitewide.';
 
-// Cache definitions.
-// TODO.
-
 // Activity and section navigation.
 $string['nextactivity'] = 'Next activity';
 $string['previousactivity'] = 'Previous activity';
@@ -1654,8 +1633,12 @@ $string['maincoursepage'] = 'Main course page';
 $string['jumpto'] = 'Jump to...';
 
 // General.
+$string['dashed'] = 'Dashed';
+$string['dotted'] = 'Dotted';
+$string['double'] = 'Double';
 $string['hide'] = 'Hide';
 $string['show'] = 'Show';
+$string['solid'] = 'Solid';
 $string['versioninfo'] = 'Release {$a->release}, version {$a->version} on Moodle {$a->moodle}';
 $string['versionalpha'] = 'Alpha version - Almost certainly contains bugs.  This is a development version for developers \'only\'!  Don\'t even think of installing on a production server!';
 $string['versionbeta'] = 'Beta version - Likely to contain bugs.  Ready for testing by administrators on a test server only.';
@@ -1768,31 +1751,31 @@ $string['tabbedlayoutdashboardtabcolorselected'] = 'Selected tab colour for dash
 $string['tabbedlayoutdashboardtabcolorselecteddesc'] = 'Choose the colour for the currently selected tab.';
 $string['tabbedlayoutdashboardtabcolorunselected'] = 'Unselected tab colour for dashboard';
 $string['tabbedlayoutdashboardtabcolorunselecteddesc'] = 'Choose the colour for any other tab.';
-$string['tabbedlayoutdashboardtab1condition'] = 'Tab 1 Custom Profile Field Restriction (optional)';
+$string['tabbedlayoutdashboardtab1condition'] = 'Tab one Custom Profile Field Restriction (optional)';
 $string['tabbedlayoutdashboardtab1conditiondesc'] = 'Add access rule for displaying Tab 1 using custom profile field eg: showtab1=true.';
-$string['tabbedlayoutdashboardtab2condition'] = 'Tab 2 Custom Profile Field Restriction (optional)';
+$string['tabbedlayoutdashboardtab2condition'] = 'Tab two Custom Profile Field Restriction (optional)';
 $string['tabbedlayoutdashboardtab2conditiondesc'] = 'Add access rule for displaying Tab 2 using custom profile field eg: showtab2=true.';
 
 $string['tabbedlayouttablabelcourse'] = 'Course content';
-$string['tabbedlayouttablabelcourse1'] = 'Tab 1';
-$string['tabbedlayouttablabelcourse2'] = 'Tab 2';
+$string['tabbedlayouttablabelcourse1'] = 'Tab one';
+$string['tabbedlayouttablabelcourse2'] = 'Tab two';
 $string['tabbedlayouttablabeldashboard'] = 'Dashboard content';
-$string['tabbedlayouttablabeldashboard1'] = 'Tab 1';
-$string['tabbedlayouttablabeldashboard2'] = 'Tab 2';
+$string['tabbedlayouttablabeldashboard1'] = 'Tab one';
+$string['tabbedlayouttablabeldashboard2'] = 'Tab two';
 
-$string['region-course-tab-one-a'] = 'Course page tab region 1';
-$string['region-course-tab-two-a'] = 'Course page tab region 2';
-$string['region-my-tab-one-a'] = 'Dashboard page tab region 1';
-$string['region-my-tab-two-a'] = 'Dashboard page tab region 2';
+$string['region-course-tab-one-a'] = 'Course page tab region one';
+$string['region-course-tab-two-a'] = 'Course page tab region two';
+$string['region-my-tab-one-a'] = 'Dashboard page tab region one';
+$string['region-my-tab-two-a'] = 'Dashboard page tab region two';
 
 // Number of course tiles in front page.
 $string['frontpagenumbertiles'] = 'Number of course tiles per row';
 $string['frontpagenumbertilesdesc'] = 'Number of course tiles to display per row in the front page courses list.';
-$string['frontpagetiles1'] = '1 tile';
-$string['frontpagetiles2'] = '2 tiles';
-$string['frontpagetiles3'] = '3 tiles';
-$string['frontpagetiles4'] = '4 tiles';
-$string['frontpagetiles6'] = '6 tiles';
+$string['frontpagetiles1'] = 'One tile';
+$string['frontpagetiles2'] = 'Two tiles';
+$string['frontpagetiles3'] = 'Three tiles';
+$string['frontpagetiles4'] = 'Four tiles';
+$string['frontpagetiles6'] = 'Six tiles';
 
 // Edit settings.
 $string['editsettingsbutton'] = 'Edit settings and button display';

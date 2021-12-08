@@ -5,6 +5,7 @@ Change Log in version 3.11.0.4 (2021081003)
 3. Fix 'My Courses dropdown not showing all enrolled courses' - #258.
 4. Fix "My courses dropdown can show hidden courses when user does not have capability when 'mysitessortoverride' setting is not
    set to 'Use list from my overview'", related to #258.
+5. Makes sense to have the logo as a link to the frontpage when there is no navbar.
 
 Change Log in version 3.11.0.3 (2021081002)
 ===========================================

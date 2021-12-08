@@ -64,8 +64,7 @@ $left = (!right_to_left());  // To know if to add 'pull-right' and 'desktop-firs
 
 // Navbar Menu.
 $shownavbar = false;
-if (
-    (isloggedin() && !isguestuser()) ||
+if ((isloggedin() && !isguestuser()) ||
     (!empty($PAGE->theme->settings->enablenavbarwhenloggedout)) ) {
 
     // Show navbar unless disabled by config.
@@ -104,7 +103,6 @@ if (!empty($PAGE->theme->settings->headerstyle)) {
 }
 
 // Social icons class.
-$showicons = "";
 $showicons = $PAGE->theme->settings->blockicons;
 if ($showicons == 1) {
     $showiconsclass = "showblockicons";
@@ -211,7 +209,7 @@ echo $OUTPUT->standard_top_of_body_html();
     }
 
     if (!$hidesitetitle) {
-        $headercontext['sitelogo'] = $OUTPUT->get_logo($currenttopcat);
+        $headercontext['sitelogo'] = $OUTPUT->get_logo($currenttopcat, $shownavbar);
         $headercontext['sitetitle'] = $OUTPUT->get_title($currenttopcat);
     }
 

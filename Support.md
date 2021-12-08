@@ -1,17 +1,27 @@
+The Adaptable story
+===================
+Adaptable is based upon the popular BCU theme, developed for Coventry University.  Since the main developer decided to leave the
+project, I (Gareth) was asked to assist in maintainance and improvements.  Coventry University has now moved away from Moodle and
+passed the project onto me to manage as its lead.  I will keep the theme alive, maintained and supported for as long as there is a
+willingness to fund my time to do so.  The theme is complex and takes time, skill, knowledge and talent to develop.  This is why
+I'm asking for your financial support in my endeavours.
+
+If you'd like to sponsor, get support or fund improvements, then please do get in touch via:
+
+- gjbarnard | Gmail dt com address.
+- GitLab | Please outline your issue / improvement on '[Adaptable issues](https://gitlab.com/jezhops/moodle-theme_adaptable/-/issues)'.
+- @gjbarnard | '[Twitter](https://twitter.com/gjbarnard)'.
+
+Open source software
+====================
 As Adaptable is licensed under the [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html) License it comes with NO support,
 please see 'COPYING.txt'. If you would like support from me then I'm happy to provide it for a fee (please see my contact details
 below).  Otherwise, the Moodle '[Themes](https://moodle.org/mod/forum/view.php?id=46)' forum is an excellent place to ask questions.
 
-If you think you've discovered a genuine bug with the theme then please look at the Moodle Themes forum first to see if it
-has already been repoted.  Secondly, look at [GitLab](https://gitlab.com/jezhops/moodle-theme_adaptable/-/issues).  If nothing
-is in either place then please read 'Reporting issues' below.
+Adaptable can be obtained from:
 
-Free software
-=============
-Adaptable can be obtained for free from:
-
-* [moodle.org/plugins/theme_adaptable](https://moodle.org/plugins/theme_adaptable).
-* [gitlab.com/jezhops/moodle-theme_adaptable/-/releases](https://gitlab.com/jezhops/moodle-theme_adaptable/-/releases).
+* [Moodle.org](https://moodle.org/plugins/theme_adaptable).
+* [GitLab](https://gitlab.com/jezhops/moodle-theme_adaptable/-/releases).
 
 You have all the rights granted to you by the GPLv3 license.  If you are unsure about anything, then the
 FAQ - [GPL FAQ](https://www.gnu.org/licenses/gpl-faq.html) - is a good place to look.
@@ -30,12 +40,15 @@ Please ensure that your hardware and software complies with 'Requirements' in '[
 
 Reporting issues
 ================
-Before reporting an issue, please ensure that you are running the latest version for your release of Moodle.  It is essential
-that you are operating the required version of Moodle as stated above - this is because the theme relies on core functionality
-that is out of its control.
+Before reporting an issue, please ensure that you are running the [current](https://moodle.org/plugins/theme_adaptable) version for
+the major release of Moodle you are using.  It is essential that you are operating the required version of Moodle as stated above,
+this is because the theme relies on core functionality that is out of its control.
 
-I operate a policy that I will fix all genuine issues in 'my' (not other developers of the theme) code for free.
-Improvements are at my discretion.
+If you think you've discovered a genuine bug with the theme then please look at the Moodle Themes forum first to see if it
+has already been repoted.  Secondly, look at [GitLab](https://gitlab.com/jezhops/moodle-theme_adaptable/-/issues).
+
+I operate a policy that I will fix all genuine issues in 'my' (not other developers of the theme) code, when fully described and
+replicatable.
 
 It is essential that you provide as much information as possible, the critical information being the contents of the theme's
 version.php file / or the top of the 'Information' settings tab.  Other version information such as specific Moodle version,
@@ -44,23 +57,9 @@ consider to be relevant.
 
 You can use either the '[Themes forum](https://moodle.org/mod/forum/view.php?id=46)' or '[GitLab](https://gitlab.com/jezhops/moodle-theme_adaptable/-/issues)'.
 
-Sponsorships
-============
-If you want to express your gratitude for using this theme, please consider sponsoring
-by:
-
-* PayPal - Please contact me via my 'Moodle profile' (below) for details as I am an individual and therefore am unable to have
-'buy me now' buttons under their terms.
-
-Sponsorships may allow me to provide you with more or better features in less time.
-
-Customisation
-=============
-If you like this theme and would like me to customise it or transpose functionality from another theme then please contact
-me to discuss your requirements.
-
 Currently developed and maintained by
 =====================================
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.  
-Moodle profile | [Moodle.org](http://moodle.org/user/profile.php?id=442195)  
+Moodle profile | [Moodle.org](http://moodle.org/user/profile.php?id=442195)
+@gjbarnard | [Twitter](https://twitter.com/gjbarnard).
 Web profile | [About.me](http://about.me/gjbarnard)

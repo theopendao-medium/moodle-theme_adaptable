@@ -2301,12 +2301,13 @@ EOT;
     }
 
     /**
-     * Returns html to render logo / title area.
+     * Returns The HTML to render logo / title area.
      * @param bool/int $currenttopcat The id of the current top category or false if none.
+     * @param bool $shownavbar If the navbar is shown.
      *
      * @return string Markup.
      */
-    public function get_logo($currenttopcat) {
+    public function get_logo($currenttopcat, $shownavbar) {
         global $CFG, $SITE;
         $logomarkup = '';
 
@@ -2329,12 +2330,12 @@ EOT;
             $logo = '<img src='.$this->page->theme->setting_file_url($logosetarea, $logosetarea).' id="logo"';
             $logo .= ' alt="'.get_string('logo', 'theme_adaptable').'">';
 
-            // Exception - logo is not a link to site homepage.
-            if (!empty($this->page->layout_options['nonavbar'])) {
+            if ($shownavbar) {
+                // Logo is not a link to site homepage when there is a navbar.
                 $logomarkup .= $logo;
             } else {
-                // Standard - Output the logo as a link to site homepage.
-                $logomarkup .= '<a href='.$CFG->wwwroot.' aria-label="home" title="'.format_string($SITE->fullname).'">';
+                // Logo is a link to site homepage when there is no navbar.
+                $logomarkup .= '<a href='.$CFG->wwwroot.' aria-label="'.get_string('home').'" title="'.format_string($SITE->fullname).'">';
                 $logomarkup .= $logo;
                 $logomarkup .= '</a>';
             }
