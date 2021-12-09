@@ -76,8 +76,22 @@ if ($movesidebartofooter) {
         ?>
 
         <section id="region-main" class="<?php echo $regions['content'];?>">
-
             <?php
+            if (\theme_adaptable\activity::activitymetaenabled()) {
+            $maxstudentsinfo = \theme_adaptable\activity::maxstudentsnotexceeded($COURSE->id, true);
+            if ($maxstudentsinfo['maxstudents'] == 0) {
+                $activityinfostring = get_string('courseadditionalmoddatastudentsinfounlimited', 'theme_adaptable',
+                    $maxstudentsinfo['nostudents']);
+            } else if (!$maxstudentsinfo['notexceeded']) {
+                $activityinfostring = get_string('courseadditionalmoddatastudentsinfolimitednoshow', 'theme_adaptable',
+                    array('students' => $maxstudentsinfo['nostudents'], 'maxstudents' => $maxstudentsinfo['maxstudents']));
+            } else {
+                $activityinfostring = get_string('courseadditionalmoddatastudentsinfolimitedshow', 'theme_adaptable',
+                    array('students' => $maxstudentsinfo['nostudents'], 'maxstudents' => $maxstudentsinfo['maxstudents']));
+            }
+            echo '<h4>'.$activityinfostring.'</h4>';
+            }
+
             if (!empty($PAGE->theme->settings->tabbedlayoutcoursepage)) {
                 // Use Adaptable tabbed layout.
                 $currentpage = theme_adaptable_get_current_page();

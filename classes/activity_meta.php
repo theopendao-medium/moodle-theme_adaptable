@@ -30,24 +30,19 @@ namespace theme_adaptable;
 
 defined('MOODLE_INTERNAL') || die();
 
-use \theme_adaptable\traits\null_object;
-
 /**
  * Activity meta data.
  *
- * @package   theme_adaptable
  * @copyright Copyright (c) 2015 Moodlerooms Inc. (http://www.moodlerooms.com)
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class activity_meta {
 
-    use null_object;
-
     // Strings.
     /**
      * @var string $submitstrkey - language string key.
      */
-    public $submitstrkey;
+    public $submitstrkey = '';
 
     // Teacher meta data.
     /**

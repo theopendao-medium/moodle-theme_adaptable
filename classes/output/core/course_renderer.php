@@ -639,11 +639,16 @@ class course_renderer extends \core_course_renderer {
         $output .= $this->course_section_cm_availability($mod, $displayoptions);
 
         // Get further information.
-        $settingname = 'coursesectionactivityfurtherinformation'. $mod->modname;
-        if (isset ($this->page->theme->settings->$settingname) && $this->page->theme->settings->$settingname == true) {
-            $output .= html_writer::start_tag('div', array('class' => 'ad-activity-meta-container'));
-            $output .= $this->course_section_cm_get_meta($mod);
-            $output .= html_writer::end_tag('div');
+        if (\theme_adaptable\activity::activitymetaenabled()) {
+            $courseid = $mod->course;
+            if (\theme_adaptable\activity::maxstudentsnotexceeded($courseid)) {
+                $settingname = 'coursesectionactivityfurtherinformation'. $mod->modname;
+                if (isset ($this->page->theme->settings->$settingname) && $this->page->theme->settings->$settingname == true) {
+                    $output .= html_writer::start_tag('div', array('class' => 'ad-activity-meta-container'));
+                    $output .= $this->course_section_cm_get_meta($mod);
+                    $output .= html_writer::end_tag('div');
+                }
+            }
         }
 
         /* If there is content AND a link, then display the content here.
@@ -681,7 +686,7 @@ class course_renderer extends \core_course_renderer {
 
         // Do we have an activity function for this module for returning meta data?
         $meta = \theme_adaptable\activity::module_meta($mod);
-        if (($meta == null) || (!$meta->is_set(true))) {
+        if ($meta == null) {
             // Can't get meta data for this module.
             return '';
         }
@@ -725,8 +730,8 @@ class course_renderer extends \core_course_renderer {
                 $url = new moodle_url("/mod/{$mod->modname}/view.php", $params);
 
                 $icon = $this->output->pix_icon('docs', get_string('info'));
-                $content .= html_writer::start_tag('div', array('class' => 'ct-activity-mod-engagement'));
-                $content .= html_writer::link($url, $icon.$engagementstr, array('class' => 'ct-activity-action'));
+                $content .= html_writer::start_tag('div', array('class' => 'ad-activity-mod-engagement'));
+                $content .= html_writer::link($url, $icon.$engagementstr, array('class' => 'ad-activity-action'));
                 $content .= html_writer::end_tag('div');
             }
         } else {
@@ -736,7 +741,7 @@ class course_renderer extends \core_course_renderer {
                 if (in_array($mod->modname, ['quiz', 'assign'])) {
                     $url = new \moodle_url('/mod/'.$mod->modname.'/view.php?id='.$mod->id);
                 }
-                $content .= html_writer::start_tag('span', array('class' => 'ct-activity-mod-feedback'));
+                $content .= html_writer::start_tag('span', array('class' => 'ad-activity-mod-feedback'));
 
                 $feedbackavailable = $this->output->pix_icon('t/message', get_string('feedback')) .
                     get_string('feedbackavailable', 'theme_adaptable');

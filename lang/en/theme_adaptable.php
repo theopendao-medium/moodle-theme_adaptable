@@ -1685,6 +1685,17 @@ $string['xofycontributed'] = '{$a->completed} of {$a->participants} contributed'
 $string['xofysubmitted'] = '{$a->completed} of {$a->participants} submitted';
 $string['xungraded'] = '{$a} ungraded';
 
+// Coursesetting - Show addtional data for modules.
+$string['enableadditionalmoddata'] = 'Enable additional information';
+$string['enableadditionalmoddatadesc'] = 'This is a \'Site level\' switch to turn the activity information on or off.  It needs to be \'on\' for the related settings that operate at a course level to take effect.  As this functionality can be computationally expensive, then it is strongly suggested that you undertake full testing before using on a production system.  Note: Purges the cache caches when changed.';
+
+$string['courseadditionalmoddatamaxstudents'] = 'Set the maximum number of students on a course that \'Show additional information\' will apply to';
+$string['courseadditionalmoddatamaxstudentsdesc'] = 'Additional information can take time to calculate, especially on large courses, so here you can set the maximum number of students that a couse can have for the functionality to show on that course.  Above that value, the \'Additional information\' will NOT be calculated or show regardless of the course settings!  A value of \'0\' means \'unlimited\'.  Note: Purges the cache caches when changed.';
+
+$string['courseadditionalmoddatastudentsinfounlimited'] = 'Additional information will show for the enabled activities for {$a} students.';
+$string['courseadditionalmoddatastudentsinfolimitedshow'] = 'Additional information will show for the enabled activities for {$a->students} students as the number does not exceed the maximum \'{$a->maxstudents}\' set by the administrator on the Adaptable theme setting \'courseadditionalmoddatamaxstudents\'.';
+$string['courseadditionalmoddatastudentsinfolimitednoshow'] = 'Additional information will NOT show for the enabled activities for {$a->students} students as the number exceededs the maximum \'{$a->maxstudents}\' set by the administrator on the Adaptable theme setting \'courseadditionalmoddatamaxstudents\'.';
+
 $string['coursesectionactivityfurtherinformation'] = 'Course page further information';
 $string['coursesectionactivityfurtherinformationassign'] = 'Show assignment information';
 $string['coursesectionactivityfurtherinformationassigndesc'] = 'Show assignment information.  For teachers / admins, show number of submissions.';
@@ -1698,6 +1709,12 @@ $string['coursesectionactivityfurtherinformationlesson'] = 'Show lesson informat
 $string['coursesectionactivityfurtherinformationlessondesc'] = 'Show lesson information.  For teachers / admins, show number of submissions.';
 $string['coursesectionactivityfurtherinformationdata'] = 'Show database information';
 $string['coursesectionactivityfurtherinformationdatadesc'] = 'Show data information.  For teachers / admins, show number of submissions.';
+
+$string['cachedef_activitystudentrolescache'] = 'Caches the student roles.';
+$string['cachedef_activitymodulecountcache'] = 'Caches the number of students who can access a given module on a given course.';
+$string['cachedef_activitystudentscache'] = 'Caches the ids of the students on a given course.';
+$string['cachedef_activityusercreatedcache'] = 'Caches the ids of the new users on a given course.';
+$string['cannotgetactivitycacheslock'] = 'Cannot get activity caches lock for course id {$a}.';
 
 // Activity display margins.
 $string['coursesectionactivitymargintop'] = 'Top margin activity spacing';

@@ -534,6 +534,26 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_heading($name, $heading, '');
     $page->add($setting);
 
+    $name = 'theme_adaptable/enableadditionalmoddata';
+    $title = get_string('enableadditionalmoddata', 'theme_adaptable');
+    $description = get_string('enableadditionalmoddatadesc', 'theme_adaptable');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('no'),
+        2 => new lang_string('yes')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('cache_helper::purge_all');
+    $page->add($setting);
+
+    $name = 'theme_adaptable/courseadditionalmoddatamaxstudents';
+    $title = get_string('courseadditionalmoddatamaxstudents', 'theme_adaptable');
+    $description = get_string('courseadditionalmoddatamaxstudentsdesc', 'theme_adaptable');
+    $default = 0;
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_INT);
+    $setting->set_updatedcallback('cache_helper::purge_all');
+    $page->add($setting);
+
     $name = 'theme_adaptable/coursesectionactivityfurtherinformationassign';
     $title = get_string('coursesectionactivityfurtherinformationassign', 'theme_adaptable');
     $description = get_string('coursesectionactivityfurtherinformationassigndesc', 'theme_adaptable');
