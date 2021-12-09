@@ -2311,8 +2311,6 @@ EOT;
         global $CFG, $SITE;
         $logomarkup = '';
 
-        $responsivelogo = $this->page->theme->settings->responsivelogo;
-
         $logosetarea = '';
         if (!empty($currenttopcat)) {
             $categoryheaderlogoset = 'categoryheaderlogo'.$currenttopcat;
@@ -2326,7 +2324,8 @@ EOT;
 
         if (!empty($logosetarea)) {
             // Logo.
-            $logomarkup = '<div class="p-2 bd-highlight '.$responsivelogo.'">';
+            $responsivelogo = (empty($this->page->theme->settings->responsivelogo)) ? '' : ' '.$this->page->theme->settings->responsivelogo;
+            $logomarkup = '<div class="pb-2 pr-2 pt-2 bd-highlight'.$responsivelogo.'">';
             $logo = '<img src='.$this->page->theme->setting_file_url($logosetarea, $logosetarea).' id="logo"';
             $logo .= ' alt="'.get_string('logo', 'theme_adaptable').'">';
 

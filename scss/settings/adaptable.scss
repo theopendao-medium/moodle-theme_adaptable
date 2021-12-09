@@ -923,6 +923,7 @@ input[type="radio"], input[type="checkbox"] {
 #region-main {
     background-color: [[setting:regionmaincolor]];
     border: none;
+    transition: all .5s ease-in-out;
 }
 
 #region-main
@@ -1367,10 +1368,6 @@ div.questionbankwindow.block {
     transition: width .5s ease-in-out;
 }
 
-#region-main {
-    transition: all .5s ease-in-out;
-}
-
 #block-region-side-post {
     transition: all .5s ease-in-out;
 }
@@ -1387,61 +1384,6 @@ div.questionbankwindow.block {
 
 #showsidebaricon {
     display: none;
-}
-
-@media(max-width: 991px) {
-    #region-main {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-    #block-region-side-post {
-        background-color: #fff;
-        min-width: 90%;
-        overflow: hidden;
-        padding: 0;
-        position: fixed;
-        right: -90%;
-        transition: right 0.75s;
-        z-index: 11;
-    }
-    .header-style1 #block-region-side-post {
-        height: calc(100% - 44px);
-        top: 44px;
-    }
-    .header-style1 .pageheadershown #block-region-side-post {
-        height: calc(100% - 104px);
-        top: 104px;
-    }
-    .header-style2 #block-region-side-post {
-        height: calc(100% - 72px);
-        top: 72px;
-    }
-    #block-region-side-post .block-controls {
-        display: none;
-    }
-    #block-region-side-post.sidebarshown {
-        border-left: 2px solid [[setting:mobileslidebartabbkcolor]];
-        overflow-y: auto;
-        right: 0;
-    }
-    #showsidebaricon {
-        background-color: [[setting:mobileslidebartabbkcolor]];
-        border-bottom: 4px solid [[setting:mobileslidebartabbkcolor]];
-        border-left: 4px solid [[setting:mobileslidebartabbkcolor]];
-        border-radius: 45px 0 0 45px;
-        border-top: 4px solid [[setting:mobileslidebartabbkcolor]];
-        color: [[setting:mobileslidebartabiconcolor]];
-        display: block;
-        padding: 6px;
-        position: fixed;
-        right: 0;
-        top: 305px;
-        transition: right 0.75s;
-        z-index: 11;
-    }
-    .sidebarshown #showsidebaricon {
-        right: 90%;
-    }
 }
 
 .fselect #id_courses {
