@@ -77,20 +77,8 @@ if ($movesidebartofooter) {
 
         <section id="region-main" class="<?php echo $regions['content'];?>">
             <?php
-            if (\theme_adaptable\activity::activitymetaenabled()) {
-            $maxstudentsinfo = \theme_adaptable\activity::maxstudentsnotexceeded($COURSE->id, true);
-            if ($maxstudentsinfo['maxstudents'] == 0) {
-                $activityinfostring = get_string('courseadditionalmoddatastudentsinfounlimited', 'theme_adaptable',
-                    $maxstudentsinfo['nostudents']);
-            } else if (!$maxstudentsinfo['notexceeded']) {
-                $activityinfostring = get_string('courseadditionalmoddatastudentsinfolimitednoshow', 'theme_adaptable',
-                    array('students' => $maxstudentsinfo['nostudents'], 'maxstudents' => $maxstudentsinfo['maxstudents']));
-            } else {
-                $activityinfostring = get_string('courseadditionalmoddatastudentsinfolimitedshow', 'theme_adaptable',
-                    array('students' => $maxstudentsinfo['nostudents'], 'maxstudents' => $maxstudentsinfo['maxstudents']));
-            }
-            echo '<h4>'.$activityinfostring.'</h4>';
-            }
+            $courseinfo = new \theme_adaptable\output\courseinfo();
+            echo $OUTPUT->render($courseinfo);
 
             if (!empty($PAGE->theme->settings->tabbedlayoutcoursepage)) {
                 // Use Adaptable tabbed layout.
@@ -139,8 +127,8 @@ if ($movesidebartofooter) {
                     $count++;
                 }
 
-                // Basic array used by appropriately named blocks below (e.g. course-tab-one).  All this is to re-use existing
-                // functionality and the non-use of numbers in block region names.
+                /* Basic array used by appropriately named blocks below (e.g. course-tab-one).  All this is to re-use existing
+                   functionality and the non-use of numbers in block region names. */
                 $wordtonumber = array (1 => 'one', 2 => 'two');
 
                 foreach ($taborder as $tabnumber) {
@@ -176,18 +164,17 @@ if ($movesidebartofooter) {
                 echo $OUTPUT->course_content_footer();
             }
             ?>
-
 <?php
-// Check here if sidebar is configured to be in footer as we want to include
-// the sidebar information in the main content.
+/* Check here if sidebar is configured to be in footer as we want to include
+   the sidebar information in the main content. */
 
 if ($movesidebartofooter == false) { ?>
     </section>
 <?php }
 
-// Check if the block regions are disabled in settings.  If it is and there were any blocks
-// assigned to those regions, they would obviously not display.  This will allow to override
-// the call to get_missing_block_regions to just display them all.
+/* Check if the block regions are disabled in settings.  If it is and there were any blocks
+   assigned to those regions, they would obviously not display.  This will allow to override
+   the call to get_missing_block_regions to just display them all. */
 
 $displayall = false;
 
@@ -200,8 +187,8 @@ if ($movesidebartofooter == false) {
         echo $OUTPUT->blocks('side-post', $regions['blocks'].' d-print-none ');
     }
 
-    // Get any missing blocks from changing layout settings.  E.g. From 4-4-4-4 to 6-6-0-0, to recover
-    // what was in the last 2 spans that are now 0.
+    /* Get any missing blocks from changing layout settings.  E.g. From 4-4-4-4 to 6-6-0-0, to recover
+       what was in the last 2 spans that are now 0. */
     echo $OUTPUT->get_missing_block_regions($blocksarray, 'col-12', $displayall);
 }
 
@@ -219,8 +206,8 @@ if ($movesidebartofooter) {
         echo $OUTPUT->blocks('side-post', ' col-12 d-print-none ');
     }
 
-    // Get any missing blocks from changing layout settings.  E.g. From 4-4-4-4 to 6-6-0-0, to recover
-    // what was in the last 2 spans that are now 0.
+    /* Get any missing blocks from changing layout settings.  E.g. From 4-4-4-4 to 6-6-0-0, to recover
+       what was in the last 2 spans that are now 0. */
     echo $OUTPUT->get_missing_block_regions($blocksarray, array(), $displayall);
 }
 

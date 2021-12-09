@@ -6,6 +6,14 @@ Change Log in version 3.11.0.4 (2021081003)
 4. Fix "My courses dropdown can show hidden courses when user does not have capability when 'mysitessortoverride' setting is not
    set to 'Use list from my overview'", related to #258.
 5. Makes sense to have the logo as a link to the frontpage when there is no navbar.
+6. Added 'enableadditionalmoddata' setting to turn on / off additional information at a site level.  Default is 'off'!
+7. Added 'courseadditionalmoddatamaxstudents' setting to restrict, if desired, the display of the activity information on a
+   a course of the number of students on that course exceeds it.  When 'enableadditionalmoddata' is enabled, then
+   additional information about the status of this is shown at the top of the course when editing.  This is so
+   that large courses can be automatically prevented from showing the information as the calculations would take an
+   unacceptable amount of time to compute.  It is up to the administrator to set the figure based upon benchmarking / testing
+   of the performance characteristics of the server.  The default is '0', which means 'unlimited' number of students.
+8. Fixed 'ct' to 'ad' class prefixes for activity info in the course renderer.
 
 Change Log in version 3.11.0.3 (2021081002)
 ===========================================
