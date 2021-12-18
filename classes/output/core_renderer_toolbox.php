@@ -1061,11 +1061,12 @@ EOT;
     public function get_block_regions($settingsname = 'blocklayoutlayoutrow', $classnamebeginswith = 'frnt-market-',
         $customrowsetting = null) {
         global $COURSE, $USER;
+
+        $adminediting = false;
+        $blockcount = 0;
+        $classextra = '';
         $fields = array();
         $retval = '';
-        $blockcount = 0;
-        $style = '';
-        $adminediting = false;
 
         /* Check if user has capability to edit block on homepage.  This is used as part of checking if
            blocks should display the dotted borders and labels for editing. (Issue #809). */
@@ -1081,7 +1082,7 @@ EOT;
         }
 
         if ( (isset($USER->editing) && $USER->editing == 1) && ($pageallowed == true) ) {
-            $style = '" style="display: block; background: #EEEEEE; min-height: 50px; border: 2px dashed #BFBDBD; margin-top: 5px';
+            $classextra = ' adaptable-block-area';
             $adminediting = true;
         }
 
@@ -1111,15 +1112,14 @@ EOT;
             $vals = explode('-', $field);
             foreach ($vals as $val) {
                 if ($val > 0) {
-                    $retval .= '<div class="my-1 col-md-' . $val . $style . '">';
+                    $retval .= '<div class="my-1 col-md-'.$val.$classextra.'">';
 
                     // Moodle does not seem to like numbers in region names so using letter instead.
                     $blockcount ++;
                     $block = $classnamebeginswith. chr(96 + $blockcount);
 
                     if ($adminediting) {
-                        $retval .= '<span style="padding-left: 10px;"> ' . get_string('region-' . $block, 'theme_adaptable') .
-                        '' . '</span>';
+                        $retval .= '<span class="pl-2">'.get_string('region-'.$block, 'theme_adaptable').'</span>';
                     }
 
                     $retval .= $this->blocks($block, 'block-region-front');
