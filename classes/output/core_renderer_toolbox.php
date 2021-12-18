@@ -3044,7 +3044,7 @@ EOT;
             }
 
             $content = '<li class="'.$marginclass.'">';
-            $content .= '<a class="list-group-item list-group-item-action" href="'.$url.'"';
+            $content .= '<a class="list-group-item list-group-item-action" href="'.$url.'" ';
             $content .= 'data-key="" data-isexpandable="0" data-indent="'.$dataindent;
             $content .= '" data-showdivider="0" data-type="1" data-nodetype="1"';
             $content .= 'data-collapse="0" data-forceopen="1" data-isactive="1" data-hidden="0" ';
