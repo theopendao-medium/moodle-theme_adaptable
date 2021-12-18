@@ -44,7 +44,6 @@ $THEME->name = 'adaptable';
 // The frontpage regions.
 $frontlayoutregions = array(
     'side-post',
-    'middle',
     'frnt-footer',
     'frnt-market-a',
     'frnt-market-b',
@@ -77,7 +76,6 @@ $frontlayoutregions = array(
 // The course page regions.
 $courselayoutregions = array(
     'side-post',
-    'middle',
     'frnt-footer',
     'course-top-a',
     'course-top-b',

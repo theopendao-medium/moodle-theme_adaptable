@@ -65,7 +65,6 @@ $string['pluginname'] = 'Adaptable';
 $string['configtitle'] = 'Adaptable';
 $string['configtabtitle'] = 'Settings';
 
-$string['region-middle'] = 'Middle';
 $string['region-frnt-footer'] = 'Footer';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
