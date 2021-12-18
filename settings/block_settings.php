@@ -35,6 +35,12 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_heading($name, $heading, '');
     $page->add($setting);
 
+    $name = 'theme_adaptable/frontpageuserblocksenabled';
+    $title = get_string('frontpageuserblocksenabled', 'theme_adaptable');
+    $description = get_string('frontpageuserblocksenableddesc', 'theme_adaptable');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, true);
+    $page->add($setting);
+
     // Show the navigation block on the course page.
     $name = 'theme_adaptable/shownavigationblockoncoursepage';
     $title = get_string('shownavigationblockoncoursepage', 'theme_adaptable');

@@ -301,6 +301,9 @@ $string['coursepageblocklayoutlayoutbottomrowdesc'] = 'Add / set layout for bloc
 $string['frontpageblocksenabled'] = 'Enable custom block region on front page';
 $string['frontpageblocksenableddesc'] = 'You can enable / disable custom block regions on the front page.  You can then drag and drop blocks into the regions you created.';
 
+$string['frontpageuserblocksenabled'] = 'Enable side-post block region on front page for users';
+$string['frontpageuserblocksenableddesc'] = 'You can enable / disable the side-post block region on the front page for users.  Note: \'Users\' here means guest and authenticated users, Admins will always see the region.';
+
 $string['dashblocksenabled'] = 'Enable custom block region on the \'Dashboard\' page';
 $string['dashblocksenableddesc'] = 'You can enable / disable custom block regions on the \'Dashboard\' page.  You can then drag and drop blocks into the regions you created.';
 

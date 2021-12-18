@@ -1,5 +1,8 @@
 Change Log in version 3.11.0.5(2021081004)
 ===========================================
+1. Add new 'frontpageuserblocksenabled' setting to the 'Block settings' tab, ref: https://moodle.org/mod/forum/discuss.php?d=430124.
+   Thus for guests and authenticated users, when 'un-ticked' then the 'side-post' region does not show on the front page, but it
+   does for site admins.  When 'ticked' then 'side-post' will show for all and have content when there is some.
 
 Change Log in version 3.11.0.4 (2021081003)
 ===========================================

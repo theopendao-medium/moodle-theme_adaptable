@@ -32,7 +32,12 @@ require_once(dirname(__FILE__) . '/includes/header.php');
 
 // And now we go to create the main layout.
 $left = $PAGE->theme->settings->blockside;
-$hassidepost = $PAGE->blocks->region_has_content('side-post', $OUTPUT);
+if (($PAGE->theme->settings->frontpageuserblocksenabled) || (is_siteadmin($USER))) {
+    $hassidepost = $PAGE->blocks->region_has_content('side-post', $OUTPUT);
+} else {
+    $hassidepost = false;
+}
+
 $regions = theme_adaptable_grid($left, $hassidepost);
 
 // Let's include the images slider if enabled.
