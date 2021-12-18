@@ -1,3 +1,6 @@
+Change Log in version 3.11.0.5(2021081004)
+===========================================
+
 Change Log in version 3.11.0.4 (2021081003)
 ===========================================
 1. Re-fix 'Title moved to top by search', ref: https://moodle.org/mod/forum/discuss.php?d=425729#p1718073.
