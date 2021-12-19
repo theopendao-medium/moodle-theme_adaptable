@@ -38,6 +38,12 @@ This version works with Moodle 3.11 version 2021051700.00 (Build: 20210517) and 
 
 Please ensure that your hardware and software complies with 'Requirements' in '[Installing Moodle](https://docs.moodle.org/311/en/Installing_Moodle)'.
 
+Known issues
+================
+If you have the Calendar block shown on any given page but it actually isn't displayed to the user because the block region it is in
+is not shown, then you may get an 'invalidparameter' error.  The workaround is to either ensure that the block is in a region that
+is shown to all users or to remove the block from the page(s) where this happens.
+
 Reporting issues
 ================
 Before reporting an issue, please ensure that you are running the [current](https://moodle.org/plugins/theme_adaptable) version for
