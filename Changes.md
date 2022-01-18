@@ -6,6 +6,7 @@ Change Log in version 3.11.0.5(2021081004)
 2. Fix 'No middle region'.
 3. Tidied 'get_block_regions()' with the creation of the 'adaptable-block-area' style.
 4. Fix 'Event observer code for activity information missing', pertains to code changes in 3.11.0.4.
+5. Fix 'Implications of MDL-70721 output: Remove redundant title'.
 
 Change Log in version 3.11.0.4 (2021081003)
 ===========================================

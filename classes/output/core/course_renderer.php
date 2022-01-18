@@ -772,8 +772,8 @@ class course_renderer extends \core_course_renderer {
             $icon = html_writer::tag('i', '', array('class' => 'fa fa-angle-double-left'));
             $previouslink = html_writer::tag('span', $icon, array('class' => 'nav_icon'));
             $activityname = html_writer::tag('span', get_string('previousactivity', 'theme_adaptable'),
-                            array('class' => 'nav_guide')).'<br>';
-            $activityname .= $data->prevlink->attributes[0]['value'];
+                array('class' => 'nav_guide')).'<br>';
+            $activityname .= substr($data->prevlink->text, strpos($data->prevlink->text, ' ') + 1);
             $previouslink .= html_writer::tag('span', $activityname, array('class' => 'text'));
             $data->prevlink->text = $previouslink;
         }
@@ -782,8 +782,8 @@ class course_renderer extends \core_course_renderer {
             $data->nextlink->classes = 'next_activity prevnext'; // Override the button!
 
             $activityname = html_writer::tag('span', get_string('nextactivity', 'theme_adaptable'),
-                            array('class' => 'nav_guide')).'<br>';
-            $activityname .= $data->nextlink->attributes[0]['value'];
+                array('class' => 'nav_guide')).'<br>';
+            $activityname .= substr($data->nextlink->text, 0, strrpos($data->nextlink->text, ' '));
             $nextlink = html_writer::tag('span', $activityname, array('class' => 'text'));
             $icon = html_writer::tag('i', '', array('class' => 'fa fa-angle-double-right'));
             $nextlink .= html_writer::tag('span', $icon, array('class' => 'nav_icon'));
