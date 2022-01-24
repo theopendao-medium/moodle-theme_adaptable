@@ -52,18 +52,28 @@
     border-color: transparent;
 }
 
-
 // CSS for the one topic format tabs.
-.onetopic .nav-tabs .nav-link {
-    border: 1px solid #eee;
-    border-bottom-color: transparent;
-    margin: 2px; // Magic number so tabs can have border.
-}
+.format-onetopic .onetopic {
+    .nav-tabs {
+        .nav-link {
+            background-color: #eee;
+            border: 1px solid #eee;
+            margin: 2px; // Magic number so tabs can have border.
 
-// Give active tabs brand colour background.
-.onetopic .nav-tabs .nav-link.active,
-.onetopic .nav-tabs .nav-item.show .nav-link {
-    background-color: [[setting:headerbkcolor]];
-    border-color: transparent;
-    color: [[setting:headertextcolor]];
+            .tab_content .sectionname {
+                background-color: inherit;
+                color: inherit;
+            }
+        }
+
+        .nav-link.active,
+        .nav-item.show .nav-link {
+            background-color: [[setting:headerbkcolor]];
+            border-color: transparent;
+        }
+    }
+
+    .tab_content {
+        background-color: [[setting:regionmaincolor]];
+    }
 }

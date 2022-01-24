@@ -5,6 +5,7 @@ Change Log in version 3.9.1.5 (2020073112)
 3. Fix 'My Courses dropdown not showing all enrolled courses' - #258.
 4. Fix "My courses dropdown can show hidden courses when user does not have capability when 'mysitessortoverride' setting is not
    set to 'Use list from my overview'", related to #258.
+5. Fix 'One Topic font color change not getting applied' - #264.
 
 Change Log in version 3.9.1.4 (2020073111)
 ==========================================
