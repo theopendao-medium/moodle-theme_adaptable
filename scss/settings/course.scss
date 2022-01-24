@@ -425,10 +425,6 @@ body:not(.editing) .sitetopic ul.section,
     padding: 3px 10px;
 }
 
-.format-onetopic .onetopic .tab_content {
-    background-color: [[setting:coursesectionheaderbg]];
-}
-
 // Alter nav on single-section for better onetopic course format support.
 .single-section .nav {
     margin-bottom: 0;
@@ -453,15 +449,6 @@ body:not(.editing) .sitetopic ul.section,
 // Current Section.
 #page .course-content ul li.section.main.current{
     background-color: [[setting:currentcolor]];
-}
-
-.format-onetopic .onetopic .nav-tabs .nav-link .tab_content .sectionname {
-    background-color: inherit;
-}
-
-.format-onetopic .onetopic .nav-tabs .nav-link.active .tab_content,
-.format-onetopic .onetopic .nav-tabs .nav-link.active .tab_content .sectionname {
-    background-color: [[setting:currentcolor]] !important;
 }
 
 .course-content ul li.section.hidden .sectionname,
