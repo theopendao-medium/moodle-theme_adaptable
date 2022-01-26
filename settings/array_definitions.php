@@ -127,6 +127,15 @@ if ($ADMIN->fulltree) {
         'd-none' => get_string('bs4none', 'theme_adaptable')
     );
 
+    $screensizeinlineblock = array(
+        'd-inline-block' => get_string('bs4all', 'theme_adaptable'),
+        'd-none d-sm-inline-block' => new lang_string('bs4small', 'theme_adaptable'),
+        'd-none d-md-inline-block' => new lang_string('bs4medium', 'theme_adaptable'),
+        'd-none d-lg-inline-block' => new lang_string('bs4large', 'theme_adaptable'),
+        'd-none d-xl-inline-block' => new lang_string('bs4extralarge', 'theme_adaptable'),
+        'd-none' => get_string('bs4none', 'theme_adaptable')
+    );
+
     $screensizeflex = array(
         'd-flex' => get_string('bs4all', 'theme_adaptable'),
         'd-none d-sm-flex' => new lang_string('bs4small', 'theme_adaptable'),

@@ -61,8 +61,8 @@ if ($ADMIN->fulltree) {
     $name = 'theme_adaptable/responsivelogo';
     $title = get_string('responsivelogo', 'theme_adaptable');
     $description = get_string('responsivelogodesc', 'theme_adaptable');
-    $default = 'd-none d-lg-block';
-    $choices = $screensizeblock;
+    $default = 'd-none d-lg-inline-block';
+    $choices = $screensizeinlineblock;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $page->add($setting);
 
@@ -70,8 +70,8 @@ if ($ADMIN->fulltree) {
     $name = 'theme_adaptable/responsivecoursetitle';
     $title = get_string('responsivecoursetitle', 'theme_adaptable');
     $description = get_string('responsivecoursetitledesc', 'theme_adaptable');
-    $default = 'd-none d-lg-block';
-    $choices = $screensizeblock;
+    $default = 'd-none d-lg-inline-block';
+    $choices = $screensizeinlineblock;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $page->add($setting);
 
