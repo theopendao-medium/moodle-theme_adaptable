@@ -1,3 +1,6 @@
+Change Log in version 3.11.0.6(2021081005)
+===========================================
+
 Change Log in version 3.11.0.5(2021081004)
 ===========================================
 1. Add new 'frontpageuserblocksenabled' setting to the 'Block settings' tab, ref: https://moodle.org/mod/forum/discuss.php?d=430124.
