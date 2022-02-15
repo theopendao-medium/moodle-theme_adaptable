@@ -456,7 +456,7 @@ body:not(.editing) .sitetopic ul.section,
     margin-right: 40px;
 }
 
-// Social Wall   */
+// Social Wall.
 
 // All sections.
 // Add padding, background, and word-wrap on all sections.
@@ -664,6 +664,41 @@ div.fdescription.required {
     content: "\f0e5";
     position: relative;
     padding-right: .15em;
+}
+
+// One Topic.
+// CSS for the one topic format tabs.
+.format-onetopic .onetopic {
+    .tab_content {
+        background-color: [[setting:regionmaincolor]];
+    }
+
+    .nav-tabs {
+        .nav-link {
+            background-color: #eee;
+            border: 1px solid #eee;
+            margin: 2px; // Magic number so tabs can have border.
+
+            .tab_content .sectionname {
+                background-color: inherit;
+                color: inherit;
+            }
+        }
+
+        .nav-link.active,
+        .nav-item.show .nav-link {
+            background-color: [[setting:headerbkcolor]];
+            border-color: transparent;
+        }
+
+        .nav-link.active {
+            .tab_content,
+            .tab_content .sectionname {
+                background-color: [[setting:onetopicactivetabbackgroundcolor]] !important;
+                color: [[setting:onetopicactivetabtextcolor]] !important;
+            }
+        }
+    }
 }
 
 // Profile picture.

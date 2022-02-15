@@ -528,6 +528,31 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
+    // One Topic course format heading.
+    $name = 'theme_adaptable/onetopicheading';
+    $heading = get_string('onetopicheading', 'theme_adaptable');
+    $description = get_string('onetopicdesc', 'theme_adaptable');
+    $setting = new admin_setting_heading($name, $heading, $description);
+    $page->add($setting);
+
+    // One Topic active tab background color.
+    $name = 'theme_adaptable/onetopicactivetabbackgroundcolor';
+    $title = get_string('onetopicactivetabbackgroundcolor', 'theme_adaptable');
+    $description = get_string('onetopicactivetabbackgroundcolordesc', 'theme_adaptable');
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, '#d9edf7', $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // One Topic active tab text color.
+    $name = 'theme_adaptable/onetopicactivetabtextcolor';
+    $title = get_string('onetopicactivetabtextcolor', 'theme_adaptable');
+    $description = get_string('onetopicactivetabtextcolordesc', 'theme_adaptable');
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, '#000000', $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
     // Course Activity Further Information section heading.
     $name = 'theme_adaptable/coursesectionactivityfurtherinformation';
     $heading = get_string('coursesectionactivityfurtherinformation', 'theme_adaptable');

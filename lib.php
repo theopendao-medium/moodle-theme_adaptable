@@ -295,6 +295,8 @@ function theme_adaptable_process_scss($scss, $theme) {
         '[[setting:socialwallbordercolor]]' => '#B9B9B9',
         '[[setting:socialwallactionlinkcolor]]' => '#51666C',
         '[[setting:socialwallactionlinkhovercolor]]' => '#009688',
+        '[[setting:onetopicactivetabbackgroundcolor]]' => '#d9edf7',
+        '[[setting:onetopicactivetabtextcolor]]' => '#000000',
         '[[setting:fontblockheaderweight]]' => '400',
         '[[setting:fontblockheadersize]]' => '22px',
         '[[setting:fontblockheadercolor]]' => '#3A454b',

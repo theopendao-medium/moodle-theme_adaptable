@@ -857,6 +857,16 @@ $string['socialwallactionlinkcolordesc'] = 'The colour of action links in the \'
 $string['socialwallactionlinkhovercolor'] = 'Action link hover colour';
 $string['socialwallactionlinkhovercolordesc'] = 'The colour of action links when hovered in \'Social wall\'.';
 
+// One Topic Settings.
+$string['onetopicheading'] = 'One Topic';
+$string['onetopicdesc'] = 'Customise the appearance of the \'<a href="https://moodle.org/plugins/format_onetopic">One Topic Course Format</a>\' (if in use on your site).';
+
+$string['onetopicactivetabbackgroundcolor'] = 'Active tab background colour';
+$string['onetopicactivetabbackgroundcolordesc'] = 'The background colour of the active tab on a \'One Topic\' course.';
+
+$string['onetopicactivetabtextcolor'] = 'Active tab text colour';
+$string['onetopicactivetabtextcolordesc'] = 'The text colour of the active tab on a \'One Topic\' course.';
+
 // Blocks General.
 $string['shownavigationblockoncoursepage'] = 'Show navigation block on course page';
 $string['shownavigationblockoncoursepagedesc'] = 'Set this to show the navigation block on the course page.';
