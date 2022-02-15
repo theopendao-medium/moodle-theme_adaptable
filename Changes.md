@@ -6,6 +6,7 @@ Change Log in version 3.9.1.5 (2020073112)
 4. Fix "My courses dropdown can show hidden courses when user does not have capability when 'mysitessortoverride' setting is not
    set to 'Use list from my overview'", related to #258.
 5. Fix 'One Topic font color change not getting applied' - #264.
+6. Add 'OneTopic active tab colour' - #269.
 
 Change Log in version 3.9.1.4 (2020073111)
 ==========================================

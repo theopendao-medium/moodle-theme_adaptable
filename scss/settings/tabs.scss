@@ -51,29 +51,3 @@
 .adaptable-tab.tab-panel .node_category {
     border-color: transparent;
 }
-
-// CSS for the one topic format tabs.
-.format-onetopic .onetopic {
-    .nav-tabs {
-        .nav-link {
-            background-color: #eee;
-            border: 1px solid #eee;
-            margin: 2px; // Magic number so tabs can have border.
-
-            .tab_content .sectionname {
-                background-color: inherit;
-                color: inherit;
-            }
-        }
-
-        .nav-link.active,
-        .nav-item.show .nav-link {
-            background-color: [[setting:headerbkcolor]];
-            border-color: transparent;
-        }
-    }
-
-    .tab_content {
-        background-color: [[setting:regionmaincolor]];
-    }
-}
