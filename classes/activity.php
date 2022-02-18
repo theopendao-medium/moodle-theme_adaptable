@@ -55,6 +55,9 @@ class activity {
      * @return activity_meta
      */
     public static function module_meta(cm_info $mod) {
+        if ($mod->modname == 'data') {
+            return null; // Database query does not work, needs fixing.
+        }
         $methodname = $mod->modname . '_meta';
         if (method_exists('theme_adaptable\\activity', $methodname)) {
             $meta = call_user_func('theme_adaptable\\activity::' . $methodname, $mod);

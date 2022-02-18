@@ -39,10 +39,10 @@ $plugin->requires  = 2021051700.00; // 3.11 (Build: 20210517).
 $plugin->supported = array(311, 311);
 
 // Adaptable version using SemVer (https://semver.org).
-$plugin->release = '3.11.0.6';
+$plugin->release = '3.11.1.0';
 
 // Adaptable maturity (do not use ALPHA or BETA versions in production sites).
-$plugin->maturity = MATURITY_RC;
+$plugin->maturity = MATURITY_STABLE;
 
 // Adaptable dependencies (Only Boost as it's the parent theme).
 $plugin->dependencies = array(

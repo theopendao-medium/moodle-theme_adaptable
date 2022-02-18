@@ -1,9 +1,11 @@
-Change Log in version 3.11.0.6(2021081005)
+Change Log in version 3.11.1.0(2021081005)
 ===========================================
 1. Fix 'Title under logo', please resave the 'Layout responsive' settings 'responsivelogo' and 'responsivecoursetitle'
    - Ref: https://moodle.org/mod/forum/discuss.php?d=431105.
 2. Fix 'One Topic font color change not getting applied' - #264.
 3. Add 'OneTopic active tab colour' - #269.
+4. Disable database activity information as the SQL query does not work, needs fixing.
+5. This major branch now stable.
 
 Change Log in version 3.11.0.5(2021081004)
 ===========================================
