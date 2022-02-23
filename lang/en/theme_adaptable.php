@@ -150,13 +150,9 @@ $string['frontpagerendereroption4'] = 'Coventry tiles';
 
 // Information.
 $string['settingsinformation'] = 'Information';
-$string['informationsettings'] = 'Information settings';
-$string['informationsettingsdesc'] = 'Information about the Adaptable theme.';
-
+$string['themesupport'] = 'Support';
 $string['themechanges'] = 'Changes';
-$string['themechangesdesc'] = 'Theme changes....';
 $string['themereadme'] = 'Readme';
-$string['themereadmedesc'] = 'Theme readme....';
 
 // Ticker.
 $string['tickersettings'] = 'News ticker';

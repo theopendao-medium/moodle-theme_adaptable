@@ -40,9 +40,7 @@ Please ensure that your hardware and software complies with 'Requirements' in '[
 
 Known issues
 ================
-If you have the Calendar block shown on any given page but it actually isn't displayed to the user because the block region it is in
-is not shown, then you may get an 'invalidparameter' error.  The workaround is to either ensure that the block is in a region that
-is shown to all users or to remove the block from the page(s) where this happens.
+See 'Known issues with this version' in 'Changes.md' for the version you are running.
 
 Reporting issues
 ================

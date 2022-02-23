@@ -14,7 +14,10 @@ Known issues with this version
 ------------------------------
 1. Database activity information does not show.
 2. Virtual Programming Labs run button will not stop spinning until page refreshed.
-Also look at '[Adaptable issues](https://gitlab.com/jezhops/moodle-theme_adaptable/-/issues)'.
+3. If you have the Calendar block shown on any given page but it actually isn't displayed to the user because the block region it is in
+is not shown, then you may get an 'invalidparameter' error.  The workaround is to either ensure that the block is in a region that
+is shown to all users or to remove the block from the page(s) where this happens.
+4. Also look at '[Adaptable issues](https://gitlab.com/jezhops/moodle-theme_adaptable/-/issues)'.
 
 Change Log in version 3.11.0.5(2021081004)
 ===========================================
