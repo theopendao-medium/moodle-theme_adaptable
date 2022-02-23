@@ -333,7 +333,7 @@ function theme_adaptable_process_scss($scss, $theme) {
 
     // Get all the defined settings for the theme and replace defaults.
     foreach ($theme->settings as $key => $val) {
-        if ((!empty($val)) && (array_key_exists('[[setting:'.$key.']]', $defaults))) {
+        if (((!empty($val)) || (strlen($val) > 0)) && (array_key_exists('[[setting:'.$key.']]', $defaults))) {
             $defaults['[[setting:'.$key.']]'] = $val;
         }
     }

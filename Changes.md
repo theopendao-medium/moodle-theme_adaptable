@@ -6,11 +6,13 @@ Change Log in version 3.11.1.0(2021081005)
 3. Add 'OneTopic active tab colour' - #269.
 4. Disable database activity information as the SQL query does not work, needs fixing.
 5. This major branch now stable.
+6. Fix 'Empty settings including '0' ignored in css' - #260.
 
 Known issues with this version
 ------------------------------
 1. Database activity information does not show.
 2. Virtual Programming Labs run button will not stop spinning until page refreshed.
+Also look at '[Adaptable issues](https://gitlab.com/jezhops/moodle-theme_adaptable/-/issues)'.
 
 Change Log in version 3.11.0.5(2021081004)
 ===========================================
