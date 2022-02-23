@@ -8,6 +8,7 @@ Change Log in version 3.11.1.0(2021081005)
 5. This major branch now stable.
 6. Fix 'Empty settings including '0' ignored in css' - #260.
 7. Fix activity border settings.
+8. Add 'googlefonts' setting.  Note: It is essential that you review the implications of this setting.
 
 Known issues with this version
 ------------------------------

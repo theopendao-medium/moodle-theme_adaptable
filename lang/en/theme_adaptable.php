@@ -874,16 +874,21 @@ $string['shownavigationblockoncoursepagedesc'] = 'Set this to show the navigatio
 // Fonts.
 $string['fontsettings'] = 'Fonts';
 $string['fontsettingsheading'] = 'Modify the fonts used throughout the theme.';
-$string['fontdesc'] = 'You can select the <a href="https://www.google.com/fonts" target="_blank">Google Fonts</a> that you would like to use throughout the theme. Select the subset needed (latin is always included) and enter the right font weight or the font will not displayed.';
+$string['fontdesc'] = 'You can select the fonts that you would like to use throughout the theme.';
+
+$string['fontdefault'] = 'Default';
+
+$string['googlefonts'] = 'Google fonts';
+$string['googlefontsdesc'] = 'Enable <a href="https://www.google.com/fonts" target="_blank">Google Fonts</a> for the font names you stipulate except for \'Default\'.  When \'disabled\', you have the opportunity to serve the fonts yourself through CSS / theme modification or have them already installed on the users devices.  When \'enabled\' select the subset needed (latin is always included) and enter the right font weight or the font will not displayed.  <b>NOTE: Adaptable is GPLv3 licensed and may contain bugs, please verify for yourself that when disabled that Google fonts are not being used!</b>';
 
 $string['fontname'] = 'Main font';
-$string['fontnamedesc'] = 'Select the default font, \'sans-serif\', or <a href="https://www.google.com/fonts" target="_blank">Google Fonts</a> used in the site.';
+$string['fontnamedesc'] = 'Select the main font for the site.';
 
 $string['fontsize'] = 'Main font size';
 $string['fontsizedesc'] = 'Select the default font size (in percentage) used in the whole site.';
 
 $string['fontheadername'] = 'Headers font';
-$string['fontheadernamedesc'] = 'Select the default font, \'sans-serif\', or <a href="https://www.google.com/fonts" target="_blank">Google Fonts</a> used in the text and blocks headers.';
+$string['fontheadernamedesc'] = 'Select the font used in the text and blocks headers.';
 
 $string['fontcolor'] = 'Main font colour';
 $string['fontcolordesc'] = 'Set the colour of the font in the theme, use html hex code.';
@@ -898,7 +903,7 @@ $string['fontheaderweight'] = 'Headers font weight';
 $string['fontheaderweightdesc'] = 'Headers font weight used in the site.  Select a value from 100 to 900 depending on the font selected.';
 
 $string['fonttitlename'] = 'Site / Course title font';
-$string['fonttitlenamedesc'] = 'Select the default font, \'sans-serif\', or <a href="https://www.google.com/fonts" target="_blank">Google Fonts</a> used in title site and course titles.';
+$string['fonttitlenamedesc'] = 'Select the font used in the site and course titles.';
 
 $string['fonttitlecolor'] = 'Site / course title font colour';
 $string['fonttitlecolordesc'] = 'Set the colour of the site title and course title font in the theme, use html hex code.';

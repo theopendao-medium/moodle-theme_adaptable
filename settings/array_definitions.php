@@ -284,9 +284,9 @@ if ($ADMIN->fulltree) {
         'belowcontent' => new lang_string('dashblocksbelowcontent', 'theme_adaptable')
     );
 
-    // Google Fonts.
+    // Fonts and Google ones.
     $fontlist = array(
-        'default' => 'default',
+        'sans-serif' => new lang_string('fontdefault', 'theme_adaptable'),
         'ABeeZee' => 'ABeeZee',
         'Abel' => 'Abel',
         'Abhaya Libre' => 'Abhaya Libre',
