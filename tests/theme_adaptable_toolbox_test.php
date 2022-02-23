@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright Copyright (c) 2017 Manoj Solanki (Coventry University)
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class theme_adaptable_toolbox_testcase extends advanced_testcase {
+class theme_adaptable_toolbox_test extends advanced_testcase {
 
     protected function setUp(): void {
         $this->resetAfterTest(true);

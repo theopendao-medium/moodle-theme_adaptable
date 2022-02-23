@@ -69,7 +69,7 @@ $siteurl = new moodle_url('');
                         $fontstoload[] = $fontname;
                     }
                 break;
-            }            
+            }
         }
 
         if (!empty($fontstoload)) {

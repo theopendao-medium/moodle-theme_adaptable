@@ -4,9 +4,9 @@ composer install --dev
 
 php admin/tool/phpunit/cli/init.php
 
-vendor/bin/phpunit theme_adaptable_toolbox_testcase theme/adaptable/tests/adaptabletoolbox_test.php
+vendor/bin/phpunit theme/adaptable/tests/theme_adaptable_toolbox_test.php
 or
-vendor\bin\phpunit theme_adaptable_toolbox_testcase theme/adaptable/tests/adaptabletoolbox_test.php
+vendor\bin\phpunit theme/adaptable/tests/theme_adaptable_toolbox_test.php
 
 vendor/bin/phpunit --group theme_adaptable
 or
