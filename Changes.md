@@ -7,6 +7,7 @@ Change Log in version 3.11.1.0(2021081005)
 4. Disable database activity information as the SQL query does not work, needs fixing.
 5. This major branch now stable.
 6. Fix 'Empty settings including '0' ignored in css' - #260.
+7. Fix activity border settings.
 
 Known issues with this version
 ------------------------------

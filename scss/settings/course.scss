@@ -813,25 +813,21 @@ div.fdescription.required {
     padding: 5px 10px;
 }
 
-.section li.modtype_assign div.ad-activity-wrapper {
-    background-color: [[setting:coursesectionactivityassignbgcolor]];
+.section li .ad-activity-wrapper {
     border-bottom: [[setting:coursesectionactivityborderwidth]] [[setting:coursesectionactivityborderstyle]] [[setting:coursesectionactivitybordercolor]];
-    -webkit-box-shadow: -[[setting:coursesectionactivityleftborderwidth]] 0 0 0 [[setting:coursesectionactivityassignleftbordercolor]];
     box-shadow: -[[setting:coursesectionactivityleftborderwidth]] 0 0 0 [[setting:coursesectionactivityassignleftbordercolor]];
 }
 
-.section li.modtype_forum div.ad-activity-wrapper {
-    background-color: [[setting:coursesectionactivityforumbgcolor]];
-    border-bottom: [[setting:coursesectionactivityborderwidth]] [[setting:coursesectionactivityborderstyle]] [[setting:coursesectionactivitybordercolor]];
-    -webkit-box-shadow: -[[setting:coursesectionactivityleftborderwidth]] 0 0 0 [[setting:coursesectionactivityforumleftbordercolor]];
-    box-shadow: -[[setting:coursesectionactivityleftborderwidth]] 0 0 0 [[setting:coursesectionactivityforumleftbordercolor]];
+.section li .modtype_assign .ad-activity-wrapper {
+    background-color: [[setting:coursesectionactivityassignbgcolor]];
 }
 
-.section li.modtype_quiz div.ad-activity-wrapper {
+.section li.modtype_forum .ad-activity-wrapper {
+    background-color: [[setting:coursesectionactivityforumbgcolor]];
+}
+
+.section li.modtype_quiz .ad-activity-wrapper {
     background-color: [[setting:coursesectionactivityquizbgcolor]];
-    border-bottom: [[setting:coursesectionactivityborderwidth]] [[setting:coursesectionactivityborderstyle]] [[setting:coursesectionactivitybordercolor]];
-    -webkit-box-shadow: -[[setting:coursesectionactivityleftborderwidth]] 0 0 0 [[setting:coursesectionactivityquizleftbordercolor]];
-    box-shadow: -[[setting:coursesectionactivityleftborderwidth]] 0 0 0 [[setting:coursesectionactivityquizleftbordercolor]];
 }
 
 .activity img.activityicon {

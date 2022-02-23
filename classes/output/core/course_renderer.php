@@ -644,9 +644,12 @@ class course_renderer extends \core_course_renderer {
             if (\theme_adaptable\activity::maxstudentsnotexceeded($courseid)) {
                 $settingname = 'coursesectionactivityfurtherinformation'. $mod->modname;
                 if (isset ($this->page->theme->settings->$settingname) && $this->page->theme->settings->$settingname == true) {
-                    $output .= html_writer::start_tag('div', array('class' => 'ad-activity-meta-container'));
-                    $output .= $this->course_section_cm_get_meta($mod);
-                    $output .= html_writer::end_tag('div');
+                    $metaout = $this->course_section_cm_get_meta($mod);
+                    if (!empty($metaout)) {
+                        $output .= html_writer::start_tag('div', array('class' => 'ad-activity-meta-container'));
+                        $output .= $metaout;
+                        $output .= html_writer::end_tag('div');
+                    }
                 }
             }
         }
