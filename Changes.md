@@ -1,5 +1,6 @@
 Change Log in version 3.11.1.1(2021081006)
 ===========================================
+1. Remove event that was not implemented and caused core PHPUnit test failure.
 
 Known issues with this version
 ------------------------------

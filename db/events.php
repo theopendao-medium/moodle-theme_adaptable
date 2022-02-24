@@ -29,10 +29,6 @@ defined('MOODLE_INTERNAL') || die();
 $observers = array(
 
     array(
-        'eventname'   => '\core\event\course_content_deleted',
-        'callback'    => 'theme_adaptable_observer::course_content_deleted',
-    ),
-    array(
         'eventname'   => '\core\event\role_allow_view_updated',
         'callback'    => 'theme_adaptable_observer::role_allow_view_updated',
     ),
