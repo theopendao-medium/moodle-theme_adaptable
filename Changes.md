@@ -1,6 +1,7 @@
 Change Log in version 3.11.1.1(2021081006)
 ===========================================
 1. Remove event that was not implemented and caused core PHPUnit test failure.
+2. Fix '{{#pix}} in Mustache HTML email template' - #274.
 
 Known issues with this version
 ------------------------------

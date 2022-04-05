@@ -32,7 +32,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  &copy; 2020-onwards G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
-class mustache_renderer extends \renderer_base {
+class mustache_renderer extends \core_renderer {
 
     /**
      * @var Mustache_Loader $stringloader The mustache string loader.
