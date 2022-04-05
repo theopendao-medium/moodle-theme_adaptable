@@ -1580,20 +1580,20 @@ $string['googleanalyticssettings'] = 'Google Analytics';
 $string['googleanalyticssettingsheading'] = 'Setup Google Analytics for your site';
 $string['googleanalyticssettingsdesc'] = 'You can setup multiple codes for Google Analytics and targed them to user profile fields.';
 
-$string ['enableanalytics'] = 'Enable Google Analytics';
-$string ['enableanalyticsdesc'] = 'Enable Google Analytics settings on your Moodle site';
+$string['enableanalytics'] = 'Enable Google Analytics';
+$string['enableanalyticsdesc'] = 'Enable Google Analytics settings on your Moodle site';
 
-$string ['analyticstext'] = 'Analytics ID';
-$string ['analyticstextdesc'] = 'Enter Google Analytics ID.';
+$string['analyticstext'] = 'Analytics ID';
+$string['analyticstextdesc'] = 'Enter Google Analytics ID.';
 
 $string['analyticscount'] = 'Analytics count';
 $string['analyticscountdesc'] = 'The number of analytics fields to show in the edit area below.';
 
-$string ['analyticsprofilefield'] = 'Custom Profile Field Name=Value (optional)';
-$string ['analyticsprofilefielddesc'] = 'Add access rule using for custom profile field eg: usertype=student.';
+$string['analyticsprofilefield'] = 'Custom Profile Field Name=Value (optional)';
+$string['analyticsprofilefielddesc'] = 'Add access rule using for custom profile field eg: usertype=student.';
 
-$string ['anonymizega'] = 'Anonymize the user IP';
-$string ['anonymizegadesc'] = 'Anonymize the user IP send to Google Analytics.';
+$string['anonymizega'] = 'Anonymize the user IP';
+$string['anonymizegadesc'] = 'Anonymize the user IP send to Google Analytics.';
 
 // Matomo (formerly Piwik).
 $string['piwiksettings'] = 'Matomo (formely Piwik) analytics';
